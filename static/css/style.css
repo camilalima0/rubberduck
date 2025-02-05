@@ -1,0 +1,31 @@
+.navbar-brand img { /*logo*/
+    height: 7rem;
+    width: auto;
+}
+
+.navbar-nav-center {
+    position: absolute;
+    left: 50%;
+    transform: translateX(-50%);
+}
+
+.navbar-nav-right {
+    margin-left: auto;
+}
+
+
+ul.navbar-nav {
+    margin: auto; /*centraliza horizontalmente*/
+    gap: 1rem;
+    align-items: center;
+}
+
+form.d-flex {
+    justify-content: center; /*centraliza a searchbar*/
+}
+
+#searchbar {
+    width: 120%;
+}
+
+
