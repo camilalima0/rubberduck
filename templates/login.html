@@ -10,22 +10,20 @@
             alert ("Please, insert a valid email.")
         }
     }
+    //colocar verificação se o email ta no banco de dados e se a senha ta certa
 </script>
 
 <div class = "content">
     <div id = "register-box">
-        <h1>Register</h1>
-        <form action="/register" method="post">
+        <h1>Log In</h1>
+        <form action="/login" method="post">
             <div class="form-group">
                 <input id = "email" autofocus class="form-control" name="email" placeholder="email" type="text" required>
             </div>
             <div class="form-group">
                 <input autocomplete="new-password" class="form-control" name="password" placeholder="Password" type="password">
             </div>
-            <div class="form-group">
-                <input autocomplete="new-password" class="form-control" name="confirmation" placeholder="Confirm Password" type="password">
-            </div>
-            <button class="btn btn-primary" type="submit">Register</button>
+            <button class="btn btn-primary" type="submit">Log In</button>
         </form>
     </div>
 </div>

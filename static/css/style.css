@@ -31,17 +31,30 @@ form.d-flex {
 .content {
     display: grid;
     place-items: center;
-    border: 2px solid green;
 }
 
 #register-box {
-    border: 2px solid red;
     display: flex;
     flex-direction: column;
-    gap: 3vh;
     width: 40vw;
+    margin: 0 auto;
 }
 
-#teste {
-    border: 2px solid purple;
+#register-box form {
+    display: flex;
+    flex-direction: column;
+    gap: 3vh; 
+}
+
+#register-box h1 {
+    color: rgb(46, 44, 44); /* Apenas para teste */
+    padding-bottom: 5vh;
+    text-align:center;
+}
+
+#register-box button {
+    width: 10vw;
+    margin: 0 auto;
+    background-color:rgb(255, 80, 22);
+    border: none;
 }
