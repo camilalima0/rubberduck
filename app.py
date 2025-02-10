@@ -1,4 +1,4 @@
-from flask import Flask, render_template
+from flask import Flask, render_template, app
 
 app = Flask(__name__)
 
@@ -16,10 +16,20 @@ def login_link():
 
 #configurar envio do login
 
-@app.route('/fiction', methods = ["GET"])
-def fiction():
+@app.route('/scifi', methods = ["GET"]) #app.route /gender > e pega no banco de dados o nome do genero que foi clicado e exibe os resultados
+def scifi():
     #filtrar no banco de dados para exibir os livros do genero ficcao
-    return render_template('fiction.html')
+    return render_template('sci-fi.html')
+
+@app.route('/bookpage', methods = ["GET"])
+def bookpage():
+    #filtrar pelo id do livro que a pessoa clicou
+    return render_template('bookpage.html')
+
+@app.route('/contact_link', methods = ["GET"])
+def contact_link():
+    return render_template('contact.html')
+
 
 if __name__ == '__main__':
-    app.run(debug = True)
+    app.run(debug = True, host='0.0.0.0')

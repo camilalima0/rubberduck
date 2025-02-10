@@ -1,3 +1,7 @@
+a {
+    text-decoration: none;
+}
+
 .navbar-brand img { /*logo*/
     height: 7rem;
     width: auto;
@@ -57,4 +61,86 @@ form.d-flex {
     margin: 0 auto;
     background-color:rgb(255, 80, 22);
     border: none;
+}
+
+
+#price {
+    color:rgb(255, 80, 22);
+}
+
+.row div {
+    padding-bottom: 2rem;
+}
+
+.session-title {
+    margin-bottom: 3rem;
+}
+
+.book-card {
+    border: none;
+    padding: 0;
+    background: none;
+}
+
+#bookcard {
+    text-decoration: none;
+}
+
+#book-card .card {
+    border: none;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+    padding: 0;
+    margin: 0;
+    padding-bottom: 1rem;
+    text-decoration: none;
+}
+
+.card div{
+    padding-bottom: 0px;
+}
+
+#book-card {
+    text-decoration: none;
+}
+
+.col-md-6 {
+    height: 70vh;
+    margin-bottom: 0;
+}
+
+#book-img-cont{
+    justify-content: center;
+    align-items: center;
+    display: flex;
+    padding: 0;
+    margin: 0;
+    box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
+
+}
+
+.book-img {
+    height: 100%;
+    width: auto;
+    object-fit: cover;
+}
+
+#book-info {
+    padding-left: 1.5rem;
+}
+
+#page-price {
+    font-size: 2rem;
+}
+
+#buy{
+    background-color:rgb(255, 80, 22);
+    border-color:rgb(255, 80, 22);
+}
+
+.custom-input {
+    height: 10vh;
+    padding-top: 5px;
+    text-align: left;
+    line-height: normal;
+    vertical-align: top;
 }

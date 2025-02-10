@@ -1,0 +1,26 @@
+{% extends "layout.html" %}
+{% block main %}
+
+<div class = "content">
+
+    <div class="container">
+        <div class="row">
+            <div id = "book-img-cont" class="col-md-6">
+                <img src="{{ url_for('static', filename='images/harry-potter-6.png') }}" class = "book-img" alt="Harry Potter and the half-blood prince">
+            </div>
+            <div id = "book-info" class="col-md-6">
+                <h1>Harry Potter and the half-blood prince</h1>
+                <p>In the sixth book of the series, Harry Potter discovers an old potions 
+                textbook belonging to the mysterious "Half-Blood Prince." As he learns 
+                more about Voldemort's past, Harry and Dumbledore work together to find 
+                and destroy the Dark Lord's Horcruxes. Meanwhile, danger looms at Hogwarts, 
+                and Harry's relationships with his friends deepen and become more complex. </p>
+                <p id = "page-price"><strong>R$49,90</strong></p>
+                <button type="button" id = "buy" class="btn btn-primary btn-lg">Buy</button>
+                <button type="button" class="btn btn-secondary btn-lg">Add to cart</button>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
