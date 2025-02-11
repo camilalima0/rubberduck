@@ -137,10 +137,13 @@ form.d-flex {
     border-color:rgb(255, 80, 22);
 }
 
-.custom-input {
-    height: 10vh;
-    padding-top: 5px;
-    text-align: left;
-    line-height: normal;
-    vertical-align: top;
+#message {
+    height: 12vh;
+    padding-top: 1vh;
+    line-height: 1.2;
+    resize: none;
+}
+
+#cart-card {
+    display: flex;
 }

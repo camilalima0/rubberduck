@@ -30,6 +30,10 @@ def bookpage():
 def contact_link():
     return render_template('contact.html')
 
+@app.route('/cart', methods = ["GET", "POST"])
+def cart():
+    return render_template('cart.html')
+
 
 if __name__ == '__main__':
     app.run(debug = True, host='0.0.0.0')

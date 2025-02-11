@@ -1,0 +1,24 @@
+{% extends "layout.html" %}
+{% block main %}
+
+<div class = "content">
+
+    <div class="container">
+        <div class="row">
+            <div class = "col-md-1">
+                <a id = "cart-item" href="/bookpage">
+                    <div id = "cart-card" class="card">
+                      <img src="{{ url_for('static', filename='images/harry-potter-6.png') }}" 
+                           class="card-img-top" alt="Harry Potter and the half-blood prince">
+                      <div class="card-body">
+                        <h5 class="card-title">Harry Potter and the half-blood prince</h5>
+                        <p id = "price" class="card-text">R$49,90</p>
+                      </div>
+                    </div>
+                  </a>
+            </div>
+        </div>
+    </div>
+</div>
+
+{% endblock %}
