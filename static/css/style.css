@@ -144,6 +144,70 @@ form.d-flex {
     resize: none;
 }
 
-#cart-card {
+#cart-item {
+    border: 2px solid red;
+    margin: 0;
+    padding: 0;
+}
+
+#cart-image {
+    border: 2px solid green;
+}
+
+#cart-image img {
+    object-fit: contain;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
+
+#cart-content {
+    border: 2px solid blue;
+    align-items: flex-start;
+    justify-content: left;
+}
+
+#cart-div {
+    max-width: 45vw;
+}
+
+#freight {
     display: flex;
+    flex-direction: column;
+    justify-content: left;
+    align-items: flex-start;
+    border: 2px solid pink;
+    padding: 0;
+    margin: 0;
+    gap: 1vh;
+}
+
+#freight-input {
+    display: flex;
+    align-items: center;
+    gap: 0.5rem;
+}
+
+#calculate-freight {
+    width: 9vw;
+    text-align: center;
+    padding-left: 0;
+}
+
+#quantity {
+    font-size: 1rem; /* Tamanho da fonte */
+    font-weight: 400; /* Peso da fonte */
+    line-height: 1.5; /* Altura da linha */
+    color: #212529; /* Cor do texto */
+    background-color: #fff; /* Cor de fundo */
+    background-clip: padding-box; /* Garante que o fundo não ultrapasse a borda */
+    border: 1px solid #ced4da; /* Borda cinza */
+    border-radius: 0.375rem; /* Bordas arredondadas */
+    transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
+    padding: 0.1rem;
+}
+
+#cart-price {
+    font-size: 200%;
+    margin-top: 0.3rem;
 }
