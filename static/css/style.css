@@ -152,8 +152,7 @@ form.d-flex {
     margin: 0;
     padding: 0;
     height: 200px;
-    width: auto;
-    border: 2px solid blue;
+    width: 580px;
 }
 
 #cart-image {
@@ -164,7 +163,6 @@ form.d-flex {
     display: flex;
     align-items: center;
     justify-content: center;
-    border: 2px solid red;
 }
 
 #cart-image img {
@@ -176,11 +174,12 @@ form.d-flex {
 }
 
 #cart-content {
-    align-items: flex-end;
+    display:flex;
+    flex-wrap: wrap;
+    align-items: right;
     justify-content: right;
     height: 100%;
     width: auto;
-    border: 2px solid pink;
     margin: 0;
     padding: 0;
 }
@@ -188,6 +187,7 @@ form.d-flex {
 #cart-div {
     max-width: 45vw;
     margin-bottom: 3rem;
+    justify-items: center;
 }
 
 #freight {
@@ -230,6 +230,10 @@ form.d-flex {
 #cart-price {
     font-size: 200%;
     text-align: right;
+    width: 125px;
+    padding:0;
+    margin: 0;
+    padding-top: 1rem;
 }
 
 #quantity-input {
@@ -256,7 +260,6 @@ form.d-flex {
     display: flex;
     align-items: center;
     height: 100%;
-    border: 2px solid rgb(208, 255, 0);
     padding: 0;
     margin: 0;
 }
@@ -267,7 +270,7 @@ form.d-flex {
     justify-content: right;
     height: 38px;
     width: 120px;
-    border: 2px solid green;
+    margin-top: 1rem;
     padding: 0;
     gap: 3px;
 }
@@ -281,4 +284,42 @@ button.quantity {
  
 div.input-group {
     padding: 0;
+    width: 125px;
+}
+
+div.input-group-prepend,
+div.input-group-append {
+    padding: 0;
+}
+
+div#cart-content.col-md-8 {
+    display: flex;
+    flex-direction: column;
+    align-items: right;
+    justify-content: right;
+}
+
+div.content {
+    align-items: center;
+    justify-content: center;
+}
+
+div#freight-input.d-flex {
+    padding-top: 1rem;
+}
+
+div.card-body {
+    width: auto;
+}
+
+div#total {
+    display: flex;
+    justify-content: center;
+    align-items: center;
+    margin-bottom: 3rem;
+}
+
+button#buy-cart {
+    font-size: 200%;
+    font-weight: bolder;
 }
