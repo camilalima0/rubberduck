@@ -145,32 +145,44 @@ form.d-flex {
 }
 
 #cart-item {
+    display: flex;
+    flex-direction: column;
+    align-items: center;
+    justify-content: flex-start;
     margin: 0;
     padding: 0;
     height: 200px;
-    background-color:rgb(46, 44, 44);
-    width: 600px;
+    width: auto;
     border: 2px solid blue;
 }
 
 #cart-image {
     padding: 0;
     margin: 0;
-    height: 200px;
+    height: 100%;
+    width: auto;
+    display: flex;
+    align-items: center;
+    justify-content: center;
     border: 2px solid red;
 }
 
 #cart-image img {
     object-fit: cover;
+    height: 100%;
+    width: 100%;
     margin: 0;
     padding: 0;
-    height: 170px;
 }
 
 #cart-content {
-    align-items: flex-start;
-    justify-content: left;
-    height: 50vh;
+    align-items: flex-end;
+    justify-content: right;
+    height: 100%;
+    width: auto;
+    border: 2px solid pink;
+    margin: 0;
+    padding: 0;
 }
 
 #cart-div {
@@ -217,6 +229,7 @@ form.d-flex {
 
 #cart-price {
     font-size: 200%;
+    text-align: right;
 }
 
 #quantity-input {
@@ -232,26 +245,40 @@ form.d-flex {
     transition: border-color .15s ease-in-out, box-shadow .15s ease-in-out;
     padding: 0.1rem;
     text-align: center;
-    margin-left: 0.5rem;
-    margin-right: 0.5rem;
-    margin-bottom: 0;
-    padding-bottom: 0;
+    padding: 0;
+    margin: 0;
     height: 38px;
     width: 38px;
+}
 
+.input-group-prepend,
+.input-group-append {
+    display: flex;
+    align-items: center;
+    height: 100%;
+    border: 2px solid rgb(208, 255, 0);
+    padding: 0;
+    margin: 0;
 }
 
 .input-group {
-    margin: 0;
-    padding: 0;
-    height: 4vh;
+    display: flex;
+    align-items: center;
+    justify-content: right;
+    height: 38px;
     width: 120px;
     border: 2px solid green;
+    padding: 0;
+    gap: 3px;
 }
  
-.btn btn-outline-secondary quantity {
+button.quantity {
     width: 38px;
     height: 38px;
-
+    padding: 0;
+    margin: 0;
 }
  
+div.input-group {
+    padding: 0;
+}

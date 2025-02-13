@@ -21,13 +21,13 @@ document.getElementById('button-plus').addEventListener('click', function() {
 
 <div class = "content">
     <div id = "cart-div" class="container">
-        <div id = "cart-item" class="row shadow p-3 mb-5 bg-body-tertiary rounded, padding = 0, margin = 0">
+        <div id = "cart-item" class="row shadow p-3 mb-5 bg-body-tertiary rounded">
             <div id = "cart-image" class = col-md-4>
               <img src="{{ url_for('static', filename='images/harry-potter-6.png') }}" class = "img-fluid" alt="Harry Potter">
             </div>
             <div id = "cart-content" class = col-md-8>
               <h4>Harry Potter and the half-blood prince</h4>
-              <div class="input-group d-flex">
+              <div class="input-group">
                 <div class="input-group-prepend">
                   <button class="btn btn-outline-secondary quantity" type="button" id="button-minus">-</button>
                 </div>
