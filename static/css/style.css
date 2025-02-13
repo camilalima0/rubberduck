@@ -323,3 +323,27 @@ button#buy-cart {
     font-size: 200%;
     font-weight: bolder;
 }
+
+a#buy-button {
+    color: white;
+    text-decoration: none;
+}
+
+div#payment-item.row.shadow.p-3.mb-5.bg-body-tertiary.rounded {
+    border: 2px solid purple;
+    max-width: 45vw;
+    margin-bottom: 3rem;
+    justify-items: center;
+}
+
+div#payment-div.container {
+    border: 2px solid green;
+    width: 400px;
+}
+
+div#payment-image {
+    border: 2px solid orange;
+    height: 100%;
+    margin: 0;
+    padding: 0;
+}
