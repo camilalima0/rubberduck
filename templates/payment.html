@@ -4,43 +4,55 @@
 <div class = "content">
   <h1>Payment Options:</h1>
     <div id = "payment-div" class="container">
-        <div id = "payment-item" class="row shadow p-3 mb-5 bg-body-tertiary rounded">
-            <div id = "payment-image" class = col-md-3>
-              <img id = "payment-symbol" src="{{ url_for('static', filename='images/pix.png') }}" class = "img-fluid" alt="Pix">
+
+      <a href="/pagamento/pix" class="payment-link">
+        <div id="payment-item" class="row shadow p-3 bg-body-tertiary rounded">
+            <div id="payment-image" class="col-md-3">
+                <img id="payment-symbol" src="{{ url_for('static', filename='images/pix.png') }}" class="img-fluid" alt="Pix">
             </div>
-            <div id = "payment-content" class = col-md-8>
-              <h4 id = "payment-method" >PIX</h4>
+            <div id="payment-content" class="col-md-8">
+                <h4 id="payment-method">PIX</h4>
             </div>
         </div>
+      </a>
 
-        <div id = "payment-item" class="row shadow p-3 mb-5 bg-body-tertiary rounded">
-          <div id = "payment-image" class = col-md-3>
-            <img id = "payment-symbol" src="{{ url_for('static', filename='images/pix.png') }}" class = "img-fluid" alt="Pix">
-          </div>
-          <div id = "payment-content" class = col-md-8>
-            <h4 id = "payment-method" >PIX</h4>
-          </div>
+      <a href="/pagamento/pix" class="payment-link">
+        <div id="payment-item" class="row shadow p-3 bg-body-tertiary rounded">
+            <div id="payment-image" class="col-md-3">
+                <img id="payment-symbol" src="{{ url_for('static', filename='images/red-card.png') }}" class="img-fluid" alt="Pix">
+            </div>
+            <div id="payment-content" class="col-md-8">
+                <h4 id="payment-method">Credit Card</h4>
+            </div>
         </div>
+      </a>
 
-        <div id = "payment-item" class="row shadow p-3 mb-5 bg-body-tertiary rounded">
-          <div id = "payment-image" class = col-md-3>
-            <img id = "payment-symbol" src="{{ url_for('static', filename='images/pix.png') }}" class = "img-fluid" alt="Pix">
-          </div>
-          <div id = "payment-content" class = col-md-8>
-            <h4 id = "payment-method" >PIX</h4>
-          </div>
+      <a href="/pagamento/pix" class="payment-link">
+        <div id="payment-item" class="row shadow p-3 bg-body-tertiary rounded">
+            <div id="payment-image" class="col-md-3">
+                <img id="payment-symbol" src="{{ url_for('static', filename='images/green-card.png') }}" class="img-fluid" alt="Pix">
+            </div>
+            <div id="payment-content" class="col-md-8">
+                <h4 id="payment-method">Debit Card</h4>
+            </div>
+        </div>
+      </a>
+
+      <a href="/pagamento/pix" class="payment-link">
+        <div id="payment-item" class="row shadow p-3 bg-body-tertiary rounded">
+            <div id="payment-image" class="col-md-3">
+                <img id="payment-symbol" src="{{ url_for('static', filename='images/billet.png') }}" class="img-fluid" alt="Pix">
+            </div>
+            <div id="payment-content" class="col-md-8">
+                <h4 id="payment-method">Billet</h4>
+            </div>
+        </div>
+      </a>
+
+      <div class = "container" id = "total-payment">
+        <h1>Total: R$149,70</h1>
       </div>
-
-        <div id = "payment-item" class="row shadow p-3 mb-5 bg-body-tertiary rounded">
-          <div id = "payment-image" class = col-md-3>
-            <img id = "payment-symbol" src="{{ url_for('static', filename='images/pix.png') }}" class = "img-fluid" alt="Pix">
-          </div>
-          <div id = "payment-content" class = col-md-8>
-            <h4 id = "payment-method" >PIX</h4>
-          </div>
-      </div>
-
-    </div>
+     
 </div>
 
 {% endblock %}
