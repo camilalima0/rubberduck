@@ -330,20 +330,46 @@ a#buy-button {
 }
 
 div#payment-item.row.shadow.p-3.mb-5.bg-body-tertiary.rounded {
-    border: 2px solid purple;
-    max-width: 45vw;
-    margin-bottom: 3rem;
+    border: 2px solid blue;
+    width: 380px;
+    height: 80px;
+    padding: 0;
+    margin-bottom: 1rem;
+    display: flex;
     justify-items: center;
+}
+div#payment-item.row
+ {
+    padding: 0;
 }
 
 div#payment-div.container {
     border: 2px solid green;
-    width: 400px;
+    width: 380px;
+    display: flex;
+    flex-wrap: wrap;
+    gap: 0.5rem;
 }
 
 div#payment-image {
     border: 2px solid orange;
     height: 100%;
+    width: auto;
     margin: 0;
     padding: 0;
+    display: flex;
 }
+
+div#payment-content {
+    padding: 0;
+    margin: 0;
+    display: flex;
+    align-items: center;
+}
+
+h4#payment-method {
+    margin: 0;
+    padding: 0;
+    margin-left: 1rem;
+}
+
