@@ -41,3 +41,8 @@ def payment():
 
 if __name__ == '__main__':
     app.run(debug = True, host='0.0.0.0')
+
+#invenção de moda:
+#colocar icone de numero de itens no carrinho
+#funco cinza com card nas paginas de input
+#strapi
