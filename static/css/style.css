@@ -5,6 +5,7 @@ a {
 html, body {
     overflow-x: hidden;
     width: 100%;
+    background: linear-gradient(to bottom, #333, #777);
 }
 
 nav.navbar {
@@ -417,8 +418,7 @@ div#total-payment {
     text-align: center;
 }
 
-div#home {
-    background: linear-gradient(to bottom, #333, #777);
+div#homepage {
     margin: 0;
     padding: 0;
     min-height: 100vh;
@@ -430,7 +430,7 @@ div#home {
     z-index: 1;
 }
 
-#home h1 {
+.titlee {
     color: white;
     position: absolute;
     z-index: 10;
@@ -440,20 +440,20 @@ div#home {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
 
+div#homepage.container.mt-5 {
+    height: 668px;
+    width:668px;
+    margin-top:1000px;
+}
+
 div#book-img {
-    margin-right: 0;
-    padding-right: 0;
-    margin-left: auto;
     display: flex;
     justify-content: flex-end;
-    align-items: center;
+    position: relative;
     width: auto;
-    position: absolute;
-    right: 0; /* Move para a direita */
-    top: 50%;
-    transform: translateY(-50%);
-    padding-top: 0;
+    margin-left: auto;
 }
+
 
 #book-img img {
     display: block;
@@ -463,13 +463,8 @@ div#book-img {
     height: 70vh;
 }
 
-div#content-home {
-    margin: 0;
-    padding: 0;
-    display: flex;
-    flex-direction: column-reverse;
-    align-items: flex-end; 
-    text-align: right;
+div.content-home {
+    border: 2px solid green;
 }
 
 #text {
@@ -486,16 +481,19 @@ div#content-home {
     width: 50vw;
 }
 
-.content-home h2 {
+.subtitlee {
     font-weight: 350%;
     font-size: 300%;
     color: white;
     position: absolute;
     z-index: 10;
-    margin-left: 5rem;
-    margin-top: 35rem;
     width: 50vw;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+#sub1 {
+    margin-left: 5rem;
+    margin-top: 35rem;
 }
 
 div#home-cards {
@@ -513,8 +511,17 @@ div#home-cards {
 }
 
 #carousel {
-    margin-top: 25rem;
+    margin-top: 180px;
     border: 2px solid red;
     height: 657px; 
     width: 960px;
 }
+
+#sub2 {
+    margin-top: 50px;
+}
+
+#centralized {
+    border: 2px solid purple;
+}
+
