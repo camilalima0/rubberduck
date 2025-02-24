@@ -465,8 +465,8 @@ div#content-home.container.mt-5 {
 
 #content-home .col-md-6 {
     border: 2px solid red;
-    padding: 0;
     margin: 0;
+    justify-content: center;
 }
 
 #text {
@@ -543,7 +543,7 @@ div#home-cards {
 #book-img.col-md-6 {
     justify-content: right;
     margin-right: 0;
-    margin-left: auto;
+    padding-left: 10rem;
 }
 
 #welcome {
