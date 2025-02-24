@@ -5,8 +5,10 @@ a {
 html, body {
     overflow-x: hidden;
     width: 100%;
+    padding: 0;
     background: linear-gradient(to bottom, #333, #777);
 }
+
 
 nav.navbar {
     position: fixed;
@@ -418,24 +420,25 @@ div#total-payment {
     text-align: center;
 }
 
-div#homepage {
+body#home {
     margin: 0;
-    padding: 0;
+    padding-top: 138px;
     min-height: 100vh;
     min-width: 100vw;
-    display: flex;
-    justify-content: space-between;
+    text-align: center;
+    justify-content: center;
     align-items: top;
     position: relative;
     z-index: 1;
+    border: 2px solid yellow;
 }
 
 .titlee {
     color: white;
-    position: absolute;
+    position: relative;
+    padding: 0 2rem;
     z-index: 10;
-    margin-left: 5rem;
-    margin-top: 15rem;
+    text-align: center;
     font-size: 500%;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
 }
@@ -446,15 +449,6 @@ div#homepage.container.mt-5 {
     margin-top:1000px;
 }
 
-div#book-img {
-    display: flex;
-    justify-content: flex-end;
-    position: relative;
-    width: auto;
-    margin-left: auto;
-}
-
-
 #book-img img {
     display: block;
     margin: 0;
@@ -463,8 +457,16 @@ div#book-img {
     height: 70vh;
 }
 
-div.content-home {
+div#content-home.container.mt-5 {
     border: 2px solid green;
+    margin-top: 0;
+    height: 100vh;
+}
+
+#content-home .col-md-6 {
+    border: 2px solid red;
+    padding: 0;
+    margin: 0;
 }
 
 #text {
@@ -523,5 +525,29 @@ div#home-cards {
 
 #centralized {
     border: 2px solid purple;
+}
+
+.col-md-6 p {
+    color: white;
+    margin-top: 150px;
+    font-size: 150%;
+    font-weight: 200;
+}
+
+.col-md-6 {
+    text-align: left;
+    align-items: center;
+
+}
+
+#book-img.col-md-6 {
+    justify-content: right;
+    margin-right: 0;
+    margin-left: auto;
+}
+
+#welcome {
+   margin: 0;
+   padding-top: 50px;
 }
 
