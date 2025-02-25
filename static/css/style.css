@@ -4,11 +4,19 @@ a {
 
 html, body {
     overflow-x: hidden;
-    width: 100%;
+    width: 100vw;
+    min-height: 100vh;
     padding: 0;
+    margin: 0;
     background: linear-gradient(to bottom, #333, #777);
+    display: flex;
+    flex-direction: column;
+    border: 2px solid pink;
 }
 
+/* The main content area takes up the available space */
+body > .container {
+    flex: 1;
 
 nav.navbar {
     position: fixed;
@@ -16,12 +24,9 @@ nav.navbar {
     left: 0;
     width: 100%;
     z-index: 1000;
+    height: 138px;
 }
 
-.navbar-brand img { /*logo*/
-    height: 7rem;
-    width: auto;
-}
 
 .navbar-nav-center {
     position: absolute;
@@ -51,7 +56,6 @@ form.d-flex {
 .content {
     display: grid;
     place-items: center;
-    margin-top: 138px;
     padding-top : 50px;
 }
 
@@ -69,9 +73,8 @@ form.d-flex {
 }
 
 #register-box h1 {
-    color: rgb(46, 44, 44); /* Apenas para teste */
     padding-bottom: 5vh;
-    text-align:center;
+    text-align: center;
 }
 
 #register-box button {
@@ -86,9 +89,6 @@ form.d-flex {
     color:rgb(255, 80, 22);
 }
 
-.row div {
-    padding-bottom: 2rem;
-}
 
 .session-title {
     margin-bottom: 3rem;
@@ -121,7 +121,7 @@ form.d-flex {
     text-decoration: none;
 }
 
-.col-md-6 {
+#col1 {
     height: 70vh;
     margin-bottom: 0;
 }
@@ -375,7 +375,6 @@ div#payment-item.row {
     padding: 0 !important;
 }
 
-
 div#payment-image {
     height: auto;
     width: 80px;
@@ -420,18 +419,7 @@ div#total-payment {
     text-align: center;
 }
 
-body#home {
-    margin: 0;
-    padding-top: 138px;
-    min-height: 100vh;
-    min-width: 100vw;
-    text-align: center;
-    justify-content: center;
-    align-items: top;
-    position: relative;
-    z-index: 1;
-    border: 2px solid yellow;
-}
+
 
 .titlee {
     color: white;
@@ -441,6 +429,10 @@ body#home {
     text-align: center;
     font-size: 500%;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+}
+
+.container text-center {
+    margin-top: 20px;
 }
 
 div#homepage.container.mt-5 {
@@ -457,16 +449,17 @@ div#homepage.container.mt-5 {
     height: 70vh;
 }
 
-div#content-home.container.mt-5 {
+div#content-home {
     border: 2px solid green;
-    margin-top: 0;
-    height: 100vh;
+    justify-content: center;
 }
 
 #content-home .col-md-6 {
     border: 2px solid red;
     margin: 0;
+    display: flex;
     justify-content: center;
+    align-items: center;
 }
 
 #text {
@@ -491,6 +484,7 @@ div#content-home.container.mt-5 {
     z-index: 10;
     width: 50vw;
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    text-align: center;
 }
 
 #sub1 {
@@ -498,38 +492,16 @@ div#content-home.container.mt-5 {
     margin-top: 35rem;
 }
 
-div#home-cards {
-    width: 50vw;
-    margin-top: 42rem;
-    margin-left: 5rem;
-}
-
-.card #home-cards{
-    border: 2px solid red;
-}
-
 .column {
     border: 2px solid green;
-}
-
-#carousel {
-    margin-top: 180px;
-    border: 2px solid red;
-    height: 657px; 
-    width: 960px;
 }
 
 #sub2 {
     margin-top: 50px;
 }
 
-#centralized {
-    border: 2px solid purple;
-}
-
-.col-md-6 p {
+p#p {
     color: white;
-    margin-top: 150px;
     font-size: 150%;
     font-weight: 200;
 }
@@ -551,3 +523,75 @@ div#home-cards {
    padding-top: 50px;
 }
 
+#centralized {
+    border: 2px solid purple;
+    padding: 0;
+    display: flex;
+    justify-content: center;
+}
+
+div#centralized h2.subtitlee {
+    text-align: center;
+    padding-top: 50px;
+}
+
+div#centralized p {
+    text-align: left;
+    padding-top: 150px;
+}
+
+div#home-cards {
+    padding-top: 50px;
+    border: 2px solid brown;
+    justify-content: center;
+    padding-bottom: 0;
+}
+
+.card #home-cards{
+    border: 2px solid red;
+}
+
+#carousel {
+    margin-top: 200px;
+    border: 2px solid red;
+    width: 100%;
+    margin-bottom: 150px;
+}
+
+.carousel-caption h5 {
+    font-size: 400%;
+    font-weight: 600;
+    text-shadow: 8px 8px 8px rgba(0, 0, 0, 1);
+}
+
+.carousel-caption p {
+    font-size: 200%;
+    font-weight: 300;
+    text-shadow: 8px 8px 8px rgba(0, 0, 0, 1);
+}
+
+footer {
+    margin: 0;
+    padding-top: 100px;
+    width: 100vw;
+    align-items: flex-end;
+    max-height: 138px;
+    border: 2px solid pink;
+}
+
+footer .container .row {
+    padding: 0;
+    height: 138px;
+    width: 100vw;
+}
+
+div.container {
+    padding: 0;
+    margin: 0;
+}
+
+footer .container, .container .row, .row .col-md-6 {
+    margin: 0;
+    padding: 0;
+}
+}
