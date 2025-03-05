@@ -123,13 +123,14 @@ form.d-flex {
     text-decoration: none;
 }
 
-#book-list {
+.book-list {
     margin-top: 50px;
     margin-bottom: 50px;
     padding: 50px;
     background-color:#525151;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     border-radius: 10px;
+    
 }
 
 #book-row {
@@ -645,5 +646,13 @@ footer .container, .container .row, .row .col-md-6 {
     padding: 20px 80px 20px 80px;
     border-radius: 10px;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
+}
+
+#search-result {
+    max-width: 20%;
+}
+
+.card-img-top {
+    height: 70%;
 }
 }

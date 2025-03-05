@@ -3,18 +3,19 @@
 {% block main %}
 
 <div id="content">
-    <h1 class="titlee">Results:</h1>
+    <h1 class="titlee text-center">Results:</h1>
 
     {% if error %}
         <p>{{ error }}</p>
     {% endif %}
-
-    <div class="book-list">
-        {% for book in books %}
-            <div id="book-row" class="row">
-                <div class="col">
+    <div class = "book-list">
+        <!-- Linha para agrupar os resultados -->
+        <div id="book-row" class="row justify-content-center">
+            {% for book in books %}
+                <!-- Cada livro ocupa 1/4 do espaço na linha -->
+                <div id="search-result" class="col-lg-3 col-md-4 col-sm-6 mb-4">
                     <a id="book-card" href="/bookpage/{{ book.id }}">
-                        <div class="card">
+                        <div class="card h-100">
                             <img src="{{ book.cover }}" class="card-img-top" alt="{{ book.title }}">
                             <div class="card-body">
                                 <h5 class="card-title">{{ book.title }}</h5>
@@ -24,9 +25,10 @@
                         </div>
                     </a>
                 </div>
-            </div>
-        {% endfor %}
+            {% endfor %}
+        </div>
     </div>
+        
 </div>
 
 {% endblock %}
@@ -36,16 +38,6 @@
 
 
 
-        <!--<div class="book-item">
-                <h2>{{ book.title }}</h2>
-                <p><strong>Authors:</strong> {{ book.authors | join(', ') }}</p>
-                <p><strong>Published Date:</strong> {{ book.published_date }}</p>
-                <p><strong>Description:</strong> {{ book.description }}</p>
-                <img src="{{ book.cover }}" alt="Book cover" width="100">
-            </div>
-        {% endfor %}
-    </div>
-</div>
 
 
 

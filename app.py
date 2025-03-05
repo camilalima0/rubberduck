@@ -91,6 +91,57 @@ def search_books():
             return render_template('search_results.html', books=[], error="Nothing found.")
     else:
         return render_template('search_results.html', livros=[], error="Please, type a query.")
+    
+#function to filter by gender:
+def search(query):
+    # URL base da API do Google Books
+    url = f'https://www.googleapis.com/books/v1/volumes?q={query}&key={API_GOOGLE_BOOKS}'
+
+    # requesting the API
+    response = requests.get(url)
+
+    #initializing data variable:
+    data = None
+
+    # status 200 = request succeded
+    if response.status_code == 200:
+        print(f"Dados retornados da API: {data}")  # Log dos dados retornados
+        # Converts the answaer to JSON
+        data = response.json()
+        books= []
+
+        # is there items into the answer?
+        if 'items' in data:
+            for item in data['items']:
+                volume_info = item['volumeInfo']
+
+                book = {
+                    # Extrair informações do livro
+                'title': volume_info.get('title', 'Title not found'),
+                'authors': volume_info.get('authors', ['Unknown author']),
+                'publishedDate': volume_info.get('publishedDate', 'Data de publicação não disponível'),
+                'description': volume_info.get('description', 'Descrição não disponível'),
+                'cover': volume_info.get('imageLinks', {}).get('thumbnail', 'Imagem não disponível')
+                }
+                books.append(book)
+
+        return books
+    else:
+        return None
+
+# Rota para a busca de livros
+@app.route('/search-book', methods=['GET'])
+def search_books():
+    query = request.args.get('query')  # Pega o valor da query
+    if query:
+        books = search(query)  # Chama a função para buscar o livro
+
+        if books:
+            return render_template('search_results.html', books=books)
+        else:
+            return render_template('search_results.html', books=[], error="Nothing found.")
+    else:
+        return render_template('search_results.html', livros=[], error="Please, type a query.")
 
 if __name__ == '__main__':
     app.run(debug = True, host='0.0.0.0')
