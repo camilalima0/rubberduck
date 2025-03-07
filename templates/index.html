@@ -71,66 +71,26 @@
         </div>
     
         <div id = "home-cards" class="container text-center">
-            <div id = "cards" class="row">
-                <div class="col" padding-bottom-2rem>
-        
-                    <a id = "book-card" href="/bookpage">
-                    <div class="card">
-                        <img src="{{ url_for('static', filename='images/harry-potter-6.png') }}" 
-                            class="card-img-top" alt="Harry Potter and the half-blood prince">
-                        <div class="card-body">
-                        <h5 class="card-title">Harry Potter and the half-blood prince</h5>
-                        <p id = "price" class="card-text">R$49,90</p>
+            <div class = "book-list">
+                <!-- Linha para agrupar os resultados -->
+                <div id="book-row" class="row justify-content-center">
+                    {% for book in books %}
+                        <!-- Cada livro ocupa 1/4 do espaço na linha -->
+                        <div id="search-result" class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                            <a id="book-card" href="/bookpage/{{ book.id }}">
+                                <div class="card h-100">
+                                    <img src="{{ book.cover }}" class="card-img-top" alt="{{ book.title }}">
+                                    <div class="card-body">
+                                        <h5 class="card-title">{{ book.title }}</h5>
+                                        <h6 class="card-author">{{ book.authors | join(', ') }}</h6>
+                                        <p id="price" class="card-text">R$49,90</p>
+                                    </div>
+                                </div>
+                            </a>
                         </div>
-                    </div>
-                    </a>
-                
-                </div> <!--col-->
-                
-                <div class="col">
-        
-                    <a id = "book-card" href="/bookpage">
-                    <div class="card">
-                        <img src="{{ url_for('static', filename='images/harry-potter-6.png') }}" 
-                            class="card-img-top" alt="Harry Potter and the half-blood prince">
-                        <div class="card-body">
-                        <h5 class="card-title">Harry Potter and the half-blood prince</h5>
-                        <p id = "price" class="card-text">R$49,90</p>
-                        </div>
-                    </div>
-                    </a>
-                
-                </div> <!--col-->
-        
-                <div class="col">
-        
-                    <a id = "book-card" href="/bookpage">
-                    <div class="card">
-                        <img src="{{ url_for('static', filename='images/harry-potter-6.png') }}" 
-                            class="card-img-top" alt="Harry Potter and the half-blood prince">
-                        <div class="card-body">
-                        <h5 class="card-title">Harry Potter and the half-blood prince</h5>
-                        <p id = "price" class="card-text">R$49,90</p>
-                        </div>
-                    </div>
-                    </a>
-                
-                </div> <!--col-->
-        
-                <div class="col">
-        
-                    <a id = "book-card" href="/bookpage">
-                    <div class="card">
-                        <img src="{{ url_for('static', filename='images/harry-potter-6.png') }}" 
-                            class="card-img-top" alt="Harry Potter and the half-blood prince">
-                        <div class="card-body">
-                        <h5 class="card-title">Harry Potter and the half-blood prince</h5>
-                        <p id = "price" class="card-text">R$49,90</p>
-                        </div>
-                    </div>
-                    </a>
-                    
-                </div> <!--col-->
+                    {% endfor %}
+                </div>
+            </div>
         </div> <!--home-cards-->
     
     </div>
