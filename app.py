@@ -35,9 +35,9 @@ def contact_link():
 def cart():
     return render_template('cart.html')
 
-@app.route('/payment', methods = ["GET", "POST"])
-def payment():
-    return render_template('payment.html')
+@app.route('/delivery', methods = ["GET", "POST"])
+def delivery():
+    return render_template('delivery.html')
 
 API_GOOGLE_BOOKS = 'AIzaSyCLAhnzzjKGAwpUu7N6DLUJpgzTPsGQeyQ'
 
@@ -125,11 +125,8 @@ def search_subject(query):
     else:
         return None
 
-
 if __name__ == '__main__':
     app.run(debug = True, host='0.0.0.0')
-
-
 
 
 #invenção de moda:

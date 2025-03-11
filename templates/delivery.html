@@ -1,0 +1,28 @@
+{% extends "layout.html" %}
+{% block main %}
+
+<div class = "content">
+    <div id = "register-box">
+        <h1 class = "titlee">Shipment Information</h1>
+        <form action="/register" method="post">
+            <div class="form-group">
+                <input id = "patio" autofocus class="form-control" name="patio" placeholder="Patio" type="text" required>
+            </div>
+            <div class="form-group">
+                <select name="st_av" id="st_av">
+                    <option value="1">Street</option>
+                    <option value="2">Avenue</option>
+                </select>
+            </div>
+            <div class="form-group">
+                <input autocomplete="neighbourhood" class="form-control" name="neighbourhood" placeholder="Neighbourhood" type="text" required>
+            </div>
+            <div class="form-group">
+                <input autocomplete="new-password" class="form-control" name="confirmation" placeholder="Confirm Password" type="password">
+            </div>
+            <button class="btn btn-primary" type="submit">Register</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %}
