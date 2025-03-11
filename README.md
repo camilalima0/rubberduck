@@ -6,5 +6,5 @@ Build the database and implement
 Integrate the database to front-end, Idk if it's better using python or JS (search about React) 
 
 Database Tables:
-Costumers (ID, Name, Cellphone, Email, Password, Cart, Last_Purchases)
+Costumers (ID, Name, Cellphone, Email, Password, Cart, Last_Purchases, Address [St_Av, Neighbourhood, Postal_Code, Number, Compelement, City, State, Country])
 
