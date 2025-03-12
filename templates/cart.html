@@ -83,11 +83,16 @@ document.getElementById('button-plus').addEventListener('click', function() {
     </div>
 
         <div class="card-body shadow p-3 mb-5 bg-body-tertiary rounded">
-          <label for="calculate-freight">Calculate freight:</label>
-              <div id = "freight-input" class = "d-flex">
-                <input type="text" id="calculate-freight" class = "form-control" name="calculate-freight" placeholder="00000-000">
-                <button class="btn btn-outline-secondary">Calculate</button>
-              </div>
+          <form role="search" action = "/search-book" method = "GET">
+            
+            <label for="calculate-freight">Calculate freight:</label>
+            <div id = "freight-input" class = "d-flex" action = "/calculate-freight" method = "GET">
+              <input type="text" id="calculate-freight" class = "form-control" name="calculate-freight" placeholder="00000-000" name = "postal_code_f">
+              <button class="btn btn-outline-secondary" type = "submit">Calculate</button>
+            </div>
+        
+          </form>
+          
         </div>
 
         <div class = "container" id = "total">

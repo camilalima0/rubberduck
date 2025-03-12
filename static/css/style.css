@@ -655,4 +655,10 @@ footer .container, .container .row, .row .col-md-6 {
 .card-img-top {
     height: 70%;
 }
+
+.d-flex label {
+    justify-content: center;
+    text-align: center;
+    align-items: center;
+}
 }
