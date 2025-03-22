@@ -95,6 +95,13 @@ form.d-flex {
     
 }
 
+button:hover {
+    cursor: pointer;
+    color: black;
+    background-color:rgb(0, 255, 179);
+    border: 3px solid white;
+}
+
 #price {
     color:rgb(255, 80, 22);
 }
@@ -661,4 +668,5 @@ footer .container, .container .row, .row .col-md-6 {
     text-align: center;
     align-items: center;
 }
+
 }
