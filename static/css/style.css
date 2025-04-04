@@ -11,6 +11,7 @@ html, body {
     background: linear-gradient(to bottom, #333, #777);
     display: flex;
     flex-direction: column;
+    padding-top: 60px;
 }
 
 /* The main content area takes up the available space */
@@ -61,7 +62,7 @@ form.d-flex {
 #register-box {
     display: flex;
     flex-direction: column;
-    width: 40vw;
+    width: 30vw;
     margin: 0 auto;
     border-radius: 10px;
     padding: 20px 80px 20px 80px;
@@ -86,9 +87,7 @@ form.d-flex {
     margin: 0 auto;
     background-color:rgb(0, 255, 179);
     border: none;
-    margin-bottom: 32px;
-    font-size: 150%;
-    font-weight: 500;
+    margin-bottom: 60px;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
     color: rgb(24, 24, 24);
     padding: 10px 90px 10px 90px;
@@ -136,8 +135,13 @@ button:hover {
     padding: 50px;
     background-color:#525151;
     box-shadow: 2px 2px 5px rgba(0, 0, 0, 0.3);
-    border-radius: 10px;
-    
+    border-radius: 10px;  
+}
+
+.fixed-image {
+    height: 100px;
+    fixed-image
+    width:auto;
 }
 
 #book-row {
@@ -532,6 +536,7 @@ div#content-home {
     text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
     text-align: left;
     margin:0;
+    padding-top: 30px;
 }
 
 #sub1 {

@@ -13,14 +13,24 @@
         <div id="book-row" class="row justify-content-center">
             {% for book in books %}
                 <!-- Cada livro ocupa 1/4 do espaço na linha -->
-                <div id="search-result" class="col-lg-3 col-md-4 col-sm-6 mb-4">
+                <div id="search-result" class="col-lg-6 col-md-5 col-sm-6 mb-4">
                     <a id="book-card" href="/bookpage/{{ book.id }}">
                         <div class="card h-100">
-                            <img src="{{ book.cover }}" class="card-img-top" alt="{{ book.title }}">
-                            <div class="card-body">
-                                <h5 class="card-title">{{ book.title }}</h5>
-                                <h6 class="card-author">{{ book.authors | join(', ') }}</h6>
-                                <p id="price" class="card-text">R$49,90</p>
+                            <img src="{{ book.cover }}" class="card-img-top fixed-image" alt="{{ book.title }}">
+                            <div class="card-body d-flex flex-column">
+                                <h5 class="card-title flex-grow-1 fs-6">{{ book.title[:32] }}{% if book.title|length > 32 %}...{% endif %}</h5>
+                                <h6 class="card-subtitle mb-2 text-muted fs-7" style="overflow: hidden; white-space: nowrap; text-overflow: ellipsis;">
+                                    {% set authors = book.authors | map('string') | list %}
+                                    {% for author in authors %}
+                                        {% if author|length > 40 %}
+                                            {{ author[:40] }}...
+                                        {% else %}
+                                            {{ author }}
+                                        {% endif %}
+                                        {% if not loop.last %}, {% endif %}
+                                    {% endfor %}
+                                </h6>
+                                <p id="price" class="card-text">R${{ random_num }}</p>
                             </div>
                         </div>
                     </a>

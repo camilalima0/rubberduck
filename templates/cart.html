@@ -82,27 +82,12 @@ document.getElementById('button-plus').addEventListener('click', function() {
         </div>
     </div>
 
-        <div class="card-body shadow p-3 mb-5 bg-body-tertiary rounded">
-          <form role="search" action = "/search-book" method = "GET">
-            
-            <label for="calculate-freight">Calculate freight:</label>
-            <div id = "freight-input" class = "d-flex" action = "/calculate-freight" method = "GET">
-              <input type="text" id="calculate-freight" class = "form-control" name="calculate-freight" placeholder="00000-000" name = "postal_code_f">
-              <button class="btn btn-outline-secondary" type = "submit">Calculate</button>
-            </div>
-        
-          </form>
-          
-        </div>
-
         <div class = "container" id = "total">
-          <h2 class = "subtitlee">Total: R$149,70</h2>
+          <h2 class = "subtitlee">Subtotal: R$149,70</h2>
         </div>
-
-
 
         <button id = "buy-cart" class = "btn btn-success shadow p-2 mb-5 rounded">
-          <a id = "buy-button" href="/delivery">Buy Cart</a>
+          <a id = "buy-button" href="/pay">Buy Cart</a>
         </button>
     </div>
 </div>

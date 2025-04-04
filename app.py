@@ -1,8 +1,7 @@
 from flask import Flask, render_template, request
-import stripe
 from books import search, search_subject
-from freight import calculate_freight
-from server import create_checkout_session
+from server import pay
+import random
 
 app = Flask(__name__)
 
@@ -67,16 +66,17 @@ def search_by_genre():
             return render_template('search_results.html', books=[], error="Nothing found.")
     else:
         return render_template('search_results.html', books=[], error="Please, select a genre.")
-    
-#freight routes:
-@app.route('/calculate-freight', methods=['GET'])
-def calculate_freight_route():
-    return calculate_freight()
 
 #payment:
-@app.route('/create-checkout-session', methods=['POST'])
+@app.route('/pay', methods=['GET','POST'])
 def create_checkout():
-    return create_checkout_session()
+    return pay()
+
+@app.route('/random-number')
+def random_number():
+    # Gerar um número aleatório entre 1 e 100
+    random_num = random.randint(29, 99)
+    return render_template('index.html', random_num=random_num)
 
 if __name__ == '__main__':
     app.run(debug = True, host='0.0.0.0')
