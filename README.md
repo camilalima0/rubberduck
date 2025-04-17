@@ -1,11 +1,44 @@
-Next steps:
-Integrate with Correios API
-Integrate with PagBank API
-Plan database tables with all the required data, because I'm not sure if I'll be able to change the tables then
-Build the database and implement
-Integrate the database to front-end, Idk if it's better using python or JS (search about React) 
+Database schema:
 
-Database Tables:
-Costumers (ID, Name, Cellphone, Email, Password, Cart, Last_Purchases, Address [St_Av, Neighbourhood, Postal_Code, Number, Compelement, City, State, Country])
+CREATE TABLE book(
+    bookId INTEGER PRIMARY KEY AUTOINCREMENT,
+    bookTitle VARCHAR(100) NOT NULL,
+    bookAuthors VARCHAR(200) NOT NULL,
+    bookDescription VARCHAR(500) NOT NULL,
+    bookPrice float NOT NULL
+);
+CREATE TABLE cartItem(
+    quantity INTEGER DEFAULT 1 NOT NULL,
+    bookId INTEGER NOT NULL,
+    cartId INTEGER NOT NULL,
+    FOREIGN KEY (bookId) REFERENCES book(bookId),
+    FOREIGN KEY (cartId) REFERENCES cart(cartId)
+);
+CREATE TABLE user(
+    userId INTEGER PRIMARY KEY AUTOINCREMENT,
+    email VARCHAR(100) NOT NULL,
+    passwordd VARCHAR(20) NOT NULL
+    );
+CREATE TABLE orderr(
+    orderId INTEGER PRIMARY KEY AUTOINCREMENT,
+    userId INTEGER NOT NULL,
+    FOREIGN KEY (userId) REFERENCES user(userId)
+);
+CREATE TABLE cart(
+    cartId INTEGER PRIMARY KEY AUTOINCREMENT,
+    cartStatus INT DEFAULT 1 NOT NULL /*OPEN*/
+);
+CREATE TABLE orderItem(
+    quantity INTEGER DEFAULT 1 NOT NULL,
+    orderId INTEGER NOT NULL,
+    bookId INTEGER NOT NULL,
+    FOREIGN KEY (orderId) REFERENCES orderr(orderId),
+    FOREIGN KEY (bookId) REFERENCES book(bookId)
+);
+CREATE TABLE has(
+    cartId INTEGER NOT NULL,
+    userId INTEGER NOT NULL,
+    FOREIGN KEY (cartId) REFERENCES cart(cartId),
+    FOREIGN KEY (userId) REFERENCES user(userId)
+);
 
-Last action: search about API Rastro from Correios, then the user would fill the postal code field and the other fields would be automatically filled. if it doesn't work, do it basic and follow the other steps. if there's a way to do it better, I'll check it then.
