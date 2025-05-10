@@ -2,6 +2,7 @@ from flask import Flask, render_template, request
 from books import search, search_subject
 from server import pay
 import random
+import sqlite3
 
 app = Flask(__name__)
 
@@ -44,15 +45,25 @@ def delivery():
 # Rota para buscar livros pela barra de pesquisa
 @app.route('/search-book', methods=['GET'])
 def search_books():
-    query = request.args.get('query')  # Pega o valor da query
-    if query:
-        books = search(query)  # Chama a função para buscar o livro
-        if books:
-            return render_template('search_results.html', books=books)
-        else:
-            return render_template('search_results.html', books=[], error="Nothing found.")
-    else:
-        return render_template('search_results.html', books=[], error="Please, insert a query.")
+    query = request.args.get("query")  # ou .form.get() se for POST
+    if not query:
+        return render_template("search_results.html", error="No search term provided.", books=[])
+
+    conn = sqlite3.connect("rubberduck.db")
+    conn.row_factory = sqlite3.Row
+    cursor = conn.cursor()
+
+    cursor.execute("""
+        SELECT * FROM book
+        WHERE bookTitle LIKE ?
+        OR bookAuthors LIKE ?
+        OR bookGenre LIKE ?
+    """, (f"%{query}%", f"%{query}%", f"%{query}%"))
+
+    books = cursor.fetchall()
+    conn.close()
+
+    return render_template("search_results.html", books=books)
 
 # Rota para buscar livros por gênero (por exemplo, "fiction", "romance", etc.)
 @app.route('/search-by-genre', methods=['GET'])
