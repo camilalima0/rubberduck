@@ -1,6 +1,7 @@
-from flask import Flask, render_template, request
+from flask import Flask, render_template, request, redirect, url_for, jsonify
 from books import search, search_subject
 from server import pay
+from werkzeug.security import generate_password_hash, check_password_hash
 import random
 import sqlite3
 
@@ -88,6 +89,49 @@ def random_number():
     # Gerar um número aleatório entre 1 e 100
     random_num = random.randint(29, 99)
     return render_template('index.html', random_num=random_num)
+
+def get_db_connection():
+    conn = sqlite3.connect('rubberduck.db')
+    conn.row_factory = sqlite3.Row
+    return conn
+
+@app.route('/register', methods=['POST']) #if user clicks on register button
+def register():
+    if request.method == 'POST':
+        email = request.form['email']
+        password = request.form['password']
+        confirmation = request.form['confirmation']
+
+        # --- Validations (VERY IMPORTANT!) ---
+        # 1. Verificar se os campos não estão vazios (o 'required' no HTML ajuda, mas validação no backend é essencial)        #backend verification if the fields are not empty
+        if not email or not password or not confirmation:
+            return "Error: Please fill all the fields.", 400
+
+        # 2. Verificar se a senha e a confirmação são iguais
+        if password != confirmation:
+            return "Error: Password and Confirmation don't match.", 400
+
+        # 3. Hash da senha (NUNCA armazene senhas em texto puro!)
+        hashed_password = generate_password_hash(password)
+
+        conn = get_db_connection()
+        try:
+            conn.execute("INSERT INTO user (email, passwordd) VALUES (?, ?)",
+                           (email, hashed_password))
+            conn.commit()
+            # Retorna uma resposta JSON de sucesso
+            return jsonify({'success': True, 'message': 'Account successfully registered!'}), 200
+        except sqlite3.IntegrityError:
+            return jsonify({'success': False, 'message': 'This email is already registered.'}), 409
+        except Exception as e:
+            # Erro mais detalhado para depuração (NÃO mostre `e` diretamente em produção)
+            print(f"Erro ao registrar usuário: {e}")
+            return jsonify({'success': False, 'message': 'Server Internal Error at registering.'}), 500
+        finally:
+            conn.close()
+    
+    # Se o método não for POST (o que não deveria acontecer com o JS), retorne algo genérico
+    return jsonify({'success': False, 'message': 'Method non-allowed.'}), 405
 
 if __name__ == '__main__':
     app.run(debug = True, host='0.0.0.0')

@@ -17,15 +17,15 @@
 --     FOREIGN KEY (orderItemId) REFERENCES orderItem(orderItemId)
 -- ); CRIADO
 
-CREATE TABLE book(
-    bookId INTEGER PRIMARY KEY AUTOINCREMENT,
-    bookTitle TEXT NOT NULL,
-    bookAuthors TEXT NOT NULL,
-    bookDescription TEXT NOT NULL,
-    bookPrice float NOT NULL,
-    bookCover TEXT NOT NULL,
-    bookGenre TEXT NOT NULL
-); 
+-- CREATE TABLE book(
+--     bookId INTEGER PRIMARY KEY AUTOINCREMENT,
+--     bookTitle TEXT NOT NULL,
+--     bookAuthors TEXT NOT NULL,
+--     bookDescription TEXT NOT NULL,
+--     bookPrice float NOT NULL,
+--     bookCover TEXT NOT NULL,
+--     bookGenre TEXT NOT NULL
+-- ); 
 
 -- CREATE TABLE orderItem(
 --     orderItemId INTEGER PRIMARY KEY AUTOINCREMENT,
