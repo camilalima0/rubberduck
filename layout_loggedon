@@ -1,0 +1,182 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Index</title>
+    <link rel="stylesheet" href="{{ url_for('static', filename = 'css/style.css')}}">
+    <link href="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/css/bootstrap.min.css" rel="stylesheet" integrity="sha384-QWTKZyjpPEjISv5WaRU9OFeRpok6YctnYmDr5pNlyT2bRjXh0JMhjY6hW+ALEwIH" crossorigin="anonymous">
+    {% block head %}
+    {% endblock %}
+</head>
+<body>
+    <nav class="navbar navbar-expand-lg bg-body-tertiary fixed-top">
+        <div class = "container-fluid align-items-center">
+
+            <!--Alinhamento à esquerda-->
+            <div class = "d-flex align-items-center">
+                <a class="navbar-brand" href="/">
+                    <img src="{{ url_for('static', filename='images/logo.png') }}" alt="Rubber duck" height="80" width = "auto">
+                </a>
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <h1>Hello :)</h1>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/logoff_link">Logoff</a> <!--talvez seja melhor redirecionar pro python-->
+                    </li>
+                </ul>
+            </div>
+
+            <!--Searchbar centralizada-->
+            <div class = "mx-auto order-0">
+                <form id = "searchbar" class="d-flex" role="search" action = "/search-book" method = "GET">
+                    <input class="form-control me-2" type="search" placeholder="Search" aria-label="Search" name = "query">
+                    <button class="btn btn-outline-secondary" type="submit">Search</button>
+                </form>
+            </div>
+
+            <!--Alinhamento à direita-->
+            <div class = "d-flex align-items-center">
+                <ul class="navbar-nav">
+                    <li class="nav-item">
+                        <a class="nav-link active" aria-current="page" href="/">Home</a> <!--talvez seja melhor redirecionar pro python-->
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/search-book?query=subject:best_sellers">Best sellers</a> <!--talvez seja melhor redirecionar pro python-->
+                    </li>
+                    <li class="nav-item dropdown">
+                        <a class="nav-link dropdown-toggle" role="button" data-bs-toggle="dropdown" aria-expanded="false">
+                        Genders
+                        </a>
+                        <ul class="dropdown-menu" name = "query">
+                        <li><a class="dropdown-item" href="/search-book?query=subject:sci_fi">Sci-Fi</a></li>
+                        <li><a class="dropdown-item" href="/search-book?query=subject:fiction">Fiction</a></li>
+                        <li><a class="dropdown-item" href="/search-book?query=subject:romance">Romance</a></li>
+                        <li><a class="dropdown-item" href="/search-book?query=subject:mistery">Mistery</a></li>
+                        <li><a class="dropdown-item" href="/search-book?query=subject:horror">Horror</a></li>
+                        <li><a class="dropdown-item" href="/search-book?query=subject:adventure">Adventure</a></li>
+                        <li><a class="dropdown-item" href="/search-book?query=subject:biography">Biography</a></li>
+                        <li><a class="dropdown-item" href="/search-book?query=subject:history">History</a></li>
+                        <li><a class="dropdown-item" href="/search-book?query=subject:psicology">Self-help</a></li>
+                        <li><a class="dropdown-item" href="/search-book?query=subject:crime">True Crime</a></li>
+                        </ul>
+                    </li>
+                    <li class="nav-item">
+                        <a class="nav-link" href="/contact_link">Contact</a> <!--talvez seja melhor redirecionar pro python-->
+                    </li>
+                </ul>
+                <a class="navbar-brand" href="/cart">
+                    <img src="{{ url_for('static', filename='images/carrinho.png') }}" alt="Rubber duck" height="80" width = "auto">
+                </a>
+            </div>
+
+        </div>
+    </nav>
+
+    <div id = "page" class = "container mt-5">
+        {% block main %}
+        {% endblock %}
+    </div>
+
+    <!-- START Widget WhastApp hospedagemwordpresspro -->
+    <a href="https://api.whatsapp.com/send?phone=5519987156892&text=How%20can%20we%20help%20you%20today?" id="waurlsite" class="bt-whatsApp" target="_blank" style="right:25px; position:fixed;width:60px;height:60px;bottom:40px;z-index:100;">
+        <img src="data:image/svg+xml;base64,PD94bWwgdmVyc2lvbj0iMS4wIiA/Pjxzdmcgdmlld0JveD0iMjYxOSA1MDYgMTIwIDEyMCIgeG1sbnM9Imh0dHA6Ly93d3cudzMub3JnLzIwMDAvc3ZnIj48ZGVmcz48c3R5bGU+CiAgICAgIC5jbHMtMSB7CiAgICAgICAgZmlsbDogIzI3ZDA0NTsKICAgICAgfQoKICAgICAgLmNscy0yLCAuY2xzLTUgewogICAgICAgIGZpbGw6IG5vbmU7CiAgICAgIH0KCiAgICAgIC5jbHMtMiB7CiAgICAgICAgc3Ryb2tlOiAjZmZmOwogICAgICAgIHN0cm9rZS13aWR0aDogNXB4OwogICAgICB9CgogICAgICAuY2xzLTMgewogICAgICAgIGZpbGw6ICNmZmY7CiAgICAgIH0KCiAgICAgIC5jbHMtNCB7CiAgICAgICAgc3Ryb2tlOiBub25lOwogICAgICB9CiAgICA8L3N0eWxlPjwvZGVmcz48ZyBkYXRhLW5hbWU9Ikdyb3VwIDM2IiBpZD0iR3JvdXBfMzYiIHRyYW5zZm9ybT0idHJhbnNsYXRlKDIzMDAgNzMpIj48Y2lyY2xlIGNsYXNzPSJjbHMtMSIgY3g9IjYwIiBjeT0iNjAiIGRhdGEtbmFtZT0iRWxsaXBzZSAxOCIgaWQ9IkVsbGlwc2VfMTgiIHI9IjYwIiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgzMTkgNDMzKSIvPjxnIGRhdGEtbmFtZT0iR3JvdXAgMzUiIGlkPSJHcm91cF8zNSIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoMjU0IDM4NikiPjxnIGRhdGEtbmFtZT0iR3JvdXAgMzQiIGlkPSJHcm91cF8zNCI+PGcgY2xhc3M9ImNscy0yIiBkYXRhLW5hbWU9IkVsbGlwc2UgMTkiIGlkPSJFbGxpcHNlXzE5IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSg5NCA3NSkiPjxjaXJjbGUgY2xhc3M9ImNscy00IiBjeD0iMzEuNSIgY3k9IjMxLjUiIHI9IjMxLjUiLz48Y2lyY2xlIGNsYXNzPSJjbHMtNSIgY3g9IjMxLjUiIGN5PSIzMS41IiByPSIyOSIvPjwvZz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xNDI0LDE5MWwtNC42LDE2LjMsMTYuOS00LjcuOS01LjItMTEsMy41LDIuOS0xMC41WiIgZGF0YS1uYW1lPSJQYXRoIDEyNiIgaWQ9IlBhdGhfMTI2IiB0cmFuc2Zvcm09InRyYW5zbGF0ZSgtMTMyNSAtNjgpIi8+PHBhdGggY2xhc3M9ImNscy0xIiBkPSJNMTI2Niw5MGMwLS4xLDMuNS0xMS43LDMuNS0xMS43bDguNCw3LjlaIiBkYXRhLW5hbWU9IlBhdGggMTI3IiBpZD0iUGF0aF8xMjciIHRyYW5zZm9ybT0idHJhbnNsYXRlKC0xMTY1IDQzKSIvPjwvZz48cGF0aCBjbGFzcz0iY2xzLTMiIGQ9Ik0xNDM5LjMsMTYwLjZhOS40LDkuNCwwLDAsMC0zLjksNi4xYy0uNSwzLjksMS45LDcuOSwxLjksNy45YTUwLjg3Niw1MC44NzYsMCwwLDAsOC42LDkuOCwzMC4xODEsMzAuMTgxLDAsMCwwLDkuNiw1LjEsMTEuMzc4LDExLjM3OCwwLDAsMCw2LjQuNiw5LjE2Nyw5LjE2NywwLDAsMCw0LjgtMy4yLDkuODUxLDkuODUxLDAsMCwwLC42LTIuMiw1Ljg2OCw1Ljg2OCwwLDAsMCwwLTJjLS4xLS43LTcuMy00LTgtMy44cy0xLjMsMS41LTIuMSwyLjYtMS4xLDEuNi0xLjksMS42LTQuMy0xLjQtNy42LTQuNGExNS44NzUsMTUuODc1LDAsMCwxLTQuMy02cy42LS43LDEuNC0xLjhhNS42NjQsNS42NjQsMCwwLDAsMS4zLTIuNGMwLS41LTIuOC03LjYtMy41LTcuOUExMS44NTIsMTEuODUyLDAsMCwwLDE0MzkuMywxNjAuNloiIGRhdGEtbmFtZT0iUGF0aCAxMjgiIGlkPSJQYXRoXzEyOCIgdHJhbnNmb3JtPSJ0cmFuc2xhdGUoLTEzMjYuMzMyIC02OC40NjcpIi8+PC9nPjwvZz48L3N2Zz4=" alt="" width="60px">
+    </a>
+    <script type="text/javascript">function showIt2() {document.getElementById("msg1").style.visibility = "visible";}    setTimeout("showIt2()", 5000); function hiddenIt() {document.getElementById("msg1").style.visibility = "hidden";}setTimeout("hiddenIt()", 15000); function showIt3() {document.getElementById("msg1").style.visibility = "visible";} setTimeout("showIt3()", 25000);  msg1.onclick = function() {document.getElementById('msg1').style.visibility = "hidden"; };function alertW() { document.getElementById("alertWapp").style.visibility = "visible";	} setTimeout("alertW()", 15000); </script>
+    <!-- END Widget WhastApp -->
+
+    <!-- START Widget Instagram -->
+<a href="https://www.instagram.com/direct/new/?text=How%20can%20we%20help%20you%20today%3F%20%40camiladelima0" id="igurlsite" class="bt-instagram" target="_blank" style="right:25px; position:fixed;width:60px;height:60px;bottom:120px;z-index:100;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/9/95/Instagram_logo_2022.svg" alt="Instagram" width="60px">
+</a>
+<script type="text/javascript">
+    function showIt2() {
+        document.getElementById("msg1").style.visibility = "visible";
+    }
+    setTimeout("showIt2()", 5000);
+    function hiddenIt() {
+        document.getElementById("msg1").style.visibility = "hidden";
+    }
+    setTimeout("hiddenIt()", 15000);
+    function showIt3() {
+        document.getElementById("msg1").style.visibility = "visible";
+    }
+    setTimeout("showIt3()", 25000);
+    msg1.onclick = function() {
+        document.getElementById('msg1').style.visibility = "hidden";
+    };
+    function alertInstagram() {
+        document.getElementById("alertInstagram").style.visibility = "visible";
+    }
+    setTimeout("alertInstagram()", 15000);
+</script>
+<!-- END Widget Instagram -->
+
+<!-- START Widget TikTok -->
+<a href="https://www.tiktok.com/@coalanaxicrinha" id="tiktokurlsite" class="bt-tiktok" target="_blank" style="right:25px; position:fixed;width:60px;height:60px;bottom:200px;z-index:100;">
+    <img src="https://upload.wikimedia.org/wikipedia/commons/thumb/a/a6/Tiktok_icon.svg/640px-Tiktok_icon.svg.png" alt="TikTok" width="60px">
+</a>
+<script type="text/javascript">
+    function showIt2() {
+        document.getElementById("msg1").style.visibility = "visible";
+    }
+    setTimeout("showIt2()", 5000);
+    function hiddenIt() {
+        document.getElementById("msg1").style.visibility = "hidden";
+    }
+    setTimeout("hiddenIt()", 15000);
+    function showIt3() {
+        document.getElementById("msg1").style.visibility = "visible";
+    }
+    setTimeout("showIt3()", 25000);
+    msg1.onclick = function() {
+        document.getElementById('msg1').style.visibility = "hidden";
+    };
+    function alertTikTok() {
+        document.getElementById("alertTikTok").style.visibility = "visible";
+    }
+    setTimeout("alertTikTok()", 15000);
+</script>
+<!-- END Widget TikTok -->
+
+    <!-- Footer -->
+    <footer class="bg-dark text-light pt-4">
+        <div class="container">
+            <div class="row">
+                <div class="col-md-6">
+                    <h5>About Us</h5>
+                    <p>
+                        Lorem ipsum dolor, sit amet consectetur adipisicing elit. Eius ipsum omnis maiores natus ex neque possimus maxime repellat laboriosam corrupti nesciunt rem aut nostrum debitis exercitationem dolores facilis, nemo a.
+                    </p>
+                </div>
+                <div class="col-md-2">
+                    <h5>Useful links</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/search-book?query=scifi" class="text-light">Home</a></li>
+                        <li><a href="/search-book?query=scifi" class="text-light">Best Sellers</a></li>
+                        <li><a href="/search-book?query=scifi" class="text-light">Genders</a></li>
+                        <li><a href="/search-book?query=scifi" class="text-light">Contact</a></li>
+                    </ul>
+                </div>
+                <div class="col-md-2">
+                    <h5>Social Midia</h5>
+                    <ul class="list-unstyled">
+                        <li><a href="/search-book?query=scifi" class="text-light">Facebook</a></li>
+                        <li><a href="/search-book?query=scifi" class="text-light">Twitter</a></li>
+                        <li><a href="/search-book?query=scifi" class="text-light">Instagram</a></li>
+                    </ul>
+                </div>
+            </div>
+        </div>
+        <div class="bg-dark text-center py-3">
+            <div class="container">
+                <p class="mb-0">&copy; 2025 RubberDuck Books. Todos os direitos reservados.</p>
+            </div>
+        </div>
+    </footer>
+
+    <script src="https://cdn.jsdelivr.net/npm/@popperjs/core@2.11.6/dist/umd/popper.min.js"></script>
+    <script src="https://cdn.jsdelivr.net/npm/bootstrap@5.3.3/dist/js/bootstrap.bundle.min.js" integrity="sha384-YvpcrYf0tY3lHB60NNkmXc5s9fDVZLESaAA55NDzOxhy9GkcIdslK1eN7N6jIeHz" crossorigin="anonymous"></script>
+</body>
+</html>
