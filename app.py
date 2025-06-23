@@ -134,28 +134,30 @@ def register():
     # Se o método não for POST (o que não deveria acontecer com o JS), retorne algo genérico
     return jsonify({'success': False, 'message': 'Method non-allowed.'}), 405
 
-@app.route('/login', methods=['POST']) #if user clicks on login button
+@app.route('/login', methods=['POST'])
 def login():
+    """Handles user login."""
     if request.method == 'POST':
-        email = request.form['email']
-        password = request.form['password']
+        email = request.form.get('email')
+        password = request.form.get('password')
 
-        # --- Validations (VERY IMPORTANT!) ---
-        # 1. Verificar se os campos não estão vazios (o 'required' no HTML ajuda, mas validação no backend é essencial)        #backend verification if the fields are not empty
+        # Input validation
         if not email or not password:
-            return "Error: Please fill all the fields.", 400
-        
-        conn = get_db_connection()
+            return jsonify({'success': False, 'message': 'Please fill all fields.'}), 400
 
+        conn = get_db_connection()
         try:
-            user = conn.execute("SELECT * FROM user WHERE email = ?",(email,)).fetchone()
+            # Fetch user, ensure the column name matches your DB schema ('passwordd')
+            user = conn.execute("SELECT * FROM user WHERE email = ?", (email,)).fetchone()
 
             if user is None:
-                return jsonify({'success': False, 'message': 'Invalid email or password.'}), 404 
+                return jsonify({'success': False, 'message': 'Invalid email or password.'}), 401 # Changed to 401 for authentication failure
 
+            # Use the corrected column name 'passwordd'
             stored_hash = user['passwordd']
 
             if check_password_hash(stored_hash, password):
+                # Login successful, set session variables
                 session['user_id'] = user['id']
                 session['user_email'] = user['email']
                 return jsonify({'success': True, 'message': 'Login successful!'}), 200
@@ -163,15 +165,17 @@ def login():
                 return jsonify({'success': False, 'message': 'Invalid email or password.'}), 401
 
         except Exception as e:
-            print(f"Erro ao fazer login: {e}")
-            return jsonify({'success': False, 'message': 'Server error during login.'}), 500
+            # Print the actual error to your console for debugging
+            print(f"Error during login: {e}")
+            return jsonify({'success': False, 'message': 'Server internal error during login.'}), 500
         finally:
             conn.close()
-    
+
     return jsonify({'success': False, 'message': 'Method not allowed.'}), 405
 
 @app.context_processor
 def inject_layout():
+    """Injects the base template based on login status."""
     if 'user_id' in session:
         return dict(base_template='layout_loggedon.html')
     else:
