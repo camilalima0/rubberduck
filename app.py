@@ -1,5 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
-from books import search, search_subject
+from books import search, search_subject, get_book_by_id
 import secrets
 from flask import session
 from server import pay
@@ -9,6 +9,11 @@ import sqlite3
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
+
+GENRES = [
+    "sci-fi", "fiction", "romance", "mystery", "horror",
+    "adventure", "biography", "history", "self-help", "true crime"
+]
 
 @app.route('/', methods = ["GET", "POST"])
 def home():
@@ -22,17 +27,19 @@ def register_link():
 def login_link():
     return render_template('login.html')
 
-#configurar envio do login
+@app.route('/bookpage/<int:book_id>', methods = ["GET"])
+def book_page_details(book_id):
+    """
+    Displays the details of a specific book based on its ID.
+    """
+    # Call the function from books.py to fetch the book by ID
+    book = get_book_by_id(get_db_connection, book_id)
 
-@app.route('/scifi', methods = ["GET"]) #app.route /genre > e pega no banco de dados o nome do genre que foi clicado e exibe os resultados
-def scifi():
-    #filtrar no banco de dados para exibir os books do genre ficcao
-    return render_template('sci-fi.html')
-
-@app.route('/bookpage', methods = ["GET"])
-def bookpage():
-    #filtrar pelo id do livro que a pessoa clicou
-    return render_template('bookpage.html')
+    if book:
+        return render_template('bookpage.html', book=book)
+    else:
+        # If book not found, render an error page or redirect
+        return render_template('error.html', message="Book not found."), 404
 
 @app.route('/contact_link', methods = ["GET"])
 def contact_link():
@@ -73,14 +80,16 @@ def search_books():
 @app.route('/search-by-genre', methods=['GET'])
 def search_by_genre():
     genre = request.args.get('genre')  # Pega o valor do gênero
-    if genre:
-        books = search_subject(genre)  # Chama a função para buscar livros por gênero
-        if books:
-            return render_template('search_results.html', books=books)
-        else:
-            return render_template('search_results.html', books=[], error="Nothing found.")
-    else:
+    if not genre:
         return render_template('search_results.html', books=[], error="Please, select a genre.")
+
+    # Call the new function from books.py, passing the get_db_connection function
+    books = search_subject(get_db_connection, genre) 
+
+    if books:
+        return render_template('search_results.html', books=books)
+    else:
+        return render_template('search_results.html', books=[], error=f"No books found for genre: {genre.capitalize()}.")
 
 #payment:
 @app.route('/pay', methods=['GET','POST'])

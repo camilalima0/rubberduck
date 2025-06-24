@@ -157,8 +157,13 @@ button:hover {
 }
 
 #buy{
-    background-color:rgb(255, 80, 22);
-    border-color:rgb(255, 80, 22);
+    background-color:rgb(0, 255, 179);
+    border-color:rgb(0, 255, 179);
+    color: black;
+}
+
+#buy:hover{
+    border-color: white;
 }
 
 #message {
@@ -460,6 +465,10 @@ div#homepage.container.mt-5 {
 
 }
 
+#book-img-cont {
+    background-color: white;
+}
+
 #book-img img {
     display: block;
     margin: 0;
@@ -677,4 +686,12 @@ form.d-flex {
 .hello{
     font-size: 16px;
 
+}
+
+#book-info h1, p, h5, strong, text{
+    color:white;
+}
+
+.text-muted {
+    color: white;
 }

@@ -1,90 +1,79 @@
 import sqlite3
-import requests
-import random
+from books import populate_books
+import os # Para verificar se o banco de dados já existe
 
-API_KEY = 'AIzaSyCLAhnzzjKGAwpUu7N6DLUJpgzTPsGQeyQ'  # Replace with your actual API key
-DB_NAME = 'rubberduck.db'
+# Define o nome do seu banco de dados
+DATABASE = 'rubberduck.db'
 
-# Genres to fetch books from
+# Define a lista de gêneros
 GENRES = [
-    "science fiction", "fiction", "romance", "mystery",
-    "horror", "adventure", "biography", "history",
-    "psychology", "true crime"
+    "sci-fi", "fiction", "romance", "mystery", "horror",
+    "adventure", "biography", "history", "self-help", "true crime"
 ]
 
+def get_db_connection():
+    conn = sqlite3.connect(DATABASE)
+    conn.row_factory = sqlite3.Row
+    return conn
 
-def fetch_books_by_genre(genre):
-    url = f"https://www.googleapis.com/books/v1/volumes?q=subject:{genre}&key={API_KEY}&maxResults=10"
-    response = requests.get(url)
-    if response.status_code != 200:
-        print(f"Error fetching books for genre '{genre}': {response.status_code}")
-        return []
-
-    data = response.json()
-    books = []
-
-    for item in data.get("items", []):
-        volume = item.get("volumeInfo", {})
-
-        book = {
-            "title": volume.get("title", "Title not found"),
-            "authors": ", ".join(volume.get("authors", ["Unknown author"])),
-            "description": volume.get("description", "No description available."),
-            "cover": volume.get("imageLinks", {}).get("thumbnail", ""),
-            "price": float(f"{random.randint(1, 10) * 10 - 0.10:.2f}"),  # e.g., 9.90, 19.90, ..., 99.90
-            "genre": genre
-        }
-
-        books.append(book)
-
-    return books
-
-def insert_books(books):
-    conn = sqlite3.connect(DB_NAME)
-    cursor = conn.cursor()
-
-    for book in books:
-        try:
-            cursor.execute("""
-                INSERT INTO book (bookTitle, bookAuthors, bookDescription, bookCover, bookPrice, bookGenre)
-                VALUES (?, ?, ?, ?, ?, ?)
-            """, (
-                book["title"],
-                book["authors"],
-                book["description"],
-                book["cover"],
-                book["price"],
-                book["genre"]
-            ))
-            print(f"Inserted book: {book['title']} (${book['price']})")
-        except sqlite3.Error as e:
-            print(f"Error inserting book: {e}")
-
+def init_db():
+    """Inicializa o banco de dados criando as tabelas se não existirem."""
+    conn = get_db_connection()
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS book (
+            bookId INTEGER PRIMARY KEY AUTOINCREMENT,
+            bookTitle TEXT NOT NULL,
+            bookAuthors TEXT NOT NULL,
+            bookDescription TEXT NOT NULL,
+            bookPrice REAL NOT NULL,
+            bookCover TEXT NOT NULL,
+            bookGenre TEXT NOT NULL
+        );
+    ''')
+    conn.execute('''
+        CREATE TABLE IF NOT EXISTS user (
+            userId INTEGER PRIMARY KEY AUTOINCREMENT,
+            email TEXT NOT NULL UNIQUE,
+            password_hash TEXT NOT NULL
+        );
+    ''')
     conn.commit()
     conn.close()
+    print("Database initialized (tables created if they didn't exist).")
 
-if __name__ == "__main__":
-    for genre in GENRES:
-        print(f"Fetching books for genre: {genre}")
-        books = fetch_books_by_genre(genre)
-        insert_books(books)
-    print("Finished populating the database.")
+def main():
+    # Verifica se o arquivo do banco de dados já existe e tem livros
+    # Isso é uma heurística simples para evitar repopular um DB já preenchido.
+    # Você pode refinar essa lógica, por exemplo, verificando se a tabela 'book' tem registros.
+    
+    # Primeira, certifique-se que o DB e as tabelas existem
+    init_db()
 
-def print_books():
-    conn = sqlite3.connect(DB_NAME)
+    conn = get_db_connection()
     cursor = conn.cursor()
-    cursor.execute("SELECT bookTitle, bookPrice FROM book")
-    rows = cursor.fetchall()
-    print("\nBooks in database:")
-    for row in rows:
-        print(f"{row[0]} - ${row[1]}")
+    cursor.execute("SELECT COUNT(*) FROM book")
+    book_count = cursor.fetchone()[0]
     conn.close()
 
-if __name__ == "__main__":
+    if book_count > 0:
+        print(f"Banco de dados '{DATABASE}' já contém {book_count} livros. Pulando a população.")
+        print("Se deseja repopular, limpe a tabela 'book' manualmente ou exclua o arquivo 'rubberduck.db'.")
+        return
+
+    print("Banco de dados vazio ou não inicializado. Iniciando população...")
+    
     for genre in GENRES:
-        print(f"Fetching books for genre: {genre}")
-        books = fetch_books_by_genre(genre)
-        insert_books(books)
-    print_books()
+        print(f"\nPopulating for genre: {genre}")
+        # Chama a função populate_books do módulo books, passando a função de conexão do DB
+        success = populate_books(get_db_connection, genre, target_count=200)
+        if success:
+            print(f"Successfully added 200 books for {genre}.")
+        else:
+            print(f"Could not add 200 books for {genre}. Check logs for errors.")
+
+    print("\nDatabase population finished.")
+
+if __name__ == '__main__':
+    main()
 
 

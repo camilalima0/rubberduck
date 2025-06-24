@@ -2,20 +2,7 @@
 --     userId INTEGER PRIMARY KEY AUTOINCREMENT,
 --     email TEXT NOT NULL,
 --     password_hash TEXT NOT NULL
---     ); 
-
--- CREATE TABLE orderr(
---     orderId INTEGER PRIMARY KEY AUTOINCREMENT,
---     userId INTEGER NOT NULL,
---     FOREIGN KEY (userId) REFERENCES user(userId)
--- ); 
-
--- CREATE TABLE cart(
---     cartId INTEGER PRIMARY KEY AUTOINCREMENT,
---     cartStatus INT DEFAULT 1 NOT NULL, 
---     orderItemId INTEGER NOT NULL,
---     FOREIGN KEY (orderItemId) REFERENCES orderItem(orderItemId)
--- ); 
+--     );  
 
 -- CREATE TABLE book(
 --     bookId INTEGER PRIMARY KEY AUTOINCREMENT,
@@ -27,18 +14,30 @@
 --     bookGenre TEXT NOT NULL
 -- ); 
 
--- CREATE TABLE orderItem(
---     orderItemId INTEGER PRIMARY KEY AUTOINCREMENT,
---     quantity INTEGER DEFAULT 1 NOT NULL,
---     orderId INTEGER NOT NULL,
---     bookId INTEGER NOT NULL,
---     FOREIGN KEY (orderId) REFERENCES orderr(orderId),
---     FOREIGN KEY (bookId) REFERENCES book(bookId)
--- ); 
+-- Tabela de Pedidos (Orders)
+-- Representa um pedido geral, seja um carrinho ativo ou um pedido finalizado.
+CREATE TABLE orderr (
+    orderId INTEGER PRIMARY KEY AUTOINCREMENT,
+    userId INTEGER NOT NULL,
+    orderStatus TEXT DEFAULT 'pending' NOT NULL, -- 'pending' (carrinho), 'completed', 'cancelled', etc.
+    orderDate DATETIME DEFAULT CURRENT_TIMESTAMP NOT NULL,
+    FOREIGN KEY (userId) REFERENCES user(userId)
+);
 
--- CREATE TABLE hass(
---     cartId INTEGER NOT NULL,
---     userId INTEGER NOT NULL,
---     FOREIGN KEY (cartId) REFERENCES cart(cartId),
---     FOREIGN KEY (userId) REFERENCES user(userId)
--- );
+-- Tabela de Itens do Pedido (Order Items)
+-- Armazena os livros e suas quantidades dentro de um 'orderr' específico.
+-- Isso serve tanto para o carrinho quanto para os pedidos finalizados.
+CREATE TABLE orderItem (
+    orderItemId INTEGER PRIMARY KEY AUTOINCREMENT,
+    orderId INTEGER NOT NULL,
+    bookId INTEGER NOT NULL,
+    quantity INTEGER DEFAULT 1 NOT NULL,
+    itemPrice REAL NOT NULL, -- Armazena o preço do livro no momento da adição/compra
+    FOREIGN KEY (orderId) REFERENCES orderr(orderId),
+    FOREIGN KEY (bookId) REFERENCES book(bookId)
+);
+
+-- A tabela 'cart' e 'hass' são removidas.
+-- O "carrinho" será simplesmente uma "orderr" com orderStatus = 'pending'.
+-- Os itens no carrinho são os 'orderItem's associados a essa 'orderr' pendente.
+

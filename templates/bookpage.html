@@ -2,24 +2,36 @@
 {% block main %}
 
 <div class = "content">
-
     <div class="container">
+        {%if book %}
         <div class="row">
             <div id = "book-img-cont" class="col-md-6">
-                <img src="{{ url_for('static', filename='images/harry-potter-6.png') }}" class = "book-img" alt="Harry Potter and the half-blood prince">
+                <img src="{{ book.bookCover }}" class = "book-img" alt="{{ book.bookTitle }}">
             </div>
             <div id = "book-info" class="col-md-6">
-                <h1>Harry Potter and the half-blood prince</h1>
-                <p>In the sixth book of the series, Harry Potter discovers an old potions 
-                textbook belonging to the mysterious "Half-Blood Prince." As he learns 
-                more about Voldemort's past, Harry and Dumbledore work together to find 
-                and destroy the Dark Lord's Horcruxes. Meanwhile, danger looms at Hogwarts, 
-                and Harry's relationships with his friends deepen and become more complex. </p>
+                <h1>{{ book.bookTitle }}</h1>
+                <p class="mb-2"><strong>Author(s):</strong> {{ book.bookAuthors }}</p>
+                <p class="mb-3"><strong>Genre:</strong> {{ book.bookGenre }}</p>
+                <hr>
+                    <h5 class="mt-4 mb-3">Description:</h5>
+                    <p class="lead" style="max-height: 250px; overflow-y: auto;">{{ book.bookDescription }}</p>
+                <hr>
                 <p id = "page-price"><strong>R$49,90</strong></p>
-                <button type="button" id = "buy" class="btn btn-primary btn-lg">Buy</button>
-                <button type="button" class="btn btn-secondary btn-lg">Add to cart</button>
+                <div class="d-grid gap-2 d-md-block mt-4">
+                    <button type="button" id="buy" class="btn btn-primary btn-lg me-2">Buy Now</button>
+                    <button type="button" class="btn btn-secondary btn-lg">Add to Cart</button>
+                </div>
             </div>
         </div>
+        {% else %}
+        <div class="alert alert-danger text-center" role="alert">
+                <h4 class="alert-heading">Book Not Found!</h4>
+                <p>We couldn't find the book you were looking for. It might have been removed or the ID is incorrect.</p>
+                <hr>
+                <p class="mb-0">Please try searching again or browse our categories.</p>
+                <a href="{{ url_for('home') }}" class="btn btn-info mt-3">Go to Home</a>
+            </div>
+        {% endif %}
     </div>
 </div>
 
