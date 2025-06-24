@@ -1,5 +1,6 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify
 from books import search, search_subject
+import secrets
 from flask import session
 from server import pay
 from werkzeug.security import generate_password_hash, check_password_hash
@@ -7,6 +8,7 @@ import random
 import sqlite3
 
 app = Flask(__name__)
+app.secret_key = secrets.token_hex(32)
 
 @app.route('/', methods = ["GET", "POST"])
 def home():
@@ -117,7 +119,7 @@ def register():
 
         conn = get_db_connection()
         try:
-            conn.execute("INSERT INTO user (email, passwordd) VALUES (?, ?)",
+            conn.execute("INSERT INTO user (email, password_hash) VALUES (?, ?)",
                            (email, hashed_password))
             conn.commit()
             # Retorna uma resposta JSON de sucesso
@@ -147,26 +149,29 @@ def login():
 
         conn = get_db_connection()
         try:
-            # Fetch user, ensure the column name matches your DB schema ('passwordd')
+            # Fetch user, ensure the column name matches your DB schema ('password_hash')
             user = conn.execute("SELECT * FROM user WHERE email = ?", (email,)).fetchone()
 
             if user is None:
                 return jsonify({'success': False, 'message': 'Invalid email or password.'}), 401 # Changed to 401 for authentication failure
 
-            # Use the corrected column name 'passwordd'
-            stored_hash = user['passwordd']
+            # Use the corrected column name 'password_hash'
+            stored_hash = user['password_hash']
 
             if check_password_hash(stored_hash, password):
                 # Login successful, set session variables
-                session['user_id'] = user['id']
+                session['user_id'] = user['userId']
                 session['user_email'] = user['email']
-                return jsonify({'success': True, 'message': 'Login successful!'}), 200
+                return redirect(url_for('home'))
             else:
                 return jsonify({'success': False, 'message': 'Invalid email or password.'}), 401
 
         except Exception as e:
             # Print the actual error to your console for debugging
             print(f"Error during login: {e}")
+            print(f"Stored hash in DB: {stored_hash}")
+            print(f"Entered password (plain): {password}")
+            print(f"Match: {check_password_hash(stored_hash, password)}")
             return jsonify({'success': False, 'message': 'Server internal error during login.'}), 500
         finally:
             conn.close()
