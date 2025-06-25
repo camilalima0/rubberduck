@@ -21,75 +21,81 @@ document.getElementById('button-plus').addEventListener('click', function() {
 
 <div class = "content">
   <h1 class = "titlee">Your Cart:</h1>
-    <div id = "cart-div" class="container">
-        <div id = "cart-item" class="row shadow p-3 mb-5 bg-body-tertiary rounded">
-            <div id = "cart-image" class = col-md-4>
-              <img src="{{ url_for('static', filename='images/harry-potter-6.png') }}" class = "img-fluid" alt="Harry Potter">
-            </div>
-            <div id = "cart-content" class = col-md-8>
-              <h4>Harry Potter and the half-blood prince</h4>
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary quantity" type="button" id="button-minus">-</button>
-                </div>
-                <input type="text" value="1" class = "form-control, width = 38px" id="quantity-input">
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary quantity" type="button" id="button-plus">+</button>
-                </div>
-              </div>
+  {% if cart_items %}
+  <div id = "cart-div" class="container">
+      {% for item in cart_items %}
+      <div id = "cart-item{{ item.orderItemId}}" class="row shadow p-3 mb-5 bg-body-tertiary rounded">
 
-                <p id = "cart-price"><strong>R$49,90</strong></p>
-            </div>
+        {# Checkbox (for future selection logic) #}
+        <div class="col-md-1 col-sm-2 text-center">
+            <input type="checkbox" class="form-check-input cart-item-selector" 
+                    id="select-item-{{ item.orderItemId }}" 
+                    data-order-item-id="{{ item.orderItemId }}"
+                    checked {# For now, assume all items in the cart are selected by default #}
+                    aria-label="Select item for purchase">
         </div>
 
-        <div id = "cart-item" class="row shadow p-3 mb-5 bg-body-tertiary rounded">
-          <div id = "cart-image" class = col-md-4>
-            <img src="{{ url_for('static', filename='images/harry-potter-6.png') }}" class = "img-fluid" alt="Harry Potter">
-          </div>
-          <div id = "cart-content" class = col-md-8>
-            <h4>Harry Potter and the half-blood prince</h4>
-            <div class="input-group">
-              <div class="input-group-prepend">
-                <button class="btn btn-outline-secondary quantity" type="button" id="button-minus">-</button>
-              </div>
-              <input type="text" value="1" class = "form-control, width = 38px" id="quantity-input">
-              <div class="input-group-append">
-                <button class="btn btn-outline-secondary quantity" type="button" id="button-plus">+</button>
-              </div>
-            </div>
-
-              <p id = "cart-price"><strong>R$49,90</strong></p>
-          </div>
-      </div>
-
-      <div id = "cart-item" class="row shadow p-3 mb-5 bg-body-tertiary rounded">
         <div id = "cart-image" class = col-md-4>
-          <img src="{{ url_for('static', filename='images/harry-potter-6.png') }}" class = "img-fluid" alt="Harry Potter">
+          <img src="{{ item.bookCover }}" class = "img-fluid" alt="{{ item.bookTitle }}" style="max-height: 150px; object-fit: cover;">
         </div>
+
         <div id = "cart-content" class = col-md-8>
-          <h4>Harry Potter and the half-blood prince</h4>
+          <h4>{{ item.bookTitle}}</h4>
           <div class="input-group">
             <div class="input-group-prepend">
-              <button class="btn btn-outline-secondary quantity" type="button" id="button-minus">-</button>
+              <button class="btn btn-outline-secondary quantity-minus" type="button" id="button-minus"
+                      data-order-item-id="{{ item.orderItemId }}" 
+                      data-current-quantity="{{ item.quantity }}">-</button>
             </div>
-            <input type="text" value="1" class = "form-control, width = 38px" id="quantity-input">
+
+            <input type="text" value="{{ item.quantity }}" class="form-control text-center quantity-input" 
+                    id="quantity-input-{{ item.orderItemId }}" 
+                    data-order-item-id="{{ item.orderItemId }}" readonly>
+
             <div class="input-group-append">
-              <button class="btn btn-outline-secondary quantity" type="button" id="button-plus">+</button>
+              <button class="btn btn-outline-secondary quantity-plus" type="button" id="button-plus"
+                      data-order-item-id="{{ item.orderItemId }}" 
+                      data-current-quantity="{{ item.quantity }}">+</button>
             </div>
+
+            <p id="cart-price-{{ item.orderItemId }}" class="item-total-price">
+                <strong>R${{ "%.2f"|format(item.itemPrice * item.quantity) }}</strong>
+            </p>
+
           </div>
 
-            <p id = "cart-price"><strong>R$49,90</strong></p>
+          <div class="col-md-2 col-sm-12 text-center mt-3 mt-md-0">
+              <button class="btn btn-danger btn-sm remove-item" data-order-item-id="{{ item.orderItemId }}">Remove</button>
+          </div>
         </div>
-    </div>
+      </div>
 
-        <div class = "container" id = "total">
-          <h2 class = "subtitlee">Subtotal: R$149,70</h2>
-        </div>
+      {% endfor %}
 
-        <button id = "buy-cart" class = "btn btn-success shadow p-2 mb-5 rounded">
-          <a id = "buy-button" href="/pay">Buy Cart</a>
-        </button>
+      <div class="container text-end mt-5" id="total-container">
+          <h2 class="subtitlee">Subtotal: $<span id="total-price">{{ "%.2f"|format(total_price) }}</span></h2>
+      </div>
+
+      <div class="d-grid gap-2 col-6 mx-auto mt-4">
+          {# The button now submits a form to the Flask checkout route #}
+          <form action="{{ url_for('checkout_route') }}" method="POST">
+              <button type="submit" id="buy-cart" class="btn btn-success shadow p-3 rounded w-100">
+                  Proceed to Checkout
+              </button>
+          </form>     
+      </div>
+  </div>
+  {% else %}
+    {# Message when the cart is empty #}
+    <div class="alert alert-info text-center mt-5" role="alert">
+      <h4 class="alert-heading">Your Cart is Empty!</h4>
+      <p>Looks like you haven't added any books yet. Start exploring our collection!</p>
+      <hr>
+      <a href="{{ url_for('home') }}" class="btn btn-primary mt-3">Start Shopping</a>
     </div>
+  {% endif %}
 </div>
+
+
 
 {% endblock %}

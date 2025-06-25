@@ -1,11 +1,31 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
+from flask import Flask, render_template, request, redirect, url_for, jsonify, session, flash
 from books import search, search_subject, get_book_by_id
 import secrets
-from flask import session
 from server import pay
 from werkzeug.security import generate_password_hash, check_password_hash
 import random
 import sqlite3
+from cart_manager import (
+    get_active_cart_for_user,
+    create_new_cart,
+    add_book_to_cart,
+    get_cart_items_details_for_user,
+    update_cart_item_quantity,
+    remove_book_from_cart,
+    finalize_order # New function to finalize the order
+)
+import logging
+
+# Configure basic logging
+logging.basicConfig(level=logging.DEBUG, # Set to DEBUG to capture all messages
+                    format='%(asctime)s - %(name)s - %(levelname)s - %(message)s',
+                    handlers=[
+                        logging.FileHandler("app_debug.log"), # Logs to a file
+                        logging.StreamHandler() # Logs to console as well
+                    ])
+
+# Get a logger for your application
+logger = logging.getLogger(__name__)
 
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
@@ -44,10 +64,6 @@ def book_page_details(book_id):
 @app.route('/contact_link', methods = ["GET"])
 def contact_link():
     return render_template('contact.html')
-
-@app.route('/cart', methods = ["GET", "POST"])
-def cart():
-    return render_template('cart.html')
 
 @app.route('/delivery', methods = ["GET", "POST"])
 def delivery():
@@ -194,9 +210,131 @@ def inject_layout():
         return dict(base_template='layout_loggedon.html')
     else:
         return dict(base_template='layout.html')
+    
+# --- Rota para o Carrinho de Compras ---
+@app.route('/cart', methods = ["GET"])
+def view_cart():
+    user_id = session.get('user_id')
+    if not user_id:
+        flash("Please log in to view your cart.", "info")
+        # If not logged in, redirect to login page, remember current URL
+        session['next_url'] = url_for('view_cart') # To redirect back to cart after login
+        return redirect(url_for('login_link'))
+
+    cart_items = get_cart_items_details_for_user(get_db_connection, user_id)
+    logger.debug(f"DEBUG (view_cart): Items retrieved for cart: {cart_items}")
+    logger.debug(f"DEBUG (view_cart): Number of items: {len(cart_items)}")
+    
+    # Calculate total price based on itemPrice * quantity
+    total_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items)
+    
+    return render_template('cart.html', cart_items=cart_items, total_price=total_price)
+
+# --- Nova Rota para Adicionar Item ao Carrinho ---
+@app.route('/add-to-cart', methods=['POST'])
+def add_to_cart_route():
+    user_id = session.get('user_id')
+    if not user_id:
+        flash("Please log in to add items to your cart.", "info")
+        session['next_url'] = request.referrer if request.referrer else url_for('home')
+        return redirect(url_for('login_link'))
+
+    book_id = request.form.get('book_id', type=int)
+    quantity = request.form.get('quantity', type=int, default=1)
+
+    if not book_id or quantity <= 0:
+        flash("Invalid book ID or quantity.", "error")
+        return redirect(request.referrer or url_for('home'))
+
+    # 1. Get or Create an active order (cart) for the user
+    order_id = get_active_cart_for_user(get_db_connection, user_id)
+    if not order_id:
+        order_id = create_new_cart(get_db_connection, user_id)
+        if not order_id:
+            flash("Failed to create a new cart. Please try again.", "error")
+            return redirect(request.referrer or url_for('home'))
+
+    # 2. Add the book to the order (cart)
+    order_item_id = add_book_to_cart(get_db_connection, order_id, book_id, quantity)
+
+    if order_item_id:
+        flash("Book added to cart successfully!", "success")
+        return redirect(url_for('view_cart')) # Redirect to the cart page
+    else:
+        flash("Failed to add book to cart. Book might not exist.", "error")
+        return redirect(request.referrer or url_for('home'))
+
+# --- Rotas para ajustar quantidade ou remover item no carrinho (AJAX) ---
+@app.route('/update-cart-quantity', methods=['POST'])
+def update_cart_quantity_route():
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'success': False, 'message': 'User not logged in.'}), 401
+
+    order_item_id = request.json.get('orderItemId', type=int)
+    new_quantity = request.json.get('quantity', type=int)
+
+    # Validate inputs
+    if not isinstance(order_item_id, int) or not isinstance(new_quantity, int) or new_quantity < 0:
+        return jsonify({'success': False, 'message': 'Invalid data provided.'}), 400
+
+    if new_quantity == 0:
+        # If quantity is 0, remove the item
+        success = remove_book_from_cart(get_db_connection, order_item_id)
+    else:
+        # Otherwise, update the quantity
+        success = update_cart_item_quantity(get_db_connection, order_item_id, new_quantity)
+    
+    if success:
+        return jsonify({'success': True, 'message': 'Cart updated successfully!'})
+    else:
+        return jsonify({'success': False, 'message': 'Failed to update cart.'}), 500
+
+@app.route('/remove-from-cart', methods=['POST'])
+def remove_from_cart_route():
+    user_id = session.get('user_id')
+    if not user_id:
+        return jsonify({'success': False, 'message': 'User not logged in.'}), 401
+
+    order_item_id = request.json.get('orderItemId', type=int)
+    if not isinstance(order_item_id, int):
+        return jsonify({'success': False, 'message': 'Invalid order item ID.'}), 400
+
+    success = remove_book_from_cart(get_db_connection, order_item_id)
+    if success:
+        return jsonify({'success': True, 'message': 'Item removed from cart successfully!'})
+    else:
+        return jsonify({'success': False, 'message': 'Failed to remove item.'}), 500
+
+# --- Rota para finalizar o carrinho (simular checkout) ---
+@app.route('/checkout', methods=['POST'])
+def checkout_route():
+    user_id = session.get('user_id')
+    if not user_id:
+        flash("Please log in to complete your purchase.", "info")
+        session['next_url'] = url_for('view_cart')
+        return redirect(url_for('login_link'))
+    
+    # Get the current active cart for the user
+    order_id = get_active_cart_for_user(get_db_connection, user_id)
+    
+    if not order_id:
+        flash("Your cart is empty!", "warning")
+        return redirect(url_for('view_cart'))
+    
+    # In a real application, you'd process payment here
+    # For now, we'll just finalize the order status
+    if finalize_order(get_db_connection, order_id):
+        flash("Your order has been placed successfully!", "success")
+        # Redirect to a confirmation page or home
+        return redirect(url_for('home')) # Or a dedicated order confirmation page
+    else:
+        flash("Failed to finalize your order. Please try again.", "error")
+        return redirect(url_for('view_cart'))
 
 if __name__ == '__main__':
-    app.run(debug = True, host='0.0.0.0')
+    logger.info("Starting Flask app...") # This will appear in the log file
+    app.run(debug=True, host='0.0.0.0', use_reloader=False)
 
 
 #invenção de moda:
