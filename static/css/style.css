@@ -173,7 +173,7 @@ button:hover {
     resize: none;
 }
 
-#cart-item {
+.cart-item {
     display: flex;
     flex-direction: column;
     align-items: center;
@@ -204,9 +204,8 @@ button:hover {
 
 #cart-content {
     display:flex;
-    flex-wrap: wrap;
-    align-items: right;
-    justify-content: right;
+    flex-direction: column;
+    justify-content: end;
     height: 100%;
     width: auto;
     margin: 0;
@@ -217,11 +216,13 @@ button:hover {
     max-width: 50vw;
     margin-bottom: 3rem;
     justify-items: center;
+    align-items: center;
     margin-top: 50px;
     background-color: #7e7e7e;
     box-shadow: 6px 6px 6px rgba(0, 0, 0, 0.3);
     padding: 25px;
     border-radius: 10px;
+    min-height: 20vh;
 }
 
 #freight {
@@ -688,10 +689,36 @@ form.d-flex {
 
 }
 
-#book-info h1, p, h5, strong, text{
+#book-info h1, p, h5, text{
     color:white;
 }
 
 .text-muted {
     color: white;
+}
+
+.checkbox{
+    display: flex;
+    align-items: center;
+    min-height: 15vh;
+}
+
+.subtotal {
+    font-weight: 350%;
+    font-size: 300%;
+    color: white;
+    position: relative;
+    text-shadow: 2px 2px 4px rgba(0, 0, 0, 0.5);
+    margin: 0;
+    padding-top: 30px;
+}
+
+.remove {
+    margin-top: 20px;
+}
+
+.item-total-price {
+    color: black;
+    margin-top: 20px;
+    margin-left: 30px;
 }
