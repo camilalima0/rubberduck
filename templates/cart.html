@@ -1,33 +1,15 @@
 {% extends base_template %}
 {% block main %}
 
-<script>
-  //se chegar a zero, configurar pra tirar do carrinho
-  //fazer o botao funcionar
-  document.getElementById('button-minus').addEventListener('click', function() {
-  var quantityInput = document.getElementById('quantity-input');
-  var currentValue = parseInt(quantityInput.value);
-  if (currentValue >= 1) {
-    quantityInput.value = currentValue - 1;
-  }
-});
-
-document.getElementById('button-plus').addEventListener('click', function() {
-  var quantityInput = document.getElementById('quantity-input');
-  var currentValue = parseInt(quantityInput.value);
-  quantityInput.value = currentValue + 1;
-});
-</script>
-
 <div class = "content">
   <h1 class = "titlee">Your Cart:</h1>
   {% if cart_items %}
   <div id = "cart-div" class="container">
       {% for item in cart_items %}
-      <div id = "cart-item{{ item.orderItemId}}" class="cart-item row g-0 shadow p-3 mb-5 bg-body-tertiary rounded">
+      <div id = "cart-item{{ item.orderItemId}}" class="cart-item row g-0 shadow bg-body-tertiary rounded margin-1">
 
         {# Checkbox (for future selection logic) #}
-        <div class="checkbox col-custom-20 text-center">
+        <div class="checkbox col-md-1 text-center">
             <input type="checkbox" class="form-check-input cart-item-selector" 
                     id="select-item-{{ item.orderItemId }}" 
                     data-order-item-id="{{ item.orderItemId }}"
@@ -35,42 +17,57 @@ document.getElementById('button-plus').addEventListener('click', function() {
                     aria-label="Select item for purchase">
         </div>
 
-        <div id = "cart-image" class = col-custom-30 p-0>
+        <div id = "cart-image" class = col-md-5>
           <img src="{{ item.bookCover }}" class = "img-fluid" alt="{{ item.bookTitle }}" style="max-height: 150px; object-fit: cover;">
         </div>
 
-        <div id = "cart-content" class = col-custom-50>
-          <h4>{{ item.bookTitle}}</h4>
-            <div class="d-flex align-items-center flex-wrap" style="gap: 15px;">
-              <div class="input-group">
-                <div class="input-group-prepend">
-                  <button class="btn btn-outline-secondary quantity-minus" type="button" id="button-minus"
-                          data-order-item-id="{{ item.orderItemId }}" 
-                          data-current-quantity="{{ item.quantity }}">-</button>
+        <div id = "cart-content" class = "col-6 p-0">
+          <div class = "row align-items-center">
+            <h4 class ="p-0">{{ item.bookTitle}}</h4>
+          </div>
+
+          <div class="row align-items-center">
+                <div class="input-group col">
+                  <div class="input-group-prepend">
+                    <button class="btn btn-outline-secondary quantity-minus" type="button"
+                            data-order-item-id="{{ item.orderItemId }}" 
+                            data-current-quantity="{{ item.quantity }}">-</button>
+                  </div>
+
+                  <input type="text" value="{{ item.quantity }}" class="form-control text-center quantity-input" 
+                          id="quantity-input-{{ item.orderItemId }}" 
+                          data-order-item-id="{{ item.orderItemId }}" readonly>
+
+                  <div class="input-group-append">
+                    <button class="btn btn-outline-secondary quantity-plus" type="button"
+                            data-order-item-id="{{ item.orderItemId }}" 
+                            data-current-quantity="{{ item.quantity }}">+</button>
+                  </div>
                 </div>
-
-                <input type="text" value="{{ item.quantity }}" class="form-control text-center quantity-input" 
-                        id="quantity-input-{{ item.orderItemId }}" 
-                        data-order-item-id="{{ item.orderItemId }}" readonly>
-
-                <div class="input-group-append">
-                  <button class="btn btn-outline-secondary quantity-plus" type="button" id="button-plus"
-                          data-order-item-id="{{ item.orderItemId }}" 
-                          data-current-quantity="{{ item.quantity }}">+</button>
+                <div class="col p-0">
+                  <p id="cart-price-{{ item.orderItemId }}" class="item-total-price">
+                    <strong>R${{ "%.2f"|format(item.itemPrice) }}</strong>
+                  </p>
                 </div>
-              </div>
-              <p id="cart-price-{{ item.orderItemId }}" class="item-total-price">
-                <strong>R${{ "%.2f"|format(item.itemPrice) }}</strong>
-              </p>
+                
+          </div>
 
-              <div class="col-md-2 col-sm-12 text-center mt-3 mt-md-0">
-                <button class="remove btn btn-danger btn-sm remove-item" data-order-item-id="{{ item.orderItemId }}">Remove</button>
-              </div>
-          </div>  
-        </div>
+          <div class="row align-items-center p-0">
+            <div class="col-md-2 col-sm-12 text-center mt-3 mt-md-0 p-0">
+              <button class="remove btn btn-danger btn-sm remove-item" data-order-item-id="{{ item.orderItemId }}">Remove</button>
+            </div>
+          </div>
+              
+        </div>  
       </div>
 
+  </div>
+
       {% endfor %}
+
+      <div class="row">
+        <a class="nav-link active" aria-current="page" href="/">Add more items</a>
+      </div>
 
       <div class="container text-end mt-5 d-flex justify-content-center" id="total-container">
           <h2 class="subtotal">Subtotal: $<span id="total-price">{{ "%.2f"|format(total_price) }}</span></h2>
@@ -96,6 +93,145 @@ document.getElementById('button-plus').addEventListener('click', function() {
   {% endif %}
 </div>
 
+<script>
+    document.addEventListener('DOMContentLoaded', function() {
+        // Lógica para os botões de diminuir quantidade
+        document.querySelectorAll('.quantity-minus').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderItemId = this.dataset.orderItemId;
+                const quantityInput = document.getElementById(`quantity-input-${orderItemId}`);
+                let currentValue = parseInt(quantityInput.value);
 
+                if (currentValue > 1) { // Garante que a quantidade mínima seja 1
+                    quantityInput.value = currentValue - 1;
+                    // TODO: Chamar função para atualizar no backend e no total do carrinho
+                    updateCartItemQuantity(orderItemId, currentValue - 1);
+                } else if (currentValue === 1) {
+                    // Se a quantidade for 1 e o usuário clicar em '-', perguntar se quer remover
+                    if (confirm("Deseja remover este item do carrinho?")) {
+                        removeCartItem(orderItemId);
+                    }
+                }
+            });
+        });
+
+        // Lógica para os botões de aumentar quantidade
+        document.querySelectorAll('.quantity-plus').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderItemId = this.dataset.orderItemId;
+                const quantityInput = document.getElementById(`quantity-input-${orderItemId}`);
+                let currentValue = parseInt(quantityInput.value);
+                quantityInput.value = currentValue + 1;
+                // TODO: Chamar função para atualizar no backend e no total do carrinho
+                updateCartItemQuantity(orderItemId, currentValue + 1);
+            });
+        });
+
+        // Lógica para os botões de remover item
+        document.querySelectorAll('.remove-item').forEach(button => {
+            button.addEventListener('click', function() {
+                const orderItemId = this.dataset.orderItemId;
+                if (confirm("Tem certeza que deseja remover este item do carrinho?")) {
+                    removeCartItem(orderItemId);
+                }
+            });
+        });
+
+        // --- Funções para interagir com o backend (necessitam de implementação no Flask) ---
+
+        /**
+         * Atualiza a quantidade de um item no carrinho via requisição AJAX.
+         * @param {string} orderItemId - O ID do item no pedido.
+         * @param {number} newQuantity - A nova quantidade do item.
+         */
+        function updateCartItemQuantity(orderItemId, newQuantity) {
+            fetch('/update-cart-quantity', { // Sua rota Flask para atualizar o item
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ order_item_id: orderItemId, quantity: newQuantity }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    console.log('Quantidade atualizada com sucesso!', data);
+                    // Opcional: Atualizar o preço total do item no frontend
+                    const itemPriceElement = document.getElementById(`cart-price-${orderItemId}`);
+                    if (itemPriceElement) {
+                        // Supondo que 'data.new_item_price' e 'data.new_total_price' venham do backend
+                        itemPriceElement.querySelector('strong').textContent = `R$${data.new_item_price.toFixed(2).replace('.', ',')}`;
+                        document.getElementById('total-price').textContent = data.new_total_price.toFixed(2).replace('.', ',');
+                    }
+                    // Você pode recarregar a página ou atualizar apenas os elementos necessários
+                    // location.reload(); // Descomente se quiser recarregar a página após cada alteração
+                } else {
+                    console.error('Erro ao atualizar quantidade:', data.message);
+                    alert('Erro ao atualizar quantidade: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição de atualização:', error);
+                alert('Erro de comunicação com o servidor ao atualizar.');
+            });
+        }
+
+        /**
+         * Remove um item do carrinho via requisição AJAX.
+         * @param {string} orderItemId - O ID do item a ser removido.
+         */
+        function removeCartItem(orderItemId) {
+            fetch('/remove-from-cart', { // Sua rota Flask para remover o item
+                method: 'POST',
+                headers: {
+                    'Content-Type': 'application/json',
+                },
+                body: JSON.stringify({ order_item_id: orderItemId }),
+            })
+            .then(response => {
+                if (!response.ok) {
+                    throw new Error('Network response was not ok');
+                }
+                return response.json();
+            })
+            .then(data => {
+                if (data.success) {
+                    console.log('Item removido com sucesso!', data);
+                    // Remover o elemento do DOM
+                    const cartItemDiv = document.getElementById(`cart-item-${orderItemId}`);
+                    if (cartItemDiv) {
+                        cartItemDiv.remove();
+                    }
+                    // Opcional: Atualizar o subtotal geral do carrinho
+                    document.getElementById('total-price').textContent = data.new_total_price.toFixed(2).replace('.', ',');
+
+                    // Se o carrinho ficar vazio, mostrar a mensagem de carrinho vazio
+                    if (document.querySelectorAll('.cart-item').length === 0) {
+                        document.getElementById('cart-div').innerHTML = `
+                            <div class="alert alert-info text-center mt-5" role="alert">
+                                <h4 class="alert-heading">Your Cart is Empty!</h4>
+                                <p>Looks like you haven't added any books yet. Start exploring our collection!</p>
+                                <hr>
+                                <a href="{{ url_for('home') }}" class="btn btn-primary mt-3">Start Shopping</a>
+                            </div>
+                        `;
+                    }
+                } else {
+                    console.error('Erro ao remover item:', data.message);
+                    alert('Erro ao remover item: ' + data.message);
+                }
+            })
+            .catch(error => {
+                console.error('Erro na requisição de remoção:', error);
+                alert('Erro de comunicação com o servidor ao remover.');
+            });
+        }
+    });
+</script>
 
 {% endblock %}

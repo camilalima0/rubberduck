@@ -1,171 +1,123 @@
 import sqlite3
 
-def get_active_cart_for_user(get_db_connection_func, user_id):
-    """
-    Retrieves the active shopping cart (an orderr with status 'pending') for a given user.
-    If multiple 'pending' orders exist (which shouldn't happen with proper logic), it takes the most recent one.
-    """
-    conn = get_db_connection_func()
+def get_active_cart_for_user(conn, user_id):
     cursor = conn.cursor()
     cursor.execute(
         "SELECT orderId FROM orderr WHERE userId = ? AND orderStatus = 'pending' ORDER BY orderDate DESC LIMIT 1",
         (user_id,)
     )
     cart = cursor.fetchone()
-    conn.close()
     return cart['orderId'] if cart else None
 
-def create_new_cart(get_db_connection_func, user_id):
-    """
-    Creates a new empty shopping cart (an orderr with status 'pending') for the specified user.
-    Returns the new orderId.
-    """
-    conn = get_db_connection_func()
+def create_new_cart(conn, user_id):
     cursor = conn.cursor()
     cursor.execute(
         "INSERT INTO orderr (userId, orderStatus) VALUES (?, 'pending')",
         (user_id,)
     )
-    cart_id = cursor.lastrowid
     conn.commit()
-    conn.close()
-    return cart_id
+    return cursor.lastrowid
 
-def add_book_to_cart(get_db_connection_func, order_id, book_id, quantity=1):
-    """
-    Adds a book to the specified cart (orderr) or updates its quantity if it already exists.
-    Also captures the book's current price.
-    Returns the orderItemId of the added/updated item.
-    """
-    conn = get_db_connection_func()
+def add_book_to_cart(conn, order_id, book_id, quantity): # Recebe a conexão 'conn'
+    # Primeiro, verifique se o livro existe e obtenha seu preço
     cursor = conn.cursor()
-
-    # First, get the current price of the book
     cursor.execute("SELECT bookPrice FROM book WHERE bookId = ?", (book_id,))
-    book_info = cursor.fetchone()
-    if not book_info:
-        conn.close()
-        return None # Book not found
+    book_data = cursor.fetchone()
+    if not book_data:
+        return None # Livro não encontrado
 
-    item_price_at_addition = book_info['bookPrice']
+    book_price = book_data['bookPrice']
 
-    # Check if the book already exists in this specific cart (orderItem for this orderId)
-    cursor.execute(
-        "SELECT orderItemId, quantity FROM orderItem WHERE orderId = ? AND bookId = ?",
-        (order_id, book_id)
-    )
+    # Verifique se o item já existe no carrinho para o livro e order_id
+    cursor.execute("SELECT orderItemId, quantity FROM orderItem WHERE orderId = ? AND bookId = ?",
+                   (order_id, book_id))
     existing_item = cursor.fetchone()
 
     if existing_item:
-        # Update quantity if item already exists
+        # Se existe, atualiza a quantidade e o preço total
         new_quantity = existing_item['quantity'] + quantity
-        cursor.execute(
-            "UPDATE orderItem SET quantity = ? WHERE orderItemId = ?",
-            (new_quantity, existing_item['orderItemId'])
-        )
-        order_item_id = existing_item['orderItemId']
+        item_total_price = new_quantity * book_price
+        cursor.execute("UPDATE orderItem SET quantity = ?, itemTotalPrice = ? WHERE orderItemId = ?",
+                       (new_quantity, item_total_price, existing_item['orderItemId']))
+        conn.commit()
+        return existing_item['orderItemId']
     else:
-        # Insert new order item
-        cursor.execute(
-            "INSERT INTO orderItem (orderId, bookId, quantity, itemPrice) VALUES (?, ?, ?, ?)",
-            (order_id, book_id, quantity, item_price_at_addition)
-        )
-        order_item_id = cursor.lastrowid
-    
-    conn.commit()
-    conn.close()
-    return order_item_id
+        # Se não existe, adiciona um novo item
+        item_total_price = quantity * book_price
+        cursor.execute("INSERT INTO orderItem (orderId, bookId, quantity, itemTotalPrice) VALUES (?, ?, ?, ?)",
+                       (order_id, book_id, quantity, item_total_price))
+        conn.commit()
+        return cursor.lastrowid
 
-def get_cart_items_details_for_user(get_db_connection_func, user_id):
-    """
-    Retrieves all books currently in the user's active cart, along with their details.
-    This fetches information from book, orderItem, and orderr tables.
-    """
-    conn = get_db_connection_func()
-    conn.row_factory = sqlite3.Row # Ensure rows are dict-like
+def get_cart_items_details_for_user(conn, user_id): # Recebe a conexão 'conn'
     cursor = conn.cursor()
-
-    # Join orderr, orderItem, and book to get all necessary details for the active cart
-    cursor.execute(
-        """
-        SELECT
-            b.bookId,
-            b.bookTitle,
-            b.bookCover,
-            -- Use itemPrice from orderItem to preserve the price at the time of addition
-            oi.itemPrice,
-            oi.quantity,
-            oi.orderItemId,
-            o.orderId -- The cart's orderId
-        FROM
-            orderr AS o
-        JOIN
-            orderItem AS oi ON o.orderId = oi.orderId
-        JOIN
-            book AS b ON oi.bookId = b.bookId
-        WHERE
-            o.userId = ? AND o.orderStatus = 'pending'
-        ORDER BY
-            b.bookTitle ASC
-        """,
-        (user_id,)
-    )
-    items = cursor.fetchall()
-    conn.close()
-    return items
-
-def update_cart_item_quantity(get_db_connection_func, order_item_id, new_quantity):
+    query = """
+    SELECT
+        oi.orderItemId,
+        oi.quantity,
+        oi.itemTotalPrice AS itemPrice, -- Mantenha como itemPrice para compatibilidade com o Jinja
+        b.bookId,
+        b.bookTitle,
+        b.bookAuthors,
+        b.bookPrice,
+        b.bookCover
+    FROM
+        'order' o
+    JOIN
+        orderItem oi ON o.orderId = oi.orderId
+    JOIN
+        book b ON oi.bookId = b.bookId
+    WHERE
+        o.userId = ? AND o.status = 'active'
     """
-    Updates the quantity of a specific item in the cart.
-    Returns True if successful, False otherwise.
-    """
-    conn = get_db_connection_func()
+    cursor.execute(query, (user_id,))
+    return cursor.fetchall()
+
+def update_cart_item_quantity(conn, order_item_id, new_quantity): # Recebe a conexão 'conn'
     cursor = conn.cursor()
     try:
-        cursor.execute(
-            "UPDATE orderItem SET quantity = ? WHERE orderItemId = ?",
-            (new_quantity, order_item_id)
-        )
+        # Primeiro, obtenha o bookId e o bookPrice do item de pedido
+        cursor.execute("""
+            SELECT oi.bookId, b.bookPrice
+            FROM orderItem oi
+            JOIN book b ON oi.bookId = b.bookId
+            WHERE oi.orderItemId = ?
+        """, (order_item_id,))
+        item_data = cursor.fetchone()
+
+        if not item_data:
+            return False # Item do pedido não encontrado
+
+        book_price = item_data['bookPrice']
+        new_item_total_price = new_quantity * book_price
+
+        cursor.execute("""
+            UPDATE orderItem
+            SET quantity = ?, itemTotalPrice = ?
+            WHERE orderItemId = ?
+        """, (new_quantity, new_item_total_price, order_item_id))
         conn.commit()
         return True
-    except sqlite3.Error as e:
-        print(f"Error updating quantity for orderItemId {order_item_id}: {e}")
+    except Exception as e:
+        print(f"Error updating cart item quantity: {e}")
         return False
-    finally:
-        conn.close()
 
-def remove_book_from_cart(get_db_connection_func, order_item_id):
-    """
-    Removes a specific orderItem from the cart (deletes it from the orderItem table).
-    """
-    conn = get_db_connection_func()
+def remove_book_from_cart(conn, order_item_id): # Recebe a conexão 'conn'
     cursor = conn.cursor()
     try:
         cursor.execute("DELETE FROM orderItem WHERE orderItemId = ?", (order_item_id,))
         conn.commit()
         return True
-    except sqlite3.Error as e:
-        print(f"Error removing order item {order_item_id}: {e}")
+    except Exception as e:
+        print(f"Error removing book from cart: {e}")
         return False
-    finally:
-        conn.close()
 
-def finalize_order(get_db_connection_func, order_id):
-    """
-    Changes the status of a 'pending' order to 'completed'.
-    This would typically happen after a successful payment.
-    """
-    conn = get_db_connection_func()
+def finalize_order(conn, order_id): # Recebe a conexão 'conn'
     cursor = conn.cursor()
     try:
-        cursor.execute(
-            "UPDATE orderr SET orderStatus = 'completed' WHERE orderId = ? AND orderStatus = 'pending'",
-            (order_id,)
-        )
+        cursor.execute("UPDATE 'order' SET status = 'completed' WHERE orderId = ?", (order_id,))
         conn.commit()
-        return cursor.rowcount > 0 # Returns True if a row was updated
-    except sqlite3.Error as e:
-        print(f"Error finalizing order {order_id}: {e}")
+        return True
+    except Exception as e:
+        print(f"Error finalizing order: {e}")
         return False
-    finally:
-        conn.close()

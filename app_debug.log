@@ -691,3 +691,909 @@
 2025-06-27 00:34:10,490 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 00:34:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
 2025-06-27 00:34:10,601 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 00:34:10] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
 2025-06-27 00:34:11,262 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 00:34:11] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:12,345 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 12:40:12,350 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 12:40:12,353 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 12:40:14,537 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 12:40:14,596 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 12:40:25,893 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:25] "GET / HTTP/1.1" 200 -
+2025-06-27 12:40:26,270 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:26] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:27,276 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:27] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:27,285 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:27] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:27,394 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:27] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:27,395 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:27] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:27,704 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 12:40:27,925 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:27] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:30,565 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:30] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 12:40:31,098 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:31] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:31,102 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:31] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:31,103 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 12:40:40,696 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:40] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 12:40:40,886 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:40] "GET / HTTP/1.1" 200 -
+2025-06-27 12:40:41,279 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:41] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:41,305 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:41] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:41,308 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:41] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:41,333 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:41] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:41,506 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 12:40:41,576 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:41] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:41,578 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:41] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:47,141 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049ac940>]
+2025-06-27 12:40:47,142 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:40:47,207 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:47] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:40:47,468 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 12:40:47,493 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:47] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:40:47,509 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:40:47] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:41:12,041 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470fe80>]
+2025-06-27 12:41:12,045 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:41:12,046 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:41:12] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:41:12,269 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:41:12] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:41:12,276 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:41:12] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 12:41:12,284 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:41:12] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:44:29,485 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470f850>]
+2025-06-27 12:44:29,488 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:44:29,489 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:44:29] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:44:30,641 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:44:30] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 12:44:30,701 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:44:30] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:44:30,722 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:44:30] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:45:19,059 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471f370>]
+2025-06-27 12:45:19,060 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:45:19,060 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:45:19] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:45:19,279 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:45:19] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:45:20,155 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:45:20] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 12:45:20,156 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:45:20] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:45:42,533 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:45:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 12:46:54,056 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504990be0>]
+2025-06-27 12:46:54,056 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:46:54,064 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:46:54] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:46:55,130 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:46:55] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:46:55,202 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:46:55] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:46:55,223 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:46:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 12:47:19,394 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471ed70>]
+2025-06-27 12:47:19,394 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:47:19,399 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:47:19] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:47:19,624 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:47:19] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:47:19,723 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:47:19] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:47:20,559 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:47:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 12:48:08,612 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:48:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 12:50:10,089 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470fdf0>]
+2025-06-27 12:50:10,089 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:50:10,090 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:50:10] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:50:11,321 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:50:11] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 12:50:11,322 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:50:11] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:50:11,337 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:50:11] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:50:40,407 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049ad4e0>]
+2025-06-27 12:50:40,407 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:50:40,408 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:50:40] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:50:40,664 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:50:40] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:50:40,668 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:50:40] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:50:40,749 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:50:40] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 12:55:31,801 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504991d20>]
+2025-06-27 12:55:31,802 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:55:31,808 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:55:31] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:55:32,098 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:55:32] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:55:32,968 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:55:32] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 12:55:33,043 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:55:33] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:55:57,308 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470f8b0>]
+2025-06-27 12:55:57,309 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:55:57,314 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:55:57] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:55:57,561 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:55:57] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:55:57,677 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:55:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 12:55:58,512 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:55:58] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:57:04,608 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471d900>]
+2025-06-27 12:57:04,608 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:57:04,614 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:04] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:57:05,677 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:05] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:57:05,825 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:05] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 12:57:06,188 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:06] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:57:20,709 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471f010>]
+2025-06-27 12:57:20,710 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:57:20,716 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:20] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:57:20,941 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:20] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:57:21,023 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 12:57:21,816 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:21] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:57:50,788 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504992d10>]
+2025-06-27 12:57:50,788 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:57:50,789 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:50] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:57:51,004 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:51] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:57:51,083 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:51] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 12:57:51,917 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:57:51] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 12:59:29,761 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049ad8d0>]
+2025-06-27 12:59:29,761 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 12:59:29,762 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:59:29] "GET /cart HTTP/1.1" 200 -
+2025-06-27 12:59:30,975 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:59:30] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 12:59:31,010 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:59:31] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 12:59:31,027 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 12:59:31] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:00:31,094 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471f760>]
+2025-06-27 13:00:31,094 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:00:31,099 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:00:31] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:00:31,403 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:00:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:00:31,529 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:00:31] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:00:31,541 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:00:31] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:01:06,233 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471efe0>]
+2025-06-27 13:01:06,233 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:01:06,239 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:06] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:01:06,526 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:06] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:01:07,319 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:01:07,410 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:07] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:01:35,947 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049923b0>]
+2025-06-27 13:01:35,948 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:01:35,956 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:35] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:01:36,337 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:36] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:01:38,016 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:38] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:01:38,078 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:38] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:01:56,327 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471e8f0>]
+2025-06-27 13:01:56,327 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:01:56,332 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:56] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:01:56,565 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:56] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:01:56,838 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:56] "GET /static/images/carrinho.png HTTP/1.1" 200 -
+2025-06-27 13:01:56,841 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:01:56] "GET /static/images/logo.png HTTP/1.1" 200 -
+2025-06-27 13:02:29,928 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471f880>]
+2025-06-27 13:02:29,928 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:02:29,933 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:29] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:02:30,187 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:02:30,204 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:30] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:02:30,375 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:30] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:02:40,436 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470e080>]
+2025-06-27 13:02:40,436 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:02:40,445 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:40] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:02:40,700 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:40] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:02:40,901 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:40] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:02:41,640 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:02:52,163 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504993040>]
+2025-06-27 13:02:52,163 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:02:52,169 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:52] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:02:52,718 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:52] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:02:52,725 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:02:52,730 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:02:52] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:04:51,850 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470f490>]
+2025-06-27 13:04:51,850 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:04:51,857 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:04:51] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:04:53,086 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:04:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:04:53,095 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:04:53] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:04:53,564 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:04:53] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:06:04,596 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471dcf0>]
+2025-06-27 13:06:04,596 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:06:04,602 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:06:04] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:06:05,675 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:06:05] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:06:05,878 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:06:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:06:06,351 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:06:06] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:06:45,189 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471c220>]
+2025-06-27 13:06:45,190 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:06:45,196 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:06:45] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:06:45,417 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:06:45] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:06:46,309 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:06:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:06:46,392 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:06:46] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:09:10,445 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504991f60>]
+2025-06-27 13:09:10,446 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:09:10,452 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:09:10] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:09:11,882 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:09:11] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:09:11,907 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:09:11] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:09:11,914 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:09:11] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:09:48,198 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470fd30>]
+2025-06-27 13:09:48,199 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:09:48,204 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:09:48] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:09:48,438 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:09:48] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:09:48,586 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:09:48] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:09:48,586 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:09:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:10:21,128 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470de40>]
+2025-06-27 13:10:21,128 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:10:21,134 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:10:21] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:10:21,408 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:10:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:10:22,374 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:10:22] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:10:22,381 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:10:22] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:19:08,936 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504990b20>]
+2025-06-27 13:19:08,936 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:19:08,942 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:19:08] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:19:10,188 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:19:10] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:19:10,214 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:19:10] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:19:10,217 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:19:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:20:20,050 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470d6f0>]
+2025-06-27 13:20:20,051 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:20:20,058 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:20:20] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:20:21,139 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:20:21] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:20:21,276 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:20:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:20:21,289 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:20:21] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:21:11,229 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470ff70>]
+2025-06-27 13:21:11,231 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:21:11,247 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:21:11] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:21:11,565 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:21:11] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:21:12,296 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:21:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:21:12,597 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:21:12] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:21:25,753 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470da20>]
+2025-06-27 13:21:25,753 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:21:25,758 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:21:25] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:21:25,958 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:21:25] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:21:25,981 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:21:25] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:21:26,792 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:21:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:22:12,902 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504991780>]
+2025-06-27 13:22:12,902 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:22:12,908 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:22:12] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:22:13,190 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:22:13] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:22:13,195 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:22:13] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:22:13,198 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:22:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:22:22,536 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:22:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:22:40,284 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049f7a60>]
+2025-06-27 13:22:40,284 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:22:40,292 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:22:40] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:22:40,663 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:22:40] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:22:40,688 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:22:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:22:41,372 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:22:41] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:23:28,733 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504990b20>]
+2025-06-27 13:23:28,733 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:23:28,738 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:23:28] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:23:28,939 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:23:28] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:23:29,803 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:23:29] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:23:29,927 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:23:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:23:53,992 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049f7970>]
+2025-06-27 13:23:53,993 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:23:53,998 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:23:53] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:23:54,311 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:23:54] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:23:55,133 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:23:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:23:55,306 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:23:55] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:30:06,610 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049f7970>]
+2025-06-27 13:30:06,611 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:30:06,616 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:30:06] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:30:06,916 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:30:06] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:30:07,760 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:30:07] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:30:07,898 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:30:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:30:52,241 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504993790>]
+2025-06-27 13:30:52,241 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:30:52,252 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:30:52] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:30:52,467 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:30:52] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:30:53,428 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:30:53] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:30:53,493 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:30:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:31:07,615 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:31:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:31:52,274 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504992290>]
+2025-06-27 13:31:52,274 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:31:52,275 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:31:52] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:31:52,523 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:31:52] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:31:52,526 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:31:52] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:31:52,529 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:31:52] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:33:13,295 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504990760>]
+2025-06-27 13:33:13,296 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:33:13,296 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:33:13] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:33:14,554 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:33:14] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:33:14,577 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:33:14] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:33:14,580 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:33:14] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:33:33,769 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:33:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:34:18,634 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471f9d0>]
+2025-06-27 13:34:18,634 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:34:18,640 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:34:18] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:34:18,909 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:34:18] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:34:19,795 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:34:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:34:19,852 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:34:19] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:34:52,976 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504991ae0>]
+2025-06-27 13:34:52,976 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:34:52,982 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:34:52] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:34:53,216 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:34:53] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:34:53,317 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:34:53] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:34:53,323 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:34:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:35:45,713 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470d480>]
+2025-06-27 13:35:45,713 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:35:45,719 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:35:45] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:35:45,975 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:35:45] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:35:45,994 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:35:45] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:35:46,000 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:35:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:36:26,705 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470faf0>]
+2025-06-27 13:36:26,706 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:36:26,716 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:36:26] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:36:27,016 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:36:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:36:27,045 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:36:27] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:36:27,955 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:36:27] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:36:47,232 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471cd30>]
+2025-06-27 13:36:47,232 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:36:47,247 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:36:47] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:36:47,499 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:36:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:36:47,503 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:36:47] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:36:47,625 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:36:47] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:37:25,970 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049ad9f0>]
+2025-06-27 13:37:25,971 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:37:25,976 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:37:25] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:37:26,242 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:37:26] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:37:26,391 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:37:26] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:37:26,405 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:37:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:37:38,429 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470ed70>]
+2025-06-27 13:37:38,429 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:37:38,442 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:37:38] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:37:38,727 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:37:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:37:38,737 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:37:38] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:37:38,759 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:37:38] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:38:13,711 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504990f40>]
+2025-06-27 13:38:13,711 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:38:13,716 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:38:13] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:38:13,947 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:38:13] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:38:13,970 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:38:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:38:14,852 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:38:14] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:39:09,583 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471fb20>]
+2025-06-27 13:39:09,583 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:39:09,589 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:09] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:39:09,892 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:09] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:39:09,904 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:09] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:39:10,694 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:10] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:39:22,698 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049f7e20>]
+2025-06-27 13:39:22,700 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:39:22,703 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:22] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:39:22,930 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:22] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:39:22,933 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:22] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:39:23,762 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:23] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:39:42,815 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504991d80>]
+2025-06-27 13:39:42,815 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:39:42,816 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:42] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:39:43,055 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:43] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:39:43,090 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:43] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:39:43,191 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:39:43] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:40:02,432 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470e4d0>]
+2025-06-27 13:40:02,435 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:40:02,436 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:40:02] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:40:02,662 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:40:02] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:40:02,667 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:40:02] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:40:02,744 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:40:02] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:40:41,884 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471d8a0>]
+2025-06-27 13:40:41,884 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:40:41,885 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:40:41] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:40:42,175 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:40:42] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:40:42,190 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:40:42] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:40:42,206 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:40:42] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:41:05,210 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739503c70a60>]
+2025-06-27 13:41:05,211 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:41:05,211 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:05] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:41:05,418 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:05] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:41:05,493 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:05] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:41:06,254 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:06] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:41:17,514 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471eef0>]
+2025-06-27 13:41:17,514 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:41:17,515 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:17] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:41:17,782 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:17] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:41:17,786 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:17] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:41:17,795 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:17] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:41:41,466 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470e8f0>]
+2025-06-27 13:41:41,466 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:41:41,466 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:41] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:41:41,675 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:41] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:41:41,679 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:41] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:41:41,754 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:41] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:41:56,612 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504992260>]
+2025-06-27 13:41:56,612 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:41:56,612 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:56] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:41:56,856 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:56] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:41:56,981 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:56] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:41:56,984 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:41:56] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:42:20,789 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049f7a90>]
+2025-06-27 13:42:20,790 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:42:20,790 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:42:20] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:42:20,995 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:42:20] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:42:21,095 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:42:21] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:42:21,113 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:42:21] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:43:33,797 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739503c725c0>]
+2025-06-27 13:43:33,797 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:43:33,798 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:43:33] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:43:34,940 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:43:34] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:43:34,993 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:43:34] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:43:35,010 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:43:35] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:44:21,411 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739503c701c0>]
+2025-06-27 13:44:21,411 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:44:21,412 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:21] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:44:21,718 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:21] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:44:22,454 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:22] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:44:22,496 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:22] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:44:37,627 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049f7a90>]
+2025-06-27 13:44:37,628 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:44:37,628 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:37] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:44:37,885 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:37] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:44:37,976 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:37] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:44:38,005 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:38] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:44:55,274 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504992b60>]
+2025-06-27 13:44:55,274 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:44:55,275 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:55] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:44:55,477 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:55] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:44:55,491 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:55] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:44:56,463 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:44:56] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:50:25,035 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470dcc0>]
+2025-06-27 13:50:25,035 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:50:25,036 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:25] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:50:26,207 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:26] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:50:26,251 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:26] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:50:26,316 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:26] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:50:40,182 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471d6f0>]
+2025-06-27 13:50:40,183 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:50:40,183 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:40] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:50:40,451 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:40] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:50:40,563 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:40] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:50:40,571 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:40] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:50:58,445 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471f160>]
+2025-06-27 13:50:58,446 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:50:58,446 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:58] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:50:58,696 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:58] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:50:58,772 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:58] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:50:59,594 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:50:59] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:51:46,048 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:51:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:53:37,890 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739503c73100>]
+2025-06-27 13:53:37,890 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:53:37,892 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:53:37] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:53:38,961 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:53:38] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:53:39,029 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:53:39] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:53:39,618 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:53:39] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:54:20,934 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470f2e0>]
+2025-06-27 13:54:20,934 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:54:20,935 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:54:20] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:54:21,349 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:54:21] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:54:21,359 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:54:21] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:54:21,991 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:54:21] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:54:40,047 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504992830>]
+2025-06-27 13:54:40,047 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:54:40,048 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:54:40] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:54:40,280 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:54:40] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:54:40,281 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:54:40] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:54:40,346 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:54:40] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:55:21,532 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:55:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 13:58:32,306 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7395049f7250>]
+2025-06-27 13:58:32,307 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:58:32,312 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:58:32] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:58:33,374 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:58:33] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 13:58:33,537 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:58:33] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:58:34,217 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:58:34] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:59:36,938 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739503c702e0>]
+2025-06-27 13:59:36,939 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 13:59:36,944 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:59:36] "GET /cart HTTP/1.1" 200 -
+2025-06-27 13:59:37,254 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:59:37] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 13:59:38,139 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:59:38] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 13:59:38,146 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 13:59:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:00:21,317 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504993ca0>]
+2025-06-27 14:00:21,318 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:00:21,323 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:00:21] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:00:21,528 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:00:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:00:21,606 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:00:21] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:00:23,095 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:00:23] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:01:10,173 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504991a50>]
+2025-06-27 14:01:10,174 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:01:10,183 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:01:10] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:01:10,698 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:01:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:01:10,721 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:01:10] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:01:10,732 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:01:10] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:02:29,948 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471e3e0>]
+2025-06-27 14:02:29,949 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:02:29,954 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:02:29] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:02:31,008 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:02:31] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 14:02:31,053 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:02:31] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:02:31,942 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:02:31] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:05:50,189 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950470f970>]
+2025-06-27 14:05:50,190 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:05:50,205 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:05:50] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:05:50,455 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:05:50] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:05:51,333 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:05:51] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:05:51,482 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:05:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:06:26,550 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504990d00>]
+2025-06-27 14:06:26,550 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:06:26,555 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:06:26] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:06:26,832 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:06:26] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:06:27,654 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:06:27] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:06:27,668 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:06:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:07:09,230 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739504992620>]
+2025-06-27 14:07:09,230 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:07:09,236 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:09] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:07:09,474 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:09] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:07:09,559 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:07:10,406 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:10] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:07:21,597 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:21] "GET / HTTP/1.1" 200 -
+2025-06-27 14:07:21,839 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:21] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 14:07:21,839 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:21] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:07:21,842 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:07:21,853 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:21] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 14:07:21,855 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:21] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 14:07:21,871 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:21] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 14:07:22,712 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:22] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:07:24,388 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73950471e3e0>]
+2025-06-27 14:07:24,388 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:07:24,388 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:24] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:07:24,617 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:24] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:07:24,620 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:07:24,624 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:07:24] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:11:04,423 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x739503b95360>]
+2025-06-27 14:11:04,424 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:11:04,430 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:11:04] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:11:05,750 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:11:05] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:11:05,907 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:11:05] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:11:06,300 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:11:06] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:11:08,173 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:11:08] "[33mPOST /update-cart-item HTTP/1.1[0m" 404 -
+2025-06-27 14:11:14,460 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:11:14] "[33mPOST /update-cart-item HTTP/1.1[0m" 404 -
+2025-06-27 14:11:34,989 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:11:34] "[33mPOST /update-cart-item HTTP/1.1[0m" 404 -
+2025-06-27 14:16:53,839 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:16:53] "[33mPOST /update-cart-item HTTP/1.1[0m" 404 -
+2025-06-27 14:16:53,927 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:16:53] "[33mPOST /update-cart-item HTTP/1.1[0m" 404 -
+2025-06-27 14:16:55,797 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:16:55] "[33mPOST /update-cart-item HTTP/1.1[0m" 404 -
+2025-06-27 14:17:06,061 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:17:06] "[33mPOST /update-cart-item HTTP/1.1[0m" 404 -
+2025-06-27 14:27:49,167 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:27:49,204 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:27:49,769 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:27:49,770 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:27:52,428 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:27:52,463 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:27:52,833 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:27:52,833 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:28:14,252 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:28:14,287 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:28:14,539 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:28:14,540 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:29:06,186 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:29:06,221 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:29:06,516 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:29:06,517 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:29:49,417 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 14:29:49,418 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 14:29:49,418 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:29:49,714 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:29:49,714 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:29:55,785 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:29:55] "GET / HTTP/1.1" 200 -
+2025-06-27 14:29:56,089 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:29:56] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 14:29:56,808 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:29:56] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:29:57,018 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:29:57] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:29:57,042 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:29:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:29:57,044 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:29:57] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 14:29:57,074 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:29:57] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 14:29:57,091 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:29:57] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 14:30:04,250 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:04] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 14:30:04,519 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:30:04,533 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:04] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:30:04,642 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:04] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:30:14,145 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:14] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 14:30:14,317 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:14] "GET / HTTP/1.1" 200 -
+2025-06-27 14:30:14,588 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:14] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 14:30:14,588 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:14] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:30:14,589 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:14] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 14:30:14,612 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:14] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 14:30:14,616 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:14] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 14:30:14,697 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:14] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:30:14,716 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:30:18,874 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x79941c9415d0>]
+2025-06-27 14:30:18,874 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:30:18,881 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:18] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:30:19,118 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:19] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:30:19,123 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:19] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:30:19,129 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:30:22,790 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:30:22] "[35m[1mPOST /update-cart-quantity HTTP/1.1[0m" 500 -
+2025-06-27 14:34:08,297 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:34:08,350 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:34:08,608 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:34:08,609 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:34:47,854 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:34:47,889 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:34:48,172 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:34:48,173 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:35:05,382 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:35:05,418 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:35:05,669 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:35:05,669 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:35:46,588 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:35:46,626 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:35:46,906 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:35:46,906 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:35:58,197 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:35:58,237 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:35:58,613 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:35:58,613 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:36:14,397 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:36:14,432 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:36:14,679 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:36:14,679 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:36:17,189 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:36:17,227 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:36:21,804 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:36:22,061 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:36:22,061 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:36:25,856 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:36:25,895 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:36:26,195 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:36:26,196 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:36:38,893 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:36:38,927 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:36:39,197 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:36:39,197 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:38:49,752 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:38:49,791 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:38:50,039 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:38:50,039 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:38:52,404 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:38:52,441 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:38:52,734 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:38:52,734 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:38:55,817 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:38:55] "[32mGET /cart HTTP/1.1[0m" 302 -
+2025-06-27 14:38:56,874 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:38:56] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 14:38:58,129 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:38:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:38:58,164 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:38:58] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:38:58,165 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:38:58] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:10,239 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:10] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 14:39:10,498 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:10] "GET / HTTP/1.1" 200 -
+2025-06-27 14:39:10,788 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:10] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:10,790 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:10] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:10,813 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:10] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:10,929 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:10] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:39:10,941 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:10] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:10,963 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:10] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:10,971 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:10] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:14,167 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x728fd4d5dc00>]
+2025-06-27 14:39:14,168 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:39:14,175 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:14] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:39:14,439 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:39:14,442 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:14] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:14,479 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:14] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:16,361 - app - DEBUG - Update Cart: order_item_id=1, new_quantity=11
+2025-06-27 14:39:16,365 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:16] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 14:39:48,019 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 14:39:48,019 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 14:39:48,020 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:39:48,273 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:39:48,273 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:39:52,132 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:52] "GET / HTTP/1.1" 200 -
+2025-06-27 14:39:52,444 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:52] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:52,446 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:39:52,459 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:52] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:52,461 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:52] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:52,467 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:52] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:52,473 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:52] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:52,475 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:52] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:53,913 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:53] "[32mGET /cart HTTP/1.1[0m" 302 -
+2025-06-27 14:39:54,065 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:54] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 14:39:54,274 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:54] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:39:54,277 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:39:54,281 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:39:54] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:40:03,810 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:03] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 14:40:03,994 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:03] "GET / HTTP/1.1" 200 -
+2025-06-27 14:40:04,258 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:04] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:40:04,264 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:40:04,259 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:04] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:40:04,259 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:04] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 14:40:04,258 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:04] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 14:40:04,265 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:04] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 14:40:04,270 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:04] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 14:40:09,271 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7e7deafd3f40>]
+2025-06-27 14:40:09,272 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:40:09,280 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:09] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:40:09,526 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:09] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:40:09,536 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:40:09,556 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:09] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:40:11,843 - app - DEBUG - Update Cart: order_item_id=1, new_quantity=10
+2025-06-27 14:40:11,846 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:40:11] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 14:41:23,516 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:41:23,583 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:41:23,902 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:41:23,903 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:41:26,173 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 14:41:26,208 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:41:31,179 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 14:41:31,179 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 14:41:31,180 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:41:31,424 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:41:31,424 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:41:35,939 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:35] "GET / HTTP/1.1" 200 -
+2025-06-27 14:41:36,372 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:36] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:37,064 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:37] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:37,199 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:37] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:37,203 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:41:37,280 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:37] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:37,298 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:37] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:37,391 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:37] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:39,252 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:39] "[32mGET /cart HTTP/1.1[0m" 302 -
+2025-06-27 14:41:39,560 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:39] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 14:41:39,817 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:39] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:41:39,822 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:39] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:39,904 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:39] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:49,603 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:49] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 14:41:49,796 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:49] "GET / HTTP/1.1" 200 -
+2025-06-27 14:41:50,049 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:41:50,051 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:50] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:50,077 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:50] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:50,083 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:50] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:50,084 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:50] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:50,085 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:50] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:50,091 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:50] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:52,933 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x725166b7fe20>]
+2025-06-27 14:41:52,933 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 14:41:52,939 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:52] "GET /cart HTTP/1.1" 200 -
+2025-06-27 14:41:53,175 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:53] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:53,179 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:53] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 14:41:53,182 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 14:41:54,870 - app - DEBUG - Received request to update cart quantity.
+2025-06-27 14:41:54,870 - app - DEBUG - Update Cart: order_item_id=1, new_quantity=9
+2025-06-27 14:41:54,870 - app - DEBUG - Updating quantity for order_item_id 1 to 9.
+2025-06-27 14:41:54,870 - app - ERROR - Exception occurred during cart quantity update for order_item_id 1: function takes exactly 1 argument (0 given)
+Traceback (most recent call last):
+  File "/workspaces/rubberduck/app.py", line 303, in update_cart_quantity_route
+    success = update_cart_item_quantity(conn, order_item_id, new_quantity)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/rubberduck/cart_manager.py", line 122, in update_cart_item_quantity
+    conn = get_db_connection_func()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: function takes exactly 1 argument (0 given)
+2025-06-27 14:41:54,871 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:41:54] "[35m[1mPOST /update-cart-quantity HTTP/1.1[0m" 500 -
+2025-06-27 14:52:21,570 - app - DEBUG - Received request to update cart quantity.
+2025-06-27 14:52:21,570 - app - DEBUG - Update Cart: order_item_id=1, new_quantity=8
+2025-06-27 14:52:21,571 - app - DEBUG - Updating quantity for order_item_id 1 to 8.
+2025-06-27 14:52:21,571 - app - ERROR - Exception occurred during cart quantity update for order_item_id 1: function takes exactly 1 argument (0 given)
+Traceback (most recent call last):
+  File "/workspaces/rubberduck/app.py", line 303, in update_cart_quantity_route
+    success = update_cart_item_quantity(conn, order_item_id, new_quantity)
+              ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+  File "/workspaces/rubberduck/cart_manager.py", line 122, in update_cart_item_quantity
+    conn = get_db_connection_func()
+           ^^^^^^^^^^^^^^^^^^^^^^^^
+TypeError: function takes exactly 1 argument (0 given)
+2025-06-27 14:52:21,572 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 14:52:21] "[35m[1mPOST /update-cart-quantity HTTP/1.1[0m" 500 -
+2025-06-27 14:55:14,150 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:55:14,188 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:55:14,437 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:55:14,437 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:56:13,752 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:56:13,788 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:56:14,057 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:56:14,058 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:56:34,015 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:56:34,051 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:56:34,327 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:56:34,328 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:56:50,337 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:56:50,375 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:56:50,664 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:56:50,664 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:56:58,997 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:56:59,032 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:56:59,283 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:56:59,283 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:57:18,082 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:57:18,121 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:57:18,437 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:57:18,438 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:57:31,281 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:57:31,320 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:57:31,583 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:57:31,584 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:57:37,494 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:57:37,534 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:57:37,819 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:57:37,819 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:58:08,135 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:58:08,175 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:58:08,441 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:58:08,441 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:58:12,368 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:58:12,403 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:58:12,656 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:58:12,657 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:58:16,668 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:58:16,702 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:58:16,954 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:58:16,954 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:58:25,121 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:58:25,155 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:58:25,469 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:58:25,470 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:58:29,481 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:58:29,551 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:58:29,811 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:58:29,811 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:58:58,426 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:58:58,485 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 14:58:58,746 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 14:58:58,747 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 14:59:05,826 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 14:59:05,860 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:00:40,433 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:00:40,685 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:00:40,685 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:00:57,646 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 15:00:57,687 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:00:57,939 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:00:57,939 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:01:16,471 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 15:01:16,509 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:01:16,759 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:01:16,759 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:01:27,965 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 15:01:28,003 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:01:28,301 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:01:28,301 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:01:38,231 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 15:01:38,269 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:01:38,512 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:01:38,513 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:01:43,841 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 15:01:43,875 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:01:44,169 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:01:44,169 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:01:46,582 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 15:01:46,622 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:01:46,870 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:01:46,871 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:01:53,680 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 15:01:53,680 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 15:01:53,681 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:01:53,985 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:01:53,986 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:01:58,255 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:01:58] "GET / HTTP/1.1" 200 -
+2025-06-27 15:01:58,594 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:01:58] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 15:01:59,675 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:01:59] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 15:01:59,707 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:01:59] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 15:01:59,714 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:01:59] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 15:01:59,744 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:01:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 15:01:59,768 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:01:59] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 15:01:59,938 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:01:59] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 15:02:02,156 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:02] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 15:02:02,425 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 15:02:02,433 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:02] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 15:02:02,442 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:02] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 15:02:11,824 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:11] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 15:02:12,081 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:12] "GET / HTTP/1.1" 200 -
+2025-06-27 15:02:12,335 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 15:02:12,368 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:12] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 15:02:12,382 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:12] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 15:02:12,395 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:12] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 15:02:12,399 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:12] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 15:02:12,404 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:12] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 15:02:12,487 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:12] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 15:02:15,511 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:15] "[35m[1mGET /cart HTTP/1.1[0m" 500 -
+2025-06-27 15:02:15,734 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:15] "[36mGET /cart?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-06-27 15:02:15,833 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:15] "[36mGET /cart?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-06-27 15:02:16,162 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:16] "GET /cart?__debugger__=yes&cmd=resource&f=console.png&s=reCcmeSLJs2oGaMWtyQA HTTP/1.1" 200 -
+2025-06-27 15:02:16,343 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:02:16] "GET /cart?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1" 200 -
+2025-06-27 15:03:30,936 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 15:03:30,985 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:03:31,241 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:03:31,241 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:03:43,029 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 15:03:43,064 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:03:43,379 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:03:43,380 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:03:50,636 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 15:03:50,672 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:03:51,092 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:03:51,093 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:03:53,159 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 15:03:53,265 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:03:54,243 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:03:54,247 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:03:55,973 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 15:03:56,043 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:03:56,578 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:03:56,578 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:03:59,889 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 15:03:59,925 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:04:00,228 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:04:00,228 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:04:02,966 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 15:04:03,012 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:04:03,295 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:04:03,295 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:04:10,149 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 15:04:10,186 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:04:10,436 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:04:10,436 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:04:45,223 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 15:04:45,257 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:04:45,542 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:04:45,543 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:04:47,855 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 15:04:47,893 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 15:04:48,180 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 15:04:48,181 - werkzeug - INFO -  * Debugger PIN: 317-649-247
+2025-06-27 15:04:51,410 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:04:51] "[32mGET /cart HTTP/1.1[0m" 302 -
+2025-06-27 15:04:52,735 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:04:52] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 15:04:53,070 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:04:53] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 15:04:53,797 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:04:53] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 15:04:53,860 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:04:53] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 15:05:02,050 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:02] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 15:05:02,245 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:02] "GET / HTTP/1.1" 200 -
+2025-06-27 15:05:02,539 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:02] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 15:05:02,543 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:02] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 15:05:02,644 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:02] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 15:05:02,664 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:02] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 15:05:02,668 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:02] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 15:05:03,479 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:03] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 15:05:04,203 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:04] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 15:05:04,435 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:04] "[35m[1mGET /cart HTTP/1.1[0m" 500 -
+2025-06-27 15:05:04,639 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:04] "[36mGET /cart?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-06-27 15:05:04,650 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:04] "[36mGET /cart?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-06-27 15:05:04,830 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:04] "GET /cart?__debugger__=yes&cmd=resource&f=console.png&s=l4i4xAQLkPRPCUZJJO7z HTTP/1.1" 200 -
+2025-06-27 15:05:05,036 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 15:05:05] "[36mGET /cart?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -

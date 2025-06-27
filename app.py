@@ -267,45 +267,103 @@ def add_to_cart_route():
 # --- Rotas para ajustar quantidade ou remover item no carrinho (AJAX) ---
 @app.route('/update-cart-quantity', methods=['POST'])
 def update_cart_quantity_route():
+    logger.debug("Received request to update cart quantity.")
     user_id = session.get('user_id')
+    
     if not user_id:
+        logger.warning("Attempt to update cart without login. Returning 401.")
         return jsonify({'success': False, 'message': 'User not logged in.'}), 401
 
-    order_item_id = request.json.get('orderItemId', type=int)
-    new_quantity = request.json.get('quantity', type=int)
+    order_item_id_str = request.json.get('order_item_id')
+    new_quantity_str = request.json.get('quantity')
 
-    # Validate inputs
-    if not isinstance(order_item_id, int) or not isinstance(new_quantity, int) or new_quantity < 0:
-        return jsonify({'success': False, 'message': 'Invalid data provided.'}), 400
+    try:
+        order_item_id = int(order_item_id_str)
+        new_quantity = int(new_quantity_str)
+    except (ValueError, TypeError):
+        logger.error(f"Invalid data type received. order_item_id: {order_item_id_str}, quantity: {new_quantity_str}. Returning 400.")
+        return jsonify({'success': False, 'message': 'Invalid data provided. Expected integers.'}), 400
 
-    if new_quantity == 0:
-        # If quantity is 0, remove the item
-        success = remove_book_from_cart(get_db_connection, order_item_id)
-    else:
-        # Otherwise, update the quantity
-        success = update_cart_item_quantity(get_db_connection, order_item_id, new_quantity)
-    
-    if success:
-        return jsonify({'success': True, 'message': 'Cart updated successfully!'})
-    else:
-        return jsonify({'success': False, 'message': 'Failed to update cart.'}), 500
+    logger.debug(f"Update Cart: order_item_id={order_item_id}, new_quantity={new_quantity}")
+
+    if new_quantity < 0:
+        logger.error(f"Invalid quantity: {new_quantity}. Quantity cannot be negative. Returning 400.")
+        return jsonify({'success': False, 'message': 'Quantity cannot be negative.'}), 400
+
+    conn = get_db_connection() # Abre a conexão AQUI
+    try:
+        if new_quantity == 0:
+            logger.debug(f"Quantity is 0 for order_item_id {order_item_id}. Attempting to remove item.")
+            success = remove_book_from_cart(conn, order_item_id) # PASSA A CONEXÃO AQUI
+        else:
+            logger.debug(f"Updating quantity for order_item_id {order_item_id} to {new_quantity}.")
+            success = update_cart_item_quantity(conn, order_item_id, new_quantity) # PASSA A CONEXÃO AQUI
+        
+        if success:
+            # Recalcula o preço total do carrinho após a atualização/remoção
+            cart_items = get_cart_items_details_for_user(conn, user_id)
+            new_total_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items) if cart_items else 0.0
+
+            new_item_price = 0.0
+            for item in cart_items:
+                if item['orderItemId'] == order_item_id:
+                    new_item_price = item['itemPrice'] * item['quantity']
+                    break
+            
+            logger.debug(f"Cart updated successfully. new_item_price: {new_item_price}, new_total_price: {new_total_price}")
+            return jsonify({
+                'success': True,
+                'message': 'Cart updated successfully!',
+                'new_item_price': new_item_price,
+                'new_total_price': new_total_price
+            })
+        else:
+            logger.error(f"Failed to update cart for order_item_id {order_item_id}. Returning 500.")
+            return jsonify({'success': False, 'message': 'Failed to update cart.'}), 500
+    except Exception as e:
+        logger.exception(f"Exception occurred during cart quantity update for order_item_id {order_item_id}: {e}")
+        return jsonify({'success': False, 'message': f'Server error: {str(e)}'}), 500
+    finally:
+        conn.close() # Garante que a conexão com o banco de dados é fechada
 
 @app.route('/remove-from-cart', methods=['POST'])
 def remove_from_cart_route():
+    logger.debug("Received request to remove item from cart.")
     user_id = session.get('user_id')
     if not user_id:
+        logger.warning("Attempt to remove item without login. Returning 401.")
         return jsonify({'success': False, 'message': 'User not logged in.'}), 401
 
-    order_item_id = request.json.get('orderItemId', type=int)
-    if not isinstance(order_item_id, int):
-        return jsonify({'success': False, 'message': 'Invalid order item ID.'}), 400
+    order_item_id_str = request.json.get('order_item_id')
+    try:
+        order_item_id = int(order_item_id_str)
+    except (ValueError, TypeError):
+        logger.error(f"Invalid data type received for order_item_id: {order_item_id_str}. Returning 400.")
+        return jsonify({'success': False, 'message': 'Invalid order item ID. Expected an integer.'}), 400
+    
+    logger.debug(f"Remove Cart Item: order_item_id={order_item_id}")
 
-    success = remove_book_from_cart(get_db_connection, order_item_id)
-    if success:
-        return jsonify({'success': True, 'message': 'Item removed from cart successfully!'})
-    else:
-        return jsonify({'success': False, 'message': 'Failed to remove item.'}), 500
+    conn = get_db_connection() # Abre a conexão AQUI
+    try:
+        success = remove_book_from_cart(conn, order_item_id) # PASSA A CONEXÃO AQUI
+        if success:
+            cart_items = get_cart_items_details_for_user(conn, user_id)
+            new_total_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items) if cart_items else 0.0
 
+            logger.debug(f"Item removed successfully. New total price: {new_total_price}")
+            return jsonify({
+                'success': True,
+                'message': 'Item removed from cart successfully!',
+                'new_total_price': new_total_price
+            })
+        else:
+            logger.error(f"Failed to remove item {order_item_id}. Returning 500.")
+            return jsonify({'success': False, 'message': 'Failed to remove item.'}), 500
+    except Exception as e:
+        logger.exception(f"Exception occurred during item removal for order_item_id {order_item_id}: {e}")
+        return jsonify({'success': False, 'message': f'Server error: {str(e)}'}), 500
+    finally:
+        conn.close()
 # --- Rota para finalizar o carrinho (simular checkout) ---
 @app.route('/checkout', methods=['POST'])
 def checkout_route():
