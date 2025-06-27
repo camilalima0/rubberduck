@@ -405,3 +405,1905 @@
 2025-06-25 21:59:54,022 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:59:54] "GET /static/images/carrinho.png HTTP/1.1" 200 -
 2025-06-25 21:59:54,127 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:59:54] "GET /static/css/style.css HTTP/1.1" 200 -
 2025-06-25 21:59:54,129 - werkzeug - INFO - 127.0.0.1 - - [25/Jun/2025 21:59:54] "GET /static/images/logo.png HTTP/1.1" 200 -
+2025-06-27 17:26:55,490 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 17:26:55,490 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 17:26:55,491 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 17:26:55,751 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 17:26:55,752 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 17:27:00,715 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:00] "GET / HTTP/1.1" 200 -
+2025-06-27 17:27:01,458 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:01] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:01,460 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:01] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 17:27:01,538 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:01] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:01,554 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:01] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:01,570 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:01] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:01,575 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:01] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:01,797 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:01] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:03,628 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:03] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 17:27:03,894 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:03] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 17:27:03,898 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:03] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:03,904 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:03] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:12,096 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:12] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 17:27:12,409 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:12] "GET / HTTP/1.1" 200 -
+2025-06-27 17:27:12,718 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:12] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:12,780 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:12] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:12,780 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:12] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:12,781 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:12] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:12,928 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:12] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 17:27:12,945 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:12] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:13,006 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:13] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:14,392 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:14] "GET /cart HTTP/1.1" 200 -
+2025-06-27 17:27:14,629 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 17:27:14,652 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:14] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 17:27:14,653 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:27:14] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 17:32:34,375 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:32:34] "GET /cart HTTP/1.1" 200 -
+2025-06-27 17:32:34,781 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:32:34] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 17:32:34,797 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:32:34] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 17:32:34,808 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 17:32:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 17:32:35,687 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 17:32:35,723 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 17:32:35,971 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 17:32:35,972 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 17:48:43,580 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 17:48:43,612 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 17:48:43,850 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 17:48:43,851 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 17:58:08,533 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 17:58:08,596 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 17:58:08,937 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 17:58:08,937 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 17:58:42,130 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 17:58:42,171 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 17:59:41,668 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:00:40,651 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 18:00:40,651 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 18:00:40,652 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:00:40,895 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:00:40,896 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:00:46,579 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:46] "GET / HTTP/1.1" 200 -
+2025-06-27 18:00:47,147 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:00:47,182 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:47] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:47,192 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:47] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:47,207 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:47] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:47,229 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:47] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:47,231 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:47] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:47,238 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:47] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:49,237 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:49] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 18:00:49,652 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:00:49,661 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:49] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:49,672 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:49] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:55,303 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:55] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 18:00:55,518 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:55] "GET / HTTP/1.1" 200 -
+2025-06-27 18:00:55,762 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:00:55,784 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:55] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:55,786 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:55] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:55,788 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:55] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:55,796 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:55] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:55,799 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:55] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:55,799 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:55] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:57,838 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:00:57,839 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:00:57,839 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:00:57,840 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x791d660b9780>, <sqlite3.Row object at 0x791d660b9660>]
+2025-06-27 18:00:57,840 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:00:57,840 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:00:57,840 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x791d660b9780>, <sqlite3.Row object at 0x791d660b9660>]
+2025-06-27 18:00:57,841 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:00:57,848 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:57] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:00:58,092 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:00:58,098 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:58] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:00:58,106 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:00:58] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:01:20,797 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:01:20] "[35m[1mPOST /update-cart-quantity HTTP/1.1[0m" 500 -
+2025-06-27 18:02:21,947 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:02:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:03:11,515 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:03:11,517 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:03:11,517 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:03:11,518 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x791d660bba30>, <sqlite3.Row object at 0x791d660bbfa0>]
+2025-06-27 18:03:11,518 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:03:11,518 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:03:11,520 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x791d660bba30>, <sqlite3.Row object at 0x791d660bbfa0>]
+2025-06-27 18:03:11,520 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:03:11,527 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:03:11] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:03:11,930 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:03:11] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 18:03:11,942 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:03:11] "GET /static/images/logo.png HTTP/1.1" 200 -
+2025-06-27 18:03:11,944 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:03:11] "GET /static/images/carrinho.png HTTP/1.1" 200 -
+2025-06-27 18:03:43,293 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:03:43,293 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:03:43,293 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:03:43,294 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x791d660696f0>, <sqlite3.Row object at 0x791d660683d0>]
+2025-06-27 18:03:43,294 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:03:43,294 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:03:43,295 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x791d660696f0>, <sqlite3.Row object at 0x791d660683d0>]
+2025-06-27 18:03:43,295 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:03:43,303 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:03:43] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:03:43,819 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:03:43] "GET /static/images/carrinho.png HTTP/1.1" 200 -
+2025-06-27 18:03:43,820 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:03:43] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 18:03:43,822 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:03:43] "GET /static/images/logo.png HTTP/1.1" 200 -
+2025-06-27 18:04:52,123 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:04:52,123 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:04:52,123 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:04:52,123 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x791d66aee230>, <sqlite3.Row object at 0x791d66aee6e0>]
+2025-06-27 18:04:52,124 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:04:52,124 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:04:52,124 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x791d66aee230>, <sqlite3.Row object at 0x791d66aee6e0>]
+2025-06-27 18:04:52,124 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:04:52,131 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:04:52] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:04:52,609 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:04:52] "GET /static/images/logo.png HTTP/1.1" 200 -
+2025-06-27 18:04:52,645 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:04:52] "GET /static/images/carrinho.png HTTP/1.1" 200 -
+2025-06-27 18:04:52,647 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:04:52] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 18:05:07,011 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:05:07,011 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:05:07,011 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:05:07,012 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x791d660bbe80>, <sqlite3.Row object at 0x791d660b8100>]
+2025-06-27 18:05:07,012 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:05:07,012 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:05:07,012 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x791d660bbe80>, <sqlite3.Row object at 0x791d660b8100>]
+2025-06-27 18:05:07,012 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:05:07,013 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:07] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:05:07,258 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:05:07,372 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:07] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:05:07,390 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:07] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:05:32,995 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:05:32,996 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:05:32,996 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:05:32,996 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x791d66aec6a0>, <sqlite3.Row object at 0x791d66068760>]
+2025-06-27 18:05:32,996 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:05:32,997 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:05:32,997 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x791d66aec6a0>, <sqlite3.Row object at 0x791d66068760>]
+2025-06-27 18:05:32,997 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:05:33,005 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:33] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:05:33,441 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:33] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:05:33,449 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:33] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:05:33,477 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:33] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 18:05:49,841 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:05:49,842 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:05:49,842 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:05:49,842 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x791d6606a8c0>, <sqlite3.Row object at 0x791d66069c00>]
+2025-06-27 18:05:49,842 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:05:49,843 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:05:49,843 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x791d6606a8c0>, <sqlite3.Row object at 0x791d66069c00>]
+2025-06-27 18:05:49,843 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:05:49,851 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:49] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:05:50,096 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:50] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 18:05:50,107 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:50] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:05:50,196 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:50] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:05:54,949 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:05:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:06:24,855 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:06:24,856 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:06:24,856 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:06:24,857 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x791d660b86d0>, <sqlite3.Row object at 0x791d660bb3d0>]
+2025-06-27 18:06:24,859 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:06:24,859 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:06:24,859 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x791d660b86d0>, <sqlite3.Row object at 0x791d660bb3d0>]
+2025-06-27 18:06:24,859 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:06:24,860 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:06:24] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:06:25,136 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:06:25] "GET /static/images/carrinho.png HTTP/1.1" 200 -
+2025-06-27 18:06:25,140 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:06:25] "GET /static/images/logo.png HTTP/1.1" 200 -
+2025-06-27 18:06:25,155 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:06:25] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 18:06:44,657 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:06:44,657 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:06:44,657 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:06:44,658 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x791d660b99c0>, <sqlite3.Row object at 0x791d660bb9d0>]
+2025-06-27 18:06:44,658 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:06:44,658 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:06:44,658 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x791d660b99c0>, <sqlite3.Row object at 0x791d660bb9d0>]
+2025-06-27 18:06:44,658 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:06:44,659 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:06:44] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:06:44,928 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:06:44] "GET /static/images/carrinho.png HTTP/1.1" 200 -
+2025-06-27 18:06:44,938 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:06:44] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 18:06:45,025 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:06:45] "GET /static/images/logo.png HTTP/1.1" 200 -
+2025-06-27 18:08:36,421 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:08:36,421 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:08:36,421 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:08:36,422 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x791d6606af80>, <sqlite3.Row object at 0x791d6606b250>]
+2025-06-27 18:08:36,422 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:08:36,422 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:08:36,423 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x791d6606af80>, <sqlite3.Row object at 0x791d6606b250>]
+2025-06-27 18:08:36,423 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:08:36,430 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:08:36] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:08:36,881 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:08:36] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 18:08:36,913 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:08:36] "GET /static/images/logo.png HTTP/1.1" 200 -
+2025-06-27 18:08:36,924 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:08:36] "GET /static/images/carrinho.png HTTP/1.1" 200 -
+2025-06-27 18:09:12,920 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:09:12] "[35m[1mPOST /update-cart-quantity HTTP/1.1[0m" 500 -
+2025-06-27 18:19:47,528 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:19:47,562 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:19:47,805 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:19:47,805 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:21:03,189 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:21:03,260 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:21:03,651 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:21:03,652 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:21:07,451 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:07] "[32mGET /cart HTTP/1.1[0m" 302 -
+2025-06-27 18:21:07,742 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:07] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 18:21:08,121 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:21:08,127 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:08] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:08,131 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:08] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:17,863 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 18:21:17,863 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 18:21:17,863 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:21:18,122 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:21:18,122 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:21:20,722 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:20] "GET / HTTP/1.1" 200 -
+2025-06-27 18:21:20,988 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:21:21,180 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:21] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:21,193 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:21] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:21,224 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:21] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:21,231 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:21] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:21,240 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:21] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:21,241 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:21] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:23,738 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:23] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 18:21:23,972 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:23] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:21:23,975 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:23] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:23,979 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:23] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:28,321 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:28] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 18:21:28,606 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:28] "GET / HTTP/1.1" 200 -
+2025-06-27 18:21:28,857 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:28] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:28,859 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:28] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:28,863 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:21:28,866 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:28] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:28,868 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:28] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:28,877 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:28] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:29,083 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:29] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:21:30,673 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:21:30,673 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:21:30,673 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:21:30,674 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7da0ae035420>, <sqlite3.Row object at 0x7da0ae0341f0>]
+2025-06-27 18:21:30,674 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:21:30,674 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:21:30,674 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7da0ae035420>, <sqlite3.Row object at 0x7da0ae0341f0>]
+2025-06-27 18:21:30,674 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:21:30,695 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:30] "[35m[1mGET /cart HTTP/1.1[0m" 500 -
+2025-06-27 18:21:30,934 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:30] "[36mGET /cart?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:21:31,015 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:31] "[36mGET /cart?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-06-27 18:21:31,462 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:31] "GET /cart?__debugger__=yes&cmd=resource&f=console.png&s=ntecDWfxEkfiH2CdmOXr HTTP/1.1" 200 -
+2025-06-27 18:21:31,678 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:21:31] "[36mGET /cart?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-06-27 18:22:23,697 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:22:23,735 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:22:23,988 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:22:23,988 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:22:26,502 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:22:26,540 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:22:26,777 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:22:26,777 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:22:27,963 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:27] "[32mGET /cart HTTP/1.1[0m" 302 -
+2025-06-27 18:22:28,178 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:28] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 18:22:28,428 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:28] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:22:28,428 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:22:28,429 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:28] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:22:34,155 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:34] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 18:22:34,389 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:34] "GET / HTTP/1.1" 200 -
+2025-06-27 18:22:34,659 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:34] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:22:34,665 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:34] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:22:34,668 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:34] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:22:34,677 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:34] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:22:34,687 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:22:34,693 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:34] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:22:34,905 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:34] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:22:37,704 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:22:37,704 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:22:37,704 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:22:37,705 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x73c32d2f9c90>, <sqlite3.Row object at 0x73c32b4242e0>]
+2025-06-27 18:22:37,705 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:22:37,705 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:22:37,705 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x73c32d2f9c90>, <sqlite3.Row object at 0x73c32b4242e0>]
+2025-06-27 18:22:37,706 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:22:37,724 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:37] "[35m[1mGET /cart HTTP/1.1[0m" 500 -
+2025-06-27 18:22:37,971 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:37] "[36mGET /cart?__debugger__=yes&cmd=resource&f=style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:22:37,982 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:37] "[36mGET /cart?__debugger__=yes&cmd=resource&f=debugger.js HTTP/1.1[0m" 304 -
+2025-06-27 18:22:38,208 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:38] "GET /cart?__debugger__=yes&cmd=resource&f=console.png&s=f8jnMJ3bDYuHDRgRBvUR HTTP/1.1" 200 -
+2025-06-27 18:22:38,418 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:22:38] "[36mGET /cart?__debugger__=yes&cmd=resource&f=console.png HTTP/1.1[0m" 304 -
+2025-06-27 18:22:54,328 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/cart_manager.py', reloading
+2025-06-27 18:22:54,366 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:22:55,719 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:23:04,241 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:23:06,932 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:23:07,175 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:23:07,175 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:23:33,642 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:33] "[32mGET /cart HTTP/1.1[0m" 302 -
+2025-06-27 18:23:33,866 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:33] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 18:23:34,153 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:34] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:23:34,158 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:34] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:23:34,159 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:34] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:23:42,763 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:42] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 18:23:42,981 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:42] "GET / HTTP/1.1" 200 -
+2025-06-27 18:23:43,263 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:23:43,265 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:43] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:23:43,270 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:43] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:23:43,286 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:43] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:23:43,289 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:43] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:23:43,301 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:43] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:23:43,413 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:43] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:23:46,509 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:23:46,509 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:23:46,509 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:23:46,509 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7aa824963910>, <sqlite3.Row object at 0x7aa8249635e0>]
+2025-06-27 18:23:46,509 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:23:46,511 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:23:46,511 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7aa824963910>, <sqlite3.Row object at 0x7aa8249635e0>]
+2025-06-27 18:23:46,512 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:23:46,528 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:46] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:23:46,765 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:23:46,778 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:46] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:23:46,781 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:23:46] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:25:13,357 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:25:13,397 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:25:13,661 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:25:13,662 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:25:16,332 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:25:16,367 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:25:16,644 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:25:16,645 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:25:20,781 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:25:20,814 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:25:21,092 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:25:21,092 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:25:23,721 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:25:23,763 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:25:24,012 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:25:24,013 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:25:29,597 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:25:29,636 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:25:29,935 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:25:29,935 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:25:33,894 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:25:33,933 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:25:34,182 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:25:34,183 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:25:44,226 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:25:44,262 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:25:44,528 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:25:44,529 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:25:47,080 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:25:47,116 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:25:47,363 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:25:47,364 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:25:51,682 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:25:51,718 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:25:51,993 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:25:51,994 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:25:54,335 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:25:54,370 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:25:54,622 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:25:54,622 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:25:57,214 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:25:57] "[32mGET /cart HTTP/1.1[0m" 302 -
+2025-06-27 18:25:57,519 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:25:57] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 18:25:57,919 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:25:57] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:25:57,922 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:25:57] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:25:57,945 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:25:57] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:03,839 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:03] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 18:26:04,147 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:04] "GET / HTTP/1.1" 200 -
+2025-06-27 18:26:04,522 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:04] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:04,525 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:04] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:04,758 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:26:04,760 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:04] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:04,760 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:04] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:04,783 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:04] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:04,987 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:04] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:08,088 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:26:08,088 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:26:08,089 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:26:08,089 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7c3019767010>, <sqlite3.Row object at 0x7c3019766d40>]
+2025-06-27 18:26:08,089 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:26:08,089 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:26:08,090 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7c3019767010>, <sqlite3.Row object at 0x7c3019766d40>]
+2025-06-27 18:26:08,090 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:26:08,096 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:08] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:26:08,348 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:08] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:08,353 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:08] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:08,421 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:26:12,356 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:12] "[35m[1mPOST /update-cart-quantity HTTP/1.1[0m" 500 -
+2025-06-27 18:26:37,451 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 18:26:37,451 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 18:26:37,452 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:26:37,721 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:26:37,721 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:26:39,949 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:39] "GET / HTTP/1.1" 200 -
+2025-06-27 18:26:40,295 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:40] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:40,300 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:40] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:40,310 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:40] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:40,307 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:40] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:40,305 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:40] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:26:40,310 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:40] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:40,608 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:40] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:43,109 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:43] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 18:26:43,340 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:26:43,344 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:43] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:43,349 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:43] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:48,973 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:48] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 18:26:49,195 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:49] "GET / HTTP/1.1" 200 -
+2025-06-27 18:26:49,450 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:26:49,458 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:49] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:49,461 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:49] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:49,464 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:49] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:49,468 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:49] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:49,470 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:49] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:49,686 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:49] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:51,098 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:26:51,098 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:26:51,098 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:26:51,098 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x70f7a0c174f0>, <sqlite3.Row object at 0x70f79f23ec80>]
+2025-06-27 18:26:51,099 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:26:51,099 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:26:51,099 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x70f7a0c174f0>, <sqlite3.Row object at 0x70f79f23ec80>]
+2025-06-27 18:26:51,099 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:26:51,106 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:51] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:26:51,374 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:26:51,375 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:51] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:51,397 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:51] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:26:54,859 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:26:54] "[35m[1mPOST /update-cart-quantity HTTP/1.1[0m" 500 -
+2025-06-27 18:44:10,114 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:44:10,176 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:44:10,455 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:44:10,455 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:44:11,910 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:44:11,951 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:44:12,212 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:44:12,212 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:44:45,873 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:44:45,911 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:44:46,174 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:44:46,174 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:44:48,517 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:44:48,556 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:44:48,813 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:44:48,813 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:47:04,672 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:47:04,710 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:47:04,961 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:47:04,961 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:47:22,485 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:47:22,521 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:47:22,784 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:47:22,784 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:48:00,186 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:48:00,227 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:48:00,475 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:48:00,475 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:48:54,000 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:48:54,036 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:48:54,293 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:48:54,294 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:49:05,436 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:49:05,475 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:49:05,762 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:49:05,763 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:49:24,476 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:49:24,535 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:49:25,130 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:49:25,131 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:49:29,090 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:49:29,125 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:49:29,404 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:49:29,405 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:50:11,633 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:50:11,669 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:50:11,965 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:50:11,965 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:50:14,379 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:50:14,417 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:50:14,661 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:50:14,661 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:50:20,142 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:20] "[32mGET /cart HTTP/1.1[0m" 302 -
+2025-06-27 18:50:20,449 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:20] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 18:50:20,857 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:20] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:50:20,885 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:20] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:50:20,888 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:50:26,097 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:26] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 18:50:26,443 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:26] "GET / HTTP/1.1" 200 -
+2025-06-27 18:50:26,709 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:26] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:50:26,721 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:26] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:50:26,881 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:26] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:50:26,899 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:26] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:50:26,903 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:26] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:50:26,907 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:26] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:50:26,981 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:26] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:50:28,423 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:50:28,423 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:50:28,423 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:50:28,424 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7c0433219210>, <sqlite3.Row object at 0x7c043257f970>]
+2025-06-27 18:50:28,424 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:50:28,424 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:50:28,424 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7c0433219210>, <sqlite3.Row object at 0x7c043257f970>]
+2025-06-27 18:50:28,425 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:50:28,432 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:28] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:50:28,695 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:28] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:50:28,719 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:50:28,834 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:28] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:50:31,930 - app - DEBUG - Attempting to update order item 1 to quantity 9 for user 1
+2025-06-27 18:50:31,934 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:50:31] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 18:56:28,200 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:56:28,243 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:56:28,491 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:56:28,492 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:56:51,072 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:56:51,107 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:56:51,356 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:56:51,357 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:57:02,518 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:57:02,554 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:57:02,799 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:57:02,800 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:57:14,090 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:57:14,232 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:57:14,508 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:57:14,509 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:57:42,055 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:57:42,091 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:57:42,334 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:57:42,335 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:58:05,591 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:58:05,629 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:58:05,882 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:58:05,882 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:58:31,726 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 18:58:31,776 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:58:32,025 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:58:32,029 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:58:42,276 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-06-27 18:58:42,276 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-06-27 18:58:42,277 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 18:58:42,518 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 18:58:42,519 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 18:58:47,828 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:47] "GET / HTTP/1.1" 200 -
+2025-06-27 18:58:48,302 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:58:48,350 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:48] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:48,414 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:48] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:48,420 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:48] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:48,432 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:48] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:48,435 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:48] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:48,641 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:48] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:52,462 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:52] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 18:58:52,718 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:52] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:52,825 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:58:52,831 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:52] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:58,336 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:58] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 18:58:58,568 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:58] "GET / HTTP/1.1" 200 -
+2025-06-27 18:58:58,832 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:58] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:58,836 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:58] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:58,839 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:58] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:58,850 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:58] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:58,852 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:58:58,864 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:58] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 18:58:59,088 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:58:59] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 18:59:00,467 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 18:59:00,467 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 18:59:00,467 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 18:59:00,468 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080bab55720>, <sqlite3.Row object at 0x7080bab57820>]
+2025-06-27 18:59:00,468 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 18:59:00,468 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 18:59:00,469 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7080bab55720>, <sqlite3.Row object at 0x7080bab57820>]
+2025-06-27 18:59:00,469 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 18:59:00,476 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:59:00] "GET /cart HTTP/1.1" 200 -
+2025-06-27 18:59:00,753 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:59:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 18:59:00,762 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:59:00] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 18:59:00,781 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 18:59:00] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:01:16,579 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:16,579 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:16,579 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:16,579 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080bab65090>, <sqlite3.Row object at 0x7080bab645b0>]
+2025-06-27 19:01:16,579 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:16,580 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:16,580 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7080bab65090>, <sqlite3.Row object at 0x7080bab645b0>]
+2025-06-27 19:01:16,580 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 19:01:16,586 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:16] "GET /cart HTTP/1.1" 200 -
+2025-06-27 19:01:16,960 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:01:16,963 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:16] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:01:16,967 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:16] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:01:19,519 - app - DEBUG - Attempting to update order item 2 to quantity 2 for user 1
+2025-06-27 19:01:19,524 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:19,524 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:19,524 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:19,525 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080bab65ba0>, <sqlite3.Row object at 0x7080bab651b0>]
+2025-06-27 19:01:19,525 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:19,525 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:19,526 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:19] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:01:24,190 - app - DEBUG - Attempting to update order item 2 to quantity 3 for user 1
+2025-06-27 19:01:24,194 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:24,194 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:24,194 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:24,195 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080bab65fc0>, <sqlite3.Row object at 0x7080bab67370>]
+2025-06-27 19:01:24,195 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:24,195 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:24,195 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:24] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:01:25,714 - app - DEBUG - Attempting to update order item 1 to quantity 8 for user 1
+2025-06-27 19:01:25,718 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:25,718 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:25,718 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:25,719 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080baba4ac0>, <sqlite3.Row object at 0x7080baba4bb0>]
+2025-06-27 19:01:25,719 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:25,719 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:25,719 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:25] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:01:26,663 - app - DEBUG - Attempting to update order item 1 to quantity 7 for user 1
+2025-06-27 19:01:26,667 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:26,667 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:26,667 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:26,668 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080baba53f0>, <sqlite3.Row object at 0x7080baba5300>]
+2025-06-27 19:01:26,668 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:26,668 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:26,668 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:26] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:01:27,368 - app - DEBUG - Attempting to update order item 1 to quantity 6 for user 1
+2025-06-27 19:01:27,373 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:27,373 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:27,373 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:27,374 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080bb740910>, <sqlite3.Row object at 0x7080bb5606d0>]
+2025-06-27 19:01:27,375 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:27,375 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:27,376 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:27] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:01:27,980 - app - DEBUG - Attempting to update order item 1 to quantity 5 for user 1
+2025-06-27 19:01:27,984 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:27,984 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:27,984 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:27,984 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080bab55780>, <sqlite3.Row object at 0x7080bab556c0>]
+2025-06-27 19:01:27,984 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:27,984 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:27,985 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:27] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:01:28,739 - app - DEBUG - Attempting to update order item 1 to quantity 4 for user 1
+2025-06-27 19:01:28,743 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:28,744 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:28,744 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:28,744 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080ba10ca00>, <sqlite3.Row object at 0x7080bab641c0>]
+2025-06-27 19:01:28,744 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:28,744 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:28,745 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:28] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:01:29,552 - app - DEBUG - Attempting to update order item 1 to quantity 3 for user 1
+2025-06-27 19:01:29,556 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:29,556 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:29,556 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:29,556 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080bab75570>, <sqlite3.Row object at 0x7080bab75780>]
+2025-06-27 19:01:29,557 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:29,557 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:29,557 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:29] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:01:30,200 - app - DEBUG - Attempting to update order item 1 to quantity 2 for user 1
+2025-06-27 19:01:30,205 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:30,205 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:30,205 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:30,206 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080bab67970>, <sqlite3.Row object at 0x7080bab645b0>]
+2025-06-27 19:01:30,206 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:30,206 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:30,207 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:30] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:01:30,982 - app - DEBUG - Attempting to update order item 1 to quantity 1 for user 1
+2025-06-27 19:01:30,986 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:30,986 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:30,987 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:30,987 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080bab66290>, <sqlite3.Row object at 0x7080bab67940>]
+2025-06-27 19:01:30,987 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:30,987 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:30,988 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:30] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:01:32,325 - app - DEBUG - Attempting to update order item 2 to quantity 2 for user 1
+2025-06-27 19:01:32,328 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:32,329 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:32,329 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:32,329 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080bab67b50>, <sqlite3.Row object at 0x7080bab65690>]
+2025-06-27 19:01:32,329 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:32,329 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:32,330 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:32] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:01:32,784 - app - DEBUG - Attempting to update order item 2 to quantity 1 for user 1
+2025-06-27 19:01:32,788 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:01:32,788 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:01:32,788 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:01:32,788 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080bab66200>, <sqlite3.Row object at 0x7080bab66170>]
+2025-06-27 19:01:32,789 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:01:32,789 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:01:32,789 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:01:32] "POST /update-cart-quantity HTTP/1.1" 200 -
+2025-06-27 19:02:46,477 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:02:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:03:31,023 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:03:31] "[33mGET /logoff_link HTTP/1.1[0m" 404 -
+2025-06-27 19:03:32,773 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:03:32,773 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:03:32,773 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:03:32,773 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7080baba5360>, <sqlite3.Row object at 0x7080baba5210>]
+2025-06-27 19:03:32,774 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:03:32,774 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:03:32,774 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7080baba5360>, <sqlite3.Row object at 0x7080baba5210>]
+2025-06-27 19:03:32,774 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 19:03:32,775 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:03:32] "GET /cart HTTP/1.1" 200 -
+2025-06-27 19:03:33,086 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:03:33] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-06-27 19:05:27,858 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:05:27,950 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:05:32,043 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:05:36,216 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:06:26,757 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:06:31,881 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:06:32,145 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:06:32,146 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:06:36,699 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:06:36,772 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:06:37,199 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:06:37,200 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:06:40,248 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:06:40,284 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:06:40,548 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:06:40,549 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:06:46,756 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:06:46,799 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:06:47,057 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:06:47,057 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:06:51,278 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:06:51,316 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:06:51,557 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:06:51,558 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:07:39,411 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:07:39,447 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:07:39,726 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:07:39,726 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:07:43,668 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:43] "[32mGET /cart HTTP/1.1[0m" 302 -
+2025-06-27 19:07:43,969 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:43] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 19:07:44,334 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:44] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:07:44,349 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:44] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:07:44,452 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:44] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:07:50,964 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:50] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 19:07:51,273 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:51] "GET / HTTP/1.1" 200 -
+2025-06-27 19:07:51,556 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:51] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 19:07:51,729 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:07:51,750 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:51] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:07:51,785 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:51] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:07:51,812 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:51] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 19:07:51,819 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:51] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 19:07:51,839 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:51] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 19:07:53,435 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:07:53] "[31m[1mGET /logoff HTTP/1.1[0m" 405 -
+2025-06-27 19:08:18,542 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:08:18,585 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:08:18,865 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:08:18,866 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:08:20,521 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:20] "GET /logoff HTTP/1.1" 200 -
+2025-06-27 19:08:20,791 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:08:20,795 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:20] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:20,799 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:20] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:20,804 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:20] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:20,807 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:20] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:20,822 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:20] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:21,008 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:21] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:22,531 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:22] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 19:08:22,787 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:08:22,794 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:22] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:22,808 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:22] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:28,331 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:28] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-06-27 19:08:38,709 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:38] "[31m[1mPOST /login HTTP/1.1[0m" 401 -
+2025-06-27 19:08:45,209 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:45] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 19:08:45,433 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:45] "GET / HTTP/1.1" 200 -
+2025-06-27 19:08:45,668 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:08:45,695 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:45] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:45,696 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:45] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:45,705 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:45] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:45,716 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:45] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:45,717 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:45] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:45,912 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:45] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:48,941 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:48] "GET /logoff HTTP/1.1" 200 -
+2025-06-27 19:08:49,202 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:49] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:08:49,211 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:49] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:49,213 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:49] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:49,245 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:49] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:49,256 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:49] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:49,266 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:49] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 19:08:49,441 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:08:49] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 19:12:35,330 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:12:35,364 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:12:35,622 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:12:35,623 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:12:40,510 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:12:40,548 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:12:40,921 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:12:40,921 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:12:43,764 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:12:43,802 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:12:44,096 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:12:44,096 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:12:48,413 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:12:48,450 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:12:48,695 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:12:48,695 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:13:03,611 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:13:03,658 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:13:07,645 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:13:11,201 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:13:12,384 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:13:12,662 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:13:12,663 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:13:59,745 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:13:59,784 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:14:00,052 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:14:00,055 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 19:14:04,240 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:14:04] "GET /logoff HTTP/1.1" 200 -
+2025-06-27 19:14:04,748 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:14:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:14:04,757 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:14:04] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:14:04,780 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:14:04] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 19:14:04,787 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:14:04] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:14:04,789 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:14:04] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 19:14:04,792 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:14:04] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 19:14:05,036 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:14:05] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 19:17:00,349 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:00] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 19:17:00,751 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:00] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:17:00,760 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:00] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:17:00,774 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:17:09,248 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:09] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 19:17:09,552 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:09] "GET / HTTP/1.1" 200 -
+2025-06-27 19:17:09,818 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:09] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 19:17:09,841 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:09] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 19:17:09,980 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:17:10,033 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:10] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:17:10,036 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:10] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 19:17:10,047 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:10] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:17:10,268 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:17:10] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:06,933 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:18:06,933 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:18:06,933 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:18:06,934 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7a5af4154f10>, <sqlite3.Row object at 0x7a5af4156620>]
+2025-06-27 19:18:06,934 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 19:18:06,935 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"A" is for Alibi', itemPrice='25.9'
+2025-06-27 19:18:06,935 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7a5af4154f10>, <sqlite3.Row object at 0x7a5af4156620>]
+2025-06-27 19:18:06,935 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-06-27 19:18:06,945 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:06] "GET /cart HTTP/1.1" 200 -
+2025-06-27 19:18:07,187 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:18:07,192 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:07] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:07,195 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:07] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:13,841 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:13] "[32mPOST /checkout HTTP/1.1[0m" 302 -
+2025-06-27 19:18:14,172 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:14] "GET / HTTP/1.1" 200 -
+2025-06-27 19:18:14,490 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:14] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:14,495 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:14] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:14,496 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:14] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:14,508 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:14] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:14,607 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:14] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:14,615 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:14] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:18:14,717 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:14] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:20,159 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 19:18:20,159 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 19:18:20,160 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 19:18:20,160 - cart_manager - DEBUG - Raw items fetched for user 1: []
+2025-06-27 19:18:20,160 - cart_manager - DEBUG - No items fetched, so cannot test row_factory access.
+2025-06-27 19:18:20,161 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: []
+2025-06-27 19:18:20,161 - app - DEBUG - DEBUG (view_cart): Number of items: 0
+2025-06-27 19:18:20,164 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:20] "GET /cart HTTP/1.1" 200 -
+2025-06-27 19:18:20,403 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:20] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:18:20,407 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:20] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:20,412 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:20] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:27,106 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:27] "GET /logoff HTTP/1.1" 200 -
+2025-06-27 19:18:27,407 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:18:27,412 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:27] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:27,419 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:27] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:27,432 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:27] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:27,443 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:27] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:27,446 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:27] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:27,662 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:27] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:28,767 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:28] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 19:18:29,021 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:29] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 19:18:29,027 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:29] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 19:18:29,032 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 19:18:29] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 19:35:08,981 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 19:35:09,019 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 19:35:09,317 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 19:35:09,317 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:04:55,347 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:04:55,382 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:04:56,391 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:04:56,392 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:05:14,116 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:05:14,290 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:05:15,314 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:05:15,315 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:05:31,071 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:05:31,228 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:05:32,559 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:05:32,559 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:05:53,201 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:05:53,344 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:05:54,326 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:05:54,326 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:06:10,382 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:06:10,583 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:06:11,541 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:06:11,542 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:06:29,409 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:06:29,565 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:06:30,732 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:06:30,733 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:06:36,024 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:06:36,229 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:06:37,983 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:06:37,984 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:06:49,439 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:06:49,627 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:06:50,697 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:06:50,698 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:07:44,812 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:07:45,001 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:07:45,971 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:07:45,971 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:08:57,370 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:08:57,522 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:08:58,574 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:08:58,574 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:09:39,477 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:09:39,661 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:09:40,709 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:09:40,709 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:10:04,915 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:10:05,077 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:10:06,049 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:10:06,049 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:19:40,677 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:19:40] "GET / HTTP/1.1" 200 -
+2025-06-27 20:19:41,221 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:19:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:19:41,249 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:19:41] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:19:41,268 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:19:41] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:19:41,288 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:19:41] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 20:19:41,292 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:19:41] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 20:19:41,320 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:19:41] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 20:19:41,674 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:19:41] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:08,082 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:49:08,222 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:49:09,178 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:49:09,179 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:49:10,594 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:49:10,753 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:49:11,780 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:49:11,780 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:49:19,938 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
+2025-06-27 20:49:20,086 - werkzeug - INFO -  * Restarting with stat
+2025-06-27 20:49:21,068 - werkzeug - WARNING -  * Debugger is active!
+2025-06-27 20:49:21,069 - werkzeug - INFO -  * Debugger PIN: 886-589-180
+2025-06-27 20:49:24,503 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:24] "GET / HTTP/1.1" 200 -
+2025-06-27 20:49:25,336 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:25] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:25,336 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:25] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:25,337 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:49:25,338 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:25] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:25,338 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:25] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:25,338 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:25] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:25,631 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:25] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:27,537 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:27] "GET /login_link HTTP/1.1" 200 -
+2025-06-27 20:49:28,000 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:28] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:28,006 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:49:28,168 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:28] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:41,688 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:41] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-06-27 20:49:41,901 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:41] "GET / HTTP/1.1" 200 -
+2025-06-27 20:49:42,150 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:42] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:49:42,155 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:42] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:42,159 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:42] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:42,161 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:42] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:42,164 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:42] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:42,168 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:42] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:42,369 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:42] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:45,539 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 20:49:45,540 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 20:49:45,540 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 20:49:45,540 - cart_manager - DEBUG - Raw items fetched for user 1: []
+2025-06-27 20:49:45,541 - cart_manager - DEBUG - No items fetched, so cannot test row_factory access.
+2025-06-27 20:49:45,541 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: []
+2025-06-27 20:49:45,541 - app - DEBUG - DEBUG (view_cart): Number of items: 0
+2025-06-27 20:49:45,549 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:45] "GET /cart HTTP/1.1" 200 -
+2025-06-27 20:49:45,814 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:45] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:45,815 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:45] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:45,819 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:49:48,182 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:48] "GET / HTTP/1.1" 200 -
+2025-06-27 20:49:48,473 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:48] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:48,474 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:48] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:49:48,476 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:48] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:48,480 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:48] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:48,480 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:48] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:48,483 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:48] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:48,700 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:48] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:51,450 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:51] "GET /search-by-genre?genre=horror HTTP/1.1" 200 -
+2025-06-27 20:49:51,789 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:51] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:51,794 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:51] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:49:51,804 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:51] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:51,805 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:51] "[33mGET /No%20Cover HTTP/1.1[0m" 404 -
+2025-06-27 20:49:56,692 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:56] "GET /bookpage/652 HTTP/1.1" 200 -
+2025-06-27 20:49:56,928 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:49:56,931 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:56] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:49:56,935 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:49:56] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:50:01,438 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:01] "[32mPOST /add-to-cart HTTP/1.1[0m" 302 -
+2025-06-27 20:50:01,656 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 20:50:01,657 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 20:50:01,657 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 20:50:01,657 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7ef37c1e86a0>]
+2025-06-27 20:50:01,657 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 20:50:01,657 - cart_manager - DEBUG - Accessing by key successful: bookTitle='All Our Hidden Gifts', itemPrice='94.9'
+2025-06-27 20:50:01,657 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7ef37c1e86a0>]
+2025-06-27 20:50:01,658 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 20:50:01,658 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:01] "GET /cart HTTP/1.1" 200 -
+2025-06-27 20:50:01,908 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:01] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:50:01,933 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:01] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:50:01,934 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:01] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:50:08,177 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 20:50:08,177 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 20:50:08,177 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 20:50:08,178 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7ef37c15c9d0>]
+2025-06-27 20:50:08,178 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 20:50:08,179 - cart_manager - DEBUG - Accessing by key successful: bookTitle='All Our Hidden Gifts', itemPrice='94.9'
+2025-06-27 20:50:08,266 - stripe - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+2025-06-27 20:50:08,266 - stripe - DEBUG - api_version=2025-05-28.basil message='Post details' post_data=line_items[0][price_data][currency]=brl&line_items[0][price_data][product_data][name]=All+Our+Hidden+Gifts&line_items[0][price_data][product_data][images][0]=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fcontent%3Fid%3DLswyEAAAQBAJ%26printsec%3Dfrontcover%26img%3D1%26zoom%3D1%26edge%3Dcurl%26source%3Dgbs_api&line_items[0][price_data][product_data][description]=Quantidade%3A+1&line_items[0][price_data][unit_amount]=9490&line_items[0][quantity]=1&mode=payment&success_url=http%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fsuccess%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=http%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fcancel&metadata[order_id]=2&metadata[user_id]=1
+2025-06-27 20:50:08,268 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.stripe.com:443
+2025-06-27 20:50:08,309 - urllib3.connectionpool - DEBUG - https://api.stripe.com:443 "POST /v1/checkout/sessions HTTP/1.1" 401 217
+2025-06-27 20:50:08,310 - stripe - INFO - message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=401
+2025-06-27 20:50:08,310 - stripe - DEBUG - body='{\n  "error": {\n    "message": "Invalid API Key provided: sk_test_*******************************************************************************************************F0zp",\n    "type": "invalid_request_error"\n  }\n}\n' message='API response body'
+2025-06-27 20:50:08,310 - stripe - INFO - error_code=None error_message='Invalid API Key provided: sk_test_*******************************************************************************************************F0zp' error_param=None error_type=invalid_request_error message='Stripe v1 API error received'
+2025-06-27 20:50:08,310 - app - ERROR - Erro ao criar sessão de checkout com Stripe: Invalid API Key provided: sk_test_*******************************************************************************************************F0zp
+2025-06-27 20:50:08,311 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:08] "[32mPOST /checkout HTTP/1.1[0m" 302 -
+2025-06-27 20:50:08,519 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 20:50:08,520 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 20:50:08,520 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 20:50:08,520 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7ef37d5302b0>]
+2025-06-27 20:50:08,520 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 20:50:08,520 - cart_manager - DEBUG - Accessing by key successful: bookTitle='All Our Hidden Gifts', itemPrice='94.9'
+2025-06-27 20:50:08,520 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7ef37d5302b0>]
+2025-06-27 20:50:08,521 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 20:50:08,521 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:08] "GET /cart HTTP/1.1" 200 -
+2025-06-27 20:50:08,753 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:08] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:50:08,757 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:08] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:50:08,761 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:08] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:50:15,013 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 20:50:15,013 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 20:50:15,013 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 20:50:15,013 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7ef37d4e7bb0>]
+2025-06-27 20:50:15,014 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 20:50:15,014 - cart_manager - DEBUG - Accessing by key successful: bookTitle='All Our Hidden Gifts', itemPrice='94.9'
+2025-06-27 20:50:15,015 - stripe - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+2025-06-27 20:50:15,015 - stripe - DEBUG - api_version=2025-05-28.basil message='Post details' post_data=line_items[0][price_data][currency]=brl&line_items[0][price_data][product_data][name]=All+Our+Hidden+Gifts&line_items[0][price_data][product_data][images][0]=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fcontent%3Fid%3DLswyEAAAQBAJ%26printsec%3Dfrontcover%26img%3D1%26zoom%3D1%26edge%3Dcurl%26source%3Dgbs_api&line_items[0][price_data][product_data][description]=Quantidade%3A+1&line_items[0][price_data][unit_amount]=9490&line_items[0][quantity]=1&mode=payment&success_url=http%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fsuccess%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=http%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fcancel&metadata[order_id]=2&metadata[user_id]=1
+2025-06-27 20:50:15,016 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.stripe.com:443
+2025-06-27 20:50:15,075 - urllib3.connectionpool - DEBUG - https://api.stripe.com:443 "POST /v1/checkout/sessions HTTP/1.1" 401 217
+2025-06-27 20:50:15,076 - stripe - INFO - message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=401
+2025-06-27 20:50:15,076 - stripe - DEBUG - body='{\n  "error": {\n    "message": "Invalid API Key provided: sk_test_*******************************************************************************************************F0zp",\n    "type": "invalid_request_error"\n  }\n}\n' message='API response body'
+2025-06-27 20:50:15,076 - stripe - INFO - error_code=None error_message='Invalid API Key provided: sk_test_*******************************************************************************************************F0zp' error_param=None error_type=invalid_request_error message='Stripe v1 API error received'
+2025-06-27 20:50:15,076 - app - ERROR - Erro ao criar sessão de checkout com Stripe: Invalid API Key provided: sk_test_*******************************************************************************************************F0zp
+2025-06-27 20:50:15,077 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:15] "[32mPOST /checkout HTTP/1.1[0m" 302 -
+2025-06-27 20:50:15,312 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 20:50:15,312 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 20:50:15,313 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 20:50:15,314 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7ef37d531b70>]
+2025-06-27 20:50:15,314 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 20:50:15,314 - cart_manager - DEBUG - Accessing by key successful: bookTitle='All Our Hidden Gifts', itemPrice='94.9'
+2025-06-27 20:50:15,315 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7ef37d531b70>]
+2025-06-27 20:50:15,315 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 20:50:15,316 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:15] "GET /cart HTTP/1.1" 200 -
+2025-06-27 20:50:15,562 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:15] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:50:15,579 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:15] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:50:15,580 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:50:15] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:51:28,166 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 20:51:28,166 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 20:51:28,166 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 20:51:28,167 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7ef37d533430>]
+2025-06-27 20:51:28,167 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 20:51:28,167 - cart_manager - DEBUG - Accessing by key successful: bookTitle='All Our Hidden Gifts', itemPrice='94.9'
+2025-06-27 20:51:28,167 - stripe - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+2025-06-27 20:51:28,168 - stripe - DEBUG - api_version=2025-05-28.basil message='Post details' post_data=line_items[0][price_data][currency]=brl&line_items[0][price_data][product_data][name]=All+Our+Hidden+Gifts&line_items[0][price_data][product_data][images][0]=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fcontent%3Fid%3DLswyEAAAQBAJ%26printsec%3Dfrontcover%26img%3D1%26zoom%3D1%26edge%3Dcurl%26source%3Dgbs_api&line_items[0][price_data][product_data][description]=Quantidade%3A+1&line_items[0][price_data][unit_amount]=9490&line_items[0][quantity]=1&mode=payment&success_url=http%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fsuccess%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=http%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fcancel&metadata[order_id]=2&metadata[user_id]=1
+2025-06-27 20:51:28,168 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.stripe.com:443
+2025-06-27 20:51:28,208 - urllib3.connectionpool - DEBUG - https://api.stripe.com:443 "POST /v1/checkout/sessions HTTP/1.1" 401 217
+2025-06-27 20:51:28,209 - stripe - INFO - message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=401
+2025-06-27 20:51:28,210 - stripe - DEBUG - body='{\n  "error": {\n    "message": "Invalid API Key provided: sk_test_*******************************************************************************************************F0zp",\n    "type": "invalid_request_error"\n  }\n}\n' message='API response body'
+2025-06-27 20:51:28,211 - stripe - INFO - error_code=None error_message='Invalid API Key provided: sk_test_*******************************************************************************************************F0zp' error_param=None error_type=invalid_request_error message='Stripe v1 API error received'
+2025-06-27 20:51:28,211 - app - ERROR - Erro ao criar sessão de checkout com Stripe: Invalid API Key provided: sk_test_*******************************************************************************************************F0zp
+2025-06-27 20:51:28,212 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:51:28] "[32mPOST /checkout HTTP/1.1[0m" 302 -
+2025-06-27 20:51:28,440 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-06-27 20:51:28,441 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-06-27 20:51:28,441 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            b.bookId,
+            b.bookTitle,
+            b.bookCover,
+            oi.itemPrice,
+            oi.quantity,
+            oi.orderItemId,
+            o.orderId
+        FROM
+            orderr AS o
+        JOIN
+            orderItem AS oi ON o.orderId = oi.orderId
+        JOIN
+            book AS b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-06-27 20:51:28,443 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7ef37d530730>]
+2025-06-27 20:51:28,443 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-06-27 20:51:28,444 - cart_manager - DEBUG - Accessing by key successful: bookTitle='All Our Hidden Gifts', itemPrice='94.9'
+2025-06-27 20:51:28,444 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7ef37d530730>]
+2025-06-27 20:51:28,444 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-06-27 20:51:28,445 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:51:28] "GET /cart HTTP/1.1" 200 -
+2025-06-27 20:51:28,706 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:51:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-06-27 20:51:28,715 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:51:28] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-06-27 20:51:28,726 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:51:28] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-06-27 20:52:45,325 - werkzeug - INFO - 127.0.0.1 - - [27/Jun/2025 20:52:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -

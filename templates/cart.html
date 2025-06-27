@@ -6,7 +6,7 @@
   {% if cart_items %}
   <div id = "cart-div" class="container">
       {% for item in cart_items %}
-      <div id = "cart-item{{ item.orderItemId}}" class="cart-item row g-0 shadow bg-body-tertiary rounded margin-1">
+      <div id = "cart-item{{ item.orderItemId}}" class="cart-item row g-0 mb-2 shadow bg-body-tertiary rounded margin-1">
 
         {# Checkbox (for future selection logic) #}
         <div class="checkbox col-md-1 text-center">
@@ -61,9 +61,10 @@
         </div>  
       </div>
 
+      {% endfor %}
   </div>
 
-      {% endfor %}
+      
 
       <div class="row">
         <a class="nav-link active" aria-current="page" href="/">Add more items</a>
@@ -95,18 +96,16 @@
 
 <script>
     document.addEventListener('DOMContentLoaded', function() {
-        // Lógica para os botões de diminuir quantidade
+        // Event Listeners para os botões de Aumentar e Diminuir Quantidade
         document.querySelectorAll('.quantity-minus').forEach(button => {
             button.addEventListener('click', function() {
                 const orderItemId = this.dataset.orderItemId;
                 const quantityInput = document.getElementById(`quantity-input-${orderItemId}`);
-                let currentValue = parseInt(quantityInput.value);
-
-                if (currentValue > 1) { // Garante que a quantidade mínima seja 1
-                    quantityInput.value = currentValue - 1;
-                    // TODO: Chamar função para atualizar no backend e no total do carrinho
-                    updateCartItemQuantity(orderItemId, currentValue - 1);
-                } else if (currentValue === 1) {
+                let currentQuantity = parseInt(quantityInput.value);
+                if (currentQuantity > 1) { // Garante que a quantidade não seja menor que 1
+                    currentQuantity--;
+                    updateCartItemQuantity(orderItemId, currentQuantity);
+                } else if (currentQuantity === 1) {
                     // Se a quantidade for 1 e o usuário clicar em '-', perguntar se quer remover
                     if (confirm("Deseja remover este item do carrinho?")) {
                         removeCartItem(orderItemId);
@@ -115,19 +114,17 @@
             });
         });
 
-        // Lógica para os botões de aumentar quantidade
         document.querySelectorAll('.quantity-plus').forEach(button => {
             button.addEventListener('click', function() {
                 const orderItemId = this.dataset.orderItemId;
                 const quantityInput = document.getElementById(`quantity-input-${orderItemId}`);
-                let currentValue = parseInt(quantityInput.value);
-                quantityInput.value = currentValue + 1;
-                // TODO: Chamar função para atualizar no backend e no total do carrinho
-                updateCartItemQuantity(orderItemId, currentValue + 1);
+                let currentQuantity = parseInt(quantityInput.value);
+                currentQuantity++;
+                updateCartItemQuantity(orderItemId, currentQuantity);
             });
         });
 
-        // Lógica para os botões de remover item
+        // Event Listener para os botões de Remover Item
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', function() {
                 const orderItemId = this.dataset.orderItemId;
@@ -137,80 +134,72 @@
             });
         });
 
-        // --- Funções para interagir com o backend (necessitam de implementação no Flask) ---
-
-        /**
-         * Atualiza a quantidade de um item no carrinho via requisição AJAX.
-         * @param {string} orderItemId - O ID do item no pedido.
-         * @param {number} newQuantity - A nova quantidade do item.
-         */
         function updateCartItemQuantity(orderItemId, newQuantity) {
-            fetch('/update-cart-quantity', { // Sua rota Flask para atualizar o item
+            fetch('/update-cart-quantity', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ order_item_id: orderItemId, quantity: newQuantity }),
+                body: JSON.stringify({ orderItemId: parseInt(orderItemId), quantity: parseInt(newQuantity) }),
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.message || 'Erro de rede desconhecido.');
+                    }).catch(() => {
+                        throw new Error(`Erro de rede: ${response.status} ${response.statusText}`);
+                    });
                 }
                 return response.json();
             })
             .then(data => {
                 if (data.success) {
                     console.log('Quantidade atualizada com sucesso!', data);
-                    // Opcional: Atualizar o preço total do item no frontend
-                    const itemPriceElement = document.getElementById(`cart-price-${orderItemId}`);
-                    if (itemPriceElement) {
-                        // Supondo que 'data.new_item_price' e 'data.new_total_price' venham do backend
-                        itemPriceElement.querySelector('strong').textContent = `R$${data.new_item_price.toFixed(2).replace('.', ',')}`;
-                        document.getElementById('total-price').textContent = data.new_total_price.toFixed(2).replace('.', ',');
-                    }
-                    // Você pode recarregar a página ou atualizar apenas os elementos necessários
-                    // location.reload(); // Descomente se quiser recarregar a página após cada alteração
+                    const quantityInput = document.getElementById(`quantity-input-${orderItemId}`);
+                    quantityInput.value = data.new_quantity; 
+                    document.getElementById('total-price').textContent = data.new_total_cart_price.toFixed(2).replace('.', ',');
+
                 } else {
                     console.error('Erro ao atualizar quantidade:', data.message);
                     alert('Erro ao atualizar quantidade: ' + data.message);
+                    location.reload(); 
                 }
             })
             .catch(error => {
                 console.error('Erro na requisição de atualização:', error);
-                alert('Erro de comunicação com o servidor ao atualizar.');
+                alert('Erro de comunicação com o servidor ao atualizar. Detalhes: ' + error.message);
+                location.reload(); 
             });
         }
 
-        /**
-         * Remove um item do carrinho via requisição AJAX.
-         * @param {string} orderItemId - O ID do item a ser removido.
-         */
         function removeCartItem(orderItemId) {
-            fetch('/remove-from-cart', { // Sua rota Flask para remover o item
+            fetch('/remove-from-cart', {
                 method: 'POST',
                 headers: {
                     'Content-Type': 'application/json',
                 },
-                body: JSON.stringify({ order_item_id: orderItemId }),
+                body: JSON.stringify({ orderItemId: parseInt(orderItemId) }),
             })
             .then(response => {
                 if (!response.ok) {
-                    throw new Error('Network response was not ok');
+                    return response.json().then(errorData => {
+                        throw new Error(errorData.message || 'Erro de rede desconhecido.');
+                    }).catch(() => {
+                        throw new Error(`Erro de rede: ${response.status} ${response.statusText}`);
+                    });
                 }
                 return response.json();
             })
             .then(data => {
                 if (data.success) {
                     console.log('Item removido com sucesso!', data);
-                    // Remover o elemento do DOM
-                    const cartItemDiv = document.getElementById(`cart-item-${orderItemId}`);
+                    const cartItemDiv = document.getElementById(`cart-item${orderItemId}`);
                     if (cartItemDiv) {
                         cartItemDiv.remove();
                     }
-                    // Opcional: Atualizar o subtotal geral do carrinho
-                    document.getElementById('total-price').textContent = data.new_total_price.toFixed(2).replace('.', ',');
+                    
+                    document.getElementById('total-price').textContent = data.new_total_cart_price.toFixed(2).replace('.', ',');
 
-                    // Se o carrinho ficar vazio, mostrar a mensagem de carrinho vazio
                     if (document.querySelectorAll('.cart-item').length === 0) {
                         document.getElementById('cart-div').innerHTML = `
                             <div class="alert alert-info text-center mt-5" role="alert">
@@ -224,11 +213,13 @@
                 } else {
                     console.error('Erro ao remover item:', data.message);
                     alert('Erro ao remover item: ' + data.message);
+                    location.reload();
                 }
             })
             .catch(error => {
                 console.error('Erro na requisição de remoção:', error);
-                alert('Erro de comunicação com o servidor ao remover.');
+                alert('Erro de comunicação com o servidor ao remover. Detalhes: ' + error.message);
+                location.reload();
             });
         }
     });
