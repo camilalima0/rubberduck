@@ -34,8 +34,8 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
 
-stripe.api_key = os.environ.get("STRIPE_SECRET_KEY", "sk_test_pk_test_51RAAO12Kh4hKsxg0LxNLU3vP1a9rGeUcVfl2soBVRPPCsY9jCBC0OaH66HZkx6Gjzxsc8HWwKMB4Q91OnqDheWZE001djNF0zp")
-STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "pk_test_sk_test_51RAAO12Kh4hKsxg074srtWdzstEtMpwOuZuFZo8DHRFclkOxUWjvBjjPAXhAB5N695vsk1htjq1AnbCUitHuiEA900mSDI1QfL")
+stripe.api_key = os.environ.get("STRIPE_SECRET_KEY", "sk_test_51RAAO12Kh4hKsxg074srtWdzstEtMpwOuZuFZo8DHRFclkOxUWjvBjjPAXhAB5N695vsk1htjq1AnbCUitHuiEA900mSDI1QfL")
+STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "pk_test_51RAAO12Kh4hKsxg0LxNLU3vP1a9rGeUcVfl2soBVRPPCsY9jCBC0OaH66HZkx6Gjzxsc8HWwKMB4Q91OnqDheWZE001djNF0zp")
 
 app.config['STRIPE_PUBLIC_KEY'] = STRIPE_PUBLIC_KEY
 
@@ -238,7 +238,7 @@ def view_cart():
         logger.debug(f"DEBUG (view_cart): Items retrieved for cart: {cart_items}")
         logger.debug(f"DEBUG (view_cart): Number of items: {len(cart_items)}")
         
-        total_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items)
+        total_price = sum(item['item_total_price'] * item['quantity'] for item in cart_items)
         
         return render_template('cart.html', cart_items=cart_items, total_price=total_price)
     finally:
@@ -317,13 +317,13 @@ def update_cart_quantity_route():
         
         if success:
             cart_items = get_cart_items_details_for_user(conn, user_id) # **PASSA 'conn'**
-            new_total_cart_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items) if cart_items else 0.0
+            new_total_cart_price = sum(item['item_total_price'] * item['quantity'] for item in cart_items) if cart_items else 0.0
 
             # Calcula o new_item_price para o item específico (se ainda existir)
             new_item_price = 0.0
             for item in cart_items:
                 if item['orderItemId'] == orderItemId:
-                    new_item_price = item['itemPrice'] * item['quantity']
+                    new_item_price = item['item_total_price'] * item['quantity']
                     break
 
             logger.debug(f"Cart updated successfully. new_item_price: {new_item_price}, new_total_cart_price: {new_total_cart_price}")
@@ -366,7 +366,7 @@ def remove_from_cart_route():
 
         if success:
             cart_items = get_cart_items_details_for_user(conn, user_id) # **PASSA 'conn'**
-            new_total_cart_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items) if cart_items else 0.0
+            new_total_cart_price = sum(item['item_total_price'] * item['quantity'] for item in cart_items) if cart_items else 0.0
 
             logger.debug(f"Item removed successfully. New total price: {new_total_cart_price}")
             return jsonify({
@@ -469,6 +469,8 @@ def checkout_success():
 def checkout_cancel():
     flash("Seu pagamento foi cancelado. Você pode tentar novamente.", "info")
     return redirect(url_for('view_cart'))
+
+WEBHOOK_SECRET = 
 
 @app.route('/stripe-webhook', methods=['POST'])
 def stripe_webhook():

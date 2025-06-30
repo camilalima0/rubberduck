@@ -64,7 +64,7 @@ def add_book_to_cart(conn, order_id, book_id, quantity=1):
     else:
         # Insert new order item
         cursor.execute(
-            "INSERT INTO orderItem (orderId, bookId, quantity, itemPrice) VALUES (?, ?, ?, ?)",
+            "INSERT INTO orderItem (orderId, bookId, quantity, item_total_price) VALUES (?, ?, ?, ?)",
             (order_id, book_id, quantity, item_price_at_addition)
         )
         order_item_id = cursor.lastrowid
@@ -100,7 +100,7 @@ def get_cart_items_details_for_user(conn, user_id):
         JOIN
             book b ON oi.bookId = b.bookId
         WHERE
-            o.userId = ? AND o.status = 'pending'
+            o.userId = ? AND o.orderStatus = 'pending'
         ORDER BY
             b.bookTitle ASC
         """
@@ -117,8 +117,8 @@ def get_cart_items_details_for_user(conn, user_id):
             # Tenta acessar por nome para confirmar que sqlite3.Row está funcionando
             try:
                 test_title = first_item['bookTitle']
-                test_price = first_item['itemPrice']
-                logger.debug(f"Accessing by key successful: bookTitle='{test_title}', itemPrice='{test_price}'")
+                test_price = first_item['item_total_price']
+                logger.debug(f"Accessing by key successful: bookTitle='{test_title}', item_total_price='{test_price}'")
             except KeyError as ke:
                 logger.error(f"KeyError: Could not access item by name. This suggests row_factory might not be working: {ke}", exc_info=True)
                 # Se cair aqui, row_factory não está funcionando ou o nome da coluna está errado
