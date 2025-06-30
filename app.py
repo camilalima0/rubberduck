@@ -228,18 +228,21 @@ def view_cart():
     user_id = session.get('user_id')
     if not user_id:
         flash("Please log in to view your cart.", "info")
-        # If not logged in, redirect to login page, remember current URL
-        session['next_url'] = url_for('view_cart') # To redirect back to cart after login
+        session['next_url'] = url_for('view_cart')
         return redirect(url_for('login_link'))
 
-    cart_items = get_cart_items_details_for_user(get_db_connection, user_id)
-    logger.debug(f"DEBUG (view_cart): Items retrieved for cart: {cart_items}")
-    logger.debug(f"DEBUG (view_cart): Number of items: {len(cart_items)}")
-    
-    # Calculate total price based on itemPrice * quantity
-    total_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items)
-    
-    return render_template('cart.html', cart_items=cart_items, total_price=total_price)
+    conn = get_db_connection() # Abre a conexão aqui
+    try:
+        # Passa a conexão (conn) para a função do cart_manager
+        cart_items = get_cart_items_details_for_user(conn, user_id)
+        logger.debug(f"DEBUG (view_cart): Items retrieved for cart: {cart_items}")
+        logger.debug(f"DEBUG (view_cart): Number of items: {len(cart_items)}")
+        
+        total_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items)
+        
+        return render_template('cart.html', cart_items=cart_items, total_price=total_price)
+    finally:
+        conn.close() # Fecha a conexão
 
 # --- Nova Rota para Adicionar Item ao Carrinho ---
 @app.route('/add-to-cart', methods=['POST'])
@@ -257,154 +260,195 @@ def add_to_cart_route():
         flash("Invalid book ID or quantity.", "error")
         return redirect(request.referrer or url_for('home'))
 
-    # 1. Get or Create an active order (cart) for the user
-    order_id = get_active_cart_for_user(get_db_connection, user_id)
-    if not order_id:
-        order_id = create_new_cart(get_db_connection, user_id)
+    conn = get_db_connection() # Abre a conexão aqui
+    try:
+        # 1. Get or Create an active order (cart) for the user
+        order_id = get_active_cart_for_user(conn, user_id) # Passa a conexão
         if not order_id:
-            flash("Failed to create a new cart. Please try again.", "error")
+            order_id = create_new_cart(conn, user_id) # Passa a conexão
+            if not order_id:
+                flash("Failed to create a new cart. Please try again.", "error")
+                return redirect(request.referrer or url_for('home'))
+
+        # 2. Add the book to the order (cart)
+        orderItemId = add_book_to_cart(conn, order_id, book_id, quantity) # Passa a conexão
+
+        if orderItemId:
+            flash("Book added to cart successfully!", "success")
+            return redirect(url_for('view_cart'))
+        else:
+            flash("Failed to add book to cart. Book might not exist.", "error")
             return redirect(request.referrer or url_for('home'))
-
-    # 2. Add the book to the order (cart)
-    orderItemId = add_book_to_cart(get_db_connection, order_id, book_id, quantity)
-
-    if orderItemId:
-        flash("Book added to cart successfully!", "success")
-        return redirect(url_for('view_cart')) # Redirect to the cart page
-    else:
-        flash("Failed to add book to cart. Book might not exist.", "error")
-        return redirect(request.referrer or url_for('home'))
+    finally:
+        conn.close() # Fecha a conexão
 
 # --- Rotas para ajustar quantidade ou remover item no carrinho (AJAX) ---
 @app.route('/update-cart-quantity', methods=['POST'])
 def update_cart_quantity_route():
+    logger.debug("Received request to update cart quantity.")
     user_id = session.get('user_id')
     if not user_id:
         return jsonify({'success': False, 'message': 'User not logged in.'}), 401
 
-    orderItemId = request.json.get('orderItemId')
-    new_quantity = request.json.get('quantity')
+    orderItemId_str = request.json.get('orderItemId') # Use _str para indicar que é string
+    new_quantity_str = request.json.get('quantity') # Use _str para indicar que é string
 
     try:
-        orderItemId = int(orderItemId)
-        new_quantity = int(new_quantity)
+        orderItemId = int(orderItemId_str)
+        new_quantity = int(new_quantity_str)
     except (TypeError, ValueError):
-        return jsonify({'success': False, 'message': 'Invalid data type for orderItemId or quantity.'}), 400
+        logger.error(f"Invalid data type received. orderItemId: {orderItemId_str}, quantity: {new_quantity_str}. Returning 400.")
+        return jsonify({'success': False, 'message': 'Invalid data provided. Expected integers.'}), 400
 
-    # Validate inputs
-    if new_quantity < 0: # A quantidade não pode ser negativa
-        return jsonify({'success': False, 'message': 'Invalid quantity provided.'}), 400
-    
-     # Adicione logs para depuração
-    app.logger.debug(f"Attempting to update order item {orderItemId} to quantity {new_quantity} for user {user_id}")
+    logger.debug(f"Update Cart: orderItemId={orderItemId}, new_quantity={new_quantity}")
 
-    if new_quantity == 0:
-        # If quantity is 0, remove the item
-        success = remove_book_from_cart(get_db_connection, orderItemId)
-    else:
-        # Otherwise, update the quantity
-        success = update_cart_item_quantity(get_db_connection, orderItemId, new_quantity)
+    if new_quantity < 0:
+        logger.error(f"Invalid quantity: {new_quantity}. Quantity cannot be negative. Returning 400.")
+        return jsonify({'success': False, 'message': 'Quantity cannot be negative.'}), 400
     
-    if success:
-        cart_items = get_cart_items_details_for_user(get_db_connection, user_id)
-        new_total_cart_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items)
-        return jsonify({
-            'success': True, 
-            'message': 'Cart updated successfully!',
-            'new_quantity': new_quantity, # Ainda útil para o frontend atualizar o campo de quantidade
-            'new_total_cart_price': new_total_cart_price # Essencial para atualizar o subtotal
-        })
-    else:
-        app.logger.error(f"Failed to update cart for order item {orderItemId} and quantity {new_quantity}")
-        return jsonify({'success': False, 'message': 'Failed to update cart.'}), 500
+    conn = get_db_connection() # Abre a conexão AQUI
+    try:
+        if new_quantity == 0:
+            logger.debug(f"Quantity is 0 for orderItemId {orderItemId}. Attempting to remove item.")
+            success = remove_book_from_cart(conn, orderItemId) # **PASSA 'conn'**
+        else:
+            logger.debug(f"Updating quantity for orderItemId {orderItemId} to {new_quantity}.")
+            success = update_cart_item_quantity(conn, orderItemId, new_quantity) # **PASSA 'conn'**
+        
+        if success:
+            cart_items = get_cart_items_details_for_user(conn, user_id) # **PASSA 'conn'**
+            new_total_cart_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items) if cart_items else 0.0
+
+            # Calcula o new_item_price para o item específico (se ainda existir)
+            new_item_price = 0.0
+            for item in cart_items:
+                if item['orderItemId'] == orderItemId:
+                    new_item_price = item['itemPrice'] * item['quantity']
+                    break
+
+            logger.debug(f"Cart updated successfully. new_item_price: {new_item_price}, new_total_cart_price: {new_total_cart_price}")
+            return jsonify({
+                'success': True, 
+                'message': 'Cart updated successfully!',
+                'new_quantity': new_quantity,
+                'new_item_price': new_item_price, # Envia o preço atualizado do item específico
+                'new_total_cart_price': new_total_cart_price
+            })
+        else:
+            logger.error(f"Failed to update cart for order item {orderItemId} and quantity {new_quantity}")
+            return jsonify({'success': False, 'message': 'Failed to update cart.'}), 500
+    except Exception as e:
+        logger.exception(f"Exception occurred during cart quantity update for orderItemId {orderItemId}: {e}")
+        return jsonify({'success': False, 'message': f'Server error: {str(e)}'}), 500
+    finally:
+        conn.close() # Garante que a conexão com o banco de dados é fechada
 
 @app.route('/remove-from-cart', methods=['POST'])
 def remove_from_cart_route():
+    logger.debug("Received request to remove item from cart.")
     user_id = session.get('user_id')
     if not user_id:
         return jsonify({'success': False, 'message': 'User not logged in.'}), 401
 
-    orderItemId = request.json.get('orderItemId')
+    orderItemId_str = request.json.get('orderItemId')
 
     try:
-        orderItemId = int(orderItemId)
+        orderItemId = int(orderItemId_str)
     except (TypeError, ValueError):
-        return jsonify({'success': False, 'message': 'Invalid data type for orderItemId.'}), 400
+        logger.error(f"Invalid data type received for orderItemId: {orderItemId_str}. Returning 400.")
+        return jsonify({'success': False, 'message': 'Invalid order item ID. Expected an integer.'}), 400
 
-    app.logger.debug(f"Attempting to remove order item {orderItemId} for user {user_id}")
+    logger.debug(f"Attempting to remove order item {orderItemId} for user {user_id}")
 
-    success = remove_book_from_cart(get_db_connection, orderItemId)
+    conn = get_db_connection() # Abre a conexão AQUI
+    try:
+        success = remove_book_from_cart(conn, orderItemId) # **PASSA 'conn'**
 
-    if success:
-        cart_items = get_cart_items_details_for_user(get_db_connection, user_id)
-        new_total_cart_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items)
+        if success:
+            cart_items = get_cart_items_details_for_user(conn, user_id) # **PASSA 'conn'**
+            new_total_cart_price = sum(item['itemPrice'] * item['quantity'] for item in cart_items) if cart_items else 0.0
 
-        return jsonify({
-            'success': True, 
-            'message': 'Item removed from cart successfully!',
-            'new_total_cart_price': new_total_cart_price # Essencial para atualizar o subtotal
-        })
-    else:
-        app.logger.error(f"Failed to remove order item {orderItemId}")
-        return jsonify({'success': False, 'message': 'Failed to remove item.'}), 500
+            logger.debug(f"Item removed successfully. New total price: {new_total_cart_price}")
+            return jsonify({
+                'success': True, 
+                'message': 'Item removed from cart successfully!',
+                'new_total_cart_price': new_total_cart_price
+            })
+        else:
+            logger.error(f"Failed to remove order item {orderItemId}")
+            return jsonify({'success': False, 'message': 'Failed to remove item.'}), 500
+    except Exception as e:
+        logger.exception(f"Exception occurred during item removal for orderItemId {orderItemId}: {e}")
+        return jsonify({'success': False, 'message': f'Server error: {str(e)}'}), 500
+    finally:
+        conn.close() # Garante que a conexão com o banco de dados é fechada
 
 
 
 # --- Rota para finalizar o carrinho (simular checkout) ---
 @app.route('/checkout', methods=['POST'])
 def checkout_route():
+    logger.debug("Received request to checkout.") # Log de depuração
     user_id = session.get('user_id')
     if not user_id:
         flash("Por favor, faça login para completar sua compra.", "info")
         session['next_url'] = url_for('view_cart')
         return redirect(url_for('login_link'))
     
-    order_id = get_active_cart_for_user(get_db_connection, user_id)
-    
-    if not order_id:
-        flash("Seu carrinho está vazio!", "warning")
-        return redirect(url_for('view_cart'))
-    
-    cart_items = get_cart_items_details_for_user(get_db_connection, user_id)
-
-    if not cart_items:
-        flash("Seu carrinho está vazio! Adicione itens antes de finalizar a compra.", "warning")
-        return redirect(url_for('view_cart'))
-
-    # Prepare line_items para a sessão de checkout do Stripe
-    line_items = []
-    for item in cart_items:
-        line_items.append({
-            'price_data': {
-                'currency': 'brl', # Moeda (ex: 'usd', 'eur', 'brl')
-                'product_data': {
-                    'name': item['bookTitle'],
-                    'images': [item['bookCover']] if item['bookCover'] else [], # Imagem do produto
-                    'description': f"Quantidade: {item['quantity']}" # Descrição adicional
-                },
-                'unit_amount': int(item['itemPrice'] * 100), # Preço unitário em centavos (Stripe usa centavos)
-            },
-            'quantity': item['quantity'],
-        })
-
+    conn = get_db_connection() # Abre a conexão AQUI
     try:
+        order_id = get_active_cart_for_user(conn, user_id) # **PASSA 'conn'**
+        
+        if not order_id:
+            flash("Seu carrinho está vazio!", "warning")
+            return redirect(url_for('view_cart'))
+        
+        cart_items = get_cart_items_details_for_user(conn, user_id) # **PASSA 'conn'**
+
+        if not cart_items:
+            flash("Seu carrinho está vazio! Adicione itens antes de finalizar a compra.", "warning")
+            return redirect(url_for('view_cart'))
+
+        line_items = []
+        for item in cart_items:
+            line_items.append({
+                'price_data': {
+                    'currency': 'brl',
+                    'product_data': {
+                        'name': item['bookTitle'],
+                        'images': [item['bookCover']] if item['bookCover'] else [],
+                        'description': f"Quantidade: {item['quantity']}"
+                    },
+                    'unit_amount': int(item['book_unit_price'] * 100), # Use bookPrice, não itemPrice, para o preço unitário do produto
+                },
+                'quantity': item['quantity'],
+            })
+
+        logger.debug(f"Stripe line_items prepared: {line_items}") # Log para verificar line_items
+
         checkout_session = stripe.checkout.Session.create(
             line_items=line_items,
             mode='payment',
             success_url=url_for('checkout_success', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
             cancel_url=url_for('checkout_cancel', _external=True),
             metadata={
-                'order_id': order_id, # Passa o order_id para o webhook saber qual pedido finalizar
-                'user_id': user_id, # Opcional: passa o user_id também
+                'order_id': order_id,
+                'user_id': user_id,
             }
         )
-        # Redireciona o usuário para a página de checkout do Stripe
+        logger.debug(f"Stripe checkout session created: {checkout_session.url}") # Log de sucesso
         return redirect(checkout_session.url, code=303)
 
     except stripe.error.StripeError as e:
         logger.error(f"Erro ao criar sessão de checkout com Stripe: {e}")
         flash(f"Ocorreu um erro ao processar seu pagamento: {e}", "error")
         return redirect(url_for('view_cart'))
+    except Exception as e:
+        logger.exception(f"Erro inesperado no checkout: {e}") # Log para erros genéricos
+        flash(f"Ocorreu um erro inesperado: {e}", "error")
+        return redirect(url_for('view_cart'))
+    finally:
+        conn.close() # Fecha a conexão
 
 # --- Rotas para sucesso e cancelamento do checkout (redirecionadas pelo Stripe) ---
 @app.route('/checkout/success')
@@ -432,8 +476,6 @@ def stripe_webhook():
     sig_header = request.headers.get('stripe-signature')
     event = None
 
-    # Obtenha o seu 'Webhook Secret' do Dashboard do Stripe
-    # Este também deve ser armazenado de forma segura (variável de ambiente)
     STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET", "whsec_tCOVKFZ1c3SVPVcA6dDfhgG7b5b6hOmd")
 
     try:
@@ -441,55 +483,36 @@ def stripe_webhook():
             payload, sig_header, STRIPE_WEBHOOK_SECRET
         )
     except ValueError as e:
-        # Invalid payload
         logger.error(f"Erro no webhook: Payload inválido: {e}")
         return 'Invalid payload', 400
     except stripe.error.SignatureVerificationError as e:
-        # Invalid signature
         logger.error(f"Erro no webhook: Assinatura inválida: {e}")
         return 'Invalid signature', 400
 
-    # Manipular os tipos de evento
     if event['type'] == 'checkout.session.completed':
         session_data = event['data']['object']
         order_id = session_data['metadata'].get('order_id')
-        user_id = session_data['metadata'].get('user_id') # Se você passou user_id no metadata
+        user_id = session_data['metadata'].get('user_id')
 
         if order_id:
             logger.info(f"Webhook: Checkout Session Completed para order_id: {order_id}")
-            # Finalize o pedido no seu banco de dados
-            if finalize_order(get_db_connection, order_id):
-                logger.info(f"Pedido {order_id} finalizado com sucesso no DB.")
-                # *** LÓGICA PARA DISPONIBILIZAR O EBOOK AQUI ***
-                # Exemplo: marcar o ebook como comprado para o usuário, gerar link de download, enviar email
-                # Por exemplo, você pode ter uma tabela 'user_ebooks'
-                # ou um campo 'is_downloadable' na tabela 'orderItem'.
-                #
-                # Exemplo de lógica para "disponibilizar" (apenas log):
-                logger.info(f"Ebook(s) para o pedido {order_id} (usuário {user_id}) disponíveis para download.")
-                # Você pode adicionar um campo 'download_link' no orderItem ou criar uma nova tabela.
-                # No seu caso, já que o status está 'completed', você pode ter uma página "Meus Livros"
-                # que lista os livros dos pedidos 'completed'.
-
-                # conn = get_db_connection()
-                # cursor = conn.cursor()
-                # cursor.execute("UPDATE orderItem SET download_status = 'ready' WHERE orderId = ?", (order_id,))
-                # conn.commit()
-                # conn.close()
-                # Isso seria um exemplo mais complexo de "disponibilizar". Por ora, o finalize_order já é o suficiente.
-            else:
-                logger.error(f"Falha ao finalizar pedido {order_id} no DB via webhook.")
+            conn = get_db_connection() # Abre a conexão para o webhook
+            try:
+                if finalize_order(conn, order_id): # **PASSA 'conn'**
+                    logger.info(f"Pedido {order_id} finalizado com sucesso no DB via webhook.")
+                    logger.info(f"Ebook(s) para o pedido {order_id} (usuário {user_id}) disponíveis para download.")
+                else:
+                    logger.error(f"Falha ao finalizar pedido {order_id} no DB via webhook.")
+            finally:
+                conn.close() # Fecha a conexão
         else:
             logger.warning("Webhook: 'checkout.session.completed' recebido sem 'order_id' no metadata.")
 
     elif event['type'] == 'payment_intent.succeeded':
-        # Você pode lidar com outros eventos aqui, se precisar
         logger.info(f"Webhook: Payment Intent Succeeded para ID: {event['data']['object']['id']}")
-    # ... outros tipos de eventos que você queira processar
 
-    return 'OK', 200 # Sempre retorne 200 OK para o Stripe
+    return 'OK', 200
 
 if __name__ == '__main__':
-    app.run(debug = True, host='0.0.0.0')
     logger.info("Starting Flask app...") # This will appear in the log file
     app.run(debug=True, host='0.0.0.0', use_reloader=False)

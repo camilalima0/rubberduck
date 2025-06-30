@@ -2,27 +2,24 @@ import sqlite3
 import logging
 logger = logging.getLogger(__name__)
 
-def get_active_cart_for_user(get_db_connection_func, user_id):
+def get_active_cart_for_user(conn, user_id):
     """
     Retrieves the active shopping cart (an orderr with status 'pending') for a given user.
     If multiple 'pending' orders exist (which shouldn't happen with proper logic), it takes the most recent one.
     """
-    conn = get_db_connection_func()
     cursor = conn.cursor()
     cursor.execute(
         "SELECT orderId FROM orderr WHERE userId = ? AND orderStatus = 'pending' ORDER BY orderDate DESC LIMIT 1",
         (user_id,)
     )
     cart = cursor.fetchone()
-    conn.close()
     return cart['orderId'] if cart else None
 
-def create_new_cart(get_db_connection_func, user_id):
+def create_new_cart(conn, user_id):
     """
     Creates a new empty shopping cart (an orderr with status 'pending') for the specified user.
     Returns the new orderId.
     """
-    conn = get_db_connection_func()
     cursor = conn.cursor()
     cursor.execute(
         "INSERT INTO orderr (userId, orderStatus) VALUES (?, 'pending')",
@@ -30,23 +27,21 @@ def create_new_cart(get_db_connection_func, user_id):
     )
     cart_id = cursor.lastrowid
     conn.commit()
-    conn.close()
     return cart_id
 
-def add_book_to_cart(get_db_connection_func, order_id, book_id, quantity=1):
+def add_book_to_cart(conn, order_id, book_id, quantity=1):
     """
     Adds a book to the specified cart (orderr) or updates its quantity if it already exists.
     Also captures the book's current price.
     Returns the orderItemId of the added/updated item.
     """
-    conn = get_db_connection_func()
     cursor = conn.cursor()
 
     # First, get the current price of the book
     cursor.execute("SELECT bookPrice FROM book WHERE bookId = ?", (book_id,))
     book_info = cursor.fetchone()
     if not book_info:
-        conn.close()
+
         return None # Book not found
 
     item_price_at_addition = book_info['bookPrice']
@@ -75,11 +70,9 @@ def add_book_to_cart(get_db_connection_func, order_id, book_id, quantity=1):
         order_item_id = cursor.lastrowid
     
     conn.commit()
-    conn.close()
     return order_item_id
 
-def get_cart_items_details_for_user(get_db_connection_func, user_id):
-    conn = get_db_connection_func()
+def get_cart_items_details_for_user(conn, user_id):
     # Adicione este log para confirmar que row_factory está sendo configurado
     logger.debug(f"Configuring row_factory for connection: {conn.row_factory}") 
     conn.row_factory = sqlite3.Row # Ensure rows are dict-like
@@ -91,21 +84,23 @@ def get_cart_items_details_for_user(get_db_connection_func, user_id):
     try:
         query = """
         SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
             b.bookId,
             b.bookTitle,
-            b.bookCover,
-            oi.itemPrice,
-            oi.quantity,
-            oi.orderItemId,
-            o.orderId
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
         FROM
-            orderr AS o
+            orderr o
         JOIN
-            orderItem AS oi ON o.orderId = oi.orderId
+            orderItem oi ON o.orderId = oi.orderId
         JOIN
-            book AS b ON oi.bookId = b.bookId
+            book b ON oi.bookId = b.bookId
         WHERE
-            o.userId = ? AND o.orderStatus = 'pending'
+            o.userId = ? AND o.status = 'pending'
         ORDER BY
             b.bookTitle ASC
         """
@@ -131,19 +126,18 @@ def get_cart_items_details_for_user(get_db_connection_func, user_id):
             logger.debug("No items fetched, so cannot test row_factory access.")
         # --- FIM DO NOVO PONTO DE VERIFICAÇÃO ---
 
-        conn.close()
+
         return items
     except Exception as e:
         logger.error(f"Error fetching cart items for user {user_id}: {e}", exc_info=True)
-        conn.close() # Garante que a conexão é fechada mesmo em caso de erro
+ # Garante que a conexão é fechada mesmo em caso de erro
         return [] # Retorna uma lista vazia em caso de erro
 
-def update_cart_item_quantity(get_db_connection_func, order_item_id, new_quantity):
+def update_cart_item_quantity(conn, order_item_id, new_quantity):
     """
     Updates the quantity of a specific item in the cart.
     Returns True if successful, False otherwise.
     """
-    conn = get_db_connection_func()
     cursor = conn.cursor()
     try:
         cursor.execute(
@@ -155,14 +149,12 @@ def update_cart_item_quantity(get_db_connection_func, order_item_id, new_quantit
     except sqlite3.Error as e:
         print(f"Error updating quantity for orderItemId {order_item_id}: {e}")
         return False
-    finally:
-        conn.close()
 
-def remove_book_from_cart(get_db_connection_func, order_item_id):
+
+def remove_book_from_cart(conn, order_item_id):
     """
     Removes a specific orderItem from the cart (deletes it from the orderItem table).
     """
-    conn = get_db_connection_func()
     cursor = conn.cursor()
     try:
         cursor.execute("DELETE FROM orderItem WHERE orderItemId = ?", (order_item_id,))
@@ -171,15 +163,13 @@ def remove_book_from_cart(get_db_connection_func, order_item_id):
     except sqlite3.Error as e:
         print(f"Error removing order item {order_item_id}: {e}")
         return False
-    finally:
-        conn.close()
 
-def finalize_order(get_db_connection_func, order_id):
+
+def finalize_order(conn, order_id):
     """
     Changes the status of a 'pending' order to 'completed'.
     This would typically happen after a successful payment.
     """
-    conn = get_db_connection_func()
     cursor = conn.cursor()
     try:
         cursor.execute(
@@ -191,5 +181,3 @@ def finalize_order(get_db_connection_func, order_id):
     except sqlite3.Error as e:
         print(f"Error finalizing order {order_id}: {e}")
         return False
-    finally:
-        conn.close()
