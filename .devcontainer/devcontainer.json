@@ -1,0 +1,25 @@
+// .devcontainer/devcontainer.json
+{
+    "name": "Python 3 & Web App (Alpine Base)",
+    // Imagem base Alpine: leve e eficiente.
+    // Esta imagem é mais robusta do que a 'base:alpine' pura
+    // e inclui algumas ferramentas dev por padrão.
+    "image": "mcr.microsoft.com/devcontainers/base:alpine", 
+    
+    // Comandos que serão executados *após* a criação do contêiner.
+    // Instala o Stripe CLI no Alpine. Note o uso de 'sudo' para permissões.
+    "postCreateCommand": "sudo apk update && sudo apk add --no-cache python3 py3-pip && sudo apk add --no-cache curl gnupg wget && sudo wget -qO /etc/apk/keys/stripe.rsa.pub https://packages.stripe.dev/api/security/keypair/stripe-cli-alpine/public && echo \"https://packages.stripe.dev/stripe-cli-alpine-local/stable\" | sudo tee -a /etc/apk/repositories && sudo apk update && sudo apk add stripe-cli",
+
+    // Porta que o seu aplicativo Flask provavelmente usará.
+    "forwardPorts": [5000],
+
+    // Instala automaticamente as extensões do VS Code para Python.
+    "customizations": {
+        "vscode": {
+            "extensions": [
+                "ms-python.python",
+                "ms-python.vscode-pylance"
+            ]
+        }
+    }
+}

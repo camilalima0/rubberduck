@@ -470,8 +470,6 @@ def checkout_cancel():
     flash("Seu pagamento foi cancelado. Você pode tentar novamente.", "info")
     return redirect(url_for('view_cart'))
 
-WEBHOOK_SECRET = 
-
 @app.route('/stripe-webhook', methods=['POST'])
 def stripe_webhook():
     payload = request.get_data(as_text=True)
