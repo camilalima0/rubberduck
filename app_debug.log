@@ -3867,3 +3867,6 @@ IndexError: No item with that key
 2025-06-30 23:39:34,733 - werkzeug - INFO -  * Detected change in '/workspaces/rubberduck/app.py', reloading
 2025-06-30 23:39:34,879 - werkzeug - INFO -  * Restarting with stat
 2025-06-30 23:39:37,985 - werkzeug - INFO -  * Restarting with stat
+2025-07-01 21:43:21,706 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-01 21:43:21,706 - werkzeug - INFO - [33mPress CTRL+C to quit[0m

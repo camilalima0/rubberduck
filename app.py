@@ -34,10 +34,10 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
 
-stripe.api_key = os.environ.get("STRIPE_SECRET_KEY", "sk_test_51RAAO12Kh4hKsxg074srtWdzstEtMpwOuZuFZo8DHRFclkOxUWjvBjjPAXhAB5N695vsk1htjq1AnbCUitHuiEA900mSDI1QfL")
-STRIPE_PUBLIC_KEY = os.environ.get("STRIPE_PUBLIC_KEY", "pk_test_51RAAO12Kh4hKsxg0LxNLU3vP1a9rGeUcVfl2soBVRPPCsY9jCBC0OaH66HZkx6Gjzxsc8HWwKMB4Q91OnqDheWZE001djNF0zp")
+STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
+STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
-app.config['STRIPE_PUBLIC_KEY'] = STRIPE_PUBLIC_KEY
+app.config['STRIPE_PUBLISHABLE_KEY'] = STRIPE_PUBLISHABLE_KEY
 
 GENRES = [
     "sci-fi", "fiction", "romance", "mystery", "horror",
