@@ -1,8 +1,6 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session, flash
 from books import search, search_subject, get_book_by_id
 import secrets
-from flask import session
 from server import pay
 from werkzeug.security import generate_password_hash, check_password_hash
 import random
@@ -37,6 +35,8 @@ app.secret_key = secrets.token_hex(32)
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
+#setting stripe secret key for stripe module
+stripe.api_key = STRIPE_SECRET_KEY 
 app.config['STRIPE_PUBLISHABLE_KEY'] = STRIPE_PUBLISHABLE_KEY
 
 GENRES = [
@@ -383,11 +383,25 @@ def remove_from_cart_route():
     finally:
         conn.close() # Garante que a conexão com o banco de dados é fechada
 
-
+def get_user_email(conn, user_id):
+    """
+    Busca o email de um usuário pelo userId.
+    Args:
+        conn: Objeto de conexão com o banco de dados.
+        user_id: ID do usuário.
+    Returns:
+        O email do usuário ou None se não encontrado.
+    """
+    cursor = conn.cursor()
+    cursor.execute("SELECT email FROM user WHERE userId = ?", (user_id,))
+    result = cursor.fetchone()
+    logger.debug(f"Buscando email para userId {user_id}. Resultado: {result['email'] if result else 'N/A'}")
+    return result['email'] if result else None
 
 # --- Rota para finalizar o carrinho (simular checkout) ---
 @app.route('/checkout', methods=['POST'])
 def checkout_route():
+    BASE_URL = os.environ.get("CODESPACE_PUBLIC_URL")
     logger.debug("Received request to checkout.") # Log de depuração
     user_id = session.get('user_id')
     if not user_id:
@@ -397,6 +411,12 @@ def checkout_route():
     
     conn = get_db_connection() # Abre a conexão AQUI
     try:
+        user_email = get_user_email(conn, user_id)
+        if not user_email:
+            logger.error(f"Email do usuário {user_id} não encontrado no banco de dados.")
+            flash("Não foi possível encontrar suas informações de usuário. Por favor, tente novamente.", "error")
+            return redirect(url_for('view_cart'))
+        
         order_id = get_active_cart_for_user(conn, user_id) # **PASSA 'conn'**
         
         if not order_id:
@@ -427,10 +447,11 @@ def checkout_route():
         logger.debug(f"Stripe line_items prepared: {line_items}") # Log para verificar line_items
 
         checkout_session = stripe.checkout.Session.create(
+            customer_email = user_email,
             line_items=line_items,
             mode='payment',
-            success_url=url_for('checkout_success', _external=True) + '?session_id={CHECKOUT_SESSION_ID}',
-            cancel_url=url_for('checkout_cancel', _external=True),
+            success_url=f"{BASE_URL}/checkout/success?session_id={{CHECKOUT_SESSION_ID}}",
+            cancel_url=f"{BASE_URL}/checkout/cancel",
             metadata={
                 'order_id': order_id,
                 'user_id': user_id,
@@ -448,7 +469,8 @@ def checkout_route():
         flash(f"Ocorreu um erro inesperado: {e}", "error")
         return redirect(url_for('view_cart'))
     finally:
-        conn.close() # Fecha a conexão
+        if conn:
+            conn.close() # Fecha a conexão
 
 # --- Rotas para sucesso e cancelamento do checkout (redirecionadas pelo Stripe) ---
 @app.route('/checkout/success')
@@ -476,7 +498,11 @@ def stripe_webhook():
     sig_header = request.headers.get('stripe-signature')
     event = None
 
-    STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET", "whsec_tCOVKFZ1c3SVPVcA6dDfhgG7b5b6hOmd")
+    STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
+
+    if not STRIPE_WEBHOOK_SECRET: # Adicionado para robustez
+        logger.error("STRIPE_WEBHOOK_SECRET não configurado!")
+        return 'Server Error', 500
 
     try:
         event = stripe.Webhook.construct_event(

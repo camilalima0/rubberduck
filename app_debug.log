@@ -3870,3 +3870,901 @@ IndexError: No item with that key
 2025-07-01 21:43:21,706 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
  * Running on http://127.0.0.1:5000
 2025-07-01 21:43:21,706 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-02 18:45:49,367 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-02 18:45:49,368 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-02 18:46:01,927 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:01] "GET / HTTP/1.1" 200 -
+2025-07-02 18:46:02,455 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:02] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:02,500 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:02] "GET /static/css/style.css HTTP/1.1" 200 -
+2025-07-02 18:46:02,542 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:02] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:02,588 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:02] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:02,596 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:02] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:02,603 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:02] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:02,616 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:02] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:03,302 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:03] "[33mGET /favicon.ico HTTP/1.1[0m" 404 -
+2025-07-02 18:46:07,660 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:07] "GET /login_link HTTP/1.1" 200 -
+2025-07-02 18:46:07,900 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:07] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:07,903 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:07] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 18:46:07,909 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:07] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:16,536 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:16] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 18:46:16,743 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:16] "GET / HTTP/1.1" 200 -
+2025-07-02 18:46:16,999 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:16] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 18:46:17,013 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:17] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:17,020 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:17] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:17,051 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:17] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:17,236 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:17] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:17,278 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:17] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:17,285 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:17] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:19,630 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 18:46:19,630 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 18:46:19,630 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 18:46:19,637 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7e8d743a19f0>]
+2025-07-02 18:46:19,637 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 18:46:19,637 - cart_manager - DEBUG - Accessing by key successful: bookTitle='Ariel', item_total_price='53.9'
+2025-07-02 18:46:19,637 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7e8d743a19f0>]
+2025-07-02 18:46:19,637 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-07-02 18:46:19,651 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:19] "GET /cart HTTP/1.1" 200 -
+2025-07-02 18:46:19,890 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:19] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 18:46:19,902 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:19] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:19,907 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:19] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:46:23,709 - app - DEBUG - Received request to checkout.
+2025-07-02 18:46:23,710 - app - DEBUG - Buscando email para userId 1. Resultado: duck@duck.com
+2025-07-02 18:46:23,710 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 18:46:23,710 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 18:46:23,710 - cart_manager - DEBUG - Executing cart details query for user 1. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 18:46:23,710 - cart_manager - DEBUG - Raw items fetched for user 1: [<sqlite3.Row object at 0x7e8d743a28c0>]
+2025-07-02 18:46:23,711 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 18:46:23,711 - cart_manager - DEBUG - Accessing by key successful: bookTitle='Ariel', item_total_price='53.9'
+2025-07-02 18:46:23,711 - app - DEBUG - Stripe line_items prepared: [{'price_data': {'currency': 'brl', 'product_data': {'name': 'Ariel', 'images': ['http://books.google.com/books/content?id=pWNYQ4XtHi0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'], 'description': 'Quantidade: 1'}, 'unit_amount': 5390}, 'quantity': 1}]
+2025-07-02 18:46:23,713 - stripe - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+2025-07-02 18:46:23,713 - stripe - DEBUG - api_version=2025-06-30.basil message='Post details' post_data=customer_email=duck%40duck.com&line_items[0][price_data][currency]=brl&line_items[0][price_data][product_data][name]=Ariel&line_items[0][price_data][product_data][images][0]=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fcontent%3Fid%3DpWNYQ4XtHi0C%26printsec%3Dfrontcover%26img%3D1%26zoom%3D1%26edge%3Dcurl%26source%3Dgbs_api&line_items[0][price_data][product_data][description]=Quantidade%3A+1&line_items[0][price_data][unit_amount]=5390&line_items[0][quantity]=1&mode=payment&success_url=http%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fsuccess%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=http%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fcancel&metadata[order_id]=2&metadata[user_id]=1
+2025-07-02 18:46:23,714 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.stripe.com:443
+2025-07-02 18:46:24,088 - urllib3.connectionpool - DEBUG - https://api.stripe.com:443 "POST /v1/checkout/sessions HTTP/1.1" 200 2916
+2025-07-02 18:46:24,089 - stripe - INFO - message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+2025-07-02 18:46:24,089 - stripe - DEBUG - body='{\n  "id": "cs_test_a1iJD3ag6WjHBYo2Ewzhu9sTqFNuwvmLHmBZhkXocyGrD2Rvx5yqzWRZsW",\n  "object": "checkout.session",\n  "adaptive_pricing": {\n    "enabled": true\n  },\n  "after_expiration": null,\n  "allow_promotion_codes": null,\n  "amount_subtotal": 5390,\n  "amount_total": 5390,\n  "automatic_tax": {\n    "enabled": false,\n    "liability": null,\n    "provider": null,\n    "status": null\n  },\n  "billing_address_collection": null,\n  "cancel_url": "http://localhost:5000/checkout/cancel",\n  "client_reference_id": null,\n  "client_secret": null,\n  "collected_information": {\n    "shipping_details": null\n  },\n  "consent": null,\n  "consent_collection": null,\n  "created": 1751481984,\n  "currency": "brl",\n  "currency_conversion": null,\n  "custom_fields": [],\n  "custom_text": {\n    "after_submit": null,\n    "shipping_address": null,\n    "submit": null,\n    "terms_of_service_acceptance": null\n  },\n  "customer": null,\n  "customer_creation": "if_required",\n  "customer_details": {\n    "address": null,\n    "email": "duck@duck.com",\n    "name": null,\n    "phone": null,\n    "tax_exempt": "none",\n    "tax_ids": null\n  },\n  "customer_email": "duck@duck.com",\n  "discounts": [],\n  "expires_at": 1751568383,\n  "invoice": null,\n  "invoice_creation": {\n    "enabled": false,\n    "invoice_data": {\n      "account_tax_ids": null,\n      "custom_fields": null,\n      "description": null,\n      "footer": null,\n      "issuer": null,\n      "metadata": {},\n      "rendering_options": null\n    }\n  },\n  "livemode": false,\n  "locale": null,\n  "metadata": {\n    "order_id": "2",\n    "user_id": "1"\n  },\n  "mode": "payment",\n  "payment_intent": null,\n  "payment_link": null,\n  "payment_method_collection": "if_required",\n  "payment_method_configuration_details": {\n    "id": "pmc_1RAAOZ2Kh4hKsxg0oiQgZYua",\n    "parent": null\n  },\n  "payment_method_options": {\n    "card": {\n      "request_three_d_secure": "automatic"\n    }\n  },\n  "payment_method_types": [\n    "card"\n  ],\n  "payment_status": "unpaid",\n  "permissions": null,\n  "phone_number_collection": {\n    "enabled": false\n  },\n  "recovered_from": null,\n  "saved_payment_method_options": null,\n  "setup_intent": null,\n  "shipping_address_collection": null,\n  "shipping_cost": null,\n  "shipping_options": [],\n  "status": "open",\n  "submit_type": null,\n  "subscription": null,\n  "success_url": "http://localhost:5000/checkout/success?session_id={CHECKOUT_SESSION_ID}",\n  "total_details": {\n    "amount_discount": 0,\n    "amount_shipping": 0,\n    "amount_tax": 0\n  },\n  "ui_mode": "hosted",\n  "url": "https://checkout.stripe.com/c/pay/cs_test_a1iJD3ag6WjHBYo2Ewzhu9sTqFNuwvmLHmBZhkXocyGrD2Rvx5yqzWRZsW#fidkdWxOYHwnPyd1blpxYHZxWjA0V0RESjQ3Tm0xbU52fWI1SX1LSVA2c1U0ZDx3QmBQZlNjaTd2akdTV1VVRnZcPG9GR0Y1SmRNMzNNX259M0Jvf312Zj1NUnJOSEcxVDw0Smt0QW1gUl9ANTU0YW9LQzV%2FdScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl",\n  "wallet_options": null\n}' message='API response body'
+2025-07-02 18:46:24,089 - stripe - DEBUG - link=https://dashboard.stripe.com/test/logs/req_bfH2dvjp1T5dz4 message='Dashboard link for request'
+2025-07-02 18:46:24,091 - app - DEBUG - Stripe checkout session created: https://checkout.stripe.com/c/pay/cs_test_a1iJD3ag6WjHBYo2Ewzhu9sTqFNuwvmLHmBZhkXocyGrD2Rvx5yqzWRZsW#fidkdWxOYHwnPyd1blpxYHZxWjA0V0RESjQ3Tm0xbU52fWI1SX1LSVA2c1U0ZDx3QmBQZlNjaTd2akdTV1VVRnZcPG9GR0Y1SmRNMzNNX259M0Jvf312Zj1NUnJOSEcxVDw0Smt0QW1gUl9ANTU0YW9LQzV%2FdScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl
+2025-07-02 18:46:24,091 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:46:24] "[32mPOST /checkout HTTP/1.1[0m" 303 -
+2025-07-02 18:57:08,942 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-02 18:57:08,943 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-02 18:57:13,304 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:13] "GET / HTTP/1.1" 200 -
+2025-07-02 18:57:13,793 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:13] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 18:57:13,925 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:13] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:13,926 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:13] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:13,935 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:13] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:13,946 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:13] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:13,976 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:13] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:13,979 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:13] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:21,520 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:21] "GET /register_link HTTP/1.1" 200 -
+2025-07-02 18:57:21,741 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 18:57:21,746 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:21] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:21,748 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:21] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:43,755 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:43] "POST /register HTTP/1.1" 200 -
+2025-07-02 18:57:46,280 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:46] "GET /login_link HTTP/1.1" 200 -
+2025-07-02 18:57:46,625 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:46] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:46,626 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:46] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 18:57:46,627 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:46] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:54,542 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:54] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 18:57:54,740 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:54] "GET / HTTP/1.1" 200 -
+2025-07-02 18:57:54,965 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:54] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 18:57:54,992 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:54] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:54,996 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:54] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:55,007 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:55] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:55,010 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:55] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:55,017 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:55] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:55,095 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:55] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:59,636 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:59] "GET /search-by-genre?genre=history HTTP/1.1" 200 -
+2025-07-02 18:57:59,849 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:59] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 18:57:59,863 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:59] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:59,867 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:59] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:57:59,898 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:57:59] "[33mGET /No%20Cover HTTP/1.1[0m" 404 -
+2025-07-02 18:58:09,465 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:09] "GET /bookpage/1309 HTTP/1.1" 200 -
+2025-07-02 18:58:09,685 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 18:58:09,690 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:09] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:58:09,693 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:09] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:58:16,282 - app - ERROR - Exception on /add-to-cart [POST]
+Traceback (most recent call last):
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/workspaces/rubberduck/app.py", line 274, in add_to_cart_route
+    orderItemId = add_book_to_cart(conn, order_id, book_id, quantity) # Passa a conexão
+  File "/workspaces/rubberduck/cart_manager.py", line 66, in add_book_to_cart
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "INSERT INTO orderItem (orderId, bookId, quantity, item_total_price) VALUES (?, ?, ?, ?)",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (order_id, book_id, quantity, item_price_at_addition)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+sqlite3.OperationalError: table orderItem has no column named item_total_price
+2025-07-02 18:58:16,287 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:16] "[35m[1mPOST /add-to-cart HTTP/1.1[0m" 500 -
+2025-07-02 18:58:28,179 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:28] "GET /search-by-genre?genre=fiction HTTP/1.1" 200 -
+2025-07-02 18:58:28,402 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:28] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 18:58:28,422 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:28] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:58:28,426 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:28] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:58:28,741 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:28] "[33mGET /No%20Cover HTTP/1.1[0m" 404 -
+2025-07-02 18:58:30,755 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:30] "GET /bookpage/347 HTTP/1.1" 200 -
+2025-07-02 18:58:30,971 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:30] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 18:58:30,990 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:30] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 18:58:31,081 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:31] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 18:58:32,397 - app - ERROR - Exception on /add-to-cart [POST]
+Traceback (most recent call last):
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/workspaces/rubberduck/app.py", line 274, in add_to_cart_route
+    orderItemId = add_book_to_cart(conn, order_id, book_id, quantity) # Passa a conexão
+  File "/workspaces/rubberduck/cart_manager.py", line 66, in add_book_to_cart
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "INSERT INTO orderItem (orderId, bookId, quantity, item_total_price) VALUES (?, ?, ?, ?)",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (order_id, book_id, quantity, item_price_at_addition)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+sqlite3.OperationalError: table orderItem has no column named item_total_price
+2025-07-02 18:58:32,398 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 18:58:32] "[35m[1mPOST /add-to-cart HTTP/1.1[0m" 500 -
+2025-07-02 19:17:36,069 - app - ERROR - Exception on /add-to-cart [POST]
+Traceback (most recent call last):
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/workspaces/rubberduck/app.py", line 274, in add_to_cart_route
+    orderItemId = add_book_to_cart(conn, order_id, book_id, quantity) # Passa a conexão
+  File "/workspaces/rubberduck/cart_manager.py", line 66, in add_book_to_cart
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "INSERT INTO orderItem (orderId, bookId, quantity, itemPrice) VALUES (?, ?, ?, ?)",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (order_id, book_id, quantity, item_price_at_addition)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+sqlite3.OperationalError: table orderItem has no column named item_total_price
+2025-07-02 19:17:36,070 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:17:36] "[35m[1mPOST /add-to-cart HTTP/1.1[0m" 500 -
+2025-07-02 19:17:45,164 - app - ERROR - Exception on /add-to-cart [POST]
+Traceback (most recent call last):
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 1511, in wsgi_app
+    response = self.full_dispatch_request()
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 919, in full_dispatch_request
+    rv = self.handle_user_exception(e)
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 917, in full_dispatch_request
+    rv = self.dispatch_request()
+  File "/workspaces/rubberduck/.venv/lib/python3.13/site-packages/flask/app.py", line 902, in dispatch_request
+    return self.ensure_sync(self.view_functions[rule.endpoint])(**view_args)  # type: ignore[no-any-return]
+           ~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~~^^^^^^^^^^^^^
+  File "/workspaces/rubberduck/app.py", line 274, in add_to_cart_route
+    orderItemId = add_book_to_cart(conn, order_id, book_id, quantity) # Passa a conexão
+  File "/workspaces/rubberduck/cart_manager.py", line 66, in add_book_to_cart
+    cursor.execute(
+    ~~~~~~~~~~~~~~^
+        "INSERT INTO orderItem (orderId, bookId, quantity, itemPrice) VALUES (?, ?, ?, ?)",
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+        (order_id, book_id, quantity, item_price_at_addition)
+        ^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^^
+    )
+    ^
+sqlite3.OperationalError: table orderItem has no column named item_total_price
+2025-07-02 19:17:45,166 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:17:45] "[35m[1mPOST /add-to-cart HTTP/1.1[0m" 500 -
+2025-07-02 19:18:13,789 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-02 19:18:13,789 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-02 19:18:20,910 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:20] "GET / HTTP/1.1" 200 -
+2025-07-02 19:18:21,336 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:21] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:21,645 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:21] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:21,664 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:21] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:21,677 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:21] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:18:21,679 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:21] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:21,683 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:21] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:21,686 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:21] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:26,690 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:26] "GET /login_link HTTP/1.1" 200 -
+2025-07-02 19:18:26,951 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:26] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:27,034 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:27] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:18:27,047 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:27] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:32,569 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:32] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 19:18:32,790 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:32] "GET / HTTP/1.1" 200 -
+2025-07-02 19:18:33,034 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:33] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:18:33,040 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:33] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:33,044 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:33] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:33,048 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:33] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:33,052 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:33] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:33,055 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:33] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:33,247 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:33] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:36,770 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:18:36,771 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:18:36,771 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:18:36,771 - cart_manager - DEBUG - Raw items fetched for user 3: []
+2025-07-02 19:18:36,771 - cart_manager - DEBUG - No items fetched, so cannot test row_factory access.
+2025-07-02 19:18:36,771 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: []
+2025-07-02 19:18:36,772 - app - DEBUG - DEBUG (view_cart): Number of items: 0
+2025-07-02 19:18:36,778 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:36] "GET /cart HTTP/1.1" 200 -
+2025-07-02 19:18:37,014 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:37] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:18:37,036 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:37] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:37,037 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:37] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:41,036 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:41] "GET /search-by-genre?genre=romance HTTP/1.1" 200 -
+2025-07-02 19:18:41,256 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:18:41,278 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:41] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:41,282 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:41] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:41,287 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:41] "[33mGET /No%20Cover HTTP/1.1[0m" 404 -
+2025-07-02 19:18:44,718 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:44] "GET /bookpage/205 HTTP/1.1" 200 -
+2025-07-02 19:18:45,002 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:18:45,009 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:45] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:45,022 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:45] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:46,759 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:46] "[32mPOST /add-to-cart HTTP/1.1[0m" 302 -
+2025-07-02 19:18:46,952 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:18:46,952 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:18:46,952 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:18:46,952 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x7873a6c23520>]
+2025-07-02 19:18:46,953 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:18:46,953 - cart_manager - DEBUG - Accessing by key successful: bookTitle='9-Nov', item_total_price='67.9'
+2025-07-02 19:18:46,953 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7873a6c23520>]
+2025-07-02 19:18:46,953 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-07-02 19:18:46,953 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:46] "GET /cart HTTP/1.1" 200 -
+2025-07-02 19:18:47,206 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:47] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:47,209 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:47] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:47,212 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:18:56,254 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:56] "GET / HTTP/1.1" 200 -
+2025-07-02 19:18:56,488 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:56] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:18:56,495 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:56] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:56,498 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:56] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:56,502 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:56] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:56,505 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:56] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:56,509 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:56] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:56,708 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:56] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 19:18:59,824 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:18:59] "GET /search-by-genre?genre=biography HTTP/1.1" 200 -
+2025-07-02 19:19:00,046 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:00] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:19:00,051 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:00] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:19:00,063 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:00] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:19:00,265 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:00] "[33mGET /No%20Cover HTTP/1.1[0m" 404 -
+2025-07-02 19:19:04,195 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:04] "GET /bookpage/1298 HTTP/1.1" 200 -
+2025-07-02 19:19:04,425 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:04] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:19:04,430 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:04] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:19:04,432 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:04] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:19:06,264 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:06] "[32mPOST /add-to-cart HTTP/1.1[0m" 302 -
+2025-07-02 19:19:06,472 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:19:06,472 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:19:06,472 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:19:06,472 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x7873a6c20e50>, <sqlite3.Row object at 0x7873a6c20a30>]
+2025-07-02 19:19:06,473 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:19:06,473 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"Socialism Is Great!"', item_total_price='13.9'
+2025-07-02 19:19:06,473 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7873a6c20e50>, <sqlite3.Row object at 0x7873a6c20a30>]
+2025-07-02 19:19:06,473 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-07-02 19:19:06,474 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:06] "GET /cart HTTP/1.1" 200 -
+2025-07-02 19:19:06,834 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:06] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:19:06,837 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:06] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:19:06,958 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:06] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:19:11,787 - app - DEBUG - Received request to checkout.
+2025-07-02 19:19:11,788 - app - DEBUG - Buscando email para userId 3. Resultado: lovegomez11@gmail.com
+2025-07-02 19:19:11,788 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:19:11,789 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:19:11,789 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:19:11,789 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x7873a6c22b60>, <sqlite3.Row object at 0x7873a6c22740>]
+2025-07-02 19:19:11,789 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:19:11,790 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"Socialism Is Great!"', item_total_price='13.9'
+2025-07-02 19:19:11,790 - app - DEBUG - Stripe line_items prepared: [{'price_data': {'currency': 'brl', 'product_data': {'name': '"Socialism Is Great!"', 'images': ['http://books.google.com/books/content?id=qdmODQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'], 'description': 'Quantidade: 1'}, 'unit_amount': 1390}, 'quantity': 1}, {'price_data': {'currency': 'brl', 'product_data': {'name': '9-Nov', 'images': ['http://books.google.com/books/content?id=DHwmDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'], 'description': 'Quantidade: 1'}, 'unit_amount': 6790}, 'quantity': 1}]
+2025-07-02 19:19:11,792 - stripe - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+2025-07-02 19:19:11,792 - stripe - DEBUG - api_version=2025-06-30.basil message='Post details' post_data=customer_email=lovegomez11%40gmail.com&line_items[0][price_data][currency]=brl&line_items[0][price_data][product_data][name]=%22Socialism+Is+Great%21%22&line_items[0][price_data][product_data][images][0]=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fcontent%3Fid%3DqdmODQAAQBAJ%26printsec%3Dfrontcover%26img%3D1%26zoom%3D1%26edge%3Dcurl%26source%3Dgbs_api&line_items[0][price_data][product_data][description]=Quantidade%3A+1&line_items[0][price_data][unit_amount]=1390&line_items[0][quantity]=1&line_items[1][price_data][currency]=brl&line_items[1][price_data][product_data][name]=9-Nov&line_items[1][price_data][product_data][images][0]=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fcontent%3Fid%3DDHwmDQAAQBAJ%26printsec%3Dfrontcover%26img%3D1%26zoom%3D1%26edge%3Dcurl%26source%3Dgbs_api&line_items[1][price_data][product_data][description]=Quantidade%3A+1&line_items[1][price_data][unit_amount]=6790&line_items[1][quantity]=1&mode=payment&success_url=http%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fsuccess%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=http%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fcancel&metadata[order_id]=3&metadata[user_id]=3
+2025-07-02 19:19:11,794 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.stripe.com:443
+2025-07-02 19:19:12,225 - urllib3.connectionpool - DEBUG - https://api.stripe.com:443 "POST /v1/checkout/sessions HTTP/1.1" 200 2930
+2025-07-02 19:19:12,226 - stripe - INFO - message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+2025-07-02 19:19:12,226 - stripe - DEBUG - body='{\n  "id": "cs_test_b1As8S4jsNfCYwGuHCwarl09g1H3ve3pTsi5hkvMhGIzVBIgokOw6HCfIl",\n  "object": "checkout.session",\n  "adaptive_pricing": {\n    "enabled": true\n  },\n  "after_expiration": null,\n  "allow_promotion_codes": null,\n  "amount_subtotal": 8180,\n  "amount_total": 8180,\n  "automatic_tax": {\n    "enabled": false,\n    "liability": null,\n    "provider": null,\n    "status": null\n  },\n  "billing_address_collection": null,\n  "cancel_url": "http://localhost:5000/checkout/cancel",\n  "client_reference_id": null,\n  "client_secret": null,\n  "collected_information": {\n    "shipping_details": null\n  },\n  "consent": null,\n  "consent_collection": null,\n  "created": 1751483952,\n  "currency": "brl",\n  "currency_conversion": null,\n  "custom_fields": [],\n  "custom_text": {\n    "after_submit": null,\n    "shipping_address": null,\n    "submit": null,\n    "terms_of_service_acceptance": null\n  },\n  "customer": null,\n  "customer_creation": "if_required",\n  "customer_details": {\n    "address": null,\n    "email": "lovegomez11@gmail.com",\n    "name": null,\n    "phone": null,\n    "tax_exempt": "none",\n    "tax_ids": null\n  },\n  "customer_email": "lovegomez11@gmail.com",\n  "discounts": [],\n  "expires_at": 1751570351,\n  "invoice": null,\n  "invoice_creation": {\n    "enabled": false,\n    "invoice_data": {\n      "account_tax_ids": null,\n      "custom_fields": null,\n      "description": null,\n      "footer": null,\n      "issuer": null,\n      "metadata": {},\n      "rendering_options": null\n    }\n  },\n  "livemode": false,\n  "locale": null,\n  "metadata": {\n    "order_id": "3",\n    "user_id": "3"\n  },\n  "mode": "payment",\n  "payment_intent": null,\n  "payment_link": null,\n  "payment_method_collection": "if_required",\n  "payment_method_configuration_details": {\n    "id": "pmc_1RAAOZ2Kh4hKsxg0oiQgZYua",\n    "parent": null\n  },\n  "payment_method_options": {\n    "card": {\n      "request_three_d_secure": "automatic"\n    }\n  },\n  "payment_method_types": [\n    "card"\n  ],\n  "payment_status": "unpaid",\n  "permissions": null,\n  "phone_number_collection": {\n    "enabled": false\n  },\n  "recovered_from": null,\n  "saved_payment_method_options": null,\n  "setup_intent": null,\n  "shipping_address_collection": null,\n  "shipping_cost": null,\n  "shipping_options": [],\n  "status": "open",\n  "submit_type": null,\n  "subscription": null,\n  "success_url": "http://localhost:5000/checkout/success?session_id={CHECKOUT_SESSION_ID}",\n  "total_details": {\n    "amount_discount": 0,\n    "amount_shipping": 0,\n    "amount_tax": 0\n  },\n  "ui_mode": "hosted",\n  "url": "https://checkout.stripe.com/c/pay/cs_test_b1As8S4jsNfCYwGuHCwarl09g1H3ve3pTsi5hkvMhGIzVBIgokOw6HCfIl#fidkdWxOYHwnPyd1blpxYHZxWjA0V0RESjQ3Tm0xbU52fWI1SX1LSVA2c1U0ZDx3QmBQZlNjaTd2akdTV1VVRnZcPG9GR0Y1SmRNMzNNX259M0Jvf312Zj1NUnJOSEcxVDw0Smt0QW1gUl9ANTU0YW9LQzV%2FdScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl",\n  "wallet_options": null\n}' message='API response body'
+2025-07-02 19:19:12,226 - stripe - DEBUG - link=https://dashboard.stripe.com/test/logs/req_YH5SqUD6c6jxZ2 message='Dashboard link for request'
+2025-07-02 19:19:12,228 - app - DEBUG - Stripe checkout session created: https://checkout.stripe.com/c/pay/cs_test_b1As8S4jsNfCYwGuHCwarl09g1H3ve3pTsi5hkvMhGIzVBIgokOw6HCfIl#fidkdWxOYHwnPyd1blpxYHZxWjA0V0RESjQ3Tm0xbU52fWI1SX1LSVA2c1U0ZDx3QmBQZlNjaTd2akdTV1VVRnZcPG9GR0Y1SmRNMzNNX259M0Jvf312Zj1NUnJOSEcxVDw0Smt0QW1gUl9ANTU0YW9LQzV%2FdScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl
+2025-07-02 19:19:12,228 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:19:12] "[32mPOST /checkout HTTP/1.1[0m" 303 -
+2025-07-02 19:47:37,330 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-02 19:47:37,330 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-02 19:47:42,512 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:42] "GET / HTTP/1.1" 200 -
+2025-07-02 19:47:43,139 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:43] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:43,156 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:43] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:43,189 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:43] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:43,197 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:43] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:43,216 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:43] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:43,219 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:43] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:47:43,253 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:43] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:45,579 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:45] "GET /login_link HTTP/1.1" 200 -
+2025-07-02 19:47:45,831 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:45] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:45,832 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:45] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:45,942 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:45] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:47:55,266 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:55] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 19:47:55,565 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:55] "GET / HTTP/1.1" 200 -
+2025-07-02 19:47:55,818 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:47:55,829 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:55] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:55,834 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:55] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:55,840 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:55] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:55,843 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:55] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:55,847 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:55] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:55,854 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:55] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:58,394 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:47:58,394 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:47:58,395 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:47:58,395 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x794167673880>, <sqlite3.Row object at 0x794167673910>]
+2025-07-02 19:47:58,395 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:47:58,396 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"Socialism Is Great!"', item_total_price='13.9'
+2025-07-02 19:47:58,396 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x794167673880>, <sqlite3.Row object at 0x794167673910>]
+2025-07-02 19:47:58,396 - app - DEBUG - DEBUG (view_cart): Number of items: 2
+2025-07-02 19:47:58,404 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:58] "GET /cart HTTP/1.1" 200 -
+2025-07-02 19:47:58,640 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:58] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:47:58,644 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:47:58,647 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:47:58] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:48:02,418 - app - DEBUG - Received request to checkout.
+2025-07-02 19:48:02,418 - app - DEBUG - Buscando email para userId 3. Resultado: lovegomez11@gmail.com
+2025-07-02 19:48:02,418 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:48:02,419 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:48:02,419 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:48:02,419 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x794167670ca0>, <sqlite3.Row object at 0x794167672470>]
+2025-07-02 19:48:02,419 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:48:02,419 - cart_manager - DEBUG - Accessing by key successful: bookTitle='"Socialism Is Great!"', item_total_price='13.9'
+2025-07-02 19:48:02,419 - app - DEBUG - Stripe line_items prepared: [{'price_data': {'currency': 'brl', 'product_data': {'name': '"Socialism Is Great!"', 'images': ['http://books.google.com/books/content?id=qdmODQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'], 'description': 'Quantidade: 1'}, 'unit_amount': 1390}, 'quantity': 1}, {'price_data': {'currency': 'brl', 'product_data': {'name': '9-Nov', 'images': ['http://books.google.com/books/content?id=DHwmDQAAQBAJ&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'], 'description': 'Quantidade: 1'}, 'unit_amount': 6790}, 'quantity': 1}]
+2025-07-02 19:48:02,421 - stripe - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+2025-07-02 19:48:02,421 - stripe - DEBUG - api_version=2025-06-30.basil message='Post details' post_data=customer_email=lovegomez11%40gmail.com&line_items[0][price_data][currency]=brl&line_items[0][price_data][product_data][name]=%22Socialism+Is+Great%21%22&line_items[0][price_data][product_data][images][0]=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fcontent%3Fid%3DqdmODQAAQBAJ%26printsec%3Dfrontcover%26img%3D1%26zoom%3D1%26edge%3Dcurl%26source%3Dgbs_api&line_items[0][price_data][product_data][description]=Quantidade%3A+1&line_items[0][price_data][unit_amount]=1390&line_items[0][quantity]=1&line_items[1][price_data][currency]=brl&line_items[1][price_data][product_data][name]=9-Nov&line_items[1][price_data][product_data][images][0]=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fcontent%3Fid%3DDHwmDQAAQBAJ%26printsec%3Dfrontcover%26img%3D1%26zoom%3D1%26edge%3Dcurl%26source%3Dgbs_api&line_items[1][price_data][product_data][description]=Quantidade%3A+1&line_items[1][price_data][unit_amount]=6790&line_items[1][quantity]=1&mode=payment&success_url=https%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fsuccess%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=https%3A%2F%2Flocalhost%3A5000%2Fcheckout%2Fcancel&metadata[order_id]=3&metadata[user_id]=3
+2025-07-02 19:48:02,423 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.stripe.com:443
+2025-07-02 19:48:02,814 - urllib3.connectionpool - DEBUG - https://api.stripe.com:443 "POST /v1/checkout/sessions HTTP/1.1" 200 2932
+2025-07-02 19:48:02,814 - stripe - INFO - message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+2025-07-02 19:48:02,814 - stripe - DEBUG - body='{\n  "id": "cs_test_b1svwSdT8oM9BF4vI7YXGM1PyOYPStVWRVPQD256Ehc2XZdSXQQmQ1x61w",\n  "object": "checkout.session",\n  "adaptive_pricing": {\n    "enabled": true\n  },\n  "after_expiration": null,\n  "allow_promotion_codes": null,\n  "amount_subtotal": 8180,\n  "amount_total": 8180,\n  "automatic_tax": {\n    "enabled": false,\n    "liability": null,\n    "provider": null,\n    "status": null\n  },\n  "billing_address_collection": null,\n  "cancel_url": "https://localhost:5000/checkout/cancel",\n  "client_reference_id": null,\n  "client_secret": null,\n  "collected_information": {\n    "shipping_details": null\n  },\n  "consent": null,\n  "consent_collection": null,\n  "created": 1751485682,\n  "currency": "brl",\n  "currency_conversion": null,\n  "custom_fields": [],\n  "custom_text": {\n    "after_submit": null,\n    "shipping_address": null,\n    "submit": null,\n    "terms_of_service_acceptance": null\n  },\n  "customer": null,\n  "customer_creation": "if_required",\n  "customer_details": {\n    "address": null,\n    "email": "lovegomez11@gmail.com",\n    "name": null,\n    "phone": null,\n    "tax_exempt": "none",\n    "tax_ids": null\n  },\n  "customer_email": "lovegomez11@gmail.com",\n  "discounts": [],\n  "expires_at": 1751572082,\n  "invoice": null,\n  "invoice_creation": {\n    "enabled": false,\n    "invoice_data": {\n      "account_tax_ids": null,\n      "custom_fields": null,\n      "description": null,\n      "footer": null,\n      "issuer": null,\n      "metadata": {},\n      "rendering_options": null\n    }\n  },\n  "livemode": false,\n  "locale": null,\n  "metadata": {\n    "order_id": "3",\n    "user_id": "3"\n  },\n  "mode": "payment",\n  "payment_intent": null,\n  "payment_link": null,\n  "payment_method_collection": "if_required",\n  "payment_method_configuration_details": {\n    "id": "pmc_1RAAOZ2Kh4hKsxg0oiQgZYua",\n    "parent": null\n  },\n  "payment_method_options": {\n    "card": {\n      "request_three_d_secure": "automatic"\n    }\n  },\n  "payment_method_types": [\n    "card"\n  ],\n  "payment_status": "unpaid",\n  "permissions": null,\n  "phone_number_collection": {\n    "enabled": false\n  },\n  "recovered_from": null,\n  "saved_payment_method_options": null,\n  "setup_intent": null,\n  "shipping_address_collection": null,\n  "shipping_cost": null,\n  "shipping_options": [],\n  "status": "open",\n  "submit_type": null,\n  "subscription": null,\n  "success_url": "https://localhost:5000/checkout/success?session_id={CHECKOUT_SESSION_ID}",\n  "total_details": {\n    "amount_discount": 0,\n    "amount_shipping": 0,\n    "amount_tax": 0\n  },\n  "ui_mode": "hosted",\n  "url": "https://checkout.stripe.com/c/pay/cs_test_b1svwSdT8oM9BF4vI7YXGM1PyOYPStVWRVPQD256Ehc2XZdSXQQmQ1x61w#fidkdWxOYHwnPyd1blpxYHZxWjA0V0RESjQ3Tm0xbU52fWI1SX1LSVA2c1U0ZDx3QmBQZlNjaTd2akdTV1VVRnZcPG9GR0Y1SmRNMzNNX259M0Jvf312Zj1NUnJOSEcxVDw0Smt0QW1gUl9ANTU0YW9LQzV%2FdScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl",\n  "wallet_options": null\n}' message='API response body'
+2025-07-02 19:48:02,815 - stripe - DEBUG - link=https://dashboard.stripe.com/test/logs/req_7pD4ey66M2rJw9 message='Dashboard link for request'
+2025-07-02 19:48:02,816 - app - DEBUG - Stripe checkout session created: https://checkout.stripe.com/c/pay/cs_test_b1svwSdT8oM9BF4vI7YXGM1PyOYPStVWRVPQD256Ehc2XZdSXQQmQ1x61w#fidkdWxOYHwnPyd1blpxYHZxWjA0V0RESjQ3Tm0xbU52fWI1SX1LSVA2c1U0ZDx3QmBQZlNjaTd2akdTV1VVRnZcPG9GR0Y1SmRNMzNNX259M0Jvf312Zj1NUnJOSEcxVDw0Smt0QW1gUl9ANTU0YW9LQzV%2FdScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPydocGlxbFpscWBoJyknYGtkZ2lgVWlkZmBtamlhYHd2Jz9xd3BgeCUl
+2025-07-02 19:48:02,817 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:48:02] "[32mPOST /checkout HTTP/1.1[0m" 303 -
+2025-07-02 19:48:37,145 - app - INFO - Webhook: Checkout Session Completed para order_id: 3
+2025-07-02 19:48:37,149 - app - INFO - Pedido 3 finalizado com sucesso no DB via webhook.
+2025-07-02 19:48:37,149 - app - INFO - Ebook(s) para o pedido 3 (usuário 3) disponíveis para download.
+2025-07-02 19:48:37,149 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:48:37] "POST /stripe-webhook HTTP/1.1" 200 -
+2025-07-02 19:50:20,044 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-02 19:50:20,044 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-02 19:50:24,887 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:24] "GET / HTTP/1.1" 200 -
+2025-07-02 19:50:25,645 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:25] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:25,648 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:25] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:25,667 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:25] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:25,697 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:25] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:25,704 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:25] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:25,706 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:25] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:25,739 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:25] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:50:31,261 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:31] "GET /login_link HTTP/1.1" 200 -
+2025-07-02 19:50:31,477 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:50:31,503 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:31] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:31,504 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:31] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:38,017 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:38] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 19:50:38,231 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:38] "GET / HTTP/1.1" 200 -
+2025-07-02 19:50:38,486 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:38] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:38,492 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:38] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:38,497 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:38] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:38,500 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:38] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:38,682 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:38] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:38,704 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:38] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:38,708 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:38] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:50:40,869 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:50:40,869 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:50:40,869 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:50:40,870 - cart_manager - DEBUG - Raw items fetched for user 3: []
+2025-07-02 19:50:40,870 - cart_manager - DEBUG - No items fetched, so cannot test row_factory access.
+2025-07-02 19:50:40,870 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: []
+2025-07-02 19:50:40,870 - app - DEBUG - DEBUG (view_cart): Number of items: 0
+2025-07-02 19:50:40,876 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:40] "GET /cart HTTP/1.1" 200 -
+2025-07-02 19:50:41,106 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:41] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:41,110 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:41] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:50:41,120 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:41] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:47,661 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:47] "GET /search-by-genre?genre=adventure HTTP/1.1" 200 -
+2025-07-02 19:50:47,901 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:47] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:50:47,904 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:47] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:47,908 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:47] "[33mGET /No%20Cover HTTP/1.1[0m" 404 -
+2025-07-02 19:50:47,911 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:47] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:50,376 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:50] "GET /bookpage/975 HTTP/1.1" 200 -
+2025-07-02 19:50:50,595 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:50] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:50:50,649 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:50] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:50,653 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:50] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:51,927 - app - INFO - Webhook: Checkout Session Completed para order_id: 2
+2025-07-02 19:50:51,931 - app - INFO - Pedido 2 finalizado com sucesso no DB via webhook.
+2025-07-02 19:50:51,931 - app - INFO - Ebook(s) para o pedido 2 (usuário 1) disponíveis para download.
+2025-07-02 19:50:51,931 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:51] "POST /stripe-webhook HTTP/1.1" 200 -
+2025-07-02 19:50:52,134 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:52] "[32mPOST /add-to-cart HTTP/1.1[0m" 302 -
+2025-07-02 19:50:52,341 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:50:52,341 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:50:52,341 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:50:52,341 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x717aef8af550>]
+2025-07-02 19:50:52,341 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:50:52,341 - cart_manager - DEBUG - Accessing by key successful: bookTitle='Ariel', item_total_price='53.9'
+2025-07-02 19:50:52,342 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x717aef8af550>]
+2025-07-02 19:50:52,342 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-07-02 19:50:52,342 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:52] "GET /cart HTTP/1.1" 200 -
+2025-07-02 19:50:52,574 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:52] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:50:52,584 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:52] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:52,598 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:52] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:54,822 - app - DEBUG - Received request to checkout.
+2025-07-02 19:50:54,823 - app - DEBUG - Buscando email para userId 3. Resultado: lovegomez11@gmail.com
+2025-07-02 19:50:54,823 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:50:54,823 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:50:54,824 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:50:54,824 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x717aef8aecb0>]
+2025-07-02 19:50:54,824 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:50:54,824 - cart_manager - DEBUG - Accessing by key successful: bookTitle='Ariel', item_total_price='53.9'
+2025-07-02 19:50:54,824 - app - DEBUG - Stripe line_items prepared: [{'price_data': {'currency': 'brl', 'product_data': {'name': 'Ariel', 'images': ['http://books.google.com/books/content?id=pWNYQ4XtHi0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'], 'description': 'Quantidade: 1'}, 'unit_amount': 5390}, 'quantity': 1}]
+2025-07-02 19:50:54,829 - stripe - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+2025-07-02 19:50:54,829 - stripe - DEBUG - api_version=2025-06-30.basil message='Post details' post_data=customer_email=lovegomez11%40gmail.com&line_items[0][price_data][currency]=brl&line_items[0][price_data][product_data][name]=Ariel&line_items[0][price_data][product_data][images][0]=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fcontent%3Fid%3DpWNYQ4XtHi0C%26printsec%3Dfrontcover%26img%3D1%26zoom%3D1%26edge%3Dcurl%26source%3Dgbs_api&line_items[0][price_data][product_data][description]=Quantidade%3A+1&line_items[0][price_data][unit_amount]=5390&line_items[0][quantity]=1&mode=payment&success_url=None%2Fcheckout%2Fsuccess%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=None%2Fcheckout%2Fcancel&metadata[order_id]=4&metadata[user_id]=3
+2025-07-02 19:50:54,831 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.stripe.com:443
+2025-07-02 19:50:54,978 - urllib3.connectionpool - DEBUG - https://api.stripe.com:443 "POST /v1/checkout/sessions HTTP/1.1" 400 359
+2025-07-02 19:50:54,979 - stripe - INFO - message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=400
+2025-07-02 19:50:54,979 - stripe - DEBUG - body='{\n  "error": {\n    "code": "url_invalid",\n    "doc_url": "https://stripe.com/docs/error-codes/url-invalid",\n    "message": "Invalid URL: An explicit scheme (such as https) must be provided.",\n    "param": "success_url",\n    "request_log_url": "https://dashboard.stripe.com/test/logs/req_CKdAo8z56jpaha?t=1751485854",\n    "type": "invalid_request_error"\n  }\n}\n' message='API response body'
+2025-07-02 19:50:54,979 - stripe - DEBUG - link=https://dashboard.stripe.com/test/logs/req_CKdAo8z56jpaha message='Dashboard link for request'
+2025-07-02 19:50:54,979 - stripe - INFO - error_code=url_invalid error_message='Invalid URL: An explicit scheme (such as https) must be provided.' error_param=success_url error_type=invalid_request_error message='Stripe v1 API error received'
+2025-07-02 19:50:54,980 - app - ERROR - Erro ao criar sessão de checkout com Stripe: Request req_CKdAo8z56jpaha: Invalid URL: An explicit scheme (such as https) must be provided.
+2025-07-02 19:50:54,980 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:54] "[32mPOST /checkout HTTP/1.1[0m" 302 -
+2025-07-02 19:50:55,182 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:50:55,182 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:50:55,182 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:50:55,183 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x717aef8ad900>]
+2025-07-02 19:50:55,183 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:50:55,183 - cart_manager - DEBUG - Accessing by key successful: bookTitle='Ariel', item_total_price='53.9'
+2025-07-02 19:50:55,183 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x717aef8ad900>]
+2025-07-02 19:50:55,183 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-07-02 19:50:55,184 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:55] "GET /cart HTTP/1.1" 200 -
+2025-07-02 19:50:55,413 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:55] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:55,418 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:55] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:55,428 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:55] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:50:57,854 - app - DEBUG - Received request to checkout.
+2025-07-02 19:50:57,855 - app - DEBUG - Buscando email para userId 3. Resultado: lovegomez11@gmail.com
+2025-07-02 19:50:57,855 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:50:57,855 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:50:57,855 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:50:57,856 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x717aef8ad060>]
+2025-07-02 19:50:57,856 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:50:57,856 - cart_manager - DEBUG - Accessing by key successful: bookTitle='Ariel', item_total_price='53.9'
+2025-07-02 19:50:57,856 - app - DEBUG - Stripe line_items prepared: [{'price_data': {'currency': 'brl', 'product_data': {'name': 'Ariel', 'images': ['http://books.google.com/books/content?id=pWNYQ4XtHi0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'], 'description': 'Quantidade: 1'}, 'unit_amount': 5390}, 'quantity': 1}]
+2025-07-02 19:50:57,857 - stripe - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+2025-07-02 19:50:57,857 - stripe - DEBUG - api_version=2025-06-30.basil message='Post details' post_data=customer_email=lovegomez11%40gmail.com&line_items[0][price_data][currency]=brl&line_items[0][price_data][product_data][name]=Ariel&line_items[0][price_data][product_data][images][0]=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fcontent%3Fid%3DpWNYQ4XtHi0C%26printsec%3Dfrontcover%26img%3D1%26zoom%3D1%26edge%3Dcurl%26source%3Dgbs_api&line_items[0][price_data][product_data][description]=Quantidade%3A+1&line_items[0][price_data][unit_amount]=5390&line_items[0][quantity]=1&mode=payment&success_url=None%2Fcheckout%2Fsuccess%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=None%2Fcheckout%2Fcancel&metadata[order_id]=4&metadata[user_id]=3
+2025-07-02 19:50:57,858 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.stripe.com:443
+2025-07-02 19:50:58,008 - urllib3.connectionpool - DEBUG - https://api.stripe.com:443 "POST /v1/checkout/sessions HTTP/1.1" 400 359
+2025-07-02 19:50:58,008 - stripe - INFO - message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=400
+2025-07-02 19:50:58,008 - stripe - DEBUG - body='{\n  "error": {\n    "code": "url_invalid",\n    "doc_url": "https://stripe.com/docs/error-codes/url-invalid",\n    "message": "Invalid URL: An explicit scheme (such as https) must be provided.",\n    "param": "success_url",\n    "request_log_url": "https://dashboard.stripe.com/test/logs/req_8lxj6ZEqivL1mG?t=1751485857",\n    "type": "invalid_request_error"\n  }\n}\n' message='API response body'
+2025-07-02 19:50:58,009 - stripe - DEBUG - link=https://dashboard.stripe.com/test/logs/req_8lxj6ZEqivL1mG message='Dashboard link for request'
+2025-07-02 19:50:58,009 - stripe - INFO - error_code=url_invalid error_message='Invalid URL: An explicit scheme (such as https) must be provided.' error_param=success_url error_type=invalid_request_error message='Stripe v1 API error received'
+2025-07-02 19:50:58,009 - app - ERROR - Erro ao criar sessão de checkout com Stripe: Request req_8lxj6ZEqivL1mG: Invalid URL: An explicit scheme (such as https) must be provided.
+2025-07-02 19:50:58,010 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:58] "[32mPOST /checkout HTTP/1.1[0m" 302 -
+2025-07-02 19:50:58,209 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:50:58,209 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:50:58,209 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:50:58,210 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x717aef8e5750>]
+2025-07-02 19:50:58,210 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:50:58,210 - cart_manager - DEBUG - Accessing by key successful: bookTitle='Ariel', item_total_price='53.9'
+2025-07-02 19:50:58,210 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x717aef8e5750>]
+2025-07-02 19:50:58,210 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-07-02 19:50:58,211 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:58] "GET /cart HTTP/1.1" 200 -
+2025-07-02 19:50:58,445 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:58] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:50:58,449 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:58] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:50:58,452 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:50:58] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:17,416 - werkzeug - INFO - [31m[1mWARNING: This is a development server. Do not use it in a production deployment. Use a production WSGI server instead.[0m
+ * Running on http://127.0.0.1:5000
+2025-07-02 19:52:17,416 - werkzeug - INFO - [33mPress CTRL+C to quit[0m
+2025-07-02 19:52:21,946 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:21] "GET / HTTP/1.1" 200 -
+2025-07-02 19:52:22,384 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:22] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:22,417 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:22] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:52:22,423 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:22] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:22,553 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:22] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:22,614 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:22] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:22,617 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:22] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:22,639 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:22] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:24,654 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:24] "GET /login_link HTTP/1.1" 200 -
+2025-07-02 19:52:24,883 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:24] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:52:24,907 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:24] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:24,986 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:24] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:31,021 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:31] "[32mPOST /login HTTP/1.1[0m" 302 -
+2025-07-02 19:52:31,235 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:31] "GET / HTTP/1.1" 200 -
+2025-07-02 19:52:31,486 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:31] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:52:31,515 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:31] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:31,528 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:31] "[36mGET /static/images/book-img.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:31,533 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:31] "[36mGET /static/images/2.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:31,535 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:31] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:31,544 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:31] "[36mGET /static/images/1.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:31,738 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:31] "[36mGET /static/images/3.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:35,079 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:52:35,079 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:52:35,079 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:52:35,080 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x7731c88d2380>]
+2025-07-02 19:52:35,080 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:52:35,080 - cart_manager - DEBUG - Accessing by key successful: bookTitle='Ariel', item_total_price='53.9'
+2025-07-02 19:52:35,080 - app - DEBUG - DEBUG (view_cart): Items retrieved for cart: [<sqlite3.Row object at 0x7731c88d2380>]
+2025-07-02 19:52:35,080 - app - DEBUG - DEBUG (view_cart): Number of items: 1
+2025-07-02 19:52:35,088 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:35] "GET /cart HTTP/1.1" 200 -
+2025-07-02 19:52:35,334 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:35] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:35,340 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:35] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:52:35,352 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:35] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:52:37,477 - app - DEBUG - Received request to checkout.
+2025-07-02 19:52:37,478 - app - DEBUG - Buscando email para userId 3. Resultado: lovegomez11@gmail.com
+2025-07-02 19:52:37,478 - cart_manager - DEBUG - Configuring row_factory for connection: <class 'sqlite3.Row'>
+2025-07-02 19:52:37,478 - cart_manager - DEBUG - Row_factory after setting: <class 'sqlite3.Row'>
+2025-07-02 19:52:37,478 - cart_manager - DEBUG - Executing cart details query for user 3. Query:
+
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderr o
+        JOIN
+            orderItem oi ON o.orderId = oi.orderId
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            o.userId = ? AND o.orderStatus = 'pending'
+        ORDER BY
+            b.bookTitle ASC
+        
+2025-07-02 19:52:37,478 - cart_manager - DEBUG - Raw items fetched for user 3: [<sqlite3.Row object at 0x7731c88d3df0>]
+2025-07-02 19:52:37,478 - cart_manager - DEBUG - Type of first item: <class 'sqlite3.Row'>
+2025-07-02 19:52:37,479 - cart_manager - DEBUG - Accessing by key successful: bookTitle='Ariel', item_total_price='53.9'
+2025-07-02 19:52:37,479 - app - DEBUG - Stripe line_items prepared: [{'price_data': {'currency': 'brl', 'product_data': {'name': 'Ariel', 'images': ['http://books.google.com/books/content?id=pWNYQ4XtHi0C&printsec=frontcover&img=1&zoom=1&edge=curl&source=gbs_api'], 'description': 'Quantidade: 1'}, 'unit_amount': 5390}, 'quantity': 1}]
+2025-07-02 19:52:37,481 - stripe - INFO - message='Request to Stripe api' method=post url=https://api.stripe.com/v1/checkout/sessions
+2025-07-02 19:52:37,481 - stripe - DEBUG - api_version=2025-06-30.basil message='Post details' post_data=customer_email=lovegomez11%40gmail.com&line_items[0][price_data][currency]=brl&line_items[0][price_data][product_data][name]=Ariel&line_items[0][price_data][product_data][images][0]=http%3A%2F%2Fbooks.google.com%2Fbooks%2Fcontent%3Fid%3DpWNYQ4XtHi0C%26printsec%3Dfrontcover%26img%3D1%26zoom%3D1%26edge%3Dcurl%26source%3Dgbs_api&line_items[0][price_data][product_data][description]=Quantidade%3A+1&line_items[0][price_data][unit_amount]=5390&line_items[0][quantity]=1&mode=payment&success_url=https%3A%2F%2Fscaling-happiness-jj5ggjwxpw992qxw4-5000.app.github.dev%2F%2Fcheckout%2Fsuccess%3Fsession_id%3D%7BCHECKOUT_SESSION_ID%7D&cancel_url=https%3A%2F%2Fscaling-happiness-jj5ggjwxpw992qxw4-5000.app.github.dev%2F%2Fcheckout%2Fcancel&metadata[order_id]=4&metadata[user_id]=3
+2025-07-02 19:52:37,482 - urllib3.connectionpool - DEBUG - Starting new HTTPS connection (1): api.stripe.com:443
+2025-07-02 19:52:37,814 - urllib3.connectionpool - DEBUG - https://api.stripe.com:443 "POST /v1/checkout/sessions HTTP/1.1" 200 3018
+2025-07-02 19:52:37,814 - stripe - INFO - message='Stripe API response' path=https://api.stripe.com/v1/checkout/sessions response_code=200
+2025-07-02 19:52:37,814 - stripe - DEBUG - body='{\n  "id": "cs_test_a1MB32blQcSBhlkMDtRGr6Kuk5XLBtI3LPeC5XwIXVnS73WrogMZLPyi3i",\n  "object": "checkout.session",\n  "adaptive_pricing": {\n    "enabled": true\n  },\n  "after_expiration": null,\n  "allow_promotion_codes": null,\n  "amount_subtotal": 5390,\n  "amount_total": 5390,\n  "automatic_tax": {\n    "enabled": false,\n    "liability": null,\n    "provider": null,\n    "status": null\n  },\n  "billing_address_collection": null,\n  "cancel_url": "https://scaling-happiness-jj5ggjwxpw992qxw4-5000.app.github.dev//checkout/cancel",\n  "client_reference_id": null,\n  "client_secret": null,\n  "collected_information": {\n    "shipping_details": null\n  },\n  "consent": null,\n  "consent_collection": null,\n  "created": 1751485957,\n  "currency": "brl",\n  "currency_conversion": null,\n  "custom_fields": [],\n  "custom_text": {\n    "after_submit": null,\n    "shipping_address": null,\n    "submit": null,\n    "terms_of_service_acceptance": null\n  },\n  "customer": null,\n  "customer_creation": "if_required",\n  "customer_details": {\n    "address": null,\n    "email": "lovegomez11@gmail.com",\n    "name": null,\n    "phone": null,\n    "tax_exempt": "none",\n    "tax_ids": null\n  },\n  "customer_email": "lovegomez11@gmail.com",\n  "discounts": [],\n  "expires_at": 1751572357,\n  "invoice": null,\n  "invoice_creation": {\n    "enabled": false,\n    "invoice_data": {\n      "account_tax_ids": null,\n      "custom_fields": null,\n      "description": null,\n      "footer": null,\n      "issuer": null,\n      "metadata": {},\n      "rendering_options": null\n    }\n  },\n  "livemode": false,\n  "locale": null,\n  "metadata": {\n    "order_id": "4",\n    "user_id": "3"\n  },\n  "mode": "payment",\n  "payment_intent": null,\n  "payment_link": null,\n  "payment_method_collection": "if_required",\n  "payment_method_configuration_details": {\n    "id": "pmc_1RAAOZ2Kh4hKsxg0oiQgZYua",\n    "parent": null\n  },\n  "payment_method_options": {\n    "card": {\n      "request_three_d_secure": "automatic"\n    }\n  },\n  "payment_method_types": [\n    "card"\n  ],\n  "payment_status": "unpaid",\n  "permissions": null,\n  "phone_number_collection": {\n    "enabled": false\n  },\n  "recovered_from": null,\n  "saved_payment_method_options": null,\n  "setup_intent": null,\n  "shipping_address_collection": null,\n  "shipping_cost": null,\n  "shipping_options": [],\n  "status": "open",\n  "submit_type": null,\n  "subscription": null,\n  "success_url": "https://scaling-happiness-jj5ggjwxpw992qxw4-5000.app.github.dev//checkout/success?session_id={CHECKOUT_SESSION_ID}",\n  "total_details": {\n    "amount_discount": 0,\n    "amount_shipping": 0,\n    "amount_tax": 0\n  },\n  "ui_mode": "hosted",\n  "url": "https://checkout.stripe.com/c/pay/cs_test_a1MB32blQcSBhlkMDtRGr6Kuk5XLBtI3LPeC5XwIXVnS73WrogMZLPyi3i#fidkdWxOYHwnPyd1blpxYHZxWjA0V0RESjQ3Tm0xbU52fWI1SX1LSVA2c1U0ZDx3QmBQZlNjaTd2akdTV1VVRnZcPG9GR0Y1SmRNMzNNX259M0Jvf312Zj1NUnJOSEcxVDw0Smt0QW1gUl9ANTU0YW9LQzV%2FdScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl",\n  "wallet_options": null\n}' message='API response body'
+2025-07-02 19:52:37,815 - stripe - DEBUG - link=https://dashboard.stripe.com/test/logs/req_QaLKSveEDUNrP2 message='Dashboard link for request'
+2025-07-02 19:52:37,816 - app - DEBUG - Stripe checkout session created: https://checkout.stripe.com/c/pay/cs_test_a1MB32blQcSBhlkMDtRGr6Kuk5XLBtI3LPeC5XwIXVnS73WrogMZLPyi3i#fidkdWxOYHwnPyd1blpxYHZxWjA0V0RESjQ3Tm0xbU52fWI1SX1LSVA2c1U0ZDx3QmBQZlNjaTd2akdTV1VVRnZcPG9GR0Y1SmRNMzNNX259M0Jvf312Zj1NUnJOSEcxVDw0Smt0QW1gUl9ANTU0YW9LQzV%2FdScpJ2N3amhWYHdzYHcnP3F3cGApJ2lkfGpwcVF8dWAnPyd2bGtiaWBabHFgaCcpJ2BrZGdpYFVpZGZgbWppYWB3dic%2FcXdwYHgl
+2025-07-02 19:52:37,817 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:52:37] "[32mPOST /checkout HTTP/1.1[0m" 303 -
+2025-07-02 19:53:07,060 - app - INFO - Webhook: Checkout Session Completed para order_id: 4
+2025-07-02 19:53:07,064 - app - INFO - Pedido 4 finalizado com sucesso no DB via webhook.
+2025-07-02 19:53:07,064 - app - INFO - Ebook(s) para o pedido 4 (usuário 3) disponíveis para download.
+2025-07-02 19:53:07,065 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:53:07] "POST /stripe-webhook HTTP/1.1" 200 -
+2025-07-02 19:53:08,973 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:53:08] "GET /checkout/success?session_id=cs_test_a1MB32blQcSBhlkMDtRGr6Kuk5XLBtI3LPeC5XwIXVnS73WrogMZLPyi3i HTTP/1.1" 200 -
+2025-07-02 19:53:09,263 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:53:09] "[36mGET /static/css/style.css HTTP/1.1[0m" 304 -
+2025-07-02 19:53:09,264 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:53:09] "[36mGET /static/images/carrinho.png HTTP/1.1[0m" 304 -
+2025-07-02 19:53:09,274 - werkzeug - INFO - 127.0.0.1 - - [02/Jul/2025 19:53:09] "[36mGET /static/images/logo.png HTTP/1.1[0m" 304 -

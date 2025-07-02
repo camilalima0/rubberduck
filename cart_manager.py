@@ -64,7 +64,7 @@ def add_book_to_cart(conn, order_id, book_id, quantity=1):
     else:
         # Insert new order item
         cursor.execute(
-            "INSERT INTO orderItem (orderId, bookId, quantity, item_total_price) VALUES (?, ?, ?, ?)",
+            "INSERT INTO orderItem (orderId, bookId, quantity, itemPrice) VALUES (?, ?, ?, ?)",
             (order_id, book_id, quantity, item_price_at_addition)
         )
         order_item_id = cursor.lastrowid
