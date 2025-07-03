@@ -5,7 +5,7 @@
     
     // Comandos que serão executados *após* a criação do contêiner.
     // Garante que o ambiente virtual seja criado e as dependências instaladas DENTRO dele.
-    "postCreateCommand": "sudo apt update && sudo apt install -y curl gnupg && curl -s https://packages.stripe.dev/api/security/keypair/stripe-cli-gpg/public | gpg --dearmor | sudo tee /usr/share/keyrings/stripe.gpg && echo \"deb [signed-by=/usr/share/keyrings/stripe.gpg] https://packages.stripe.dev/stripe-cli-debian-local stable main\" | sudo tee -a /etc/apt/sources.list.d/stripe.list && sudo apt update && sudo apt install -y stripe && python3 -m venv .venv && /bin/bash -c \"source .venv/bin/activate && pip install --no-cache-dir flask stripe && sudo apt install sqlite3\"",
+    "postCreateCommand": "sudo apt update && sudo apt install -y curl gnupg && curl -s https://packages.stripe.dev/api/security/keypair/stripe-cli-gpg/public | gpg --dearmor | sudo tee /usr/share/keyrings/stripe.gpg && echo \"deb [signed-by=/usr/share/keyrings/stripe.gpg] https://packages.stripe.dev/stripe-cli-debian-local stable main\" | sudo tee -a /etc/apt/sources.list.d/stripe.list && sudo apt update && sudo apt install -y stripe && python3 -m venv .venv && /bin/bash -c \"source .venv/bin/activate && pip install -r requirements.txt\" && sudo apt install -y sqlite3",
 
     "forwardPorts": [5000],
 

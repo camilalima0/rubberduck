@@ -1,4 +1,4 @@
-from flask import Flask, render_template, request, redirect, url_for, jsonify, session, flash
+from flask import Flask, render_template, request, redirect, url_for, jsonify, session, flash, requests
 from books import search, search_subject, get_book_by_id
 import secrets
 from server import pay
@@ -492,6 +492,15 @@ def checkout_cancel():
     flash("Seu pagamento foi cancelado. Você pode tentar novamente.", "info")
     return redirect(url_for('view_cart'))
 
+def send_simple_message():
+  	return requests.post(
+  		"https://api.mailgun.net/v3/sandbox99621f535d1d41a4ad79ea64d51eb7e6.mailgun.org/messages",
+  		auth=("api", os.getenv('API_KEY', 'API_KEY')),
+  		data={"from": "Mailgun Sandbox <postmaster@sandbox99621f535d1d41a4ad79ea64d51eb7e6.mailgun.org>",
+			"to": "Camila Claudino de Lima <lovegomez11@gmail.com>",
+  			"subject": "Hello Camila Claudino de Lima",
+  			"text": "Congratulations Camila Claudino de Lima, you just sent an email with Mailgun! You are truly awesome!"})
+
 @app.route('/stripe-webhook', methods=['POST'])
 def stripe_webhook():
     payload = request.get_data(as_text=True)
@@ -542,3 +551,5 @@ def stripe_webhook():
 if __name__ == '__main__':
     logger.info("Starting Flask app...") # This will appear in the log file
     app.run(debug=True, host='0.0.0.0', use_reloader=False)
+
+    #api key mailgun: 7c305c0cc2a4ff8b74c4158d23a1502e-6d5bd527-6f29dd91
