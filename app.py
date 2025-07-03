@@ -17,6 +17,17 @@ from cart_manager import (
 import logging
 import stripe
 import os
+from dotenv import load_dotenv # Adicione esta linha
+
+load_dotenv() # Carrega o .env
+
+# Altere aqui para usar sua variável de ambiente MAILGUN_API_KEY
+MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
+MAILGUN_DOMAIN = os.environ.get('MAILGUN_DOMAIN') 
+SENDER_EMAIL = os.environ.get('SENDER_EMAIL', f"Mailgun <postmaster@{MAILGUN_DOMAIN}>")
+
+if not all([MAILGUN_API_KEY, MAILGUN_DOMAIN, SENDER_EMAIL]):
+    logger.warning("Credenciais do Mailgun incompletas. O envio de e-mails pode falhar.")
 
 # Configure basic logging
 logging.basicConfig(level=logging.DEBUG, # Set to DEBUG to capture all messages
@@ -32,6 +43,7 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
 
+STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
@@ -477,6 +489,7 @@ def checkout_route():
 def checkout_success():
     # Esta rota é para o redirecionamento imediato do usuário após o pagamento
     # A confirmação REAL do pagamento virá do webhook (abordagem mais segura)
+    
     session_id = request.args.get('session_id')
     if not session_id:
         flash("Sessão de pagamento inválida.", "error")
@@ -492,13 +505,59 @@ def checkout_cancel():
     flash("Seu pagamento foi cancelado. Você pode tentar novamente.", "info")
     return redirect(url_for('view_cart'))
 
+def send_ebook_email(recipient_email, book_title, book_cover_url):
+    logger.debug(f"Tentando enviar e-mail via Mailgun API para {recipient_email} para o livro '{book_title}'")
+
+    if not all([MAILGUN_API_KEY, MAILGUN_DOMAIN, SENDER_EMAIL]):
+        logger.error("Credenciais do Mailgun incompletas. E-mail não enviado.")
+        return False
+    
+    html_body = f"""
+    <html>
+        <head></head>
+        <body>
+            <p>Olá!</p>
+            <p>Aqui está seu e-book <b>{book_title}</b> da Rubberduck Books. Divirta-se!</p>
+            <p>
+                <img src="{book_cover_url}" alt="Capa do livro: {book_title}" style="max-width:200px; height:auto; display:block; margin: 10px 0;">
+            </p>
+            <p>Em breve, você receberá um link para download do seu e-book.</p>
+            <p>Obrigado por sua compra!</p>
+            <p>Atenciosamente,</p>
+            <p>A Equipe Rubberduck Books</p>
+        </body>
+    </html>
+    """
+    try:
+        response = requests.post(
+            f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
+            auth=("api", MAILGUN_API_KEY),
+            data={
+                "from": SENDER_EMAIL,
+                "to": recipient_email,
+                "subject": f"Seu eBook da Rubberduck Books: {book_title}!", # Assunto mais específico
+                "html": html_body # Use 'html' para enviar o corpo HTML
+            }
+        )
+        response.raise_for_status() # Levanta um erro para códigos de status HTTP ruins (4xx ou 5xx)
+        logger.info(f"E-mail de confirmação enviado via Mailgun API para {recipient_email} (Status: {response.status_code}).")
+        return True
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Erro ao enviar e-mail via Mailgun API para {recipient_email}: {e}")
+        if hasattr(e, 'response') and e.response is not None:
+            logger.error(f"Resposta de erro do Mailgun: {e.response.text}")
+        return False
+    except Exception as e:
+        logger.error(f"Erro inesperado ao enviar e-mail: {e}")
+        return False
+
+
+
 @app.route('/stripe-webhook', methods=['POST'])
 def stripe_webhook():
     payload = request.get_data(as_text=True)
     sig_header = request.headers.get('stripe-signature')
     event = None
-
-    STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 
     if not STRIPE_WEBHOOK_SECRET: # Adicionado para robustez
         logger.error("STRIPE_WEBHOOK_SECRET não configurado!")
@@ -519,25 +578,41 @@ def stripe_webhook():
         session_data = event['data']['object']
         order_id = session_data['metadata'].get('order_id')
         user_id = session_data['metadata'].get('user_id')
+        customer_email = session_data.get('customer_details', {}).get('email')
 
-        if order_id:
+        if order_id and user_id and customer_email:
             logger.info(f"Webhook: Checkout Session Completed para order_id: {order_id}")
             conn = get_db_connection() # Abre a conexão para o webhook
             try:
                 if finalize_order(conn, order_id): # **PASSA 'conn'**
                     logger.info(f"Pedido {order_id} finalizado com sucesso no DB via webhook.")
                     logger.info(f"Ebook(s) para o pedido {order_id} (usuário {user_id}) disponíveis para download.")
+                    cart_items = get_cart_items_details_for_user(conn, user_id)
+
+
+                    # Para simplificar, estamos pegando o primeiro livro.
+                    # Em um app real, você pode querer listar todos os livros comprados no email.
+                    first_book = cart_items[0]
+                    book_title_for_email = first_book['bookTitle']
+                    book_cover_url_for_email = first_book['bookCover']
+
+                    # Chame a função de envio de e-mail AQUI, no webhook!
+                    send_ebook_email(customer_email, book_title_for_email, book_cover_url_for_email)
                 else:
-                    logger.error(f"Falha ao finalizar pedido {order_id} no DB via webhook.")
+                    logger.warning(f"Nenhum item encontrado no carrinho para o pedido {order_id}. E-mail não enviado.")
+
+                logger.info(f"Ebook(s) para o pedido {order_id} (usuário {user_id}) disponíveis para download.")
+
+            except Exception as e:
+                logger.error(f"Erro ao processar checkout.session.completed para pedido {order_id}: {e}")
             finally:
-                conn.close() # Fecha a conexão
+                if conn:
+                    conn.close()
         else:
-            logger.warning("Webhook: 'checkout.session.completed' recebido sem 'order_id' no metadata.")
-
-    elif event['type'] == 'payment_intent.succeeded':
-        logger.info(f"Webhook: Payment Intent Succeeded para ID: {event['data']['object']['id']}")
-
+            logger.warning(f"Webhook: Evento checkout.session.completed sem order_id, user_id ou customer_email nos metadados/sessão. Dados: {session_data}")
+            
     return 'OK', 200
+
 
 if __name__ == '__main__':
     logger.info("Starting Flask app...") # This will appear in the log file
