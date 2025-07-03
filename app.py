@@ -551,5 +551,3 @@ def stripe_webhook():
 if __name__ == '__main__':
     logger.info("Starting Flask app...") # This will appear in the log file
     app.run(debug=True, host='0.0.0.0', use_reloader=False)
-
-    #api key mailgun: 7c305c0cc2a4ff8b74c4158d23a1502e-6d5bd527-6f29dd91
