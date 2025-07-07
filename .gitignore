@@ -1,0 +1,21 @@
+# Arquivos de cache do Python
+__pycache__/
+*.pyc
+*.pyd
+*.pyo
+
+# Pastas de ambiente virtual
+.venv/
+venv/
+env/
+
+# Arquivos de log
+*.log
+logs/
+debug.log
+
+# Arquivos de segredos (NUNCA commitar!)
+.env
+*.env
+*.key
+*.pem
