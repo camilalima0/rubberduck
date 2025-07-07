@@ -1,0 +1,82 @@
+* [33m612276d[m[33m ([m[1;36mHEAD[m[33m -> [m[1;32mmain[m[33m)[m fixing api incident
+* [33m2ca11f9[m donno
+* [33mabb4b11[m Remove generated files no longer tracked due to .gitignore
+* [33mf4f5113[m Configure .gitignore and remove generated files
+[31m|[m *   [33m7f66112[m[33m ([m[1;31morigin/main[m[33m, [m[1;31morigin/HEAD[m[33m)[m Merge branch 'temp-fix'
+[31m|[m [32m|[m[33m\[m  
+[31m|[m [32m|[m * [33m29786d9[m[33m ([m[1;32mtemp-fix[m[33m)[m fixing api incident
+[31m|[m [32m|[m * [33m4c6a741[m donno
+[31m|[m [32m|[m * [33me85e815[m sending e-mails through mailgun, missing putting the logic into app.py and take mail and content from database
+[31m|[m [32m|[m[31m/[m  
+[31m|[m[31m/[m[32m|[m   
+[31m|[m * [33m661648a[m Remove generated files no longer tracked due to .gitignore
+[31m|[m * [33m54822bf[m Configure .gitignore and remove generated files
+[31m|[m * [33mbd72606[m sending e-mails through mailgun, missing putting the logic into app.py and take mail and content from database.
+[31m|[m * [33m0deac43[m sending e-mails through mailgun, missing putting the logic into app.py and take mail and content from database
+[31m|[m[31m/[m  
+* [33md87171c[m checkout correctly working, missing sending ebook data to customer email
+* [33m3372605[m setting devcontainer to automatically install stripe, python and flask
+* [33m6300ee6[m setting json file to automatically install stripe
+* [33m489df93[m redirecting to checkout page, setting a test client to check completed payment webhook from stripe to app
+* [33mb68b183[m trying to make checkout work
+* [33mac4fb9f[m building checkout
+* [33mb8e992a[m Revert "."
+* [33m491217d[m css
+* [33m7fe9fc3[m Revert "."
+* [33m20af736[m card layout ok, trying to make button + and - reflect in backend
+* [33m24b49a6[m .
+* [33m5a47346[m .
+* [33m8719562[m books appearing in the cart
+* [33m8941284[m bookpage ok, setting cart_manager
+* [33m7756782[m login ok
+* [33mc0331c4[m fix app.py with new db user names
+* [33mc26cf2b[m layout_loggedon set for pages, missing test
+* [33m4d9c1d4[m register ok, missing configuring other forms to connect to the db
+* [33m9478e45[m database corrected and created, book table filled, something went wrong when searching in the site
+*   [33m5ea4785[m git push origin mainMerge branch 'main' of https://github.com/camilalima0/rubberduck
+[34m|[m[35m\[m  
+[34m|[m * [33maf94655[m Update README.md
+* [35m|[m [33m96bcde4[m database created, need to link to google books info and populate with users
+[35m|[m[35m/[m  
+* [33ma425951[m payment ok, just need to fix cards, add more result pages, items to cart and create database for user data
+* [33m4bb3476[m delivery page created, need to install correios and stripe APIs
+* [33me578ec9[m trying to implement correios preço API in the calculate freight form
+*   [33m80f750e[m Merge branch 'main' of https://github.com/camilalima0/rubberduck
+[36m|[m[1;31m\[m  
+[36m|[m * [33mfc91366[m Update README.md
+[36m|[m * [33md223c15[m Update README.md
+[36m|[m * [33m3f647ad[m Update README.md
+* [1;31m|[m [33m782a3fc[m creating delivery page and searching about Correios API integration
+[1;31m|[m[1;31m/[m  
+* [33m397ccc8[m search by genre set up, need to fix some bugs. update books in homepage
+* [33me501d10[m query results working, now need to set up filter by gender
+* [33mf359128[m starting backend - google books api
+* [33m263a98e[m style almost ready. find a way of leaving 100vh in light gray, then go to backend
+* [33m5309138[m home ready, still need some general stylish and create address page or integrate to logistic api
+*   [33mf3b9756[m Merge branch 'main' of https://github.com/camilalima0/rubberduck
+[1;32m|[m[1;33m\[m  
+[1;32m|[m * [33me66bc2b[m Update README.md
+* [1;33m|[m [33mc62c927[m merged branches
+* [1;33m|[m [33m180e436[m home fixed, need to fix home footer and adjust spaces in all the pages
+* [1;33m|[m [33m53f4fb1[m fixing home image
+* [1;33m|[m [33me257133[m fixing home
+* [1;33m|[m [33m4a5c60b[m[33m ([m[1;31morigin/fixing-home[m[33m)[m fixing home layout
+[1;33m|[m[1;33m/[m  
+* [33meacb7f8[m editing home. edit other backgrounds and finish carousel
+* [33m41dcd6f[m home background started, still need some fix. fix the titles in layout
+* [33ma00e39e[m trying to remove the gaps between items in payment page
+* [33m17e83fd[m payment page created, still need some fix
+* [33m5f90c3f[m cart page ready
+* [33m9cf8edc[m working on cart page responsivity
+* [33m032ae45[m changed cart page, still need some fix
+* [33m4997324[m worked on cart page, still need to do some changes
+* [33m5f31fe5[m text replaced by textarea in contact page, working on cart page
+* [33md9cefed[m sci-fi, bookpage and contact done, adjust contact
+* [33m285e26b[m register and login pages created, trying to create fiction.html
+*   [33mab118c5[m Merge branch 'main' of https://github.com/camilalima0/rubberduck
+[1;34m|[m[1;35m\[m  
+[1;34m|[m * [33mfd32225[m Create README.md
+* [1;35m|[m [33ma325a14[m form centralized in register
+[1;35m|[m[1;35m/[m  
+* [33m2778e24[m Page register.html and layout.html created
+* [33m78f8d6e[m nav pronta
