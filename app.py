@@ -1,4 +1,5 @@
 from flask import Flask, render_template, request, redirect, url_for, jsonify, session, flash
+import json
 from books import search, search_subject, get_book_by_id
 import secrets
 from server import pay
@@ -22,6 +23,24 @@ import stripe
 import os
 import requests
 from dotenv import load_dotenv # Adicione esta linha
+
+try:
+    with open('devcontainer.json', 'r') as f:
+        dados_do_json = json.load(f)
+    print("Dados carregados do JSON:")
+    print(dados_do_json)
+
+    # Agora você pode usar 'dados_do_json' no seu aplicativo
+    # Por exemplo, se for um dicionário:
+    # nome = dados_do_json.get('nome')
+    # print(f"Nome: {nome}")
+
+except FileNotFoundError:
+    print("Erro: O arquivo 'devcontainer.json' não foi encontrado.")
+except json.JSONDecodeError:
+    print("Erro: O arquivo 'devcontainer.json' não é um JSON válido.")
+except Exception as e:
+    print(f"Ocorreu um erro: {e}")
 
 load_dotenv() # Carrega o .env
 

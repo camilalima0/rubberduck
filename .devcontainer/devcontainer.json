@@ -1,32 +1,34 @@
+// .devcontainer/devcontainer.json
 {
     "name": "Python 3 & Web App (Ubuntu Base)",
     "image": "mcr.microsoft.com/devcontainers/python:3",
-
-    "features": {
-        "ghcr.io/devcontainers/features/ngrok:1": {
-            "version": "latest", 
-            "authtoken": "${NGROK_AUTHTOKEN}" 
-        },
-        "ghcr.io/devcontainers/features/stripe-cli:1": {
-            "version": "latest" 
-        }
-    },
     
-     "postCreateCommand": {
-
+    // Comandos que serão executados *após* a criação do contêiner.
+    // Garante que o ambiente virtual seja criado e as dependências instaladas DENTRO dele.
+    "postCreateCommand": {
+        // 1. Instalação do Stripe CLI (AGORA VIA APT DIRETAMENTE)
         "install_stripe_cli": "sudo apt update && sudo apt install -y curl gnupg && curl -s https://packages.stripe.dev/api/security/keypair/stripe-cli-gpg/public | gpg --dearmor | sudo tee /usr/share/keyrings/stripe.gpg && echo \"deb [signed-by=/usr/share/keyrings/stripe.gpg] https://packages.stripe.dev/stripe-cli-debian-local stable main\" | sudo tee -a /etc/apt/sources.list.d/stripe.list && sudo apt update && sudo apt install -y stripe",
         
+        // 2. Instalação do SQLite3 CLI
         "install_sqlite3_cli": "sudo apt install -y sqlite3",
 
+        // 3. Instalação e Configuração do Ngrok (VOLTANDO AO APT E ROBUSTO)
+        // Colocando o authtoken em um comando separado após a instalação
+        "install_ngrok_apt": "sudo apt update && curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null && echo \"deb https://ngrok-agent.s3.amazonaws.com buster main\" | sudo tee /etc/apt/sources.list.d/ngrok.list && sudo apt update && sudo apt install -y ngrok",
+        "configure_ngrok_authtoken": "ngrok authtoken ${NGROK_AUTHTOKEN}",
+
+        // 4. Configuração do Ambiente Python (venv e dependências)
         "setup_python_venv": "python3 -m venv .venv",
-        "install_python_deps": "/bin/bash -c 'source .venv/bin/activate && pip install -r requirements.txt'"
-
+        "install_python_deps": "bash -c 'source .venv/bin/activate && pip install -r requirements.txt'",
+        "auto_activate_venv_bashrc": "echo 'source .venv/bin/activate' >> ~/.bashrc"
     },
-
+    
+    // Variáveis de Ambiente para o Codespace (NGROK_AUTHTOKEN)
     "remoteEnv": {
         "NGROK_AUTHTOKEN": "${localEnv:NGROK_AUTHTOKEN}" 
     },
 
+    // Iniciar o Ngrok automaticamente ao abrir o Codespace
     "postStartCommand": "ngrok http 5000 --log=stdout > ngrok.log &",
 
     "forwardPorts": [5000],
@@ -40,4 +42,3 @@
         }
     }
 }
-    
