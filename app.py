@@ -17,17 +17,10 @@ from cart_manager import (
 import logging
 import stripe
 import os
+import requests
 from dotenv import load_dotenv # Adicione esta linha
 
 load_dotenv() # Carrega o .env
-
-# Altere aqui para usar sua variável de ambiente MAILGUN_API_KEY
-MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
-MAILGUN_DOMAIN = os.environ.get('MAILGUN_DOMAIN') 
-SENDER_EMAIL = os.environ.get('SENDER_EMAIL', f"Mailgun <postmaster@{MAILGUN_DOMAIN}>")
-
-if not all([MAILGUN_API_KEY, MAILGUN_DOMAIN, SENDER_EMAIL]):
-    logger.warning("Credenciais do Mailgun incompletas. O envio de e-mails pode falhar.")
 
 # Configure basic logging
 logging.basicConfig(level=logging.DEBUG, # Set to DEBUG to capture all messages
@@ -43,13 +36,19 @@ logger = logging.getLogger(__name__)
 app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
 
+# global variables
 STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
 
-#setting stripe secret key for stripe module
 stripe.api_key = STRIPE_SECRET_KEY 
 app.config['STRIPE_PUBLISHABLE_KEY'] = STRIPE_PUBLISHABLE_KEY
+MAILGUN_API_KEY = os.environ.get('MAILGUN_API_KEY')
+MAILGUN_DOMAIN = os.environ.get('MAILGUN_DOMAIN') 
+SENDER_EMAIL = os.environ.get('SENDER_EMAIL', f"Mailgun <postmaster@{MAILGUN_DOMAIN}>")
+
+if not all([MAILGUN_API_KEY, MAILGUN_DOMAIN, SENDER_EMAIL]):
+    logger.warning("Credenciais do Mailgun incompletas. O envio de e-mails pode falhar.")
 
 GENRES = [
     "sci-fi", "fiction", "romance", "mystery", "horror",
@@ -565,7 +564,7 @@ def stripe_webhook():
 
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, STRIPE_WEBHOOK_SECRET
+            payload, sig_header, os.environ.get('STRIPE_WEBHOOK_SECRET')
         )
     except ValueError as e:
         logger.error(f"Erro no webhook: Payload inválido: {e}")
@@ -576,28 +575,27 @@ def stripe_webhook():
 
     if event['type'] == 'checkout.session.completed':
         session_data = event['data']['object']
-        order_id = session_data['metadata'].get('order_id')
-        user_id = session_data['metadata'].get('user_id')
+        order_id = session_data.get('metadata', {}).get('order_id')
+        user_id = session_data.get('metadata', {}).get('user_id')
         customer_email = session_data.get('customer_details', {}).get('email')
 
         if order_id and user_id and customer_email:
-            logger.info(f"Webhook: Checkout Session Completed para order_id: {order_id}")
+            logger.info(f"Webhook: Checkout Session Completed for order_id: {order_id}")
             conn = get_db_connection() # Abre a conexão para o webhook
             try:
-                if finalize_order(conn, order_id): # **PASSA 'conn'**
+                if finalize_order(conn, order_id, user_id): # **PASSA 'conn'**
                     logger.info(f"Pedido {order_id} finalizado com sucesso no DB via webhook.")
-                    logger.info(f"Ebook(s) para o pedido {order_id} (usuário {user_id}) disponíveis para download.")
-                    cart_items = get_cart_items_details_for_user(conn, user_id)
 
-
+                    if cart_items:
                     # Para simplificar, estamos pegando o primeiro livro.
                     # Em um app real, você pode querer listar todos os livros comprados no email.
-                    first_book = cart_items[0]
-                    book_title_for_email = first_book['bookTitle']
-                    book_cover_url_for_email = first_book['bookCover']
+                        first_book = cart_items[0]
+                        book_title_for_email = first_book['bookTitle']
+                        book_cover_url_for_email = first_book['bookCover']
 
                     # Chame a função de envio de e-mail AQUI, no webhook!
                     send_ebook_email(customer_email, book_title_for_email, book_cover_url_for_email)
+
                 else:
                     logger.warning(f"Nenhum item encontrado no carrinho para o pedido {order_id}. E-mail não enviado.")
 
