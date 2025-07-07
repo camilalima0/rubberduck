@@ -133,6 +133,60 @@ def get_cart_items_details_for_user(conn, user_id):
  # Garante que a conexão é fechada mesmo em caso de erro
         return [] # Retorna uma lista vazia em caso de erro
 
+def get_order_items_details(conn, order_id):
+    # Adicione este log para confirmar que row_factory está sendo configurado
+    logger.debug(f"Configuring row_factory for connection: {conn.row_factory}") 
+    conn.row_factory = sqlite3.Row # Ensure rows are dict-like
+    # Adicione este log para confirmar o valor de row_factory após a configuração
+    logger.debug(f"Row_factory after setting: {conn.row_factory}") 
+
+    cursor = conn.cursor()
+
+    try:
+        query = """
+        SELECT
+            oi.orderItemId,
+            oi.quantity,
+            b.bookPrice AS book_unit_price, 
+            oi.itemPrice AS item_total_price,
+            b.bookId,
+            b.bookTitle,
+            b.bookAuthors,
+            b.bookPrice, 
+            b.bookCover
+        FROM
+            orderItem oi
+        JOIN
+            book b ON oi.bookId = b.bookId
+        WHERE
+            oi.orderId = ?
+        ORDER BY
+            b.bookTitle ASC
+        """
+        logger.debug(f"Executing order items details query for order {order_id}. Query:\n{query}")
+        cursor.execute(query, (order_id,))
+        items = cursor.fetchall()
+        logger.debug(f"Raw items fetched for order {order_id}: {items}")
+
+        if items:
+            first_item = items[0]
+            logger.debug(f"Type of first item: {type(first_item)}")
+            try:
+                test_title = first_item['bookTitle']
+                test_price = first_item['item_total_price']
+                logger.debug(f"Accessing by key successful: bookTitle='{test_title}', item_total_price='{test_price}'")
+            except KeyError as ke:
+                logger.error(f"KeyError: Could not access item by name. This suggests row_factory might not be working: {ke}", exc_info=True)
+        else:
+            logger.debug(f"No items fetched for order {order_id}.")
+        return items
+    except sqlite3.Error as e:
+        logger.error(f"Database error in get_order_items_details for order {order_id}: {e}", exc_info=True)
+        return []
+    except Exception as e:
+        logger.error(f"Unexpected error in get_order_items_details for order {order_id}: {e}", exc_info=True)
+        return []
+    
 def update_cart_item_quantity(conn, order_item_id, new_quantity):
     """
     Updates the quantity of a specific item in the cart.
@@ -149,7 +203,32 @@ def update_cart_item_quantity(conn, order_item_id, new_quantity):
     except sqlite3.Error as e:
         print(f"Error updating quantity for orderItemId {order_item_id}: {e}")
         return False
+    
+def clear_user_cart(conn, order_id):
+    cursor = conn.cursor()
+    try:
+        cursor.execute(
+            "UPDATE orderItem SET quantity = 0 WHERE orderId = ?",
+            (order_id)
+        )
+        conn.commit()
+        return True
+    except sqlite3.Error as e:
+        print(f"Error clearing cart {order_id}: {e}")
+        return False
 
+def update_order_status(conn, order_id, new_status):
+    cursor = conn.cursor()
+    try:
+        cursor.execute(
+            "UPDATE orderr SET orderStatus = ? WHERE orderId = ?",
+            (new_status, order_id)
+        )
+        conn.commit()
+        return True
+    except sqlite3.Error as e:
+        print(f"Error updating the status for {order_id}: {e}")
+        return False
 
 def remove_book_from_cart(conn, order_item_id):
     """

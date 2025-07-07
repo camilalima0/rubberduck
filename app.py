@@ -12,6 +12,9 @@ from cart_manager import (
     get_cart_items_details_for_user,
     update_cart_item_quantity,
     remove_book_from_cart,
+    get_order_items_details,
+    update_order_status,
+    clear_user_cart,
     finalize_order # New function to finalize the order
 )
 import logging
@@ -554,62 +557,60 @@ def send_ebook_email(recipient_email, book_title, book_cover_url):
 
 @app.route('/stripe-webhook', methods=['POST'])
 def stripe_webhook():
-    payload = request.get_data(as_text=True)
+    payload = request.get_data()
     sig_header = request.headers.get('stripe-signature')
     event = None
 
-    if not STRIPE_WEBHOOK_SECRET: # Adicionado para robustez
-        logger.error("STRIPE_WEBHOOK_SECRET não configurado!")
-        return 'Server Error', 500
-
     try:
         event = stripe.Webhook.construct_event(
-            payload, sig_header, os.environ.get('STRIPE_WEBHOOK_SECRET')
+            payload, sig_header, STRIPE_WEBHOOK_SECRET
         )
     except ValueError as e:
-        logger.error(f"Erro no webhook: Payload inválido: {e}")
-        return 'Invalid payload', 400
+        # Invalid payload
+        print(f"Erro de payload inválido: {e}")
+        return jsonify({'error': 'Invalid payload'}), 400
     except stripe.error.SignatureVerificationError as e:
-        logger.error(f"Erro no webhook: Assinatura inválida: {e}")
-        return 'Invalid signature', 400
+        # Invalid signature
+        print(f"Erro de verificação de assinatura: {e}")
+        return jsonify({'error': 'Invalid signature'}), 400
 
+    # Handle the event
     if event['type'] == 'checkout.session.completed':
-        session_data = event['data']['object']
-        order_id = session_data.get('metadata', {}).get('order_id')
-        user_id = session_data.get('metadata', {}).get('user_id')
-        customer_email = session_data.get('customer_details', {}).get('email')
+        session = event['data']['object']
+        print(f"Checkout session completed: {session['id']}")
 
-        if order_id and user_id and customer_email:
-            logger.info(f"Webhook: Checkout Session Completed for order_id: {order_id}")
-            conn = get_db_connection() # Abre a conexão para o webhook
-            try:
-                if finalize_order(conn, order_id, user_id): # **PASSA 'conn'**
-                    logger.info(f"Pedido {order_id} finalizado com sucesso no DB via webhook.")
+        # Agora, recupere os metadados que você enviou
+        order_id = session['metadata'].get('order_id')
+        user_id = session['metadata'].get('user_id')
+        customer_email = session['customer_details']['email'] # Ou session['customer_email']
 
-                    if cart_items:
-                    # Para simplificar, estamos pegando o primeiro livro.
-                    # Em um app real, você pode querer listar todos os livros comprados no email.
-                        first_book = cart_items[0]
-                        book_title_for_email = first_book['bookTitle']
-                        book_cover_url_for_email = first_book['bookCover']
+        print(f"Order ID: {order_id}, User ID: {user_id}, Customer Email: {customer_email}")
 
-                    # Chame a função de envio de e-mail AQUI, no webhook!
-                    send_ebook_email(customer_email, book_title_for_email, book_cover_url_for_email)
+        # **Aqui você adicionaria sua lógica para:**
+        # 1. Atualizar o status do pedido no seu banco de dados para "pago" ou "completo".
+        # 2. Esvaziar o carrinho do usuário com base no user_id.
+        # 3. Enviar e-mails de confirmação.
+        # Exemplo (substitua pela sua lógica de DB):
+        # update_order_status(order_id, 'completed')
+        # clear_user_cart(user_id)
+        conn = get_db_connection()
+        update_order_status(conn, order_id, "completed")
+        clear_user_cart(conn, order_id)
 
-                else:
-                    logger.warning(f"Nenhum item encontrado no carrinho para o pedido {order_id}. E-mail não enviado.")
+    elif event['type'] == 'checkout.session.async_payment_succeeded':
+        session = event['data']['object']
+        print(f"Checkout session async payment succeeded: {session['id']}")
+        # Lidar com pagamentos que podem levar tempo (ex: Boleto)
+        # Atualize o status do pedido para "pago"
+    elif event['type'] == 'checkout.session.async_payment_failed':
+        session = event['data']['object']
+        print(f"Checkout session async payment failed: {session['id']}")
+        # Lidar com falha no pagamento assíncrono
+        # Atualize o status do pedido para "falhou" ou "cancelado"
+    else:
+        print(f"Unhandled event type: {event['type']}")
 
-                logger.info(f"Ebook(s) para o pedido {order_id} (usuário {user_id}) disponíveis para download.")
-
-            except Exception as e:
-                logger.error(f"Erro ao processar checkout.session.completed para pedido {order_id}: {e}")
-            finally:
-                if conn:
-                    conn.close()
-        else:
-            logger.warning(f"Webhook: Evento checkout.session.completed sem order_id, user_id ou customer_email nos metadados/sessão. Dados: {session_data}")
-            
-    return 'OK', 200
+    return jsonify({'status': 'success'}), 200
 
 
 if __name__ == '__main__':
