@@ -1,2 +1,4 @@
-Type "start_app" in the batch terminal to start the application.
+chmod +x setup.sh
+source setup.sh
+start_app
 
