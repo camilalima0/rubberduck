@@ -1,4 +1,9 @@
-Please run this command before starting application to install and initialize ngrok:
+Please run these command before starting application:
+
+python3 -m venv .venv && /bin/bash -c
+source .venv/bin/activate
+
+pip install -r requirements.txt
 
 curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
   | sudo tee /etc/apt/trusted.gpg.d/ngrok.asc >/dev/null \
@@ -8,4 +13,11 @@ curl -sSL https://ngrok-agent.s3.amazonaws.com/ngrok.asc \
   && sudo apt install ngrok
 ngrok authtoken ${NGROK_AUTHTOKEN}
 ngrok http 5000 --log=stdout > ngrok.log &
+
+curl -s https://packages.stripe.dev/api/security/keypair/stripe-cli-gpg/public | gpg --dearmor | sudo tee /usr/share/keyrings/stripe.gpg
+echo "deb [signed-by=/usr/share/keyrings/stripe.gpg] https://packages.stripe.dev/stripe-cli-debian-local stable main" | sudo tee -a /etc/apt/sources.list.d/stripe.list
+sudo apt update
+sudo apt install stripe
+
+sudo apt install -y sqlite3
 
