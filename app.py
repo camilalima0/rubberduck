@@ -13,10 +13,10 @@ from cart_manager import (
     get_cart_items_details_for_user,
     update_cart_item_quantity,
     remove_book_from_cart,
-    get_order_items_details,
     update_order_status,
     clear_user_cart,
-    finalize_order # New function to finalize the order
+    recover_info_for_email
+ # New function to finalize the order
 )
 import logging
 import stripe
@@ -527,51 +527,114 @@ def checkout_cancel():
     flash("Seu pagamento foi cancelado. Você pode tentar novamente.", "info")
     return redirect(url_for('view_cart'))
 
-def send_ebook_email(recipient_email, book_title, book_cover_url):
-    logger.debug(f"Tentando enviar e-mail via Mailgun API para {recipient_email} para o livro '{book_title}'")
+def send_ebook_email(recipient_email, order_id):
+    logger.debug(f"Tentando enviar e-mail via Mailgun API para {recipient_email} para o pedido '{order_id}'")
 
     if not all([MAILGUN_API_KEY, MAILGUN_DOMAIN, SENDER_EMAIL]):
         logger.error("Credenciais do Mailgun incompletas. E-mail não enviado.")
         return False
-    
-    html_body = f"""
-    <html>
-        <head></head>
-        <body>
-            <p>Olá!</p>
-            <p>Aqui está seu e-book <b>{book_title}</b> da Rubberduck Books. Divirta-se!</p>
-            <p>
-                <img src="{book_cover_url}" alt="Capa do livro: {book_title}" style="max-width:200px; height:auto; display:block; margin: 10px 0;">
-            </p>
-            <p>Em breve, você receberá um link para download do seu e-book.</p>
-            <p>Obrigado por sua compra!</p>
-            <p>Atenciosamente,</p>
-            <p>A Equipe Rubberduck Books</p>
-        </body>
-    </html>
-    """
+
+    conn = None # Inicializa conn como None
     try:
+        conn = get_db_connection() # Abre a conexão AQUI
+        conn.row_factory = sqlite3.Row # Garante que os resultados são acessíveis por nome
+
+        cursor = conn.cursor()
+        cursor.execute(
+            """
+            SELECT
+                b.bookTitle,
+                b.bookCover
+            FROM
+                book b
+            JOIN
+                orderItem oi ON b.bookId = oi.bookId
+            WHERE
+                oi.orderId = ?
+            """,
+            (order_id,)
+        )
+        books_in_order = cursor.fetchall()
+
+        if not books_in_order:
+            logger.warning(f"Nenhum livro encontrado para o pedido {order_id}. E-mail de ebook não enviado.")
+            return False
+
+        # Construa o assunto e o corpo HTML do e-mail
+        email_subject_prefix = "Seus eBooks da Rubberduck Books: "
+        book_titles_list = [book['bookTitle'] for book in books_in_order]
+        email_subject = email_subject_prefix + ", ".join(book_titles_list)
+        
+        html_body = f"""
+        <html>
+            <head></head>
+            <body>
+                <p>Olá!</p>
+                <p>Obrigado por sua compra na Rubberduck Books. Seus ebooks estão listados abaixo. Divirta-se!</p>
+        """
+        
+        # Lista para armazenar caminhos de anexos, se você for anexar arquivos
+        attachments = [] 
+
+        for book in books_in_order:
+            book_title = book['bookTitle']
+            book_cover_url = book['bookCover'] # Assumindo que já é uma URL pública
+            
+            html_body += f"""
+                <p><b>{book_title}</b></p>
+                <p><img src="{book_cover_url}" alt="Capa do livro: {book_title}" style="max-width:200px; height:auto; display:block; margin: 10px 0;"></p>
+            """
+            
+            # Lógica para adicionar anexos (se o 'bookFile' for um caminho local)
+            if 'bookFile' in book and book['bookFile']:
+                # Assumindo que 'bookFile' armazena o nome do arquivo, e que o arquivo está em 'ebook_files/'
+                ebook_filepath = os.path.join(os.getcwd(), 'ebook_files', book['bookFile'])
+                if os.path.exists(ebook_filepath):
+                    attachments.append(("attachment", (book['bookFile'], open(ebook_filepath, 'rb'), 'application/pdf')))
+                    logger.info(f"Adicionando anexo: {ebook_filepath}")
+                else:
+                    logger.warning(f"Arquivo de ebook não encontrado em {ebook_filepath} para {book_title}.")
+            else:
+                html_body += f"<p>Em breve, você receberá um link de download para este e-book.</p>"
+
+            html_body += """<hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); margin: 20px 0;">"""
+        
+        html_body += f"""
+                <p>Obrigado por sua compra!</p>
+                <p>Atenciosamente,</p>
+                <p>A Equipe Rubberduck Books</p>
+            </body>
+        </html>
+        """
+
+        # Envia o e-mail
         response = requests.post(
             f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
             auth=("api", MAILGUN_API_KEY),
             data={
                 "from": SENDER_EMAIL,
                 "to": recipient_email,
-                "subject": f"Seu eBook da Rubberduck Books: {book_title}!", # Assunto mais específico
-                "html": html_body # Use 'html' para enviar o corpo HTML
-            }
+                "subject": email_subject,
+                "html": html_body
+            },
+            files=attachments if attachments else None # Envia os anexos, se houver
         )
-        response.raise_for_status() # Levanta um erro para códigos de status HTTP ruins (4xx ou 5xx)
-        logger.info(f"E-mail de confirmação enviado via Mailgun API para {recipient_email} (Status: {response.status_code}).")
+        response.raise_for_status()
+
+        logger.info(f"E-mail de confirmação de compra com ebooks enviado para {recipient_email} (Status: {response.status_code}).")
         return True
+
     except requests.exceptions.RequestException as e:
         logger.error(f"Erro ao enviar e-mail via Mailgun API para {recipient_email}: {e}")
         if hasattr(e, 'response') and e.response is not None:
             logger.error(f"Resposta de erro do Mailgun: {e.response.text}")
         return False
     except Exception as e:
-        logger.error(f"Erro inesperado ao enviar e-mail: {e}")
+        logger.error(f"Erro inesperado ao enviar e-mail para {recipient_email}: {e}", exc_info=True)
         return False
+    finally:
+        if conn:
+            conn.close()
 
 
 
@@ -616,6 +679,14 @@ def stripe_webhook():
         conn = get_db_connection()
         update_order_status(conn, order_id, "completed")
         clear_user_cart(conn, order_id)
+
+        email_sent = send_ebook_email(customer_email, order_id) # Apenas passa email e order_id
+            
+        if email_sent:
+            logger.info(f"Processo de envio de e-mail para {customer_email} iniciado com sucesso.")
+        else:
+            logger.error(f"Falha no processo de envio de e-mail para {customer_email}.")
+   
 
     elif event['type'] == 'checkout.session.async_payment_succeeded':
         session = event['data']['object']

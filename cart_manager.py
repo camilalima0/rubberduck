@@ -72,6 +72,30 @@ def add_book_to_cart(conn, order_id, book_id, quantity=1):
     conn.commit()
     return order_item_id
 
+def recover_info_for_email(conn, order_id):
+    conn.row_factory = sqlite3.Row 
+    cursor = conn.cursor()
+    cursor.execute(
+        """
+        SELECT
+            b.bookTitle,
+            b.bookCover
+        FROM
+            book b
+        JOIN
+            orderItem oi ON b.bookId = oi.bookId
+        JOIN
+            orderr o ON o.orderId = oi.orderId
+        WHERE
+            o.orderId = ?
+        """,
+        (order_id,) # Lembre-se que é uma tupla, mesmo com um único item
+    )
+    return cursor.fetchall()
+
+
+
+
 def get_cart_items_details_for_user(conn, user_id):
     # Adicione este log para confirmar que row_factory está sendo configurado
     logger.debug(f"Configuring row_factory for connection: {conn.row_factory}") 
