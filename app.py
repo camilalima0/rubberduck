@@ -435,6 +435,7 @@ def get_user_email(conn, user_id):
 @app.route('/checkout', methods=['POST'])
 def checkout_route():
     BASE_URL = os.environ.get("CODESPACE_PUBLIC_URL")
+    logger.debug(f"DEBUG: BASE_URL configurada para: {BASE_URL}") # <--- Adicione esta linha
     logger.debug("Received request to checkout.") # Log de depuração
     user_id = session.get('user_id')
     if not user_id:
