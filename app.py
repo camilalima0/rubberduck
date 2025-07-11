@@ -255,6 +255,176 @@ def inject_layout():
     else:
         return dict(base_template='layout.html')
     
+
+def send_verification_code_email(recipient_email,verification_code):
+    logger.debug(f"Tentando enviar e-mail via Mailgun API para {recipient_email}'")
+
+    if not all([MAILGUN_API_KEY, MAILGUN_DOMAIN, SENDER_EMAIL]):
+        logger.error("Credenciais do Mailgun incompletas. E-mail não enviado.")
+        return False
+
+    email_subject = "Rubberduck Books: Código de Verificação de Senha"
+    
+    html_body = f"""
+    <html>
+        <head></head>
+        <body>
+            <p>Olá!</p>
+            <p>Seu código de verificação para recuperação de senha na <b>Rubberduck Books</b> é:</p>
+            <h2 style="color: #007bff; text-align: center; font-size: 24px; letter-spacing: 3px;">{verification_code}</h2>
+            <p>Por favor, insira este código no site para redefinir sua senha.</p>
+            <p>Este código é válido por um tempo limitado.</p>
+            <p>Se você não solicitou a recuperação de senha, por favor, ignore este e-mail.</p>
+            <p>Atenciosamente,</p>
+            <p>A Equipe Rubberduck Books</p>
+        </body>
+    </html>
+    """
+
+    try:
+        response = requests.post(
+            f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
+            auth=("api", MAILGUN_API_KEY),
+            data={
+                "from": SENDER_EMAIL,
+                "to": recipient_email,
+                "subject": email_subject,
+                "html": html_body
+            },
+        )
+        response.raise_for_status() # Levanta um erro para códigos de status HTTP ruins (4xx ou 5xx)
+
+        logger.info(f"E-mail de código de verificação enviado para {recipient_email} (Status: {response.status_code}).")
+        return True
+
+    except requests.exceptions.RequestException as e:
+        logger.error(f"Erro ao enviar e-mail via Mailgun API para {recipient_email}: {e}")
+        if hasattr(e, 'response') and e.response is not None:
+            logger.error(f"Resposta de erro do Mailgun: {e.response.text}")
+        return False
+    except Exception as e:
+        logger.error(f"Erro inesperado ao enviar e-mail para {recipient_email}: {e}", exc_info=True)
+        return False
+    
+@app.route('/send_recovery_code', methods=['POST'])
+def send_recovery_code_route():
+    """
+    Recebe o e-mail do usuário, gera e envia o código de verificação.
+    Armazena o código na sessão.
+    """
+    user_email = request.form.get('email')
+    
+    if not user_email:
+        return jsonify({'success': False, 'message': 'Por favor, insira seu e-mail.'}), 400
+
+    conn = get_db_connection()
+    try:
+        user = get_user_by_email(conn, user_email)
+        if not user:
+            # Não informe se o e-mail não existe por segurança.
+            # Apenas diga que o e-mail foi enviado (ou que o processo foi iniciado).
+            logger.warning(f"Tentativa de recuperação de senha para e-mail não existente: {user_email}")
+            return jsonify({'success': True, 'message': 'Se o e-mail estiver registrado, um código de verificação foi enviado.'}), 200
+
+        # Gera um código de 6 dígitos
+        verification_code = f"{random.randint(0, 999999):06d}"
+        logger.debug(f"Código de verificação gerado para {user_email}: {verification_code}")
+
+        # Armazena o código e o email na sessão
+        session['recovery_email'] = user_email
+        session['recovery_code'] = verification_code
+        # Opcional: session['recovery_code_timestamp'] = time.time() para expiração
+
+        # Envia o e-mail com o código
+        email_sent = send_verification_code_email(user_email, verification_code)
+
+        if email_sent:
+            return jsonify({'success': True, 'message': 'Um código de verificação foi enviado para seu e-mail.'}), 200
+        else:
+            return jsonify({'success': False, 'message': 'Erro ao enviar o código de verificação. Tente novamente.'}), 500
+    except Exception as e:
+        logger.error(f"Erro no processo de envio de código de recuperação para {user_email}: {e}", exc_info=True)
+        return jsonify({'success': False, 'message': 'Erro interno do servidor.'}), 500
+    finally:
+        if conn:
+            conn.close()
+
+def update_user_password(conn, user_id, new_password_hash):
+# Função auxiliar para atualizar a senha do usuário
+    try:
+        conn.execute("UPDATE user SET password_hash = ? WHERE userId = ?",
+                        (new_password_hash, user_id))
+        conn.commit()
+        return True
+    except Exception as e:
+        logger.error(f"Erro ao atualizar senha para userId {user_id}: {e}")
+        return False
+    
+@app.route('/recover_password_page', methods=['GET'])
+def recover_password_page():
+    return render_template('forgot_password.html')
+    
+@app.route('/reset_password', methods=['POST'])
+def reset_password_route():
+    """
+    Recebe o código de verificação e a nova senha, verifica e atualiza a senha.
+    """
+    user_email = request.form.get('email') # Pegar o email novamente do form
+    submitted_code = request.form.get('verification_code')
+    new_password = request.form.get('new_password')
+    confirm_password = request.form.get('confirm_password')
+
+    # 1. Validação básica de entrada
+    if not all([user_email, submitted_code, new_password, confirm_password]):
+        return jsonify({'success': False, 'message': 'Por favor, preencha todos os campos.'}), 400
+
+    if new_password != confirm_password:
+        return jsonify({'success': False, 'message': 'As senhas não coincidem.'}), 400
+    
+    if len(new_password) < 6: # Exemplo de validação de força da senha
+        return jsonify({'success': False, 'message': 'A nova senha deve ter pelo menos 6 caracteres.'}), 400
+
+    # 2. Recuperar dados da sessão
+    stored_email = session.get('recovery_email')
+    stored_code = session.get('recovery_code')
+    # Opcional: verificar timestamp para expiração do código
+
+    if not stored_email or not stored_code:
+        return jsonify({'success': False, 'message': 'Sessão de recuperação inválida ou expirada. Tente novamente.'}), 400
+    
+    if user_email != stored_email:
+        # Segurança: o email submetido deve ser o mesmo que iniciou o processo
+        return jsonify({'success': False, 'message': 'E-mail não corresponde à sessão de recuperação.'}), 400
+
+    if submitted_code != stored_code:
+        return jsonify({'success': False, 'message': 'Código de verificação incorreto.'}), 400
+
+    # 3. Atualizar senha no banco de dados
+    conn = get_db_connection()
+    try:
+        user = get_user_by_email(conn, user_email)
+        if not user:
+            return jsonify({'success': False, 'message': 'Usuário não encontrado.'}), 404
+        
+        hashed_new_password = generate_password_hash(new_password)
+        success = update_user_password(conn, user['userId'], hashed_new_password)
+
+        if success:
+            # Limpar dados de recuperação da sessão após sucesso
+            session.pop('recovery_email', None)
+            session.pop('recovery_code', None)
+            # session.pop('recovery_code_timestamp', None) # Se estiver usando timestamp
+            return jsonify({'success': True, 'message': 'Sua senha foi redefinida com sucesso! Você pode fazer login agora.'}), 200
+        else:
+            return jsonify({'success': False, 'message': 'Erro ao redefinir a senha no banco de dados.'}), 500
+
+    except Exception as e:
+        logger.error(f"Erro no processo de redefinição de senha para {user_email}: {e}", exc_info=True)
+        return jsonify({'success': False, 'message': 'Erro interno do servidor.'}), 500
+    finally:
+        if conn:
+            conn.close()
+
 # --- Rota para o Carrinho de Compras ---
 @app.route('/cart', methods = ["GET"])
 def view_cart():
@@ -415,6 +585,13 @@ def remove_from_cart_route():
         return jsonify({'success': False, 'message': f'Server error: {str(e)}'}), 500
     finally:
         conn.close() # Garante que a conexão com o banco de dados é fechada
+
+def get_user_by_email(conn, user_email):
+    cursor = conn.cursor()
+    cursor.execute("SELECT userId FROM user WHERE email = ?", (user_email,))
+    result = cursor.fetchone()
+    logger.debug(f"Buscando userId para email {user_email}. Resultado: {result['userId'] if result else 'N/A'}")
+    return result
 
 def get_user_email(conn, user_id):
     """

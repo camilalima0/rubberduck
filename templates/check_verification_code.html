@@ -1,0 +1,18 @@
+{% extends base_template %}
+{% block main %}
+
+</script>
+
+<div class = "content">
+    <div id = "register-box">
+        <h1 class = "subtitlee">Please, insert the verification code sent to {% {user_email} %}:</h1>
+        <form action="/forgot_password" method="post">
+            <div class="form-group">
+                <input id = "email" autofocus class="form-control" name="email" placeholder="email" type="text" required>
+            </div>
+            <button class="btn btn-primary w-100" type="submit">Send verification code</button>
+        </form>
+    </div>
+</div>
+
+{% endblock %} 
