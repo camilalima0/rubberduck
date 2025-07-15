@@ -450,6 +450,12 @@ div#home-cards {
     text-shadow: 8px 8px 8px rgba(0, 0, 0, 1);
 }
 
+.carousel-control-prev:hover, .carousel-control-next:hover{
+    background-color: rgba(0, 0, 0, 0.205);
+    border: none;
+    
+}
+
 footer {
     margin: 0;
     padding-top: 100px;
