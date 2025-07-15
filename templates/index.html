@@ -51,33 +51,8 @@
                 <span class="carousel-control-next-icon" aria-hidden="true"></span>
                 <span class="visually-hidden">Next</span>
             </button>
-        </div> <div id = "centralized" class = "container">
-            <h1 class = "titlee"> Subtitle</h2>
-            <p id = "p">
-                Lorem ipsum dolor sit amet consectetur adipisicing elit. Quae aut beatae ab animi, doloribus nobis molestias corrupti aspernatur voluptatibus natus, labore, saepe hic totam reprehenderit repellendus illum quibusdam sequi sit?
-            </p>
-        </div>
-    
-        <div id = "home-cards" class="container text-center">
-            <div class = "book-list">
-                <div id="book-row" class="row justify-content-center">
-                    {% for book in books limit 5%}
-                        <div id="search-result" class="col-lg-3 col-md-4 col-sm-6 mb-4">
-                            <a id="book-card" href="/bookpage/{{ book.id }}">
-                                <div class="card h-100">
-                                    <img src="{{ book.cover }}" class="card-img-top" alt="{{ book.title }}">
-                                    <div class="card-body">
-                                        <h5 class="card-title">{{ book.title }}</h5>
-                                        <h6 class="card-author">{{ book.authors | join(', ') }}</h6>
-                                        <p id="price" class="card-text">R$49,90</p>
-                                    </div>
-                                </div>
-                            </a>
-                        </div>
-                    {% endfor %}
-                </div>
-            </div>
-        </div> </div>
+        </div> 
+    </div>
 </div>
     
 {% endblock %}

@@ -456,13 +456,17 @@ div#home-cards {
     
 }
 
-footer {
+footer#footer {
+    display: flex !important;
+    background-color: black;
     margin: 0;
     padding-top: 100px;
     width: 100vw;
     align-items: flex-end;
     max-height: 138px;
     padding-bottom: 0;
+    margin-top: 100px;
+    border: 2px solid red;
 }
 
 div#page {
@@ -740,4 +744,16 @@ div#cart-content.col-md-8 {
 
 .row .nav-link {
     color: white;
+}
+
+#forgot-password {
+    color: white;
+}
+
+button#login {
+    margin-bottom: 0 !important;
+}
+
+#forgot-password-div {
+    padding-bottom: 2rem;
 }

@@ -59,6 +59,7 @@ app = Flask(__name__)
 app.secret_key = secrets.token_hex(32)
 
 # global variables
+COMPANY_EMAIL = os.environ.get("COMPANY_EMAIL")
 STRIPE_WEBHOOK_SECRET = os.environ.get("STRIPE_WEBHOOK_SECRET")
 STRIPE_PUBLISHABLE_KEY = os.environ.get('STRIPE_PUBLISHABLE_KEY')
 STRIPE_SECRET_KEY = os.environ.get('STRIPE_SECRET_KEY')
@@ -546,6 +547,72 @@ def update_cart_quantity_route():
     finally:
         conn.close() # Garante que a conexão com o banco de dados é fechada
 
+def send_contact_email(user_email, user_name, message):
+    if not all([MAILGUN_API_KEY, MAILGUN_DOMAIN, SENDER_EMAIL]):
+        logger.error("Credenciais do Mailgun incompletas. E-mail não enviado.")
+        return False
+
+    email_subject = "Rubberduck Books: User Contact"
+                                
+    html_body = f"""
+        <html>
+            <head></head>
+                <body>
+                    <p>{message}</p>
+                    <p>Kind regards,</p>
+                    <p>{user_name}</p>
+                </body>
+                    </html>
+                        """
+
+    try:
+        response = requests.post(
+            f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
+            auth=("api", MAILGUN_API_KEY),
+            data={
+                "from": SENDER_EMAIL,
+                "to": COMPANY_EMAIL,
+                "subject": email_subject,
+                "html": html_body,
+                "cc": user_email
+                            },
+        )
+        response.raise_for_status() # Levanta um erro para códigos de status HTTP ruins (4xx ou 5xx)
+        logger.info(f"E-mail de código de verificação enviado  (Status: {response.status_code}).")
+        return True
+
+    except requests.exceptions.RequestException as e:
+            logger.error(f"Erro ao enviar e-mail via Mailgun API: {e}")
+            if hasattr(e, 'response') and e.response is not None:
+                logger.error(f"Resposta de erro do Mailgun: {e.response.text}")
+                return False
+    except Exception as e:
+        logger.error(f"Erro inesperado ao enviar e-mail para: {e}", exc_info=True)
+        return False
+
+@app.route('/send_contact_email', methods=['POST'])
+def contact_email():
+
+    user_email = request.form.get('email')
+    user_name = request.form.get('name')
+    message = request.form.get('message')
+
+    conn = get_db_connection()
+    try:
+        # Envia o e-mail com o código
+        email_sent = send_contact_email(user_email, user_name, message)
+
+        if email_sent:
+            return jsonify({'success': True, 'message': 'Email sent.'}), 200
+        else:
+            return jsonify({'success': False, 'message': 'Error sending email.'}), 500
+    except Exception as e:
+        logger.error(f"Error sending email: {e}", exc_info=True)
+        return jsonify({'success': False, 'message': 'Internal Server Error.'}), 500
+    finally:
+        if conn:
+            conn.close()
+
 @app.route('/remove-from-cart', methods=['POST'])
 def remove_from_cart_route():
     logger.debug("Received request to remove item from cart.")
@@ -812,8 +879,6 @@ def send_ebook_email(recipient_email, order_id):
     finally:
         if conn:
             conn.close()
-
-
 
 @app.route('/stripe-webhook', methods=['POST'])
 def stripe_webhook():
