@@ -108,7 +108,7 @@
                     updateCartItemQuantity(orderItemId, currentQuantity);
                 } else if (currentQuantity === 1) {
                     // Se a quantidade for 1 e o usuário clicar em '-', perguntar se quer remover
-                    if (confirm("Deseja remover este item do carrinho?")) {
+                    if (confirm("Do you want to remove this item from cart?")) {
                         removeCartItem(orderItemId);
                     }
                 }
@@ -129,7 +129,7 @@
         document.querySelectorAll('.remove-item').forEach(button => {
             button.addEventListener('click', function() {
                 const orderItemId = this.dataset.orderItemId;
-                if (confirm("Tem certeza que deseja remover este item do carrinho?")) {
+                if (confirm("Are you sure that you want to remove this item from cart?")) {
                     removeCartItem(orderItemId);
                 }
             });
@@ -146,29 +146,29 @@
             .then(response => {
                 if (!response.ok) {
                     return response.json().then(errorData => {
-                        throw new Error(errorData.message || 'Erro de rede desconhecido.');
+                        throw new Error(errorData.message || 'Unknown network error.');
                     }).catch(() => {
-                        throw new Error(`Erro de rede: ${response.status} ${response.statusText}`);
+                        throw new Error(`Network error: ${response.status} ${response.statusText}`);
                     });
                 }
                 return response.json();
             })
             .then(data => {
                 if (data.success) {
-                    console.log('Quantidade atualizada com sucesso!', data);
+                    console.log('Quantity updated successfully!', data);
                     const quantityInput = document.getElementById(`quantity-input-${orderItemId}`);
                     quantityInput.value = data.new_quantity; 
                     document.getElementById('total-price').textContent = data.new_total_cart_price.toFixed(2).replace('.', ',');
 
                 } else {
-                    console.error('Erro ao atualizar quantidade:', data.message);
-                    alert('Erro ao atualizar quantidade: ' + data.message);
+                    console.error('Error updating quantity:', data.message);
+                    alert('Error updating quantity: ' + data.message);
                     location.reload(); 
                 }
             })
             .catch(error => {
-                console.error('Erro na requisição de atualização:', error);
-                alert('Erro de comunicação com o servidor ao atualizar. Detalhes: ' + error.message);
+                console.error('Error at update request:', error);
+                alert('Server communication Error at updating. Details: ' + error.message);
                 location.reload(); 
             });
         }
@@ -184,9 +184,9 @@
             .then(response => {
                 if (!response.ok) {
                     return response.json().then(errorData => {
-                        throw new Error(errorData.message || 'Erro de rede desconhecido.');
+                        throw new Error(errorData.message || 'Unknown network error.');
                     }).catch(() => {
-                        throw new Error(`Erro de rede: ${response.status} ${response.statusText}`);
+                        throw new Error(`Network error: ${response.status} ${response.statusText}`);
                     });
                 }
                 return response.json();
@@ -212,14 +212,14 @@
                         `;
                     }
                 } else {
-                    console.error('Erro ao remover item:', data.message);
-                    alert('Erro ao remover item: ' + data.message);
+                    console.error('Error removing item:', data.message);
+                    alert('Error removing item: ' + data.message);
                     location.reload();
                 }
             })
             .catch(error => {
-                console.error('Erro na requisição de remoção:', error);
-                alert('Erro de comunicação com o servidor ao remover. Detalhes: ' + error.message);
+                console.error('Error at removing request:', error);
+                alert('Server communication Error at removing. Details: ' + error.message);
                 location.reload();
             });
         }

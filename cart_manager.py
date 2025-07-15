@@ -89,7 +89,7 @@ def recover_info_for_email(conn, order_id):
         WHERE
             o.orderId = ?
         """,
-        (order_id,) # Lembre-se que é uma tupla, mesmo com um único item
+        (order_id,)
     )
     return cursor.fetchall()
 
@@ -97,10 +97,9 @@ def recover_info_for_email(conn, order_id):
 
 
 def get_cart_items_details_for_user(conn, user_id):
-    # Adicione este log para confirmar que row_factory está sendo configurado
+
     logger.debug(f"Configuring row_factory for connection: {conn.row_factory}") 
-    conn.row_factory = sqlite3.Row # Ensure rows are dict-like
-    # Adicione este log para confirmar o valor de row_factory após a configuração
+    conn.row_factory = sqlite3.Row
     logger.debug(f"Row_factory after setting: {conn.row_factory}") 
 
     cursor = conn.cursor()
@@ -133,35 +132,26 @@ def get_cart_items_details_for_user(conn, user_id):
         items = cursor.fetchall()
         logger.debug(f"Raw items fetched for user {user_id}: {items}")
 
-        # --- NOVO PONTO DE VERIFICAÇÃO PRINCIPAL ---
-        # Verifique o tipo do primeiro item (se houver) e tente acessar por nome
         if items:
             first_item = items[0]
             logger.debug(f"Type of first item: {type(first_item)}")
-            # Tenta acessar por nome para confirmar que sqlite3.Row está funcionando
             try:
                 test_title = first_item['bookTitle']
                 test_price = first_item['item_total_price']
                 logger.debug(f"Accessing by key successful: bookTitle='{test_title}', item_total_price='{test_price}'")
             except KeyError as ke:
                 logger.error(f"KeyError: Could not access item by name. This suggests row_factory might not be working: {ke}", exc_info=True)
-                # Se cair aqui, row_factory não está funcionando ou o nome da coluna está errado
         else:
             logger.debug("No items fetched, so cannot test row_factory access.")
-        # --- FIM DO NOVO PONTO DE VERIFICAÇÃO ---
-
 
         return items
     except Exception as e:
         logger.error(f"Error fetching cart items for user {user_id}: {e}", exc_info=True)
- # Garante que a conexão é fechada mesmo em caso de erro
-        return [] # Retorna uma lista vazia em caso de erro
+        return [] 
 
 def get_order_items_details(conn, order_id):
-    # Adicione este log para confirmar que row_factory está sendo configurado
     logger.debug(f"Configuring row_factory for connection: {conn.row_factory}") 
-    conn.row_factory = sqlite3.Row # Ensure rows are dict-like
-    # Adicione este log para confirmar o valor de row_factory após a configuração
+    conn.row_factory = sqlite3.Row 
     logger.debug(f"Row_factory after setting: {conn.row_factory}") 
 
     cursor = conn.cursor()

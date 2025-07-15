@@ -14,10 +14,9 @@ from cart_manager import (
     update_cart_item_quantity,
     remove_book_from_cart,
     update_order_status,
-    clear_user_cart,
-    recover_info_for_email
- # New function to finalize the order
+    clear_user_cart
 )
+
 import logging
 import stripe
 import os
@@ -71,7 +70,7 @@ MAILGUN_DOMAIN = os.environ.get('MAILGUN_DOMAIN')
 SENDER_EMAIL = os.environ.get('SENDER_EMAIL', f"Mailgun <postmaster@{MAILGUN_DOMAIN}>")
 
 if not all([MAILGUN_API_KEY, MAILGUN_DOMAIN, SENDER_EMAIL]):
-    logger.warning("Credenciais do Mailgun incompletas. O envio de e-mails pode falhar.")
+    logger.warning("Mailgun credential uncompleted. The email sending might fail.")
 
 GENRES = [
     "sci-fi", "fiction", "romance", "mystery", "horror",
@@ -104,10 +103,6 @@ def book_page_details(book_id):
         # If book not found, render an error page or redirect
         return render_template('error.html', message="Book not found."), 404
 
-@app.route('/contact_link', methods = ["GET"])
-def contact_link():
-    return render_template('contact.html')
-
 
 # Rota para buscar livros pela barra de pesquisa
 @app.route('/search-book', methods=['GET'])
@@ -132,10 +127,9 @@ def search_books():
 
     return render_template("search_results.html", books=books)
 
-# Rota para buscar livros por gênero (por exemplo, "fiction", "romance", etc.)
 @app.route('/search-by-genre', methods=['GET'])
 def search_by_genre():
-    genre = request.args.get('genre')  # Pega o valor do gênero
+    genre = request.args.get('genre')  
     if not genre:
         return render_template('search_results.html', books=[], error="Please, select a genre.")
 
@@ -170,16 +164,12 @@ def register():
         password = request.form['password']
         confirmation = request.form['confirmation']
 
-        # --- Validations (VERY IMPORTANT!) ---
-        # 1. Verificar se os campos não estão vazios (o 'required' no HTML ajuda, mas validação no backend é essencial)        #backend verification if the fields are not empty
         if not email or not password or not confirmation:
             return "Error: Please fill all the fields.", 400
 
-        # 2. Verificar se a senha e a confirmação são iguais
         if password != confirmation:
             return "Error: Password and Confirmation don't match.", 400
 
-        # 3. Hash da senha (NUNCA armazene senhas em texto puro!)
         hashed_password = generate_password_hash(password)
 
         conn = get_db_connection()
@@ -198,7 +188,6 @@ def register():
         finally:
             conn.close()
 
-    # Se o método não for POST (o que não deveria acontecer com o JS), retorne algo genérico
     return jsonify({'success': False, 'message': 'Method non-allowed.'}), 405
 
 @app.route('/login', methods=['POST'])
@@ -258,26 +247,26 @@ def inject_layout():
     
 
 def send_verification_code_email(recipient_email,verification_code):
-    logger.debug(f"Tentando enviar e-mail via Mailgun API para {recipient_email}'")
+    logger.debug(f"Trying to send email via Mailgun API to {recipient_email}'")
 
     if not all([MAILGUN_API_KEY, MAILGUN_DOMAIN, SENDER_EMAIL]):
-        logger.error("Credenciais do Mailgun incompletas. E-mail não enviado.")
+        logger.error("Mailgun credentials uncompleted. Email not sent.")
         return False
 
-    email_subject = "Rubberduck Books: Código de Verificação de Senha"
+    email_subject = "Rubberduck Books: Verification Code"
     
     html_body = f"""
     <html>
         <head></head>
         <body>
-            <p>Olá!</p>
-            <p>Seu código de verificação para recuperação de senha na <b>Rubberduck Books</b> é:</p>
+            <p>Hello!</p>
+            <p>Your verification code for password recovering in <b>Rubberduck Books</b> is:</p>
             <h2 style="color: #007bff; text-align: center; font-size: 24px; letter-spacing: 3px;">{verification_code}</h2>
-            <p>Por favor, insira este código no site para redefinir sua senha.</p>
-            <p>Este código é válido por um tempo limitado.</p>
-            <p>Se você não solicitou a recuperação de senha, por favor, ignore este e-mail.</p>
-            <p>Atenciosamente,</p>
-            <p>A Equipe Rubberduck Books</p>
+            <p>Please, paste this code in the website to redefine your password.</p>
+            <p>This code is valid for a limited time.</p>
+            <p>If you didn't request a password recovering, please ignore this email.</p>
+            <p>Kind regards,</p>
+            <p>Rubberduck Books</p>
         </body>
     </html>
     """
@@ -293,59 +282,45 @@ def send_verification_code_email(recipient_email,verification_code):
                 "html": html_body
             },
         )
-        response.raise_for_status() # Levanta um erro para códigos de status HTTP ruins (4xx ou 5xx)
-
-        logger.info(f"E-mail de código de verificação enviado para {recipient_email} (Status: {response.status_code}).")
+        response.raise_for_status() 
         return True
 
     except requests.exceptions.RequestException as e:
-        logger.error(f"Erro ao enviar e-mail via Mailgun API para {recipient_email}: {e}")
+        logger.error(f"Error sending email to {recipient_email}: {e}")
         if hasattr(e, 'response') and e.response is not None:
-            logger.error(f"Resposta de erro do Mailgun: {e.response.text}")
+            logger.error(f"Mailgun error response: {e.response.text}")
         return False
     except Exception as e:
-        logger.error(f"Erro inesperado ao enviar e-mail para {recipient_email}: {e}", exc_info=True)
+        logger.error(f"Unexpeted error sending email to {recipient_email}: {e}", exc_info=True)
         return False
     
 @app.route('/send_recovery_code', methods=['POST'])
 def send_recovery_code_route():
-    """
-    Recebe o e-mail do usuário, gera e envia o código de verificação.
-    Armazena o código na sessão.
-    """
     user_email = request.form.get('email')
     
     if not user_email:
-        return jsonify({'success': False, 'message': 'Por favor, insira seu e-mail.'}), 400
+        return jsonify({'success': False, 'message': 'Please, enter your email.'}), 400
 
     conn = get_db_connection()
     try:
         user = get_user_by_email(conn, user_email)
         if not user:
-            # Não informe se o e-mail não existe por segurança.
-            # Apenas diga que o e-mail foi enviado (ou que o processo foi iniciado).
-            logger.warning(f"Tentativa de recuperação de senha para e-mail não existente: {user_email}")
-            return jsonify({'success': True, 'message': 'Se o e-mail estiver registrado, um código de verificação foi enviado.'}), 200
+            return jsonify({'success': True, 'message': 'If email is registered, the verification code has been sent.'}), 200
 
-        # Gera um código de 6 dígitos
         verification_code = f"{random.randint(0, 999999):06d}"
-        logger.debug(f"Código de verificação gerado para {user_email}: {verification_code}")
 
-        # Armazena o código e o email na sessão
         session['recovery_email'] = user_email
         session['recovery_code'] = verification_code
-        # Opcional: session['recovery_code_timestamp'] = time.time() para expiração
 
-        # Envia o e-mail com o código
         email_sent = send_verification_code_email(user_email, verification_code)
 
         if email_sent:
-            return jsonify({'success': True, 'message': 'Um código de verificação foi enviado para seu e-mail.'}), 200
+            return jsonify({'success': True, 'message': 'The verification code has been sent to your email.'}), 200
         else:
-            return jsonify({'success': False, 'message': 'Erro ao enviar o código de verificação. Tente novamente.'}), 500
+            return jsonify({'success': False, 'message': 'Error at sending the verification code o your email. Try again.'}), 500
     except Exception as e:
-        logger.error(f"Erro no processo de envio de código de recuperação para {user_email}: {e}", exc_info=True)
-        return jsonify({'success': False, 'message': 'Erro interno do servidor.'}), 500
+        logger.error(f"Error in recovering code sending to{user_email}: {e}", exc_info=True)
+        return jsonify({'success': False, 'message': 'Internal server error.'}), 500
     finally:
         if conn:
             conn.close()
@@ -358,7 +333,7 @@ def update_user_password(conn, user_id, new_password_hash):
         conn.commit()
         return True
     except Exception as e:
-        logger.error(f"Erro ao atualizar senha para userId {user_id}: {e}")
+        logger.error(f"Error updating password for user {user_id}: {e}")
         return False
     
 @app.route('/recover_password_page', methods=['GET'])
@@ -367,66 +342,55 @@ def recover_password_page():
     
 @app.route('/reset_password', methods=['POST'])
 def reset_password_route():
-    """
-    Recebe o código de verificação e a nova senha, verifica e atualiza a senha.
-    """
-    user_email = request.form.get('email') # Pegar o email novamente do form
+    user_email = request.form.get('email') 
     submitted_code = request.form.get('verification_code')
     new_password = request.form.get('new_password')
     confirm_password = request.form.get('confirm_password')
 
-    # 1. Validação básica de entrada
     if not all([user_email, submitted_code, new_password, confirm_password]):
-        return jsonify({'success': False, 'message': 'Por favor, preencha todos os campos.'}), 400
+        return jsonify({'success': False, 'message': 'Please, fill all the fields.'}), 400
 
     if new_password != confirm_password:
-        return jsonify({'success': False, 'message': 'As senhas não coincidem.'}), 400
+        return jsonify({'success': False, 'message': "The passwords don't match."}), 400
     
-    if len(new_password) < 6: # Exemplo de validação de força da senha
-        return jsonify({'success': False, 'message': 'A nova senha deve ter pelo menos 6 caracteres.'}), 400
+    if len(new_password) < 6: 
+        return jsonify({'success': False, 'message': 'The new password might have at least 6 charactres.'}), 400
 
-    # 2. Recuperar dados da sessão
     stored_email = session.get('recovery_email')
     stored_code = session.get('recovery_code')
-    # Opcional: verificar timestamp para expiração do código
 
     if not stored_email or not stored_code:
-        return jsonify({'success': False, 'message': 'Sessão de recuperação inválida ou expirada. Tente novamente.'}), 400
+        return jsonify({'success': False, 'message': 'Session expired. Try again.'}), 400
     
     if user_email != stored_email:
-        # Segurança: o email submetido deve ser o mesmo que iniciou o processo
-        return jsonify({'success': False, 'message': 'E-mail não corresponde à sessão de recuperação.'}), 400
+        return jsonify({'success': False, 'message': "The email doesn't match the recovering session."}), 400
 
     if submitted_code != stored_code:
-        return jsonify({'success': False, 'message': 'Código de verificação incorreto.'}), 400
+        return jsonify({'success': False, 'message': 'Wrong verification code.'}), 400
 
-    # 3. Atualizar senha no banco de dados
     conn = get_db_connection()
     try:
         user = get_user_by_email(conn, user_email)
         if not user:
-            return jsonify({'success': False, 'message': 'Usuário não encontrado.'}), 404
+            return jsonify({'success': False, 'message': 'User not found.'}), 404
         
         hashed_new_password = generate_password_hash(new_password)
         success = update_user_password(conn, user['userId'], hashed_new_password)
 
         if success:
-            # Limpar dados de recuperação da sessão após sucesso
             session.pop('recovery_email', None)
             session.pop('recovery_code', None)
-            # session.pop('recovery_code_timestamp', None) # Se estiver usando timestamp
-            return jsonify({'success': True, 'message': 'Sua senha foi redefinida com sucesso! Você pode fazer login agora.'}), 200
+            return jsonify({'success': True, 'message': 'Password successfully recovered. Now you can log in!'}), 200
         else:
-            return jsonify({'success': False, 'message': 'Erro ao redefinir a senha no banco de dados.'}), 500
+            return jsonify({'success': False, 'message': 'Error updating password to database.'}), 500
 
     except Exception as e:
-        logger.error(f"Erro no processo de redefinição de senha para {user_email}: {e}", exc_info=True)
-        return jsonify({'success': False, 'message': 'Erro interno do servidor.'}), 500
+        logger.error(f"Error redefining password to {user_email}: {e}", exc_info=True)
+        return jsonify({'success': False, 'message': 'Internal server error.'}), 500
     finally:
         if conn:
             conn.close()
 
-# --- Rota para o Carrinho de Compras ---
 @app.route('/cart', methods = ["GET"])
 def view_cart():
     user_id = session.get('user_id')
@@ -448,7 +412,6 @@ def view_cart():
     finally:
         conn.close() # Fecha a conexão
 
-# --- Nova Rota para Adicionar Item ao Carrinho ---
 @app.route('/add-to-cart', methods=['POST'])
 def add_to_cart_route():
     user_id = session.get('user_id')
@@ -464,18 +427,17 @@ def add_to_cart_route():
         flash("Invalid book ID or quantity.", "error")
         return redirect(request.referrer or url_for('home'))
 
-    conn = get_db_connection() # Abre a conexão aqui
+    conn = get_db_connection() 
     try:
-        # 1. Get or Create an active order (cart) for the user
-        order_id = get_active_cart_for_user(conn, user_id) # Passa a conexão
+        order_id = get_active_cart_for_user(conn, user_id)
         if not order_id:
-            order_id = create_new_cart(conn, user_id) # Passa a conexão
+            order_id = create_new_cart(conn, user_id) 
             if not order_id:
                 flash("Failed to create a new cart. Please try again.", "error")
                 return redirect(request.referrer or url_for('home'))
 
         # 2. Add the book to the order (cart)
-        orderItemId = add_book_to_cart(conn, order_id, book_id, quantity) # Passa a conexão
+        orderItemId = add_book_to_cart(conn, order_id, book_id, quantity) 
 
         if orderItemId:
             flash("Book added to cart successfully!", "success")
@@ -484,9 +446,8 @@ def add_to_cart_route():
             flash("Failed to add book to cart. Book might not exist.", "error")
             return redirect(request.referrer or url_for('home'))
     finally:
-        conn.close() # Fecha a conexão
+        conn.close() 
 
-# --- Rotas para ajustar quantidade ou remover item no carrinho (AJAX) ---
 @app.route('/update-cart-quantity', methods=['POST'])
 def update_cart_quantity_route():
     logger.debug("Received request to update cart quantity.")
@@ -494,8 +455,8 @@ def update_cart_quantity_route():
     if not user_id:
         return jsonify({'success': False, 'message': 'User not logged in.'}), 401
 
-    orderItemId_str = request.json.get('orderItemId') # Use _str para indicar que é string
-    new_quantity_str = request.json.get('quantity') # Use _str para indicar que é string
+    orderItemId_str = request.json.get('orderItemId') 
+    new_quantity_str = request.json.get('quantity') 
 
     try:
         orderItemId = int(orderItemId_str)
@@ -510,20 +471,19 @@ def update_cart_quantity_route():
         logger.error(f"Invalid quantity: {new_quantity}. Quantity cannot be negative. Returning 400.")
         return jsonify({'success': False, 'message': 'Quantity cannot be negative.'}), 400
     
-    conn = get_db_connection() # Abre a conexão AQUI
+    conn = get_db_connection() 
     try:
         if new_quantity == 0:
             logger.debug(f"Quantity is 0 for orderItemId {orderItemId}. Attempting to remove item.")
-            success = remove_book_from_cart(conn, orderItemId) # **PASSA 'conn'**
+            success = remove_book_from_cart(conn, orderItemId) 
         else:
             logger.debug(f"Updating quantity for orderItemId {orderItemId} to {new_quantity}.")
-            success = update_cart_item_quantity(conn, orderItemId, new_quantity) # **PASSA 'conn'**
+            success = update_cart_item_quantity(conn, orderItemId, new_quantity) 
         
         if success:
-            cart_items = get_cart_items_details_for_user(conn, user_id) # **PASSA 'conn'**
+            cart_items = get_cart_items_details_for_user(conn, user_id)
             new_total_cart_price = sum(item['item_total_price'] * item['quantity'] for item in cart_items) if cart_items else 0.0
 
-            # Calcula o new_item_price para o item específico (se ainda existir)
             new_item_price = 0.0
             for item in cart_items:
                 if item['orderItemId'] == orderItemId:
@@ -535,7 +495,7 @@ def update_cart_quantity_route():
                 'success': True, 
                 'message': 'Cart updated successfully!',
                 'new_quantity': new_quantity,
-                'new_item_price': new_item_price, # Envia o preço atualizado do item específico
+                'new_item_price': new_item_price, 
                 'new_total_cart_price': new_total_cart_price
             })
         else:
@@ -545,11 +505,14 @@ def update_cart_quantity_route():
         logger.exception(f"Exception occurred during cart quantity update for orderItemId {orderItemId}: {e}")
         return jsonify({'success': False, 'message': f'Server error: {str(e)}'}), 500
     finally:
-        conn.close() # Garante que a conexão com o banco de dados é fechada
+        conn.close() 
+
+@app.route('/contact_link', methods = ["GET"])
+def contact_link():
+    return render_template('contact.html')
 
 def send_contact_email(user_email, user_name, message):
     if not all([MAILGUN_API_KEY, MAILGUN_DOMAIN, SENDER_EMAIL]):
-        logger.error("Credenciais do Mailgun incompletas. E-mail não enviado.")
         return False
 
     email_subject = "Rubberduck Books: User Contact"
@@ -575,19 +538,17 @@ def send_contact_email(user_email, user_name, message):
                 "subject": email_subject,
                 "html": html_body,
                 "cc": user_email
-                            },
+                },
         )
-        response.raise_for_status() # Levanta um erro para códigos de status HTTP ruins (4xx ou 5xx)
-        logger.info(f"E-mail de código de verificação enviado  (Status: {response.status_code}).")
         return True
 
     except requests.exceptions.RequestException as e:
-            logger.error(f"Erro ao enviar e-mail via Mailgun API: {e}")
+            logger.error(f"Error sending email via Mailgun API: {e}")
             if hasattr(e, 'response') and e.response is not None:
-                logger.error(f"Resposta de erro do Mailgun: {e.response.text}")
+                logger.error(f"Mailgun error response: {e.response.text}")
                 return False
     except Exception as e:
-        logger.error(f"Erro inesperado ao enviar e-mail para: {e}", exc_info=True)
+        logger.error(f"Unexpected error sending email to: {e}", exc_info=True)
         return False
 
 @app.route('/send_contact_email', methods=['POST'])
@@ -599,11 +560,10 @@ def contact_email():
 
     conn = get_db_connection()
     try:
-        # Envia o e-mail com o código
         email_sent = send_contact_email(user_email, user_name, message)
 
         if email_sent:
-            return jsonify({'success': True, 'message': 'Email sent.'}), 200
+            return jsonify({'success': True, 'message': 'Email sent.', 'redirect': 'success.html'}), 200
         else:
             return jsonify({'success': False, 'message': 'Error sending email.'}), 500
     except Exception as e:
@@ -630,12 +590,12 @@ def remove_from_cart_route():
 
     logger.debug(f"Attempting to remove order item {orderItemId} for user {user_id}")
 
-    conn = get_db_connection() # Abre a conexão AQUI
+    conn = get_db_connection() 
     try:
-        success = remove_book_from_cart(conn, orderItemId) # **PASSA 'conn'**
+        success = remove_book_from_cart(conn, orderItemId) 
 
         if success:
-            cart_items = get_cart_items_details_for_user(conn, user_id) # **PASSA 'conn'**
+            cart_items = get_cart_items_details_for_user(conn, user_id) 
             new_total_cart_price = sum(item['item_total_price'] * item['quantity'] for item in cart_items) if cart_items else 0.0
 
             logger.debug(f"Item removed successfully. New total price: {new_total_cart_price}")
@@ -651,60 +611,51 @@ def remove_from_cart_route():
         logger.exception(f"Exception occurred during item removal for orderItemId {orderItemId}: {e}")
         return jsonify({'success': False, 'message': f'Server error: {str(e)}'}), 500
     finally:
-        conn.close() # Garante que a conexão com o banco de dados é fechada
+        conn.close() 
 
 def get_user_by_email(conn, user_email):
     cursor = conn.cursor()
     cursor.execute("SELECT userId FROM user WHERE email = ?", (user_email,))
     result = cursor.fetchone()
-    logger.debug(f"Buscando userId para email {user_email}. Resultado: {result['userId'] if result else 'N/A'}")
+    logger.debug(f"Searching userId for email {user_email}. Result: {result['userId'] if result else 'N/A'}")
     return result
 
 def get_user_email(conn, user_id):
-    """
-    Busca o email de um usuário pelo userId.
-    Args:
-        conn: Objeto de conexão com o banco de dados.
-        user_id: ID do usuário.
-    Returns:
-        O email do usuário ou None se não encontrado.
-    """
+
     cursor = conn.cursor()
     cursor.execute("SELECT email FROM user WHERE userId = ?", (user_id,))
     result = cursor.fetchone()
-    logger.debug(f"Buscando email para userId {user_id}. Resultado: {result['email'] if result else 'N/A'}")
+    logger.debug(f"Searching email for userId {user_id}. Result: {result['email'] if result else 'N/A'}")
     return result['email'] if result else None
 
-# --- Rota para finalizar o carrinho (simular checkout) ---
 @app.route('/checkout', methods=['POST'])
 def checkout_route():
     BASE_URL = os.environ.get("CODESPACE_PUBLIC_URL")
-    logger.debug(f"DEBUG: BASE_URL configurada para: {BASE_URL}") # <--- Adicione esta linha
-    logger.debug("Received request to checkout.") # Log de depuração
+    logger.debug("Received request to checkout.")
     user_id = session.get('user_id')
     if not user_id:
-        flash("Por favor, faça login para completar sua compra.", "info")
+        flash("Please, log in to proceed to checkout.", "info")
         session['next_url'] = url_for('view_cart')
         return redirect(url_for('login_link'))
     
-    conn = get_db_connection() # Abre a conexão AQUI
+    conn = get_db_connection() 
     try:
         user_email = get_user_email(conn, user_id)
         if not user_email:
-            logger.error(f"Email do usuário {user_id} não encontrado no banco de dados.")
-            flash("Não foi possível encontrar suas informações de usuário. Por favor, tente novamente.", "error")
+            logger.error(f"User email {user_id} not found in the database.")
+            flash("We couldn't find the user information. Please, try again.", "error")
             return redirect(url_for('view_cart'))
         
-        order_id = get_active_cart_for_user(conn, user_id) # **PASSA 'conn'**
+        order_id = get_active_cart_for_user(conn, user_id)
         
         if not order_id:
-            flash("Seu carrinho está vazio!", "warning")
+            flash("Your cart is empty!", "warning")
             return redirect(url_for('view_cart'))
         
-        cart_items = get_cart_items_details_for_user(conn, user_id) # **PASSA 'conn'**
+        cart_items = get_cart_items_details_for_user(conn, user_id) 
 
         if not cart_items:
-            flash("Seu carrinho está vazio! Adicione itens antes de finalizar a compra.", "warning")
+            flash("Your cart is empty! Add items before proceeding to checkout.", "warning")
             return redirect(url_for('view_cart'))
 
         line_items = []
@@ -735,53 +686,44 @@ def checkout_route():
                 'user_id': user_id,
             }
         )
-        logger.debug(f"Stripe checkout session created: {checkout_session.url}") # Log de sucesso
+        logger.debug(f"Stripe checkout session created: {checkout_session.url}") 
         return redirect(checkout_session.url, code=303)
 
     except stripe.error.StripeError as e:
-        logger.error(f"Erro ao criar sessão de checkout com Stripe: {e}")
-        flash(f"Ocorreu um erro ao processar seu pagamento: {e}", "error")
+        logger.error(f"Error creating checkout session with Stripe: {e}")
+        flash(f"Error processing the payment: {e}", "error")
         return redirect(url_for('view_cart'))
     except Exception as e:
-        logger.exception(f"Erro inesperado no checkout: {e}") # Log para erros genéricos
-        flash(f"Ocorreu um erro inesperado: {e}", "error")
+        logger.exception(f"EUnexpected error in checkout: {e}") 
+        flash(f"Unexpected error: {e}", "error")
         return redirect(url_for('view_cart'))
     finally:
         if conn:
-            conn.close() # Fecha a conexão
+            conn.close() 
 
-# --- Rotas para sucesso e cancelamento do checkout (redirecionadas pelo Stripe) ---
 @app.route('/checkout/success')
 def checkout_success():
-    # Esta rota é para o redirecionamento imediato do usuário após o pagamento
-    # A confirmação REAL do pagamento virá do webhook (abordagem mais segura)
-    
     session_id = request.args.get('session_id')
     if not session_id:
-        flash("Sessão de pagamento inválida.", "error")
+        flash("Invalid payment session.", "error")
         return redirect(url_for('home'))
     
-    # Em um aplicativo real, aqui você buscaria a sessão para exibir detalhes da compra
-    # Porém, a finalização do pedido no DB deve ser feita pelo webhook.
-    flash("Seu pedido foi realizado com sucesso! Em breve, seu ebook estará disponível.", "success")
+    flash("Request successfully completed! We'll send your product via email.", "success")
     return render_template('checkout_success.html', session_id=session_id)
 
 @app.route('/checkout/cancel')
 def checkout_cancel():
-    flash("Seu pagamento foi cancelado. Você pode tentar novamente.", "info")
+    flash("Cancelled payment. Please, try again.", "info")
     return redirect(url_for('view_cart'))
 
 def send_ebook_email(recipient_email, order_id):
-    logger.debug(f"Tentando enviar e-mail via Mailgun API para {recipient_email} para o pedido '{order_id}'")
-
     if not all([MAILGUN_API_KEY, MAILGUN_DOMAIN, SENDER_EMAIL]):
-        logger.error("Credenciais do Mailgun incompletas. E-mail não enviado.")
         return False
 
-    conn = None # Inicializa conn como None
+    conn = None 
     try:
-        conn = get_db_connection() # Abre a conexão AQUI
-        conn.row_factory = sqlite3.Row # Garante que os resultados são acessíveis por nome
+        conn = get_db_connection() 
+        conn.row_factory = sqlite3.Row 
 
         cursor = conn.cursor()
         cursor.execute(
@@ -801,11 +743,10 @@ def send_ebook_email(recipient_email, order_id):
         books_in_order = cursor.fetchall()
 
         if not books_in_order:
-            logger.warning(f"Nenhum livro encontrado para o pedido {order_id}. E-mail de ebook não enviado.")
+            logger.warning(f"No book found for order {order_id}. Email not sent.")
             return False
 
-        # Construa o assunto e o corpo HTML do e-mail
-        email_subject_prefix = "Seus eBooks da Rubberduck Books: "
+        email_subject_prefix = "Your Rubberduck e-Books: "
         book_titles_list = [book['bookTitle'] for book in books_in_order]
         email_subject = email_subject_prefix + ", ".join(book_titles_list)
         
@@ -813,45 +754,40 @@ def send_ebook_email(recipient_email, order_id):
         <html>
             <head></head>
             <body>
-                <p>Olá!</p>
-                <p>Obrigado por sua compra na Rubberduck Books. Seus ebooks estão listados abaixo. Divirta-se!</p>
+                <p>Hello!</p>
+                <p>Thanks for choosing Rubberduck Books. Your e-books are attached. Have fun!</p>
         """
         
-        # Lista para armazenar caminhos de anexos, se você for anexar arquivos
         attachments = [] 
 
         for book in books_in_order:
             book_title = book['bookTitle']
-            book_cover_url = book['bookCover'] # Assumindo que já é uma URL pública
+            book_cover_url = book['bookCover'] 
             
             html_body += f"""
                 <p><b>{book_title}</b></p>
                 <p><img src="{book_cover_url}" alt="Capa do livro: {book_title}" style="max-width:200px; height:auto; display:block; margin: 10px 0;"></p>
             """
             
-            # Lógica para adicionar anexos (se o 'bookFile' for um caminho local)
             if 'bookFile' in book and book['bookFile']:
-                # Assumindo que 'bookFile' armazena o nome do arquivo, e que o arquivo está em 'ebook_files/'
                 ebook_filepath = os.path.join(os.getcwd(), 'ebook_files', book['bookFile'])
                 if os.path.exists(ebook_filepath):
                     attachments.append(("attachment", (book['bookFile'], open(ebook_filepath, 'rb'), 'application/pdf')))
-                    logger.info(f"Adicionando anexo: {ebook_filepath}")
                 else:
-                    logger.warning(f"Arquivo de ebook não encontrado em {ebook_filepath} para {book_title}.")
+                    logger.warning(f"Ebook file not found for {book_title}.")
             else:
-                html_body += f"<p>Em breve, você receberá um link de download para este e-book.</p>"
+                html_body += f"<p>Soon, you will receive a email with your e-book.</p>"
 
             html_body += """<hr style="border: 0; height: 1px; background-image: linear-gradient(to right, rgba(0, 0, 0, 0), rgba(0, 0, 0, 0.75), rgba(0, 0, 0, 0)); margin: 20px 0;">"""
         
         html_body += f"""
-                <p>Obrigado por sua compra!</p>
-                <p>Atenciosamente,</p>
-                <p>A Equipe Rubberduck Books</p>
+                <p>Thank you!</p>
+                <p>Kind regards,</p>
+                <p>Rubberduck Books</p>
             </body>
         </html>
         """
 
-        # Envia o e-mail
         response = requests.post(
             f"https://api.mailgun.net/v3/{MAILGUN_DOMAIN}/messages",
             auth=("api", MAILGUN_API_KEY),
@@ -861,20 +797,17 @@ def send_ebook_email(recipient_email, order_id):
                 "subject": email_subject,
                 "html": html_body
             },
-            files=attachments if attachments else None # Envia os anexos, se houver
+            files=attachments if attachments else None
         )
         response.raise_for_status()
-
-        logger.info(f"E-mail de confirmação de compra com ebooks enviado para {recipient_email} (Status: {response.status_code}).")
         return True
 
     except requests.exceptions.RequestException as e:
-        logger.error(f"Erro ao enviar e-mail via Mailgun API para {recipient_email}: {e}")
         if hasattr(e, 'response') and e.response is not None:
-            logger.error(f"Resposta de erro do Mailgun: {e.response.text}")
+            logger.error(f"Mailgun error response: {e.response.text}")
         return False
     except Exception as e:
-        logger.error(f"Erro inesperado ao enviar e-mail para {recipient_email}: {e}", exc_info=True)
+        logger.error(f"Unexpected error sending email to {recipient_email}: {e}", exc_info=True)
         return False
     finally:
         if conn:
@@ -892,11 +825,11 @@ def stripe_webhook():
         )
     except ValueError as e:
         # Invalid payload
-        print(f"Erro de payload inválido: {e}")
+        print(f"Invalid payload error: {e}")
         return jsonify({'error': 'Invalid payload'}), 400
     except stripe.error.SignatureVerificationError as e:
         # Invalid signature
-        print(f"Erro de verificação de assinatura: {e}")
+        print(f"Invalid Signature: {e}")
         return jsonify({'error': 'Invalid signature'}), 400
 
     # Handle the event
@@ -904,42 +837,32 @@ def stripe_webhook():
         session = event['data']['object']
         print(f"Checkout session completed: {session['id']}")
 
-        # Agora, recupere os metadados que você enviou
         order_id = session['metadata'].get('order_id')
         user_id = session['metadata'].get('user_id')
-        customer_email = session['customer_details']['email'] # Ou session['customer_email']
+        customer_email = session['customer_details']['email']
 
         print(f"Order ID: {order_id}, User ID: {user_id}, Customer Email: {customer_email}")
 
-        # **Aqui você adicionaria sua lógica para:**
-        # 1. Atualizar o status do pedido no seu banco de dados para "pago" ou "completo".
-        # 2. Esvaziar o carrinho do usuário com base no user_id.
-        # 3. Enviar e-mails de confirmação.
-        # Exemplo (substitua pela sua lógica de DB):
-        # update_order_status(order_id, 'completed')
-        # clear_user_cart(user_id)
         conn = get_db_connection()
         update_order_status(conn, order_id, "completed")
         clear_user_cart(conn, order_id)
 
-        email_sent = send_ebook_email(customer_email, order_id) # Apenas passa email e order_id
+        email_sent = send_ebook_email(customer_email, order_id) 
             
         if email_sent:
-            logger.info(f"Processo de envio de e-mail para {customer_email} iniciado com sucesso.")
+            logger.info(f"Email sending process to {customer_email} started successfully .")
         else:
-            logger.error(f"Falha no processo de envio de e-mail para {customer_email}.")
+            logger.error(f"Fail at email sending process to {customer_email}.")
    
 
     elif event['type'] == 'checkout.session.async_payment_succeeded':
         session = event['data']['object']
         print(f"Checkout session async payment succeeded: {session['id']}")
-        # Lidar com pagamentos que podem levar tempo (ex: Boleto)
-        # Atualize o status do pedido para "pago"
+
     elif event['type'] == 'checkout.session.async_payment_failed':
         session = event['data']['object']
         print(f"Checkout session async payment failed: {session['id']}")
-        # Lidar com falha no pagamento assíncrono
-        # Atualize o status do pedido para "falhou" ou "cancelado"
+
     else:
         print(f"Unhandled event type: {event['type']}")
 
@@ -947,5 +870,5 @@ def stripe_webhook():
 
 
 if __name__ == '__main__':
-    logger.info("Starting Flask app...") # This will appear in the log file
+    logger.info("Starting Flask app...") 
     app.run(debug=True, host='0.0.0.0', use_reloader=False)

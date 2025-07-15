@@ -1,20 +1,20 @@
 {% extends base_template %}
 
 {% block head %}
-    {{ super() }} {# Isso preserva qualquer coisa que você já tenha no bloco head do layout.html #}
+    {{ super() }}
     <style>
         /* Seus estilos CSS para o modal e botões */
         .modal {
-            display: none; /* Esconde o modal por padrão */
-            position: fixed; /* Fica fixo na tela */
-            z-index: 1050; /* Acima de tudo, geralmente 1050 para modais Bootstrap */
+            display: none; 
+            position: fixed; 
+            z-index: 1050; 
             left: 0;
             top: 0;
             width: 100%;
             height: 100%;
             overflow: auto;
-            background-color: rgba(0,0,0,0.4); /* Fundo semi-transparente */
-            display: flex; /* Use flexbox para centralizar */
+            background-color: rgba(0,0,0,0.4);
+            display: flex; 
             justify-content: center;
             align-items: center;
         }
@@ -28,12 +28,12 @@
             text-align: center;
             border-radius: 8px;
             box-shadow: 0 4px 8px rgba(0,0,0,0.2);
-            position: relative; /* Para posicionar o botão de fechar */
+            position: relative; 
         }
 
         .close-button {
             color: #aaa;
-            position: absolute; /* Posição absoluta dentro do modal-content */
+            position: absolute; 
             top: 10px;
             right: 15px;
             font-size: 28px;
@@ -87,8 +87,7 @@
         <div class="modal-content">
             <span class="close-button">&times;</span>
             <h2>Account registered</h2>
-            <button class="btn-login" onclick="window.location.href='/login_link'">Log in</button> {# Usar Flask url_for aqui é melhor se possível #}
-        </div>
+            <button class="btn-login" onclick="window.location.href='/login_link'">Log in</button> 
     </div>
 </div>
 
@@ -123,10 +122,10 @@
         try {
             const response = await fetch('/register', {
                 method: 'POST',
-                body: formData // Envia os dados do formulário
+                body: formData 
             });
 
-            // Certifica-se de que a resposta pode ser parseada como JSON
+
             const contentType = response.headers.get("content-type");
             if (!contentType || !contentType.includes("application/json")) {
                 console.error('Resposta não é JSON:', await response.text());
@@ -134,12 +133,11 @@
                 return;
             }
 
-            const result = await response.json(); // Pega a resposta JSON do Flask
+            const result = await response.json(); 
 
-            if (response.ok) { // Verifica se o status da resposta é 2xx (sucesso)
-                successModal.style.display = 'flex'; // Mostra o pop-up
+            if (response.ok) { 
+                successModal.style.display = 'flex'; 
             } else {
-                // Se a resposta não for ok (ex: status 400, 409, 500)
                 alert('Erro ao registrar: ' + (result.message || 'Erro desconhecido.'));
             }
         } catch (error) {
@@ -148,19 +146,16 @@
         }
     });
 
-    // Fechar o modal ao clicar no 'x'
     closeButton.addEventListener('click', () => {
         successModal.style.display = 'none';
     });
 
-    // Fechar o modal ao clicar fora dele
     window.addEventListener('click', (event) => {
-        if (event.target === successModal) { // Use === para comparação estrita
+        if (event.target === successModal) { 
             successModal.style.display = 'none';
         }
     });
 
-    // Garante que o modal esteja oculto ao carregar a página
     window.onload = () => {
         successModal.style.display = 'none';
     };
