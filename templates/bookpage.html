@@ -18,11 +18,10 @@
                 <hr>
                 <p id = "page-price"><strong>R$49,90</strong></p>
                 <div class="d-grid gap-2 d-md-block mt-4">
-                    <button type="button" id="buy" class="btn btn-primary btn-lg me-2">Buy Now</button>
                     <form action="{{ url_for('add_to_cart_route') }}" method="POST" style="display:inline;">
                         <input type="hidden" name="book_id" value="{{ book.bookId }}">
                         <input type="hidden" name="quantity" value="1"> 
-                        <button type="submit" class="btn btn-secondary btn-lg">Add to Cart</button>
+                        <button id = "buy" type="submit" class="btn btn-primary btn-lg me-2">Add to Cart</button>
                     </form>
                 </div>
             </div>

@@ -563,7 +563,7 @@ def contact_email():
         email_sent = send_contact_email(user_email, user_name, message)
 
         if email_sent:
-            return jsonify({'success': True, 'message': 'Email sent.', 'redirect': 'success.html'}), 200
+            return render_template('success.html'), 200
         else:
             return jsonify({'success': False, 'message': 'Error sending email.'}), 500
     except Exception as e:
